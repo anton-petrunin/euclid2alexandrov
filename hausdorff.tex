@@ -1,0 +1,589 @@
+\chapter{The space of sets}\label{chap:hausdorff}
+
+In this chapter we introduce Hausdorff convergence,
+a type of convergence for subsets of a metric space.
+This is a simple idea which seriously changed the shape of geometry sometime ago.
+
+As a motivating example,
+I give a proof of isoperimetrical inequality.
+This proof was given by Blaschke in \cite{blaschke};
+it use Hausdorff convergence together with Steiners's 4-joint method. 
+Historically, 
+this was the first essential application of Hausdorff convergence.
+
+The material of this chapter I learned from the book of Wilhelm Blaschke \cite{blaschke}.
+This is a truly remarkable book which I recommend to read to everyone who can.
+(It is available in German  
+and  Russian; no English translations so far.)
+
+
+
+
+
+
+
+
+\section{Steiner's 4-joint method}
+
+\begin{thm}{Theorem}\label{thm:steiner}
+Let $F$ be a plane figure bounded by a curve of length $1$ 
+which has maximal area.
+Then $F$ is a round disc. 
+\end{thm}
+ 
+Note that if we would know that such $F$ exists, then as a corollary we would obtain the 
+isoperimetric inequality in the plane:
+
+\begin{thm}{Theorem}\label{thm:isoperimeter}
+Any closed simple curve in the plane of length $L$ bounds area at most $\tfrac1{4\cdot\pi}\cdot L^2$.
+Moreover, in case of equality, the curve is a circle.
+\end{thm}
+
+
+\begin{wrapfigure}{r}{22mm}
+\begin{lpic}[t(-4mm),b(-2mm),r(0mm),l(0mm)]{pics/cut(0.15)}
+\end{lpic}
+\end{wrapfigure}
+
+The existence of $F$ will be proved later;
+in this proof we use Hausdorff convergence constructed later in this chapter.
+
+The following argument was found by Jacob Steiner in 1842.
+
+\parit{Proof of Theorem \ref{thm:steiner}.}
+Let $F$ be a maximal such figure.  We shall show that $F$ is a disc.  First note that $F$ is convex (i.e. the straight light segment connecting any two points in $F$ is also contained in $F$); 
+otherwise one could make the perimeter of $F$ smaller and the area larger.
+
+Take any point $P$ in the bounding curve of $F$ (further denoted by $\partial F$).
+Consider a point $P'\in\partial F$ so that both arcs $\partial F$ of from $P$ to $P'$ have the same length (which has to be $\tfrac12$).
+
+%\begin{wrapfigure}{r}{25mm}
+%\begin{lpic}[t(-6mm),b(-2mm),r(0mm),l(3mm)]{pics/FF'(0.1)}
+%\lbl[r]{7,80;$P$}
+%\lbl[l]{190,80;$P'$}
+%\lbl{90,40;$F_1$}
+%\lbl[w]{90,140;$F_2$}
+%\end{lpic}
+%\end{wrapfigure}
+
+Divide $F$ by the segment $[PP']$ into two parts $F_1$ and $F_2$.
+Without loss of generality we can assume that $\area F_1\ge \area F_2$.
+Let $F'_1$ be the reflection of $F_1$ in the line $(PP')$.
+Set $F'=F_1\cup F_1'$
+
+
+
+Note that 
+$$\area F'=2\cdot\area F_1\ge \area F_1+\area F_2=\area F$$    
+
+%\begin{wrapfigure}{r}{22mm}
+%\begin{lpic}[t(-4mm),b(-1mm),r(0mm),l(0mm)]{pics/F'(0.1)}
+%\lbl[r]{2,80;$P$}
+%\lbl[l]{187,80;$P'$}
+%\lbl[t]{49,4;$Q$}
+%\lbl[b]{53,158;$Q'$}
+%\end{lpic}
+%\end{wrapfigure}
+
+\noi and the perimeter of $F'$ is the same as perimeter of $F$.
+Hence $F'$ also has maximal possible area and $\area F_1=\area F_2$.
+
+
+Note that if $F$ is not a round disc then points $P$ and $P'$ can be chosen so that $F'$ is not a round disc.
+Chose arbitrary point $Q\in \partial F'$ and let $Q'$ be the reflection of $Q$ in $(PP')$.
+
+
+One can think of $F'$ as quadrilateral $PQP'Q'$ with a lune attached at each side.
+Think about these lunes as being made of rigid material (say cut it from cardboard)
+and imagine that at each vertex $P$, $Q$, $P'$, $Q'$ we have a joint;
+so the quadrilateral $PQP'Q'$ can be moved continuously keeping its sides fixed.
+
+Note that if $\angle PQP'\not=\tfrac\pi2$
+then we can move this construction slightly and increase the area of the obtained figure.
+
+Hence $\angle PQP'=\tfrac\pi2$ for any $Q\in \partial F'$.
+It follows that $F'$ is a disc; hence $F$ is also a disc.
+\qeds
+
+As it was mentioned above, in order to prove isoperimetric inequality (Theorem~\ref{thm:isoperimeter})
+one only has to show existence of an extremal object (the figure $F$ in Theorem~\ref{thm:steiner}) and then apply Steiner's argument.
+One possible approach is to cook up a compact metric space out of plane figures and
+show that volume and perimeter depend continuously (or semicontinuously) 
+on the figure. 
+Then existence of a maximal $F$ would follow, as a continuous function on a compact metric space attains a maximum.
+
+The first step is to define a metric on the set of figures in the plane; 
+this is done in the next section.
+
+
+\section{Hausdorff metric}
+
+
+Let $X$ be a metric space.
+Given a subset $A\subset X$,
+consider the distance function to $A$
+$$\Dist_A: X \to [0,\infty)$$
+defined as 
+$$\Dist_A x
+\df
+\inf_{a\in A}\{\Dist_a x\}.$$
+
+\begin{thm}{Definition}
+Let $A$ and $B$ be two compact subsets of a metric space $X$.
+Then the Hausdorff distance between $A$ and $B$ is defined as 
+$$|A-B|_{\mathcal{H}(X)}
+\df
+\sup_{x\in X}|\Dist_Ax-\Dist_Bx|.
+$$
+
+\end{thm}
+ 
+
+\begin{thm}{Exercise}\label{ex:R-hausdorff}
+Let $A,B$ be two compact subsets of a metric space $X$.
+Show that $|A-B|_{\mathcal{H}(X)}\le R$ if and only if 
+$\Dist_Ab\le R$ for any $b\in B$
+and 
+$\Dist_Ba\le R$ for any $a\in A$.
+\end{thm}
+
+
+\begin{thm}{Exercise}\label{ex:H_X}
+Show that the set of all nonempty compact subsets of a metric space $X$ equipped with the Hausdorff metric forms a metric space.
+
+This new metric space will be denoted as $\mathcal{H}(X)$.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:diam}
+Let $X$ be a metric space.
+Given a subset $A\subset X$ define its diameter as 
+$$\diam A\df\sup_{a,b\in A} |a-b|.$$
+
+Show that 
+$$\diam\:\mathcal{H}(X)\to \RR$$ 
+is a continuous function.
+\end{thm}
+
+
+\begin{thm}{Blaschke's compactness theorem}\label{thm:compact+Hausdorff}
+Let $X$ be a metric space.
+Then the space $\mathcal{H}(X)$ is compact if and only if $X$ is compact.
+\end{thm}
+
+
+
+
+\parit{Proof; ``only if'' part.}
+Note that the map $\iota\:X\to \mathcal{H}(X)$, defined as $\iota\:x\mapsto\{x\}$
+(i.e., point $x$ mapped to the one-point subset $\{x\}$ of $X$)
+is distance preserving.
+Thus $X$ is isometric to the set $\iota(X)$ in $\mathcal{H}(X)$.
+
+Note that for a nonempty subset $A\subset X$, we have $\diam A=0$ if and only if $A$ is a one-point set.
+Therefore, from Exercise~\ref{ex:diam}, it follows 
+that $\iota(X)$ is closed in $\mathcal{H}(X)$.
+Hence $\iota(X)$ is compact, as it is a closed subset of a compact space. 
+Since $X$ is isometric to $\iota(X)$,
+``only if'' part follows.
+\qeds
+
+To prove ``if'' part we will need the following two lemmas.%???CHANGE THE PROOF???
+
+\begin{thm}{Lemma}\label{lem:decreasing-converges}
+Let $K_1\supset K_2\supset\dots$ be a sequence of nonempty compact sets in a metric space $X$
+then $K_\infty=\bigcap_n K_n$ is the Hausdorff limit of $K_n$;
+i.e., $|K_\infty-K_n|_{\mathcal{H}(X)}\to0$ as $n\to\infty$.
+\end{thm}
+
+\parit{Proof.}
+Note that $K_\infty$ is compact and nonempty.
+If the assertion were false, 
+then there is $\eps>0$ such that for each $n$ 
+one can choose $x_n\in K_n$
+such that $\Dist_{K_\infty}x_n\ge\eps$.
+Note that $x_n\in K_1$ for each $n$.
+Since $K_1$ is compact, 
+there is 
+a \emph{partial limit}\index{partial limit}\footnote{Partial limit is a limit of a subsequence.}
+ $x_\infty$ of $x_n$.
+Clearly $\Dist_{K_\infty}x_\infty\ge \eps$.
+
+On the other hand, since $K_n$ is closed and $x_m\in K_n$ for $m\ge n$,
+we get $x_\infty\in K_n$ for each $n$.
+It follows that $x_\infty\in K_\infty$ and therefore $\Dist_{K_\infty}x_\infty=0$,
+a contradiction.\qeds
+
+The following statement was used in the previous proof.
+
+\begin{thm}{Exercise}\label{ex:intersection-of-compacts}
+Show that if $K_1\supset K_2\supset\dots$ is a nonempty compact subsets of a metric space, then 
+$$K_\infty=\bigcap_{n=1}^\infty K_n$$ is nonempty and compact.  
+
+Give an example that shows that this statement is false if we replace ``compact'' with ``closed''.
+\end{thm}
+
+
+\begin{thm}{Lemma}\label{lem:complete+Hausdorff}
+If $X$ is a compact metric space then $\mathcal{H}(X)$
+is complete.
+\end{thm}
+
+\parit{Proof.}
+Let $(Q_n)$ be a Cauchy sequence in $\mathcal{H}(X)$.
+Passing to a subsequence of $Q_n$ we may assume that 
+$$|Q_n-Q_{n+1}|_{\mathcal{H}(X)}\le \tfrac1{10^n}\eqlbl{eq:eps=1/10}$$
+for each $n$.
+
+Set 
+\begin{align*}
+K_n&= \set{x\in X}{\Dist_{Q_n}(x)\le \tfrac1{10^n}}
+\end{align*}
+Clearly, $|Q_n-K_n|_{\mathcal{H}(X)}\le \tfrac1{10^n}$ and from \ref{eq:eps=1/10}, we get
+$K_n\supset K_{n+1}$ 
+for each $n$.
+Set 
+$$K_\infty=\bigcap_{n=1}^\infty K_n.$$
+Applying Lemma \ref{lem:decreasing-converges},
+we get that $|K_n-K_\infty|_{\mathcal{H}(X)}\to 0$ as $n\to\infty$.
+Since $|Q_n-K_n|_{\mathcal{H}(X)}\le \tfrac1{10^n}$, we get $|Q_n-K_\infty|_{\mathcal{H}(X)}\to 0$ as $n\to\infty$.
+Hence lemma follows.
+\qeds
+
+\parit{Proof of ``if'' part of Blaschke's compactness Theorem~\ref{thm:compact+Hausdorff}.}
+According to Lemma~\ref{lem:complete+Hausdorff},
+$\mathcal{H}(X)$ is complete.
+So to show that $\mathcal{H}(X)$ is compact, it only remains to show that $\mathcal{H}(X)$ is totally bounded;
+i.e., given $\eps>0$ there is a finite $\eps$-net in $\mathcal{H}(X)$.
+
+Choose a finite $\eps$-net $A$ in $X$.
+Denote by $\mathcal{A}$ the set of all subsets of $A$.
+Note that  $\mathcal{A}$ is finite set in $\mathcal{H}(X)$.  We shall show that $\mathcal{A}$ is an $\eps$-net in $\mathcal{H}(X)$.
+
+For each compact set $K\subset X$, consider the subset $K'$ of all points $a\in A$
+such that $\Dist_K a\le \eps$.
+Then $K' \in \mathcal{A}$ and $|K-K'|_{\mathcal{H}(X)}\le\eps$.
+In other words $\mathcal{A}$ is a finite $\eps$-net in $\mathcal{H}(X)$.
+\qeds
+
+
+
+
+
+
+
+
+
+
+
+\section{Isoperimetric inequality: the end of proof}
+
+Let $Q$ be a figure in the plane which is bounded by a closed curve.
+Note that if $Q$ is not convex then the \emph{convex hull}\index{convex hull}%
+\footnote{i.e., the minimal convex set which contains the given set}
+ of $Q$ has bigger area and smaller perimeter.
+Therefore it is sufficient to prove the isoperimetric inequality only for convex figures.
+In other words, to prove Theorem~\ref{thm:isoperimeter},
+it is sufficient to prove the following.
+
+\begin{thm}{Theorem}\label{thm:isoperimeter-convex}
+Any convex plane figure wth area $A$ is bounded by a curve of length at least
+$\sqrt{4\cdot \pi\cdot A}$.
+Moreover, in case of equality, the figure is a disc.
+\end{thm}
+
+Note that by Steiner's argument (\ref{thm:steiner}),
+Theorem~\ref{thm:isoperimeter-convex} follows from the following.
+
+\begin{thm}{Proposition}\label{prp:there_is_F}
+There is a convex figure $F$ in the plane,
+which maximize the area among all convex figures with perimeter $1$.
+\end{thm}
+
+
+First note that any convex figure with perimeter $1$ can be moved into a $1\times1$-square by parallel translation.
+Therefore it is sufficient to show existence of $F$ which maximizes area among convex figures with perimeter $1$ in a given $1 \times 1$-square, which will be denoted as $\square$.
+
+Note that $\square$ is compact.
+According to Blaschke's compactness Theorem~\ref{thm:compact+Hausdorff}, 
+$\mathcal{H}(\square)$ is compact.
+Let us denote by $\mathcal{C}$ the subset of $\mathcal{H}(\square)$ formed by all convex sets.
+
+\begin{thm}{Exercise}\label{ex:convex=closed-in-H}
+Show that $\mathcal{C}$ is a closed subset of $\mathcal{H}(\square)$.
+\end{thm}
+
+Since $\mathcal{H}(\square)$ is compact,
+the above exercise implies that $\mathcal{C}$ is also compact.
+
+The area and perimeter define two functions on $\mathcal{C}$.
+$$\area\:\mathcal{C}\to\RR\ \ \text{and}\ \ \per\:\mathcal{C}\to\RR.$$
+In order to ensure existence of $F$ it remains to prove the following claim:
+
+\begin{thm}{Proposition}\label{prop:area+per}
+Both functions 
+$$\area\:\mathcal{C}\to\RR\ \ \text{and}\ \ \per\:\mathcal{C}\to\RR$$
+are continuous.
+
+(In other words, for any Hausdorff converging sequence $K_n\to K_\infty$ of convex compact sets in $\square$,
+we have
+$$\area K_\infty=\lim_{n\to\infty}\area K_n
+\ \ \text{and}\ \ 
+\per K_\infty=\lim_{n\to\infty}\per K_n.)$$
+
+\end{thm}
+
+Indeed, since $\per\:\mathcal{C}\to\RR$ is continuous, 
+we have that the figures in $\mathcal{C}$ with perimeter $1$ form a closed set, say $\mathcal{C}_1$.
+Since  $\mathcal{C}$ is compact,  so is $\mathcal{C}_1$.
+Then the restriction of $\area\:\mathcal{C}\to\RR$ to $\mathcal{C}_1$ admits a maximal value by Exercise~\ref{ex:EVT};
+hence Proposition~\ref{prp:there_is_F} follows.
+
+In the proof of Proposition~\ref{prop:area+per}, we will use the following two lemmas.
+
+\begin{thm}{Lemma}\label{lem:perimeter}
+Let $P$ and $Q$ be two convex compact figures in the plane.
+Then
+$$P\subset Q\ \ \text{and}\ \ \per P\le \per Q.$$ 
+
+\end{thm}
+
+\parit{Proof.}
+First note that it is sufficient to prove the lemma only for convex polygons $P$ and $Q$.
+Note that if $P$ is obtained from $Q$ by intersecting $Q$ with a half-plane then the inequality $\per P\le \per Q$ follows from the triangle inequality.
+
+\begin{wrapfigure}{r}{33mm}
+\begin{lpic}[t(-4mm),b(-2mm),r(0mm),l(0mm)]{pics/P-Q(0.15)}
+\end{lpic}
+\end{wrapfigure}
+
+
+Now note that there is an increasing sequence of polygons 
+$$P=P_0\subset P_1\subset\dots\subset P_n=Q$$
+such that $P_{i-1}$ is intersection of $P_{i}$ with a half-plane.
+Therefore 
+\begin{align*}
+\per P=\per P_0&\le\per P_1\le\dots
+\\
+\dots&\le\per P_n=\per Q
+\end{align*}
+and the lemma follows.
+\qeds
+
+\begin{thm}{Lemma}\label{lem:between-poly}
+Let $Q$ be a compact convex plane figure 
+and the interior of $Q$ contains the origin $0\in\RR^2$.
+Then given $\eps>0$ there is a convex polygon $P\subset Q$ such that
+the rescaled polygon
+$$(1+\eps)\cdot P=\set{(1+\eps)\cdot x\in \RR^2}{x\in P}$$
+contains $Q$.
+\end{thm}
+
+\begin{wrapfigure}[5]{r}{33mm}
+\begin{lpic}[t(-20mm),b(-2mm),r(0mm),l(0mm)]{pics/P-F(0.15)}
+\end{lpic}
+\end{wrapfigure}
+
+\parit{Proof.}
+Assume $Q$ contains $\bar B_R(0)$ in its interior.
+
+Fix small $\delta>0$  and consider the set $Z$ all points
+$(\delta\cdot m,\delta\cdot n)\in Q$ such that $m$ and $n$ are integers.
+Let $P$ be the convex hull of $Z$.
+Since $Q$ is convex, we have $P\subset Q$.
+
+Note that for any point $q\in Q$ there is a point $p\in P$ such that
+$$|p-q|\le \sqrt{2}\cdot\delta.$$ 
+Since $\delta$ is small, we can assume that $P\supset \bar B_R(0)$
+
+In this case straightforward calculation show that the set 
+$(1+\eps) \cdot P$
+contains all points on distance $\eps\cdot R $ from $P$.
+In particular, 
+lemma holds if in addition $\delta<\eps\cdot \tfrac{R}{10}$.
+\qeds
+
+\begin{thm}{Exercise}\label{ex:calculations}
+Perform the ``straightforward calculation'' in the above proof.
+\end{thm}
+
+
+
+\parit{Proof of Proposition~\ref{prop:area+per}.}
+Assume $K_\infty$ is nondegenerate; i.e. $K_\infty$ contains a disc, say $B_R(z)$.
+Without loss of generality, we may assume that $z$ is the origin $0\in\RR^2$;
+so we can apply Lemma~\ref{lem:between-poly} to $K_\infty$.
+
+
+
+Choose small $\eps>0$ and choose $P$ as in the Lemma~\ref{lem:between-poly}.
+Note that there is $N$ such that
+$$(1-2\cdot\eps)\cdot P\subset K_n\subset (1+2\cdot\eps)\cdot P$$ 
+for all $n\ge N$.
+It follows that%
+\footnote{Here $$a\lege(1\pm\eps)\cdot b$$ means two inequalities: $$a\le(1+\eps)\cdot b\ \ \text{and}\ \  a\ge(1-\eps)\cdot b.$$
+The sign ``$\lege$'' should be red as ``more-or-less'' or better as ``less-or-more''.} \index{$\lege$}
+\begin{align*}
+\area K_n&\lege(1\pm2\cdot\eps)^2\cdot \area P
+\lege
+\\
+&\lege(1\pm2\cdot\eps)^4\cdot \area K_\infty.
+\end{align*}
+
+From Lemma~\ref{lem:perimeter}, we get 
+\begin{align*}\per K_n
+&\lege(1\pm2\cdot\eps)\cdot \per P\lege
+\\
+&\lege(1\pm2\cdot\eps)^2\cdot \per K_\infty.
+\end{align*}
+
+Hence the we get 
+$$\area K_\infty=\lim_{n\to\infty}\area K_n
+\ \ \text{and}\ \ 
+\per K_\infty=\lim_{n\to\infty}\per K_n.$$ 
+
+The following exercise finishes the proof.\qeds
+
+\begin{thm}{Exercise}\label{ex:area+perim}
+Prove that  
+$$\area K_\infty=\lim_{n\to\infty}\area K_n
+\ \ \text{and}\ \ 
+\per K_\infty=\lim_{n\to\infty}\per K_n.$$
+in case $K_\infty$ is degenerate $K_\infty$;
+i.e., if $K_\infty$ is either one-point set or a segment.
+
+(If $\ell$ is the length of a segment then its perimeter is defined to be $2\cdot\ell$.)
+\end{thm}
+
+\section{Comments}
+
+It seems that Hausdorff convergence was first introduced by Felix Hausdorff in his book \cite{hausdorff} which appeared in print in 1914.
+Blaschke's book appears two years later and it introduce the same concept without
+a reference to Hausdorff.
+It it therefore likely that Hausdorff convergence was known in mathematical folklore before these books,
+but I would be very interested to know the real story.
+
+The Hausdorff metric was only used to 
+define convergence of compact subsets in a metric space
+and any equivalent metric would have done the job.
+In other words, the topology which the Hausdorff metric describes on the 
+set of compact subsets is important, while the concrete metric is not.
+
+One may wonder what will happen if we consider all subsets of the metric space $X$,
+instead of just the compact sets.
+In this case, distinct sets might have zero distance, 
+say consider $X=\RR$
+and sets $A=[0,1]$
+and $B$ is the set rational point in $[0,1]$.
+It suggests that one should only consider closed sets.
+Further, the distance between closed subsets might be infinite. 
+For example, consider $X=\RR$ and the subsets $A=[0,\infty)$ and $B=\{0\}$.
+I.e., formally, the Hausdorff distance would not satisfy definition \ref{def:metric-space}.
+Therefore, one would have to modify the definition of metric space to allow the distance between two points to be infinite,
+or one could restrict the set of subsets further to bounded closed sets.
+In the latter case, we get a nice metric space, say $\mathcal{H}'(X)$.
+Blashke's compactness theorem still holds for $\mathcal{H}'(X)$, but the proof becomes slightly more technical. 
+
+
+For unbounded closed sets,
+there is a better modification of Hausdorff convergence.
+Given a sequence of closed sets $A_n$, we say that it converges to a closed set $A_\infty$ 
+if the sequence of functions $\Dist_{A_n}$ converge pointwise to $\Dist_{A_\infty}$.
+This modification was introduced by 
+Frol\'{\i}k in \cite{frolik}
+and few years later by
+Wijsman in \cite{wijsman}.
+
+Note that in the above definition, if one changes \emph{pointwise convergence} to \emph{uniform convergence} then one obtains standard Hausdorff convergence.
+For example the sequence of sets $A_n=[0,n]$ in $\RR$ diverges in the stadard Hausdorff sense,
+but converges to $[0,\infty)$ in the sense of Hausdorff--Wijsman. 
+
+Often one works with equivalence classes of subsets.
+For example, consider the set of compact sets in metric space $X$ up to congruence.
+Two subsets $A,B\subset X$ are congruent (briefly, $A\cong B$) if there is an isometry $\iota\:X\to X$ such that $\iota(A)=B$. 
+In this case the Hausdorff metric can be used to define a metric on the congruemce classes.
+For example we may talk about distance between sets up to congruence;
+say denote by $\mathcal{H}(X)/{\cong}$ the set of congruence classes of compact subsets of $X$
+and equip $\mathcal{H}(X)/{\cong}$ with the metric defined as
+$$|[A]-[B]|_{\mathcal{H}(X)/{\cong}}=\inf_{\iota}|A-\iota(B)|_{\mathcal{H}(X)},\eqlbl{eq:hausdorff-upto-cong}$$
+where the infimum is taken for all isometries $\iota\:X\to X$.
+
+\begin{thm}{Exercise}\label{ex:hausdorff-upto-cong}
+Show that \ref{eq:hausdorff-upto-cong} defines a metric on $\mathcal{H}(X)/{\cong}$.
+\end{thm}
+
+
+
+
+\section*{Exercises}
+
+\begin{pr} Consider an $n$-gon $A$ which maximize area among all $n$-gons with side-lengths $a_1,a_2,\dots,a_n$. 
+Show that $A$ is inscribed in a circle;
+i.e., all vetexes of $A$ lie on a circle.
+\end{pr}
+
+
+\begin{pr}\label{pr:Hausdorff-bry}
+Let $X$ and $Y$ be two compact subsets in $\RR^2$.
+Assume $|X-Y|_{\mathcal{H}(\RR^2)}<\eps$, 
+is it true that
+$|\partial X-\partial Y|_{\mathcal{H}(\RR^2)}<\eps$,
+where $\partial X$ denotes the boundary of $X$.
+
+Does the converse holds; i.e. assume $X$ and $Y$ be two compact subsets in $\RR^2$
+and $|\partial X-\partial Y|_{\mathcal{H}(\RR^2)}<\eps$. 
+Is it true that $|X-Y|_{\mathcal{H}(\RR^2)}<\eps$?
+\end{pr}
+
+\begin{pr}\label{pr:Hausdorff-Conv}
+Let $A$ and $B$ be compact subsets of $\RR^2$.
+Show that 
+$$ |\Conv A-\Conv B|_{\mathcal{H}(\RR^2)}\le |A- B|_{\mathcal{H}(\RR^2)},$$
+where $\Conv A$ denotes the convex hull of $A$.
+\end{pr}
+
+
+
+\begin{pr}
+Let $X$ be a compact metric space and $A, B\subset X$ be two finite $\eps$-nets in $X$.
+Show that $|A-B|_{\mathcal{H}(X)}\le \eps$.
+\end{pr}
+
+
+\begin{pr}\label{pr:LebesgueMinimalProblem}
+Recall that a \href{http://en.wikipedia.org/wiki/Curve_of_constant_width}{figure of constant width $a$} is a compact convex set in the plane such that the length of the orthogonal projection to any line is equal to $a$. 
+\begin{enumerate}[(i)]
+\item Show that any set $K$ in the plane with diameter $1$ is a subset of a figure  constant width 1.
+\item Show that the area of any figure of constant width 1 is at least $1/100$.
+\item Let $F$ be a compact set in the plane which can be presented as a union of figures of constant width 1.
+Assume $\diam F>10000$.
+Show that either $F$ can be presented as a union of two disjoint compact sets or $\area F>1$.
+\item Let $\mathcal{Q}$ be the set of all compact sets in the plane, which can be presented as a union of figures of constant width 1.
+Try to prove that $\area$ is a continuous function on $\mathcal{Q}$ (with respect to the Hausdorff metric).
+\item Use all above to show existance of a solution for the \href{http://mathworld.wolfram.com/LebesgueMinimalProblem.html}{Lebesgue Minimal Problem};
+i.e., show that there is a plane figure $F$ of least area  which is capable of covering any plane figure of unit  diameter.
+
+Try to guess what is $F$.
+\end{enumerate}
+\end{pr}
+
+\begin{pr}\label{pr:complete>compact}
+Let $X$ be a complete metric space and $K_n$ be a sequence of compact sets 
+which converges in the sence of Hausdorff.
+Show that closure $Q$ of union $\bigcup_{n=1}^\infty K_n$ is compact.
+
+Use this to show that in Lemma~\ref{lem:complete+Hausdorff} compactness of $X$ can be exchanged to completeness.
+\end{pr}
+
+\begin{pr}\label{pr:GH/area}
+Let $K_1, K_2, \dots$ and $K_\infty$ be compact convex sets in $\RR^2$.
+Assume that $K_\infty$ is nondegenerate;
+i.e., it contains interior points.
+Prove that $K_n\GHto K_\infty$ if and only if 
+$$\area (K_n\backslash K_\infty)+\area (K_\infty\backslash K_n)\to 0.$$
+\end{pr}
+
+
+
+
+
+

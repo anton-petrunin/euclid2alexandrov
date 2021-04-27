@@ -1,0 +1,455 @@
+\chapter{Curvature bounded below}\label{chap:cbb}
+
+\section{Definitions}
+
+\begin{thm}{Definition}\label{def:cbb}
+A proper length space $X$ has non-negative curvature in the sense of Alexandrov (briefly $X\in\CBB{}{0}$%
+\footnote{$\CBB{}{0}$ stays for ``curvature bounded below by $0$''. 
+If in the definition of model triangle, one exchanges the Euclidean plane with a sphere or Lobachevsky plane of constant curvature $k$, then one gets the definition of \emph{spaces with curvature $\ge k$ in the sense of Alexandrov}, which denoted as $\CBB{}{k}$. We will only consider the case $k=0$.}%
+)
+if any triangle in $X$ is fat (see Definition~\ref{def:fat-thin}).
+\end{thm}
+
+Note that Euclidean space, as well as any convex set in the Euclidean space form a $\CBB{}{0}$ space.
+
+The following theorem gives a number of equivalent ways to define $\CBB{}{0}$ spaces.
+
+\begin{thm}{Theorem}
+\label{thm:defs_of_alex} 
+Let $\spc{X}$ be a proper length space. 
+Then the following are equivalent.
+
+\begin{subthm}{3-sum} $\spc{X}\in\CBB{}{0}$.
+\end{subthm}
+%if and only the following conditions holds for all $p,x,y,z\in \spc{X}$:
+
+\begin{subthm}{1+3}((1+3)-point comparison) if $p$ is distinct from $x$, $y$, and $z$ then
+\[\angk0 p{x}{y}
++\angk0 p{y}{z}
++\angk0 p{z}{x}\le 2\cdot\pi.\]
+\end{subthm}
+
+
+\begin{subthm}{2-sum} 
+(adjacent angle comparison\index{comparison!adjacent angle comparison}) 
+for any geodesic $[x y]$ and $p\in \left]x y\right[$, $z\not=p$ we have
+\[\angk0 pyz
++\angk0 pzx\le \pi.\]
+\end{subthm}
+
+\begin{subthm}{angle}(hinge comparison\index{hinge comparison})
+for any hinge $\hinge x y z$, the angle 
+$\mangle\hinge x y z$ is defined and 
+\[\mangle\hinge x y z\ge\angk0 x y z.\]
+Moreover, if $p\in\left]x y\right[$, $z\not=p$ then 
+\[\mangle\hinge p y z + \mangle\hinge p z x\le\pi\]
+for any two hinges $\hinge p z y$ and $\hinge p z x$ with common side $[pz]$.%
+\footnote{It is not known if the last inequality is necessary, even for spaces homeomorphic to $\SS^2$.}
+\end{subthm}
+\end{thm}
+
+\begin{wrapfigure}[5]{r}{30mm}
+\begin{lpic}[t(0mm),b(-10mm),r(0mm),l(0mm)]{pics/lem_alex1(0.35)}
+\lbl[br]{17,59;$x$}
+\lbl[r]{1,2;$y$}
+\lbl[l]{86,13;$z$}
+\lbl[lb]{67,32;$p$}
+\end{lpic}
+\end{wrapfigure}
+
+
+\parit{Proof of Theorem~\ref{thm:defs_of_alex}.}
+Note that $X$ is a geodesic space%
+\footnote{I.e., any two points in $X$ can be joined by a geodesic.}%
+,
+as it is proper and length (see Exercise~\ref{ex:proper=>geodesic}).
+
+\parit{(\ref{SHORT.1+3}) $\Rightarrow$ (\ref{SHORT.2-sum})}. Since $p\in \left]x y\right[$, we have $\angk0 p x y=\pi$. 
+Thus, (1+3)-point comparison
+\[\angk0 p x y
++\angk0 p y z
++\angk0 p z x\le2\cdot\pi\]
+implies
+\[\angk0 p y z
++\angk0 p z x
+\le\pi.\]
+
+\parit{(\ref{SHORT.2-sum}) $\Leftrightarrow$ (\ref{SHORT.3-sum})}. 
+Follows directly from Alexandrov's lemma (\ref{lem:alex}).
+
+\parit{(\ref{SHORT.2-sum}) $+$ (\ref{SHORT.3-sum}) $\Rightarrow$ (\ref{SHORT.angle}).} 
+From Proposition~\ref{prop:angle-mono}, 
+we get that for $\bar y\in\left]xy\right]$ and $\bar z\in\left]xz\right]$ the function $(\dist{x}{\bar y}{},\dist{x}{\bar z}{})\mapsto\angk0 x{\bar y}{\bar z}$ is nonincreasing in each argument.
+In particular, 
+$\mangle\hinge x y z\z=\sup\{\angk0 x{\bar y}{\bar z}\}$.
+Thus, $\mangle\hinge x y z$ is defined and it is
+at least $\angk0 x y z$.
+
+From above and (\ref{SHORT.2-sum}), it follows that $\mangle\hinge p y z + \mangle\hinge p z x\le\pi$.
+
+\begin{wrapfigure}[10]{r}{30mm}
+\begin{lpic}[t(0mm),b(0mm),r(0mm),l(0mm)]{pics/angle-comp(0.30)}
+\lbl[r]{0,35;$z$}
+\lbl[l]{65,41;$p$}
+\lbl[tr]{48,38;$w$}
+\lbl[lb]{77,96;$x$}
+\lbl[lt]{85,4;$y$}
+\end{lpic}
+\end{wrapfigure}
+
+\parit{(\ref{SHORT.angle}) $\Rightarrow$ (\ref{SHORT.1+3}).}
+Consider a point $w\in \left] p z \right[$ close to $p$.
+From (\ref{SHORT.angle}), it follows that 
+\[\mangle\hinge w x z+ \mangle\hinge w x{p}\le\pi\ \ \text{and}\ \ \mangle\hinge w y z + \mangle\hinge w y{p}\le\pi.\]
+By the triangle inequality for angles (see \ref{claim:angle-3angle-inq}), we have $\mangle\hinge w x y\le \mangle\hinge w x p +\mangle\hinge w y{p}$.
+Therefore we get 
+\[\mangle\hinge w x z+ \mangle\hinge w y z +\mangle\hinge w x y
+\le
+2\cdot\pi.\]
+Applying the first inequality in (\ref{SHORT.angle}), we obtain
+\[\angk0 w x z
++ \angk0 w y z 
++\angk0 w x y
+\le
+2\cdot\pi.\]
+Passing to the limits  $w\to p$, we obtain 
+\[\angk0 p x z 
++ \angk0 p y z 
++\angk0 p x y
+\le
+2\cdot\pi.\]
+\qedsf
+
+\begin{thm}{Proposition}\label{prop:GH-lim(CBB)}
+Let $(X_n)$ be a sequence of compact $\CBB{}{0}$ spaces 
+which converge to a compact space $X_\infty$ in the sense of Gromov--Hausdorff.
+
+Then $X_\infty\in \CBB{}{0}$. 
+\end{thm}
+
+\parit{Proof.}
+According to Exercise~\ref{ex:length=closed-in-GH},
+$X_\infty$ is a length space.
+
+For each natural number $n$, choose $f_n\:X_n\to X_\infty$ to be an $\eps_n$-isometry 
+for some sequence $\eps_n\to0$ as $n\to\infty$. 
+Take arbitrary points 
+$p_\infty,x_\infty,y_\infty,z_\infty\in X_\infty$
+and choose points $p_n,x_n,y_n,z_n\in X_n$ such that
+$f_n(p_n)\to p_\infty$, 
+$f_n(x_n)\to x_\infty$, 
+$f_n(y_n)\to y_\infty$,
+$f_n(z_n)\to z_\infty$ 
+as $n\to\infty$.
+
+Since $X_n\in\CBB{}{0}$, from \ref{1+3} we have 
+\[\angk0 {p_n}{x_n}{y_n}
++\angk0 {p_n}{y_n}{z_n}
++\angk0 {p_n}{z_n}{x_n}\le 2\cdot\pi.\]
+
+Clearly, 
+$$\angk0 {p_n}{x_n}{y_n}\to \angk0 {p_\infty}{x_\infty}{y_\infty},
+\ \angk0 {p_n}{y_n}{z_n}\to \angk0 {p_\infty}{y_\infty}{z_\infty},\ 
+\angk0 {p_n}{z_n}{x_n}\to \angk0 {p_\infty}{z_\infty}{x_\infty}$$ 
+as $n\to\infty$.
+Therefore
+\[\angk0 {p_\infty}{x_\infty}{y_\infty}
++\angk0 {p_\infty}{y_\infty}{z_\infty}
++\angk0 {p_\infty}{z_\infty}{x_\infty}\le 2\cdot\pi.\]
+The proposition follows from \ref{1+3}.
+\qeds
+
+
+
+\section{???Surface of convex body}
+
+The Theorem \ref{thm:poly-cbb} together with Exercise~\ref{ex:curv-is-nonneg} implies that that surface of any convex polyhdron is a $\CBB{}{0}$ space.
+Further, applying Problem~\ref{pr:H>GH-boundary} and Proposition~\ref{prop:GH-lim(CBB)}, we get the following.
+
+\begin{thm}{Proposition}
+The surface of a convex body in $\RR^3$ is a $\CBB{}{0}$ space.
+\end{thm}
+
+In this section we prove the following theorem,
+which is a convese of the above proposition.
+
+\begin{thm}{Theorem}\label{thm:body}
+A metric space $X$ is isometric to the surface of a convex body%
+\footnote{We allow a convex body to degenerate to a planar figure but not to a segment.
+As in the case of convex polyhedra, the surface of a planar figure is defined as its doubling.}
+if and only if 
+$X$ is a $\CBB{}{0}$-space which is homeomorphic to $\SS^2$.
+\end{thm}
+
+The following proposition gives the main 
+step in the proof of the theorem above. 
+
+\begin{thm}{Proposition}\label{prop:approx-by-poly}
+Given a $\CBB{}{0}$ space $X$ homeomorphic to a sphere,
+there is a non-negatively curved polyhedral space  $\tilde X$ homeomorphic to $\SS^2$
+for which the Gromov--Hausdorff distance $|X-\tilde X|_{\mathcal{M}}$ arbitrarily small. 
+\end{thm}
+
+\parit{Proof with cheating.}
+In the proof we will use two claims without proof;
+the proofs are not hard but tedious.
+
+\begin{clm}{}\label{clm:triangulation}
+Given $\eps>0$, 
+there is a triangulation $\mathcal T$ of $X$ with edges formed by geodesics and the diameter of each triangle is less than $\eps$.
+\end{clm}
+
+Fix small $\eps>0$ and choose a triangulation $\mathcal T$ of $X$ provided by the claim \ref{clm:triangulation}.
+
+\begin{thm}{Exercise}\label{ex:sum=<2pi}
+The sum of the angles at one of the vertices of $\mathcal T$ is $\le 2\cdot\pi$. 
+\end{thm}
+
+For each triangle in $\mathcal T$, construct a model triangle and glue them together the same way as the corresponding triangles in $X$.
+Denote the obtained polyhedral space by $\tilde X$, and given a vertex $v_i$ of $\mathcal T$,
+we will denote by $\tilde v_i$ the corresponding point in $\tilde X$.
+Applying the hinge comparison (\ref{angle})
+we have that the sum of the angles around a vertex $\tilde v_i$ of $\tilde X$
+is at most as big as the sum of the angles  around the corresponding vertex $v_i$ in $X$.
+Hence $\tilde X$ is non-negatively curved.
+
+Now to prove the proposition,
+it is sufficient to show that if $\eps>0$ is small enough 
+then $\tilde X$ is sufficiently close to $X$.
+
+First note that the set of vertices $\{v_i\}$
+forms an $\eps$-net in $X$
+and the set of vertices $\{\tilde v_i\}$
+forms an $\eps$-net in $\tilde X$.
+Therefore it is sufficient to show that the inequalities
+$$|\tilde v_i-\tilde v_j|_{\tilde X}\le |v_i-v_j|_X\eqlbl{eq:=<}$$
+$$|v_i-v_j|_X-4\cdot\pi\cdot\eps\le |\tilde v_i-\tilde v_j|_{\tilde X}\eqlbl{eq:>=}$$
+hold for any $i$ and $j$.
+
+To prove \ref{eq:=<}, consider a geodesic $[v_iv_j]$ in $X$.
+Let $v_i=x_0,x_1,\dots,x_n=v_j$ be the points of intersection of $[v_iv_j]$ with the edges of triangulation
+listed in the order from $v_i$ to $v_j$.%
+\footnote{Note that according problem~\ref{pr:angle=0} and \ref{pr:angle+angle=pi}, if a geodesic $[v_iv_j]$ intersect an edge at two points then it contains this edge. In this case one can take as $x$ any point on this edge. Taking this into account, we have that $n$ is finite.}
+
+Fix $k\in\{1,\dots,n\}$.
+Let $[pqr]$ be the triangle in $\mathcal T$ which contains $[x_{k-1}x_k]$ inside.
+Without loss of generality,
+we can assume that $x_{k-1}\in[pq]$ and $x_k\in[pr]$.
+Applying definition of $\CBB{}{0}$ spaces twice,
+first for the triangle $[pqr]$ and $x_k\in[pr]$
+and then for the triangle $[pqx_{k}]$ and $x_{k-1}\in[pq]$
+we get that
+$$|\tilde x_k-\tilde x_{k-1}|_{\tilde X}\le |x_k-x_{k-1}|_X$$
+holds for each $k$.
+Summing up, we get \ref{eq:=<}.
+
+The proof of \ref{eq:>=} is similar,
+but in this part we use yet the following claim without proof.
+
+\begin{clm}{}
+There is a constant $\rho=\rho(X)>0$ such that for all small $\eps>0$,
+the Gromov--Hausdorff distance from $\tilde X$ 
+to any real segment is at least $\rho$.   
+\end{clm}
+
+Consider a geodesic $[\tilde v_i\tilde v_j]$ in $\tilde X$.
+Let $\tilde v_i=\tilde y_0,\tilde y_1,\dots,\tilde y_m=\tilde v_j$ be the points of intersection of $[\tilde v_i\tilde v_j]$ with the edges of triangulation
+listed in the order from $\tilde v_i$ to $\tilde v_j$.
+Assume $[\tilde v_i\tilde v_j]$ crosses  twice one edge
+of $\mathcal{T}$.
+Say $[\tilde v_i\tilde v_j]$ crosses edge $\ell$ at $y_k$ and $y_m$.
+Since the length of  $\ell$ is smaller than $\eps$
+and $[\tilde v_i\tilde v_j]$ is a geodesic, we get that $|y_k-y_m|_{\tilde X}<\eps$.
+Hence the geodesic $[y_ky_m]$ 
+together with the segment of $\ell$ 
+from $y_k$ to $y_m$ forms a closed curve on $\tilde X$ of length $<2\cdot\eps$.
+
+ 
+
+ 
+According to Claim~\ref{clm:cheat2}, $[\tilde v_i\tilde v_j]$ intersects each triangle at most once.
+
+Fix $k\in\{1,\dots,n\}$.
+Let $[\tilde p\tilde q\tilde r]$ be the triangle in $\tilde X$ which contains $[\tilde y_{k-1}\tilde y_k]$ inside.
+Without loss of generality,
+we can assume that $\tilde y_{k-1}\in[\tilde p\tilde q]$ and $\tilde y_k\in[\tilde p\tilde r]$.
+Set
+\begin{align*}
+\alpha&=\mangle\hinge p{q}{r}, 
+&
+\beta&=\mangle\hinge {q}p{r}, 
+&
+\gamma&=\mangle\hinge {r}p{q},
+\\ 
+\tilde\alpha&=\angk{}p{q}{r}
+&
+\tilde\beta&=\angk{}{q}p{r}
+&
+\tilde\gamma&=\angk{}{r}p{q}
+\end{align*}
+By hinge comparison, (\ref{angle}) 
+we have
+\begin{align*}
+\alpha&\ge \tilde\alpha, 
+&
+\beta&\ge\tilde\beta, 
+&
+\gamma&\ge\tilde\gamma
+\end{align*}
+For the triangle $\Delta=[pqr]$
+we define its \emph{curvature} as  
+$$\kappa(\Delta)=\alpha+\beta+\gamma-\pi=\alpha+\beta+\gamma-(\tilde\alpha+\tilde\beta+\tilde\gamma).$$
+From the above $\kappa(\Delta)\ge 0$.
+Together with the rule of cosines, straightforward estimates give the following: 
+\begin{align*}
+|y_{k}-y_{k-1}|_{X}
+&\le \sqrt{|p-y_{k-1}|^2+|p-y_{k}|^2-2|p-y_{k-1}|\cdot|p-y_{k}|\cdot\cos\alpha}
+\\
+&\le |\tilde y_{k}-\tilde y_{k-1}|_{\tilde X}+\eps\cdot(\alpha-\tilde\alpha)
+\\
+&\le|\tilde y_{k}-\tilde y_{k-1}|_{\tilde X}+\eps\cdot\kappa(\Delta).
+\end{align*}
+
+Summing it up, we get
+\begin{align*}
+|v_i-v_j|_{X}
+&\le \sum_{k=1}^m|y_{k}-y_{k-1}|_{X}
+\\
+&\le \sum_{k=1}^m|\tilde y_{k}-\tilde y_{k-1}|_{\tilde X}+\eps\cdot\sum_{\Delta}\kappa(\Delta).
+\end{align*}
+where the last sum is taken over all triangles $\Delta$ in $\mathcal T$.
+Hence \ref{eq:>=} boils down to the inequality
+$$\sum_{\Delta\ \text{in}\ \mathcal T}\kappa(\Delta)\le 4\cdot\pi.$$
+
+\begin{thm}{Exercise}
+Prove the last inequality.\footnote{Hint: Use   Exercise~\ref{ex:sum=<2pi}
+ and Euler's formula 
+the same way as Exercise~\ref{ex:sum=2pi}.}
+\end{thm}
+\qedsf
+
+Theorem~\ref{thm:body} and Proposition~\ref{prop:poly-in-cbb} will be proved next week.
+
+
+
+
+
+
+\section*{Proof of Theorem~\ref{thm:body}}
+
+\parit{``Only if'' part.}
+Assume $X$ is a surface of a convex body $B$
+($B$ might degenerate to a flat figure, but not a line segment).
+The same argument as in Proposition~\ref{prop:P-is-S^2}, 
+shows that $X$ is homeomorphic to $\SS^2$.
+The convex body $B$ can be approximated by a sequence of convex polyhedra $K_n$ 
+in the sense of Hausdorff.
+The proof of the last statement is the same as in Lemma~\ref{lem:between-poly}.
+
+Denote by $P_n$ the surface of $K_n$.
+According to Problem~\ref{pr:H>GH-boundary}, 
+$P_n$ converge to $X$ in the sense of Gromov--Hausdorff.
+Applying Propositions~\ref{prop:GH-lim(CBB)} and~\ref{prop:poly-in-cbb}, we get that $X\in \CBB{}{0}$.
+
+\parit{``If'' part.}
+Assume $X$ is a $\CBB{}{0}$ space which is homeomorphic to a sphere.
+According to Proposition~\ref{prop:approx-by-poly},
+there is a sequence of non-negatively curved polyhedral spaces $P_n$
+which converge to $X$ in Gromov--Hausdorff sense and such that each $P_n$
+is homeomorphic to $\SS^2$.
+
+Applying Alexandrov's existence theorem (\ref{thm:alex-exist}), we obtain a sequence of convex polyhedra $K_n$
+such that the surface of $K_n$ is isometric to $P_n$ for each $n$.
+Note that for all $n$ the diameter of $K_n$ is bounded by the diameter of $P_n$.
+Since $P_n\to X$ in the sense of Gromov--Hausdorff we have that 
+$\diam P_n\to \diam X$ as $n\to\infty$ because $\diam$ is a continuous function (see Exercise~\ref{ex:d_GH-and-diam}.)
+In particular, $\diam P_n\le C$ for some fixed constant $C$ and all $n$.
+
+Without loss of generality we may assume that each $K_n$ contains the origin  $0\in\RR^3$.
+Therefore $K_n$ lies in a fixed bounded region for all large $n$.
+Applying Blaschke's compactness theorem (\ref{thm:compact+Hausdorff}),
+we can pass to a Hausdorff-converging subsequence of $K_n$.
+Denote by $B$ its limit.
+
+According to Problem~\ref{pr:H>GH-boundary}, $X$ is isometric to the surface of $B$. 
+\qeds
+
+\section{Comments}
+
+The Theorem \ref{thm:poly-cbb} admits the following generalization to higher dimensions.
+
+\begin{thm}{Theorem}
+Let $P$ be $m$-dimensional polyhedral space.
+Then $P\in\CBB{}{0}$ if and only if each of the following conditions hold.
+\begin{subthm}{}
+Any simplex in $P$ is a face in an $m$-dimensional simplex.
+\end{subthm}
+
+\begin{subthm}{}
+Any $(m-1)$-dimensional simplex in $P$ is a face of one or two an $m$-dimensional simplecies.
+\end{subthm}
+
+\begin{subthm}{}
+The link of any simplex of dimension $\le m-2$ is connected.
+\end{subthm}
+
+\begin{subthm}{}
+The angle around any simplex of dimension $m-2$ is $\le 2\cdot\pi$.
+\end{subthm}
+
+
+
+\end{thm}
+
+
+Globalization theorem.
+
+Applications in Riemannian geometry.
+
+
+
+\section*{Exercises}
+
+\begin{pr}\label{pr:angle=0}
+Let $X\in \CBB{}{0}$ and $\hinge x y z$ be a hinge in $X$.
+Assume $\mangle\hinge x y z=0$.
+Show that either $[xy]\subset [xz]$ or $[xz]\subset [xy]$.
+\end{pr}
+
+
+\begin{pr}\label{pr:geod+3}
+Let $X\in \CBB{}{0}$.
+Show that given three distinct points $x$, $y$ and $p$ in $X$,
+there is at most one geodesic from $x$ to $y$ which passes through $p$.
+\end{pr}
+
+\begin{pr}\label{pr:angle+angle=pi} Let $X\in \CBB{}{0}$ and $\hinge z x p$ and $\hinge z y p$ be two hinges with common side $[zp]$ in $X$.
+Assume that points $p$, $x$, $y$ and $z$ are distinct and $z\in[xy]$.
+Show that 
+\[\mangle\hinge z p y + \mangle\hinge z p x=\pi. \]
+
+\end{pr}
+
+\begin{pr}\label{pr:belt}
+Let $X$ be a $\CBB{}{0}$ space with is homeomorphic to $\SS^2$.
+Assume that $\diam X= D$ and $X$ contains a closed simple curve of length $\eps$ which cuts $X$ into two domains of diameter at least $R$ each.
+Set $\II=[0,D]$. Prove that 
+$$|X-\II|_{\mathcal{M}}\le \tfrac{D}{R}\cdot\eps.$$  
+\end{pr}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

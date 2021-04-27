@@ -1,0 +1,219 @@
+
+
+\section{Geodesics, triangles and hinges}
+
+Let $X$ be a metric space.
+
+\parbf{Geodesics.}
+Given a pair of points $x,y\in X$,
+we will denote by $[xy]$ the image of a geodesic from $x$ to $y$. 
+
+In general, a geodesic between $x$ and $y$ need not exist and if it exists, it need not be unique.  However,  once we write $[x y]$ we mean that we made a choice of a geodesic between $x$ and $y$.
+
+Also we will use the following notational short-cuts:
+\begin{align*}
+\left] x y \right[&=[xy]\backslash\{x,y\},
+&
+\left] x y \right]&=[xy]\backslash\{x\},
+&
+\left[ x y \right[&=[xy]\backslash\{y\}.
+\end{align*}
+
+\parbf{Triangles.}
+For a triple of points $x,y,z\in X$, 
+a choice of a triple of geodesics $([x y], [y z], [z x])$ will be called a \emph{triangle}\index{triangle} and we will use the short notation 
+$\trig x y z \z=([x y], [y z], [z x])$.
+
+Given a triple $x,y,z\in \spc{X}$ there may be no triangle 
+$\trig x y z$ simply because one of the pairs of these points cannot be joined by a geodesic, and also there may be many different triangles with these vertices, any of which can be denoted by $\trig x y z$.
+Once we write $\trig x y z$, it means that we made a choice of such a triangle, 
+i.e. a choice of each $[x y], [y z]$ and $[z x]$.
+
+\section{Model triangles and angles}
+
+\parbf{Model triangles.}
+Given 
+$x,y,z\in \spc{X}$. 
+Let us define its \emph{model triangle}\index{model triangle} $\trig{\tilde x}{\tilde y}{\tilde z}$ 
+(briefly, 
+$\trig{\tilde x}{\tilde y}{\tilde z}=\modtrig0(x y z)$%
+\index{$\modtrig0$!$\modtrig0({*}{*}{*})$}) to be a triangle in the Euclidean plane  such that
+\[\dist{\tilde x}{\tilde y}{\RR^2}=\dist{x}{y}{X},
+\ \ \dist{\tilde y}{\tilde z}{\RR^2}=\dist{y}{z}{X},
+\ \ \dist{\tilde z}{\tilde x}{\RR^2}=\dist{z}{x}{X}.\]
+Note that a model triangle exists and is unique up to congruence.
+
+In this case, a point $\tilde p\in [{\tilde x}{\tilde y}]$ is said to be \emph{corresponding} to the point $p\in [xy]$
+if $\tilde p$ divides $[\tilde x\tilde y]$ in the same ratio as $p$ divides $[xy]$.
+(Equivalently, $\dist{\tilde x}{\tilde p}{\RR^2}\z=\dist{x}{p}{X}$ or 
+ $\dist{\tilde y}{\tilde p}{\RR^2}\z=\dist{y}{p}{X}$.)
+
+
+
+\parbf{Model angles.}
+Given $x,y,z \in X$ such that
+$$\dist{x}{y}{},\dist{x}{z}{}>0,$$ the angle measure of the model triangle
+$\trig{\tilde x}{\tilde y}{\tilde z}=\modtrig0(x y z)$ at $\tilde  x$ will be called the \emph{model angle}\index{model angle} of the triple $x$, $y$, $z$ and it will be denoted by
+$\angk0 x y z$.
+
+\parbf{Fat and thin triangles.}
+Let $\trig{x_1}{x_2}{x_3}$ be a triangle in a metric space
+and 
+$\trig{\tilde x_1}{\tilde x_2}{\tilde x_3}=\modtrig0({x_1}{x_2}{x_3})$ be its model triangle.
+For any point $\tilde z$ $\trig{\tilde x_1}{\tilde x_2}{\tilde x_3}$,
+one can consider the corresponding point $z$ on the sides of the original $\trig{x_1}{x_2}{x_3}$;
+i.e., if $\tilde z\in [\tilde x_i\tilde x_j]$ then $z\in[x_ix_j]$ and it divides $[x_ix_j]$ in the same ratio as $\tilde z$ divides $[\tilde x_i\tilde x_j]$.
+This construction defines so called \emph{natural map}\index{natural map} $\tilde z\mapsto z$ from the model triangle
+$\trig{\tilde x_1}{\tilde x_2}{\tilde x_3}=[{\tilde x_1}{\tilde x_2}]\cup[{\tilde x_2}{\tilde x_3}]\cup[{\tilde x_3}{\tilde x_1}]$ 
+to the original triangle $\trig{x_1}{x_2}{x_3}= [{x_1}{x_2}]\cup[{x_2}{x_3}]\cup[{x_3}{x_1}]$.
+
+\begin{thm}{Definition}\label{def:fat-thin}
+We say the triangle $\trig{x_1}{x_2}{x_3}$ in a metric space is 
+\emph{fat}\index{fat} (respectively \emph{thin}\index{thin}) 
+if the natural map $\trig{\tilde x_1}{\tilde x_2}{\tilde x_3}\to \trig{x_1}{x_2}{x_3}$ is distance non-contracting (respectively distance non-expanding).
+\end{thm}
+For example, in Euclidean space any triangle is both fat and thin.
+In fact, it is true that any proper length space with this property is isometric to a convex subset of a Hilbert space.
+
+The following is a statement in plane geometry,
+although its formulation uses fancier terms.
+
+%???+PIC
+
+\begin{thm}{Alexandrov's lemma}
+\index{Alexandrov's lemma}
+\index{Alexandrov's lemma}
+\label{lem:alex}  
+Let $x,y,z,p$ be distinct points in a metric space such that $p\in \left]x z\right[$.
+Then the following expressions have the same sign:
+\begin{subthm}{lem-alex-difference}
+$\angk0 x y p
+-\angk0 x y z$,
+\end{subthm} 
+
+\begin{subthm}{lem-alex-angle}
+$\pi - \angk0 p y x
+-\angk0 p y z$.
+\end{subthm}
+
+\end{thm}
+
+\parit{Proof.} 
+Consider the model triangle $\trig{\tilde x}{\tilde y}{\tilde p}=\modtrig0 x y p$.
+Take 
+a point $\tilde z$ on the extension of 
+$[\tilde x \tilde p]$ beyond $\tilde p$ so that $\dist{\tilde x}{\tilde z}{}=\dist{x}{z}{}$ (and therefore $\dist{\tilde p}{\tilde z}{}=\dist{p}{z}{}$). 
+ 
+Since increasing a side in a planar triangle increases the opposite angle, 
+the following expressions have the same sign:
+\begin{enumerate}[(i)]
+\item $\mangle\hinge{\tilde x}{\tilde y}{\tilde z}-\angk0{x}{y}{z}$;
+\item $\dist{\tilde y}{\tilde z}{}-\dist{y}{z}{}$;
+\item $\mangle\hinge{\tilde p}{\tilde y}{\tilde z}-\angk0{p}{y}{z}$.
+\end{enumerate}
+Since 
+\[\mangle\hinge{\tilde x}{\tilde y}{\tilde z}=\mangle\hinge{\tilde x}{\tilde y}{\tilde p}=\angk0{x}{y}{p}\]
+and
+\[ \mangle\hinge{\tilde p}{\tilde y}{\tilde z}
+=\pi-\mangle\hinge{\tilde p}{\tilde x}{\tilde y}
+=\pi-\angk0{p}{x}{y},\]
+the statement follows.
+\qeds
+
+
+\section{Hinges and angles}
+
+\parbf{Hinges.}
+Let $p,x,y\in \spc{X}$ be a triple of points such that $p$ is distinct from $x$ and $y$.
+A pair geodesics $([p x],[p y])$ will be called a \emph{hinge}\index{hinge} and it will be denoted by 
+$\hinge p x y=([p x],[p y])$\index{$\hinge{{*}}{{*}}{{*}}$}.
+
+
+\parbf{Angles.}
+Given a hinge $\hinge p x y$, we define its \emph{angle}\index{angle} as 
+\index{$\mangle$!$\mangle\hinge{{*}}{{*}}{{*}}$}
+\[\mangle\hinge p x y
+\df
+\lim_{\bar x,\bar y\to p} \angk0 p{\bar x}{\bar y},\]
+where $\bar x\in\left ]p x\right]$ and $\bar y\in\left]p y\right]$, if the limit exists.
+
+\begin{thm}{Exercise}
+Given an example of a hinge in a proper length space for which the angle is not defined, i.e. the above limit does not exist.
+\end{thm}
+
+
+
+\begin{thm}{Triangle inequality for angles}
+\label{claim:angle-3angle-inq}
+Let  $[px]$, $[py]$ and $[pz]$  
+be three geodesics in a metric space.
+If all of the angles $\alpha=\mangle\hinge p {x}{y}$, $\beta=\mangle\hinge p {y}{z}$ and $\gamma=\mangle\hinge p {x}{z}$ are defined, then they satisfy the triangle inequality:
+\[\gamma\le \alpha+\beta.\]
+
+\end{thm}
+
+\begin{wrapfigure}[7]{r}{30mm}
+\begin{lpic}[t(-0mm),b(0mm),r(0mm),l(0mm)]{pics/s-choice(0.33)}
+\lbl[rb]{45,100;$t$}
+\lbl[rt]{45,31;$\tau$}
+\lbl[W]{50,65;$s\ \ $}
+\lbl[l]{18,60,-25;$=\beta+\eps$}
+\lbl[l]{18,69,24;$=\alpha+\eps$}
+\end{lpic}
+\end{wrapfigure}
+
+\parit{Proof.} 
+Since $\gamma\le\pi$, we can assume that $\alpha+\beta< \pi$.
+Parametrize $[px]$, $[py]$, and $[pz]$
+by arc-length starting from $p$ and denote the obtained curves
+ by $\sigma_x$, $\sigma_y$ and $\sigma_z$.
+Given any $\eps>0$, for all sufficiently small $t,\tau,s\in\RR_+$ we have
+\begin{align*}
+\dist{\sigma_x(t)}{\sigma_z(\tau)}{}
+\le 
+&\,\dist{\sigma_x(t)}{\sigma_y(s)}{}+\dist{\sigma_y(s)}{\sigma_z(\tau)}{}\\
+<
+&\,\sqrt{t^2+s^2-2\cdot t\cdot  s\cdot \cos(\alpha+\eps)}+
+\\
+&+\sqrt{s^2+\tau^2-2\cdot s\cdot \tau\cdot \cos(\beta+\eps)}
+\\
+\intertext{Below we define $s(t,\tau)$ so that for $s=s(t,\tau)$, this chain continues}
+\le
+&\,\sqrt{t^2+\tau^2-2\cdot t\cdot \tau\cdot \cos(\alpha+\beta+2\cdot \eps)}.
+\end{align*}
+Thus for any $\eps>0$, 
+\[\gamma\le \alpha+\beta+2\cdot \eps.\]
+Hence the result.
+
+To define $s(t,\tau)$, consider three rays $\tilde \sigma_x$, $\tilde \sigma_y$, $\tilde \sigma_z$ in the Euclidean plane starting at one point, such that $\mangle(\tilde \sigma_x,\tilde \sigma_y)=\alpha+\eps$, $\mangle(\tilde \sigma_y,\tilde \sigma_z)=\beta+\eps$ and $\mangle(\tilde \sigma_x,\tilde \sigma_z)=\alpha+\beta+2\cdot \eps$.
+We parametrize each ray by length from the common end.
+Given two positive numbers $t,\tau\in\RR_+$, let $s=s(t,\tau)$ be %a 
+the 
+number such that 
+$\tilde \sigma_y(s)\in[\tilde \sigma_x(t)\ \tilde \sigma_z(\tau)]$. Clearly $s\le\max\{t,\tau\}$, % i.e. if $t$ and $\tau$ are both sufficiently small then so is $s$.
+so $t,\tau,s$ may be taken sufficiently small.
+\qeds
+
+
+\section*{Exercises}
+
+\begin{pr}\label{pr:1-st-var}%
+\footnote{Hint: Apply the definition of angle and triangle inequality
+$$|z-\bar y|\ge|\bar z-\bar y|+ |\bar z -z|$$ 
+for $\bar z\in  \left]xz\right]$.}
+Let $X$ a metric space with hinge $\hinge x y z$.
+Assume the angle $\alpha=\mangle\hinge x y z$ is defined.
+Show that
+$$|z-\bar y|\le |z-x|-|x-\bar y|\cdot\cos\alpha+o(|x-\bar y|)$$
+for $\bar y\in \left]xy\right]$.
+\end{pr}
+
+\begin{pr} Prove that the sum of adjacent angles is at least $\pi$.
+
+More precisely: let $\spc{X}$ be a geodesic space and $p,x,y,z\in \spc{X}$.
+If $p\in \left] x y \right[$, then 
+\[\mangle\hinge pxz+\mangle\hinge pyz\ge \pi\]
+whenever  each angle on the left-hand side is defined.
+\end{pr}
+
+

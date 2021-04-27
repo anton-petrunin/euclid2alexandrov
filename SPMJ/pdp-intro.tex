@@ -1,0 +1,69 @@
+\tableofcontents
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
+\addtocontents{toc}{\protect\begin{quote}}
+
+
+These lectures were a part of the geometry course held during the Fall 2011 MASS Program at Penn State (\url{www.math.psu.edu/mass/}).
+%???ALLAN-EDIT???
+%The online vesion of these lectures \cite{petrunin-yashinsky-arXiv} also contains video illustrations,
+%hints and solutions for most of the exercises and minimalistic preliminaries. 
+The online version of these lectures \cite{petrunin-yashinsky-arXiv} also contains video illustrations,
+hints and solutions for most of the exercises, and a minimalistic section covering preliminaries. 
+
+The lectures discuss piecewise distance preserving maps from a 2-dimensional polyhedral space into the plane.  Roughly speaking, a polyhedral space is a space that is glued together out of triangles, for example the surface of a polyhedron.  If one imagines such a polyhedral space as a paper model, then a piecewise distance preserving map into the plane is essentially a way to fold the model so that it lays flat on a table. 
+
+We only consider the 2-dimensional case to keep things easy to visualize.
+However, 
+%???REF???
+most of the results admit generalizations to higher dimensions.
+%???REF???  
+These results are discussed in the Final Remarks, where proper credit and references are given.
+
+\parbf{Acknowledgments.} 
+We would like to thank
+Arseniy Akopyan, 
+Robert Lang, 
+Alexei Tarasov
+for their help.
+Also we would like to thank all the students in our class
+for their participation and true interest.
+
+\parbf{Notations.}
+All the necessary background material is discussed in the first three chapters of the book
+``Metric Geometry'' by Burago--Burago--Ivanov \cite{BBI}.
+
+Let us list the less standard conventions which we use in the lectures.
+\begin{itemize}
+\item The distance between two points $x$ and $y$ in a metric space $X$
+will be denoted as 
+$$|x-y|,
+\ \ 
+\text{or}\ \  |x-y|_X;$$ 
+the latter notation is used if we need to emphasize that the distance is measured in the metric space $X$.
+
+\item A metric space $X$ is called a \emph{length space}\index{length space} if for any two points $x,y\in X$ and any $\eps>0$, there is a curve $\alpha$ from $x$ to $y$ such that
+$$\length \alpha<|x-y|_X+\eps.$$
+
+\item \label{def:length-preserving}
+Let  $f\:X\z\to Y$ be a continuous map between two metric spaces.
+Then
+\begin{itemize}
+\item $f$ is called \emph{distance preserving} if
+$$|f(x)-f(y)|_Y=|x-y|_X$$
+for any pair of points $x,y\in X$;
+\item $f$ is called \emph{distance non-expanding} if
+$$|f(x)-f(y)|_Y\le|x-y|_X$$
+for any pair of points $x,y\in X$;
+\item $f$ is called \emph{length-preserving}\index{length-preserving map} if for any curve $\alpha$ in $X$,
+we have 
+$$\length\alpha=\length(f\circ\alpha).$$
+\end{itemize}
+\item A length space $P$ is called a \emph{polyhedral space}\index{polyhedral space}
+if it admits a finite triangulation such that each simplex in $P$ is isometric to a simplex in Euclidean space.
+\end{itemize}
+
+
+
+\addtocontents{toc}{\protect\end{quote}}

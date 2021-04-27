@@ -1,0 +1,260 @@
+\chapter{An application to crystallography}\label{chap:erdos}
+
+Here we apply spaces with non-negative curvature in the sence of Alexandrov 
+to crystallography.
+The proof relies on the following problem in discrete geometry.
+
+\section{Erd\H os problem}
+
+\begin{thm}{Problem}
+Assume $x_1,x_2,\dots,x_m$ is a collection of points in $n$-dimensional Euclidean space such that 
+$\angle\hinge{x_i}{x_j}{x_k}\le \tfrac\pi2$ for any distinct $i$, $j$ and $k$. 
+Show that $m\le 2^n$ and moreover, if $m= 2^n$ then the $x_i$ form the set of vertices of a right parallelepiped.
+\end{thm}
+
+This problem was posed by Erd\H os and solved by Danzer and Gr\"unbaum.
+
+\parit{Proof.}
+Let $K$ be the convex hull of $x_1,x_2,\dots,x_m$.
+Without loss of generality we may assume that $K$ is a non-degenerate convex polyhedron.
+(Otherwise, instead of $\RR^n$ take the minimal subspace which contain $K$; its dimension has to be $<n$.)
+
+First let us prove the following
+
+\begin{clm}{}\label{clm:=<pi/2}
+$\mangle\hinge{x_i}{v}{w}\le \tfrac\pi2$ for each $i$ and any $v,w\in K$.
+\end{clm}
+
+Indeed, assume contrary.
+For fixed $x_i$ and $v$,
+the set of points $H_v$ containing $x_i$ and all $w\in\RR^n$ such that $\mangle\hinge{x_i}{v}{w}\le \tfrac\pi2$
+is a half-space.
+Thus, if $\mangle\hinge{x_i}{v}{w}>\tfrac\pi2$ for some $w\in K$ then
+ $K\not\subset H_v$ and so $x_j \notin H_v$ for some $j$; i.e., $\mangle\hinge{x_i}{v}{x_j}> \tfrac\pi2$ for some $j$.
+Repeating the same argument for $x_j$ instead of $v$, we get that 
+$\mangle\hinge{x_i}{x_k}{x_j}> \tfrac\pi2$ for some $j$ and $k$, a contradiction.
+
+For each $x_i$ denote by $K_i$ the dilation of $K$ with center $x_i$ and coefficient $\tfrac12$.
+
+\begin{clm}{}\label{clm:K_inK_j}
+For any $i\ne j$, the polyhedra $K_i$ and $K_j$ have no common interior points.
+In particular, $\vol (K_i\cap K_j)=0$.
+\end{clm}
+
+Assume there is an interior point $v$ of $K_i\cap K_j$.
+Without loss of generality, we can assume that $|v-x_i|\ne |v-x_j|$. 
+Then there are points $y_i, y_j\in K$ such that
+$v$ is the midpoint of $[x_iy_i]$ and $[x_jy_j]$.
+Hence $x_iy_jy_ix_j$ is a parallelogram,
+therefore $\mangle\hinge{x_i}{x_j}{y_j}+\mangle\hinge{x_j}{x_i}{y_i}=\pi$.
+From \ref{clm:=<pi/2} we get that $\mangle\hinge{x_i}{x_j}{y_j}=\mangle\hinge{x_j}{x_i}{y_i}=\tfrac\pi2$.
+I.e., $x_iy_jy_ix_j$ is a rectangle and therefore $|v-x_i|= |v-x_j|$, a contradiction.
+
+Clearly $\vol K_i=\tfrac1{2^n}\cdot\vol K$ and $K_i\subset K$ for each $i$.
+From \ref{clm:K_inK_j}, we get
+$$\sum_{i=1}^m\vol K_i\le \vol K.$$
+Hence the result.
+\qeds
+
+
+\section{Isometric actions}
+
+Let $X$ be a metric space.
+Denote by $\Isom X$ the set of all isometries of $X$.
+Let $G$ be a nonempty subset of $\Isom X$ such that the following condition\footnote{In the language of group theory, $\Isom X$ is a group and $G$ is a subgroup of $\Isom X$.} holds:
+\medskip
+\begin{itemize}
+\item \textit{Given two isometries $f,g\in G$
+ the composition $f\circ g$ as well as the inverse $f^{-1}$ are in $G$.}
+\end{itemize}
+\medskip
+In this case we say that the \emph{group} $G$ \emph{acts on}\index{isometric group action} $X$ \emph{by isometries}.
+For example, one can take $G=\Isom X$ or $G=\{\id_X\}$.
+
+In this case, given $g\in G$ and $x\in X$ the $g$-image of $x$ will denoted by $g\cdot x$, that is, $g\cdot x = g(x)$.
+Consider the relation ``$\sim$'' on $X$ such that $x\sim y$ 
+if and only if there if there is $g\in G$ such that $g\cdot x=y$.
+Given $x\in X$, the $G$-orbit of $x$ is defined as
+$$G\cdot x=\set{g\cdot x}{g\in G.}$$
+Note that $G\cdot x=G\cdot y$ if and only if $x\sim y$;
+i.e., $\sim$ is an equivalence relation and $G$-orbits form the $\sim$-equivalence classes.
+
+The set of $G$-orbits of $X$ is denoted by $X/G$. 
+Denote by $\pi\:X\to X/G$ the natural surjective map, $\pi\:x\mapsto G\cdot x$.
+
+In the case that every $G$-orbit is a closed subset of $X$, 
+then the set of orbits $X/G$ can be equipped with the following metric
+\begin{align*}
+|\pi(x)-\pi(y)|_{X/G}
+&\df\inf_{g\in G}\{|x-g\cdot y|_X\}.
+\end{align*}
+
+
+\begin{thm}{Exercise}
+Check that $|{*}-{*}|_{X/G}$ is a metric on $X/G$.
+\end{thm}
+
+The set $X/G$ equipped with this metric is called the quotient space;
+for the quotient space, we keep the same notation $X/G$.
+
+Note that
+$$|\pi(x)-\pi(y)|\le |x-y|\eqlbl{eq:pi(xy)=<(xy)}$$ 
+for any $x,y\in X$;
+i.e. $\pi\:X\to X/G$ is a distance non-expanding map.
+
+\parbf{Examples:}
+\begin{itemize}
+\item $\ZZ$ acts on $\RR$ by shifts $n\cdot x\df 2\cdot\pi\cdot n+x$; 
+in this case $\RR/\ZZ$ is isometric to $\SS^1\subset \RR^2$ with the induced length metric.
+\item The set of all isometries of $\RR$ which can be presented as a composition 
+of a finite number of shifts $x\mapsto x+1$ and reflections $x\mapsto -x$ forms a group, 
+say $G$;
+in this case $\RR/G$ is isometric to the interval $[0,\tfrac12]$.
+\item $\SS^1$ acts on $\RR^2$ by rotations which fix the origin;
+in this case $\RR^2/\SS^1$ is isometric to the ray $[0,\infty)$.
+\end{itemize}
+
+
+\begin{thm}{Proposition}\label{prop:length/G}
+Let $X$ be a proper length space such that a group $G$ acts on $X$ by isometries and has closed orbits.
+Then  $X/G$ a proper length space.
+\end{thm}
+
+\parit{Proof.}???
+Given $\bar x$ and $\bar y$ in $X/G$, choose an arbitrary $x\in X$ such that $\pi(x)=\bar x$.
+Further, since $X$ is proper and the orbits are closed,
+we can choose $y$ such that $\pi(y)=\bar y$ and 
+$$|x-y|=|\bar x-\bar y|.$$
+
+I.e. for any $\bar y\in \bar B_r(\bar x)$ there is $y\in \bar B_r(x)$ such that $\pi(y)=\bar y$,
+or equivalently $\pi(\bar B_r(x))=\bar B_r(\bar x)$ for any $r>0$.
+Since $X$ is proper, $\bar B_r(x)$ is compact;
+hence $\bar B_r(\bar x)\subset X/G$ is compact for any $r>0$ because it is the continuous image of a compact set,
+and therefore $X/G$ is proper.
+
+It remains to show that $X/G$ is a length space.
+Let $\gamma$ be a curve from $x$ to $y$
+such that 
+$$\length\gamma<|x-y|_X+\eps$$
+Consider curve $\bar \gamma=\pi\circ\gamma$ in $X/G$.
+Note that $\bar\gamma$ is a curve from $\bar x$ to $\bar y$
+and from \ref{eq:pi(xy)=<(xy)}, we get
+\begin{align*}
+\length\bar\gamma\le\length\gamma
+\end{align*}
+Hence
+$$\length\bar \gamma<|\bar x-\bar y|_{X/G}+\eps$$
+\qedsf
+
+
+\begin{thm}{Proposition}\label{prop:CBB/G}
+Let $X\in \CBB{}{0}$ such that a group $G$ acts on $X$ by isometries and has closed orbits.
+Then  $X/G\in\CBB{}{0}$  
+\end{thm}
+
+\parit{Proof.}
+Applying Proposition~\ref{prop:length/G},
+we get that $X/G$ is a proper and length space.
+By Theorem~\ref{thm:defs_of_alex}\ref{SHORT.1+3}, it remains to show that 
+$$\angk{}{\bar p}{\bar x}{\bar y}+\angk{}{\bar p}{\bar y}{\bar z}+\angk{}{\bar p}{\bar z}{\bar x}
+\le 2\cdot\pi.
+\eqlbl{eq:1+3-X/G}$$
+holds for any $\bar p,\bar x,\bar y, \bar z\in X/G$.
+
+
+Choose arbitrary $p\in X$ such that $\pi(p)=\bar p$.
+Since $X$ is proper and orbits are closed, 
+we can choose $x$, $y$ and $z\in X$ such that
+\begin{align*}
+\pi(x)&=\bar x,
+&
+|p-x|_X&=|\bar p-\bar x|_{X/G},
+\\
+\pi(y)&=\bar y, 
+&
+|p-y|_X&=|\bar p-\bar y|_{X/G},
+\\
+\pi(z)&=\bar z,
+&
+|p-z|_X&=|\bar p-\bar z|_{X/G}.
+\end{align*}
+By the definition of metric in $X/G$,
+we have 
+\begin{align*}
+|x-y|_X&\ge|\bar x-\bar y|_{X/G},
+&
+|y-z|_X&\ge|\bar y-\bar z|_{X/G},
+&
+|z-x|_X&\ge|\bar z-\bar x|_{X/G}.
+\end{align*}
+Taking all this into account, we get
+$$\begin{aligned}
+\angk{}pxy&\ge\angk{}{\bar p}{\bar x}{\bar y},
+&
+\angk{}pyz&\ge\angk{}{\bar p}{\bar y}{\bar z},
+&
+\angk{}pzx&\ge\angk{}{\bar p}{\bar z}{\bar x},
+\end{aligned}
+\eqlbl{eq:X/G=<X}
+$$
+Since $X\in\CBB{}{0}$,
+we have 
+$$\angk{}pxy+\angk{}pyz+\angk{}pzx\le 2\cdot\pi.$$
+This inequality plus \ref{eq:X/G=<X} implies \ref{eq:1+3-X/G}.
+\qeds
+
+
+
+
+
+
+\section{Number of isolated fixed-point orbits}
+
+Let $X\in\CBB{}{0}$.
+A point $p\in X$ is called \emph{extremal}\index{extremal point} if $\mangle\hinge pxy\le\tfrac\pi2$ 
+for any hinge $ \hinge pxy$ in $X$.
+
+For example if $X\iso [0,1]$ then both ends $0$ and $1$ are extremal points and the remaining points are not extremal.
+Further in a $n$-dimensional cube, each of $2^n$ vertices is an extremal point and the remaining points are not extremal.
+In a regular triangle, the vertices are the only extremal points, 
+In a regular pentagon there are no extremal points.
+
+Let $G$ act by isometries on $\RR^n$.
+According to Proposition~\ref{prop:CBB/G},
+$\RR^n/G\in\CBB{}{0}$.
+Assume that the action of $G$ on $\RR^n$ is \emph{properly discontinuous}\index{properly discontinuous};
+i.e., given a compact set $K\subset \RR^n$ and $x\in\RR^n$, 
+there are only finitely many elements $g\in G$ such that $g\cdot x\in K$.
+
+In this case $\RR^n/G$ is a polyhedral space;
+it is not hard to prove, but we will not give a proof here.
+In particular, we can talk about volume and dimension of $\RR^n/G$.
+
+It tuns out that a point $\bar x\in \RR^n/G$ is extremal if and only if
+one (and therefore any) point $x\in \RR^n$ such that $\pi(x)=\bar x$
+is an isolated fixed point for some subgroup of $G$.
+More precisely, if $G_x$ is the subset\footnote{The subset $G_x$ is in fact a subgroup of $G$ and it is called the \emph{stabilizer}\index{stabilizer} of $x$.} of all isometries $g$ in $G$ 
+such that $g\cdot x=x$, then for any $y\ne x$ there is $g\in G_x$ such that $g\cdot y\ne y$.
+Therefore counting the number of such $G$-orbits is equivalent to the counting extremal points in $\RR^n/G$.
+All this means that the following theorem implies some nontrivial information about the $G$-action.
+
+\begin{thm}{Theorem}
+Suppose $G$ acts by isometries on $\RR^n$ and this action is properly discontinuous.
+Then $\RR^n/G$ has at most $2^n$ extremal points.
+\end{thm}
+
+Before going into proofs, let us consider a couple of examples which show that $\RR^n/G$ can have exactly $2^n$ extremal points.
+
+Consider the set of all isometries which can be presented as a composition of parallel translations $x\mapsto x+v$ with a vector $v$ with all integer coordinates, and all the reflections in the coordinate hyperplanes.
+This defines a group action, say $G$ on $\RR^n$ for which the quotient $\RR^n/G$ is isometric to the cube $[0,\tfrac12]^n$.
+Note that each vertex of the cube is an extremal point.
+
+
+
+
+
+
+
+
+
+

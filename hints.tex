@@ -1,0 +1,1065 @@
+\chapter{Hints and solutions}
+
+\refstepcounter{section}
+\section*{Chapter~\ref{chap:metr}}
+
+
+\parbf{Exercise \ref{ex:Euclidean-is-metric}.}
+Note that it is sufficient to show that for any two vectors $\bm{x}, \bm{y}\in\RR^n $
+$$|\bm{x}+\bm{y}|\le |\bm{x}|+|\bm{y}|.$$
+Take the square of the left and right parts, simplify, and google Cauchy--Bunyakovsky inequality.
+
+
+\parbf{Exercise \ref{ex:packing=net}.}
+Arguing by contadiction we may find a point which is of distance at least $\eps$ from any element of the $\eps$-packing.
+This contradicts the maximality of the packing.
+
+
+\parbf{Exercise \ref{ex:net=2packing}.} Assume $B$ is a $(2\cdot\eps)$-packing with $m$ elements.
+Since $A$ is an $\eps$-net,
+for each $b\in B$ we can choose an element $f(b)\in A$ such that $|f(b)-b|\le \eps$.
+Note that 
+$$|f(b)-f(b'|\ge |b-b'|-2\cdot\eps>0$$
+if $b\ne b'$.
+I.e., $f\:B\to A$ is injective and hence $m\le n$.
+
+
+\parbf{Problem \ref{pr:non-contracting=>isometry}.}
+
+\parit{First solution.}???
+
+
+\parit{Second solution.}\footnote{This proof was suggested by Travis Morrison, one of the students in the MASS program 2011.} 
+Given any pair of points $x,y\in X$, 
+set $x_n=f^{n}(x)$ and $y_n\z=f^{n}(y)$.
+Since $X$ is compact, one can choose an increasing sequence of integers $n_k$
+such that both sequences $(x_{n_i})_{i=1}^\infty$ and $(y_{n_i})_{i=1}^\infty$
+converge.
+In particular, both of these sequences  are Cauchy;
+i.e.,
+\[
+\dist{x_{n_i}}{x_{n_j}}{},\dist{y_{n_i}}{y_{n_j}}{}\to 0
+\]
+as $\min\{i,j\}\to\infty$.
+Since $f$ is noncontracting, we get
+\[
+\dist{x}{x_{|n_i-n_j|}}{}\le \dist{x_{n_i}}{x_{n_j}}{}.
+\]
+It follows that  
+there is a sequence $m_i\to\infty$ such that
+\[
+x_{m_i}\to x\ \ \text{and}\ \ y_{m_i}\to y\ \ \text{as}\ \ k\to\infty.
+\eqlbl{eq:x_l->x}
+\]
+
+Let $\ell_n=\dist{x_n}{y_n}{}$.
+Since $f$ is noncontracting, $(\ell_n)$ is a nondecreasing sequence.
+On the other hand, 
+from \ref{eq:x_l->x}, it follows that $\ell_{m_i}\to\dist{x}{y}{}=\ell_0$ as $i\to \infty$;
+i.e., $(\ell_n)$ is a constant sequece.
+In particular, $\ell_0=\ell_1$ for any $x$ and $y\in X$;
+i.e., $f$ is distance preserving map.
+
+Therefore $f(X)$ is isometric to $X$.
+From \ref{eq:x_l->x}, we get that $f(X)$ is everywhere dense.
+Since $X$ is compact, we get that $f(X)$ is closed, and hence $f(X)=X$.
+
+\parbf{Problem \ref{pr:nonisometry}.}
+
+
+\parbf{Problem \ref{pr:1,2,4,8}.} The answer is not unique.
+The set $B=\{\tfrac12,4,8\}$ will do; $|A-B|_{\mathcal{H}(\RR)}=\tfrac12$.
+
+
+\parbf{Problem \ref{ex:kuratowski}.} Use the triangle inequality to show that $K_x$ is distance non-expanding.
+To show that $K_x$ is distance non-contracting, note that 
+$$|z-y|=\Dist_z(y)-\Dist_y(y).$$
+
+
+\parbf{Problem \ref{pr:compact->F_N}.} 
+Let $X$ be a compact metric space.
+First show that there is a countable everywhere dense set $\{x_1,x_2,\dots\}$ in $X$.
+Then consider the map $f\:X\to \mathcal{F}(\NN)$ defined by $f\:x\mapsto (|x-x_1|,|x-x_2|,\dots)$.
+The same argument as in Problem~\ref{ex:kuratowski} shows that the map is distance non-expanding.
+To show that $K_x$ is distance non-contracting, note that 
+$$|z-y|=\lim{x_{n_i}\to y}\Dist_z(x_{n_i})-\Dist_y(x_{n_i}).$$
+
+
+\parbf{Problem \ref{pr:complition-kuratowski}.} Use Exercise~\ref{ex:close-complete}.
+
+
+\parbf{Problem \ref{pr:almost-min}.} Assuming contrary, one can construct a sequence of points $x_n$ such that
+$$\rho(x_{n+1})\le \tfrac{99}{100}\cdot\rho(x_n)\ \ \text{and}\ \ |x_{n+1}-x_n|<\rho(x_n).$$
+Show that $x_n$ is a Cauchy sequence and look at its limit.
+
+
+\parbf{Problem \ref{pr:compact-net}.} Let $Q$ be a compact $\eps$-net in $X$.
+Applying Theorem~\ref{thm:finite_pack=compact}, choose a finite $\eps$-net $A$ in $Q$ and note that $A$ is a $2\cdot\eps$-net in $X$.
+Then apply Theorem~\ref{thm:finite_pack=compact} again.
+
+\refstepcounter{section}
+\section*{Chapter~\ref{chap:hausdorff}}
+
+\parbf{Exercise \ref{ex:R-hausdorff}.}
+The ``only if'' part is trivial. 
+To prove the ``if'' part, note that from the triange inequality,
+we have 
+$$\Dist_A\lege \Dist_B\pm R.$$
+
+
+\parbf{Exercise \ref{ex:H_X}.}
+The triangle inequality and symmetry are evident.
+It only remains to show that $|A-B|_{\mathcal{H}(X)}=0$ implies $A=B$ (see Definition \ref{def:metric-space}).
+
+If $|A-B|_{\mathcal{H}(X)}\z=0$, then the closure of $A$ contains $B$ and vise versa.
+The sets $A$ and $B$ are compact and therefore closed (see page \pageref{compact=>closed}).
+Hence $A=B$.
+
+
+
+\parbf{Exercise \ref{ex:diam}.} Let $A$ and $B$ be two compact subsets of $X$.
+Let $x,y\in A$ be a pair of points of maximal distance apart.
+
+If $|A-B|_{\mathcal{H}(X)}\le\eps$ then there are points $x',y'\in B$ such that $|x-x'|, |y-y'|\le\eps$.
+Hence 
+$$|x-y|\le |x'-y'|+2\cdot\eps.$$ 
+Therefore $\diam A\le \diam B+2\cdot\eps$.
+Switching $A$ and $B$, we get 
+$$|\diam B-\diam A|\le 2\cdot\eps.$$
+In particular, $\diam$ is 2-Lipschitz functuon on $\mathcal{H}(X)$.
+
+\parbf{Exercise \ref{ex:intersection-of-compacts}.} 
+The sets $K_n$ are compact and therefore closed. 
+Therefore their intresection $K_\infty$ is also closed.
+Since $K_\infty\subset K_1$, we have that $K_\infty$ is compact.
+
+To show that $K_\infty\not=\emptyset$, choose a point $x_n\in K_n$ and 
+let $x_\infty$ be a partial limit of the sequence $x_n$.
+For any fixed $m$, we have $x_n\in K_m$ for all large $n$.
+Therefore $x_\infty \in K_m$ for any $m$;
+i.e., $x_\infty\in K_\infty$.
+
+For the last part of the exercise, one could take the subsets $K_n=[n,\infty)$ of real line.
+
+\parbf{Exercise \ref{ex:convex=closed-in-H}.}Let $K_n$ be a sequence of convex compact figures
+which converges to $K_\infty$ in the Hausdorff sense.
+It is sufficient to show that for any two points $x_\infty,y_\infty\in K_\infty$,
+its midpoint $z_\infty=\tfrac{x_\infty+y_\infty}{2}$ lies in $K_\infty$.
+
+\begin{wrapfigure}{r}{30mm}
+\begin{lpic}[t(-10mm),b(-10mm),r(0mm),l(0mm)]{pics/drop(0.15)}
+\end{lpic}
+\end{wrapfigure}
+
+Clearly, we can choose points $x_n,y_n\in K_n$
+such that $x_n\to x_\infty$ and $y_n\to y_\infty$.
+Since $K_n$ is convex, we have $z_n=\tfrac{x_n+y_n}{2}\in K_n$.
+Clearly, $z_n\to z_\infty$;
+hence $z_\infty\in K_\infty$.
+
+
+\parbf{Exercise \ref{ex:calculations}.} Given $x\in P$, consider the ``teardrop'' $D_x$ formed by the convex hull of $x$ and $\bar B_R(0)$.
+Note that $D_x\subset P$ and $(1+\eps)\cdot D_x\supset \bar B_{R\cdot\eps}(x)$.
+
+
+\parbf{Exercise \ref{ex:area+perim}.}
+Prove that 
+$$\per F\ge 2\cdot \diam F$$
+for any convex figure $F$ in the plane.
+Use this statement and Exercise~\ref{ex:diam}
+in addition to the arguments for nondegenerate case.
+ 
+\parbf{Exercise~\ref{ex:hausdorff-upto-cong}.}???
+
+
+\parbf{Problem \ref{problem2}.}
+Since $K$ is compact, the function $\Dist_x$ admits a minimum $K$.
+
+Assume there are two distinct points of minimal distance, say $\bar x$ and $\bar x'$.
+From convexity, their midpoint $z=\tfrac{\bar x+\bar x'}{2}$ lies in $K$.
+Clearly $|x-z|<|x-\bar x|=|x-\bar x'|$,
+a contradiction.
+
+Given $x,y\in\RR^m$, we need to show that 
+$$|\bar x-\bar y|\le|x-y|.\eqlbl{eq:|xy|=<|xy|}$$ 
+In the case where $x,y\in K$,
+we have $\bar x=x$ and $\bar y=y$, hence \ref{eq:|xy|=<|xy|} follows. 
+
+If $x\in K$, $y\notin K$ then $\bar x=x$.
+We may assume that $\bar y\ne\bar x$, otherwise \ref{eq:|xy|=<|xy|} is trivial.
+Note that 
+$$\angle \bar y\bar x x\ge \tfrac\pi2.\eqlbl{eq:angle>=pi/2}$$ 
+If not, moving $\bar y$ along $[\bar y \bar x]$ would decrease the distance to $y$.
+From convexity of $K$, we have $[\bar y \bar x]\subset K$, hence a contradiction.
+Clearly, \ref{eq:angle>=pi/2} imples \ref{eq:|xy|=<|xy|}
+
+It remains to consider the case $x, y\notin K$.
+As above we may assume that $\bar y\ne\bar x$.
+Further the same argument as above shows that 
+$$\angle \bar y\bar x x,\angle \bar x\bar y y\ge \tfrac\pi2.\eqlbl{eq:angle,angle>=pi/2}$$
+Straightforward calculations show that \ref{eq:angle,angle>=pi/2} imply \ref{eq:|xy|=<|xy|}.
+The latter is also a partial case of the Arm Lemma (\ref{lem:arm}).
+
+
+\parbf{Problem \ref{pr:Hausdorff-bry}.} Both statements do not hold. 
+For the first one take $A$ to be the unit square in the plane and $B$ a finite $\eps$-net in $A$.
+In this case, $|A-B|_{\mathcal{H}(\RR^2)}\le \eps$.  On the other hand, $\partial B=B$ and 
+$|B-A|_{\mathcal{H}(\RR^2)}\ge \tfrac12-\eps$.
+
+For the second part of problem, one can take the unit square $A$ and $B=\partial A$,
+then $\partial B=B$.
+
+(In fact one can construct an arbitrary number of compact sets with the same boundary.
+Google ``Lakes of Wada'' to see such examples.)
+
+
+\parbf{Problem \ref{pr:LebesgueMinimalProblem}.} %???
+Given a set of points $X$, consider a maximal set $F$, which includes $X$ as a subset.
+Let us show that $F$ is a figure of constant width.
+
+Note that $F$ is an intersection of a family of unit discs; in particular $F$ is convex.
+If $F$ lies between two lines of distance less than $1$, then
+$F$ has to lie in an intersection of two discs tangent to these lines.
+In this case, the center of one of these discs can be added to $F$ so that the diameter does not exceed $1$,
+a contradiction.
+
+Any figure of constant width contain a pair of points of distance $1$.
+Then it contains the intersection of all unit discs which contain these two points.
+The set is a digon with sides formed by arcs of unit circle;
+the area of the digon is much bigger than $1/100$.
+
+Assume $\diam F\ge 10000$.
+We can assume that the points in $F$ which realize the diameter have the form $(0,0)$ and $(x,0)$.
+If $F$ can not be broken into two parts, then one can find $50000$ points 
+of the form $(2,y_1)$ $(4,y_2),\dots,(10000,y_{50000})$ in $F$.
+Each lies in a figure of width $1$ and from above their total area is more that $50000/100$.
+  
+
+\parbf{Problem \ref{pr:complete>compact}.} Note that given $\eps>0$, the set
+$$\bigcup_{i=1}^n K_i$$
+forms an $\eps$-net in $Q$ for all large enough $n$.
+Then apply Problem~\ref{pr:compact-net}.
+
+To generalize Lemma~\ref{lem:complete+Hausdorff},
+note that we can pass to the subspace $Q$ in $X$.
+
+\refstepcounter{section}
+\section*{Chapter~\ref{chap:gromov-hausdorff}}
+
+
+
+\parbf{Exercise \ref{ex:euclid-isom}.}
+???
+
+
+\parbf{Exercise \ref{ex:mink-isom}.} First do the same for two two-point sets in the plane equipped with the Manhattan metric; it is defined on page \pageref{manhattan-metric}.  Note that an isometry must map midpoints to midpoints.
+
+
+\parbf{Exercise \ref{ex:alm-isom:compositon}.}
+From the definition of $\eps$-isometry,
+we have
+\begin{align*}
+|g(f(x)) - g(f(x'))|_Z 
+&\lege |f(x) - f(x')|_Y \pm \eps 
+\lege
+\\
+&\lege |x - x'|_X \pm 2\cdot\eps.
+\end{align*}
+  
+It remains to show that $(g \circ f)(X)$ is a $3\cdot\eps$-net in $Z$.  Given $z \in Z$, choose $y \in Y$ and subsequently $x \in X$ such that
+$$|g(y) - z|_Z \le \eps, \quad |f(x) - y|_Y \le \eps.$$  Then
+\begin{align*}
+|g(f(x)) - z|_Z &\leq |g(f(x)) - g(y)|_Z + |g(y) - z|_Z\\
+&\leq |f(x) - y|_Y + \eps + \eps\\
+&\leq 3\cdot\eps.
+\end{align*}
+
+
+\parbf{Exercise \ref{ex:alm-isom:inverse}.}
+If $f\: X \to Y$ is an $\eps$-isometry, then for any $y \in Y$, the set $\set{x \in X}{|f(x) - y| \le \eps}$ is nonempty.  By the Axiom of Choice, we can choose such an $x$ for each $y$, producing a function $g\: Y \to X$ with the property that
+$$|f(g(y)) - y|_Y \le \eps, \quad \text{ for all } y \in Y.$$  
+Then
+\begin{align*}
+|g(y) - g(y')|_X &< |f(g(y)) - f(g(y'))|_Y + \eps\\
+&\le |y - y'|_Y + |f(g(y)) - y|_Y + |f(g(y')) - y'|_Y + \eps\\
+&\le |y - y'|_Y + 3\cdot\eps,
+\end{align*} and in a similar fashion,
+\begin{align*}
+|y - y'|_Y &\le |f(g(y)) - f(g(y'))|_Y + |f(g(y)) - y|_Y + |f(g(y')) - y'|_Y\\
+&< |g(y) - g(y')|_X + 3\cdot\eps.
+\end{align*}  
+Finally,
+\begin{align*}
+|g(f(x)) - x|_X 
+&< |f(g(f(x))) - f(x)|_Y + \eps 
+\\
+&\le 2\cdot\eps\end{align*}
+shows that $g(Y)$ is a $2\cdot\eps$-net in $X$ (hence it is a $3\cdot\eps$-net in $X$.)
+
+
+\parbf{Exercise \ref{ex:GH=>eps-isom}.} Embed $X$ and $Y$ in some space $Z$ such that $|X - Y|_{\mathcal{H}(Z)} < \eps.$  Given $x \in X$, the set $\set{y \in Y}{|x - y|_Z < \eps}$ is therefore nonempty.  We can then (using the Axiom of Choice) choose an element $y$ in this set and define $f(x) = y$.  
+The function $f\: X \to Y$ has the property that 
+$$|f(x) - x|_Z < \eps, \quad \text{ for all }x \in X.$$  
+By the triangle inequality,
+\begin{align*}
+|f(x) - f(x')|_Y 
+&\le |x - x'|_Z + |f(x) - x|_Z + |f(x') - x'|_Z 
+\\
+&< |x - x'|_X + 2\cdot\eps
+\end{align*}
+and similarly
+\begin{align*}
+|x - x'|_X 
+&\le 
+|f(x) - f(x')|_Z + |f(x) - x|_Z + |f(x') - x'|_Z 
+\\
+&< 
+|f(x) - f(x')|_Y + 2\cdot\eps.
+\end{align*}
+Lastly, we show that $f(X)$ is a $2\cdot\eps$-net in $Y$.  Given $y \in Y$, there exists $x \in X$ with $|x - y|_Z < \eps$ because $|X - Y|_{\mathcal{H}(Z)} < \eps.$  Then
+\begin{align*}
+|f(x) - y|_Y 
+&\le 
+|f(x) - x|_Z + |x - y|_Z 
+\\
+&< 2\cdot\eps.
+\end{align*}
+
+
+
+\parbf{Exercise \ref{ex:alm-isom=>GH}.}
+
+\parbf{Exercise \ref{ex:point-diam}.}
+We need to prove two inequalities: $|X-P|_{\mathcal{M}} \le \tfrac{\diam X}2$ and $|X-P|_{\mathcal{M}} \ge \tfrac{\diam X}2$.
+
+To prove the first one, we shall simply construct a metric on the set 
+$$W=P\sqcup X=\{p\}\sqcup X$$ 
+by setting $|p-x|_W=\tfrac{\diam X}2$ for any $x\in X$ and $|x-y|_W=|x-y|_X$ for any $x,y\in X$.
+It is straightforward to check that this indeed defines a metric and $|P-X|_{\mathcal{H}(W)}= \tfrac{\diam X}2$.
+
+To prove the second inequality, choose points $x,y\in X$ so that $|x-y|_X= \diam X$.
+Assume $X$ is a subset of a space $Z$ such that $|\{p\}-X|_{\mathcal{H}(Z)}<r$.
+Then $|p-x|,|p-y|<r$ and therefore $r>\tfrac{\diam X}2$.
+
+
+\parbf{Exercise \ref{ex:d_GH-and-diam}.} Let $P$ be a one-point space.
+According to Exercise \ref{ex:point-diam}, $|X-P|_{\mathcal{M}} = \tfrac{\diam X}2$.
+From the triangle inequality,%???we do not have it yet???
+ we have
+$$||X-P|_{\mathcal{M}}-|X-P|_{\mathcal{M}}|\le |X-Y|_{\mathcal{M}},$$
+hence, the result.
+
+
+\parbf{Exercise \ref{ex:pack-GH}.} Let $x_1, \ldots , x_N \in X_\infty$ be a maximal $\eps$-packing.  If $|X_n-X_\infty|_{\mathcal{M}} < r$, then we can embed $X_n$ and $X_\infty$ in some space $Z$ such that there exist points $y_1, \ldots , y_N \in X_n$ with $|x_i - y_i|_Z < r$ for each $i$.  It follows from the triangle inequality that
+$$|y_i - y_j| \ge |x_i - x_j| - |x_i - y_i| - |x_j - y_j| > |x_i - x_j| - 2r$$ for all $i,j$.  Since $|x_i - x_j| > \eps$ for all $i \neq j$, and since there are only finitely many $x_i$, there is a $\delta > 0$ such that $|x_i - x_j| > \eps + \delta$ for all $i \neq j$.  It follows from the above calculation that if $r < \delta / 2$, then $|y_i - y_j| > \eps$ for all $i \neq j$.  Hence, $y_1, \ldots , y_N$ is an $\eps$-packing in $X_n$ (not necessarily maximal.)  Thus
+$$ \pack_\eps X_n \ge \pack_\eps X_\infty. $$
+
+
+\parbf{Exercise \ref{pack<n;n>1}.}
+Consider the set $\mathcal{Q}$ of all metric spaces with at most two points.
+
+\parbf{Problem \ref{pr:GH1}.}
+\begin{enumerate}[(i)]
+\item The minimal Hausdorff distance is $1/\sqrt{3}$ and is achieved by taking the point to be the center of the equilateral triangle.
+\item See Exercise \ref{ex:point-diam}.
+\end{enumerate}
+
+
+\parbf{Problem \ref{pr:GH2}.}
+If $A \subseteq X$ and $B \subseteq Y$ are $\eps$-nets such that $A$ is isometric to $B$, then $|A - B|_{\mathcal{M}} = 0$.  Check that $|X - A|_{\mathcal{H}(X)} \le \eps$, which shows $|X - A|_{\mathcal{M}} \le \eps$ (and similarly $|Y - B|_{\mathcal{M}} \le \eps$.)  By the triangle inequality,
+$$|X - Y|_{\mathcal{M}} \le |X - A|_{\mathcal{M}} + |A - B|_{\mathcal{M}} + |Y - B|_{\mathcal{M}} \le 2\cdot\eps.$$
+
+??? For the second question...
+% ??? I don't know the answer to the second question - Allan
+
+
+\parbf{Problem \ref{pr:GH3}.}
+\begin{enumerate}[(i)]
+\item Since $B_{\diam X}(x) \supset X$ for any $x \in X$, we have $\rad X \le \diam X$.  If there exist $R > 0$ and $x \in X$ such that $B_R(x) \supset X$, then for any $y, z \in X$,
+$$|y - z| \le |x - y| + |x - z| \le 2\cdot R.$$  
+Taking the supremum over all $y,z \in X$ gives $\tfrac12 \cdot \diam X \le R$, and taking the infimum over all such $R$ gives $\tfrac12 \cdot \diam X \le \rad X.$
+\item It suffices to show 
+$\rad X \le \rad Y + 2 \cdot |X - Y|_{\mathcal{M}}$.  
+Embed $X$ and $Y$ in a space $Z$ and let $D = |X - Y|_{\mathcal{H}(Z)}$.  
+Let $y \in Y$ be such that $B_R(y) \supset Y$ for some $R > 0$.  Then there exists $x \in X$ such that $|x - y|_Z \le D$.  
+For any other $x' \in X$, we can similarly find $y' \in Y$ with $|x' - y'|_Z \le D$, and then
+$$|x - x'|_X \le |x - y|_Z + |y - y'|_Y + |x' - y'|_Z \le R + 2\cdot D.$$
+In other words, $B_{R + 2\cdot D}(x) \supset X$ and consequently $\rad X \le R + 2\cdot D$.  
+Taking the infimum over all such $R$ gives $\rad X \le \rad Y + 2\cdot D$.  
+Taking the infimum over all such embeddings of $X$ and $Y$ into $Z$ yields 
+$$\rad X \leq \rad Y + 2\cdot |X - Y|_{\mathcal{M}}.$$
+\end{enumerate}
+
+\parbf{Problem \ref{pr:F-X}.}
+???
+
+\parbf{Problem \ref{pr:under}.}
+Part \ref{SHORT.pr:under:if} follows directly from 
+Gromov's compactness theorem (\ref{thm:gromov-compactness}) 
+and Theorem \ref{thm:finite_pack=compact:pack}.
+
+\parit{\ref{SHORT.pr:under:only-if}).} Applying Gromov's compactness theorem (\ref{thm:gromov-compactness}), we get that there is a sequence $\eps_n\to0+$ such that if $[Z]\in K$
+then $\pack_{\eps_n}Z\le n$ for each $n$ .
+
+It remains to construct a compact space $X$ such that if $\pack_{\eps_n}Z\le n$ for each $n$ then there is a distance non-contracting map $Z\to X$.
+As a set of points in $X$, take all infinite sequences of positive integers $(k_1,k_2,\dots)$
+such that $k_n\le n$ for each $n$.
+Given two such sequences $\bm{k}=(k_1,k_2,\dots)$ and $\bm{k}'=(k'_1,k'_2,\dots)$ set
+$$|\bm{k}-\bm{k}'|_X=2\cdot\eps_{n-1},\eqlbl{eq:metric-on-X}$$
+where $n$ is the smallest number such that $k_n\ne k_n'$.
+
+To check that $X$ is compact, we apply diagonal procedure ...???
+
+It remains to construct a distance non-contracting map $Z\to X$.
+According to Exercise \ref{ex:packing=net},
+we can choose an $\eps_n$-net $a_{n,1},a_{n,2},\dots,a_{m,n}$ in $Z$ with $m\le n$.
+Given a point $z\in Z$, consider sequence $k_n$ of integers such that
+$|a_{k_n,n}-z|<2\cdot\eps_n$.
+Note that a sequence $\bm{k}=(k_1,k_2,\dots)$ describes a point in $X$.
+From \ref{eq:metric-on-X}, 
+it follows that the map $Z\to X$ defined as $z\mapsto \bm{k}$ 
+is distance non-contracting.
+
+\parbf{Problem \ref{pr:GH-variation}.}
+???
+
+\refstepcounter{section}
+\section*{Chapter~\ref{chap:length}}
+
+\parbf{Exercise \ref{ex:nonrectifiable-curve}.}
+
+\parbf{Exercise \ref{ex:length=closed-in-GH}.}
+
+\parbf{Exercise \ref{ex:length-is-not-homeo}.}
+Consider the ``comb space" $X \subset \RR^2$ which is the union of the line segment from $(0,0)$ to $(1,0)$, the line segment from $(0,0)$ to $(0,1)$, and the line segment from $(1/n,0)$ to $(1/n,1)$ for each $n \in \NN$.  Any two points in $X$ can be connected by a curve of length at most $3$, so $\hat d$ is a finite metric.  However, any $d$-open ball about a point $(0,y)$ will be disconnected, whereas $\hat d$-open balls are always path-connected.
+
+
+\parbf{Exercise \ref{ex:proper=>geodesic}.}
+
+
+\parbf{Exercise \ref{ex:lc-not-complete}.}
+The open interval $(0,1)$ is locally compact, but not complete.
+
+\parbf{Exercise \ref{ex:no-angle}.}
+
+
+
+
+\parbf{Problem \ref{pr:H(R^2)-length-space}.}
+By (???) it suffices to show that for any two $X, Y \in \mathcal{H}(\RR^2)$ and any $\eps > 0$, there is $Z \in \mathcal{H}(\RR^2)$ such that
+$$|X-Z|_{\mathcal{H}(\RR^2)} < \frac{1}{2}\cdot|X-Y|_{\mathcal{H}(\RR^2)} + \eps, 
+\quad 
+|Y-Z|_{\mathcal{H}(\RR^2)} < \frac{1}{2}\cdot|X-Y|_{\mathcal{H}(\RR^2)} + \eps.$$  
+By Theorem \ref{thm:finite_pack=compact}, every compact set has a finite $\eps$-net.  
+It is readily checked that the Hausdorff distance between a set and its $\eps$-net is less than $\eps$.  
+So by the triangle inequality for the Hausdorff metric, it suffices to prove the above result in the case where $X$ and $Y$ are finite sets.
+
+Suppose $X = \{x_1, \ldots , x_n\}$ and $Y = \{y_1, \ldots , y_m\}$.  
+For every $x_i \in X$, choose $y \in Y$ of minimal distance to $x_i$ and let $a_i = \frac{x_i + y}{2}$ be their midpoint.  
+Similarly, for every $y_j \in Y$, choose $x \in X$ of minimal distanct to $y_j$ and let $b_j = \frac{y_j + x}{2}$.  Let $A = \{a_1, \ldots , a_n\}$ and $B = \{b_1, \ldots , b_m\}$ and set $Z = A \cup B$.  Note that because $Z$ is a finite set, it is compact.
+
+We will show that $|X - Z|_{\mathcal{H}(\RR^2)} \le \frac{1}{2}\cdot|X - Y|_{\mathcal{H}(\RR^2)}$ and by a similar argument, $|Y - Z|_{\mathcal{H}(\RR^2)} \le \frac{1}{2}\cdot|X - Y|_{\mathcal{H}(\RR^2)}$.  Let $R > 0$ be such that
+$$\bigcup_{x \in X}B_R(x) \supset Y, \quad \bigcup_{y \in Y}B_R(y) \supset X.$$
+It follows that
+$$\bigcup_{z \in Z}B_{\frac{1}{2}\cdot R}(z) \supset X$$
+because for every $x \in X$, there is $y \in Y$ and $z \in Z$ with $|x - z| = \frac{1}{2}\cdot|x - y|$, and moreover $y$ can be taken to be of minimal distance to $x$, so that $|x - y| \le R$.  
+On the other hand, for every $z \in Z$, there is $x \in X$ and $y \in Y$ 
+such that $|x - z| = \frac{1}{2}\cdot|x - y| \le \frac{1}{2}\cdot\cdot R$, again by minimality.  
+Thus,
+$$\bigcup_{x \in X}B_{\frac{1}{2}\cdot R}(x) \supset Z.$$  
+So $|X - Z|_{\mathcal{H}(\RR^2)} \le R$, and by taking an infimum over all such $R$,
+$$|X - Z|_{\mathcal{H}(\RR^2)} 
+\le 
+\tfrac{1}{2}\cdot|X - Y|_{\mathcal{H}(\RR^2)}.$$
+
+
+\parbf{Problem \ref{pr:M-length-space}.}
+Repeat the argument of Problem \ref{pr:H(R^2)-length-space} to show that $\mathcal{H}(\mathcal{F}(\NN))$ is a length space.  
+The result then follows from Proposition \ref{prop:GH-with-fixed-Z}.
+
+\parbf{Problem \ref{pr:H>GH-boundary}.}
+Use the distance non-expanding map as in Problem~\ref{problem2}.
+
+\parbf{Problem \ref{pr:trig-inq=>interval}.}
+
+\parbf{Problem \ref{pr:1-st-var}.}
+
+\parbf{Problem \ref{pr:adj-angles}.}
+\refstepcounter{section}
+\section*{Chapter~\ref{chap:triangulation}}
+
+\parbf{Problem \ref{pr:1000}.}
+Look at the natural triangulation of the boundary of convex polyhedra with all the vertices on the curve $t\mapsto(t,t^2,t^3,t^4)$ in $\RR^4$.
+
+???
+
+\parbf{Problem \ref{pr:tringulation-of-poly}.}
+Let $k$ be the number of vertices of $P$.
+Let us apply induction on $k$;
+the base case $k=3$ is trivial.
+
+Choose vertices $b$ of $P$ 
+which minimize 
+the $x$ coordinate.
+Note that the polygon $P$ is convex at $b$.
+
+Let $a$ and $c$ be the vertices of $P$
+which are the right and left neighbors of $b$.
+If the interior of segment $[ac]$ lies completely in $P$,
+then after cutting the triangle $\trig abc$
+from $P$ we get a polygon $P'$ with smaller number of vertices; 
+applying the induction hypothesis,
+we get a triangulation of $P'$ which together with $\trig abc$ gives a triangulation of $P$.
+
+If the interior of $[ac]$ does not lie inside of $P$,
+then triangle $\trig abc$ contains yet an other vertex of $P$.
+Let $d$ be a vertex of $P$ in the triangle $\trig abc$
+which lies on the maximal distance from the line $(ac)$.
+Note that the interior of the segment $[bd]$ lies in the interior of $P$;
+so $[bd]$ cuts $P$ into two polygons
+say $Q$ and $R$ 
+with smaller number of vertices in each.
+It remains to apply the induction hypothesis of $Q$ and $R$.
+
+\parit{Comment.}
+Note that if $P$ is a convex polygon with vertices $a_1,a_2,\dots,a_k$ then cutting $P$ along the segments 
+$[a_1a_3]$, $[a_1a_4],\dots,[a_1a_{k-1}$
+gives a triangulation of $P$.
+
+\parbf{Problem \ref{pr:tringulation-of-poly-3D}.}
+
+\begin{wrapfigure}{r}{48mm}
+\begin{lpic}[t(-9mm),b(-4mm),r(0mm),l(0mm)]{pics/acute-triangulation(0.75)}
+\end{lpic}
+\end{wrapfigure}
+
+\parbf{Problem \ref{ex:acute-triangulation}.}
+The solution should be clear from the picture.
+In fact any 2-dimensional polyhedral space admits a triangulation all of which triangles are acute,
+see \cite{saraf}.
+
+\parbf{Problem \ref{pr:delaunay.triangulation}.}
+Google Delaunay triangulation.
+
+\parbf{Problem \ref{pr:polytope=local.cone}.}
+Since $P$ is compact,
+we can choose a finite cover of $P$ by open balls $B(x_i,r_i)$,
+such that for each $i$ the ball $B(x_i,7\cdot r_i)$ forms a cone neighborhood of $x_i$.
+Assume further that $i\in \{1,2,\dots,n\}$.
+
+Given $z\in P$ consider the set 
+$$F_z=\set{i\in \{1,2,\dots,n\}}{z\in B(x_i,r_i)}.$$
+Set 
+$$\square_z=\Conv\set{x_i}{i\in F_z}.$$
+Note that it is sufficient to show that 
+$$P=\bigcup_{z\in P}\square_z.$$
+
+First let us use induction to show that 
+\begin{clm}{}\label{clm:sqare.in.P}
+ $\square_z\subset P$ 
+for any $z\in P$.
+\end{clm}
+Without loss of generality we may assume that $F_z=\{1,2,\dots,k\}$ for some $k\le n$ 
+and $r_1\le r_2\le\dots r_k$.
+Set 
+$$A_i=\Conv\set{x_j}{j\le i};$$
+so $\square_z=A_k$.
+Clearly, $A_1=\{x_1\}\subset P$ and
+$$
+\begin{aligned}
+A_{i}&=\Conv(A_{i-1}\cup \{x_{i}\})
+=
+\\
+&=
+\set{t\cdot x_i+(1-t)\cdot y\in \RR^m}{y\in A_{i-1},
+\ t\in[0,1]}
+\end{aligned}
+\eqlbl{eq:conv(A)}
+$$
+for any $i\le k$.
+
+Note that 
+$B_{3\cdot r_i}(x_i)\supset A_{i-1}$ for any $i\le k$.
+From \ref{eq:conv(A)} we have
+\begin{align*}
+A_{i-1}\subset P
+\ &\Rightarrow\ 
+A_{i-1}\subset B_{3\cdot r_i}(x_i)\cap K_{x_i}
+\ \Rightarrow\ 
+\\
+&\Rightarrow\ 
+A_i\subset B_{3\cdot r_i}(x_i)\cap K_{x_i}
+\ \Rightarrow\ 
+A_i\subset P.
+\end{align*}
+Hence \ref{clm:sqare.in.P} follows.
+
+It remains to show that 
+$$P\subset \bigcup_{z\in P}\square_z.\eqlbl{eq:P.in.sqares}$$
+Assume contrary.
+Let $Q=\bigcup_{z\in P}\square_z$ and  $z\in P$ be a  point which maiximize the distance to 
+
+
+
+It remains to show that for any $y\in P$ there is $z\in P$ such that 
+
+
+
+For each $i$ consider funnction 
+$f_i(z)=|x_iz|^2-r_i^2$.
+We will call $f_i(z)$ \emph{power of} $z$ \emph{with respect to sphere of radius} $r_i$  \emph{centered} at $x_i$. 
+Clearly $f_i(z)<0$ if and only if $z\in B(x_i,r_i)$. 
+Consider corresponding Voronoi domain
+$$V_i=\set{z\in \RR^m}{f_i(z)\le f_j(z)\ \text{for any}\ i}.$$
+Note that each $V_i$ is an intersection of $n-1$ half-spaces
+$$H_{i,j}=\set{z\in \RR^m}{f_i(z)\le f_j(z)}.$$
+
+Set $f=\min_i f_i$;
+it is a continuous function on $X$.
+Note that $f<0$, in particular $V_i\subset B(x_i,r_i)$ for each $i$.
+
+Note that if $z$ is a point of local maximum of $f$
+then $\square_z\ni z$.
+Indeed, assume contrary; 
+i.e., $z\notin \square_z$.
+Let $z^*\in \square_z$ be the closest point to $z$
+(it exists by ???).
+The 
+
+
+We may assume that radii are chousen generically;
+i.e. if $z\in\cap_{i\in Q}V_i$ for some index set $Q$ then the functions $\set{f_i}{i\in Q}$ are linearly independent in arbitrary neighborhood of $z$.
+
+Consider nerve of covering $\{V_i\}$ of $X$;
+it is an abstract simplicial complex $\mathcal S$
+with set of vertexes in the index set of $x_i$ 
+and an index subset $Q$ forms a simplex 
+$\bigcap_{i\in Q}V_i\not=\emptyset$.
+
+Notice that vertexes of any simplex $\Delta^k$ in $\mathcal S$ 
+can be reordered as ${i_0},{i_1},\dots,{i_k}$ on such a way that $r_{i_0}\le r_{i_1}\le\dots\le r_{i_k}$.
+Clearly $x_{i_n}\in B(x_{i_m},3\cdot r_{i_m})$ for all $n\le m$.
+Let us construct a map $\Delta^k\to X$.
+\begin{enumerate}
+\item map $i_0\mapsto x_{i_0}$;
+\item map $i_1\mapsto x_{i_1}$ and use cone structure in $B(x_{i_1},3\cdot r_{i_1})$ to extend it linearly to 1-simplex $i_0i_1$;
+\item map $i_2\mapsto x_{i_2}$ and use cone structure in $B(x_{i_2},3\cdot r_{i_2})$ to extend it linearly to 2-simplex $i_0i_1i_2$;
+\item and so on.
+\end{enumerate}
+It is straightforward to check that simplex with metric induced by this map is isometric to a simplex in Euclidean space.
+Further, this map agree on intersections of different simplexes of $\mathcal S$, hence we get a map $\iota\:\mathcal S\to X$.
+
+It only remains to show that $\iota(\mathcal S)=X$.
+Assume contrary; 
+i.e., $\Omega=X\backslash \iota(\mathcal S)\z\ne\emptyset$.
+For each $x\in X$ choose a closest point $x^*\in \iota(\mathcal S)$.
+Note that 
+$$f(x)>f(x^*)$$
+for all $x\in \Omega$ sufficiently close to $\iota(\mathcal S)$.
+It follows that there is a point $x_0\in \Omega$,
+of local maximum of $f$.
+
+Let $Q$ be the a subset of the index set,
+such that $i\in Q$ if and only if $V_i\ni x_0$;
+denote by $\Delta$ the simplex corresponding to $Q$. 
+Sinse $x_0$ is a maximum point of $f$,
+we get $x_0\in \Delta$,
+a contradiction.
+\qeds
+
+\refstepcounter{section}
+\section*{Chapter~\ref{chap:pdp}}
+
+\parbf{Exercise \ref{ex:voronoi-in-star}.}
+First note that if $x\in V_i$ then any geodesic $[z_ix]$ lies in $V_i$.
+Indeed, if $y\in [z_ix]$ then for any $j$ we have
+\begin{align*}
+|z_i-y|
+&=|z_i-x|-|y-x|\le
+\\
+&\le |z_j-x|-|y-x|\le
+\\
+&\le 
+|z_j-y|;
+\end{align*}
+i.e., $y\in V_i$.
+
+Therefore if $V_i\not\subset S_i$
+then there is a triangle $\Delta$ of the triangulation such that $z_i\in \Delta$
+and $V_i$ contains a point $x$ on a side $e$ of $\Delta$
+which does not contain $z_i$.
+
+The smallest distance from $x$ to on of $z_j$ on $e$ is smaller than $\eps$.
+Hence $|z_i-x|<\eps$???
+
+
+\parbf{Exercise \ref{ex:PDP=>cont}.}
+
+\parbf{Exercise \ref{ex:PDP+fixed-triang}.}
+
+
+
+
+\parbf{Exercise \ref{ex:star-triangulation}.}
+
+\parbf{Exercise \ref{ex:triangle-reflect}.}
+
+\parbf{Exercise \ref{ex:a-in-Brehm}.}
+
+\parbf{Exercise \ref{ex:akopyan-brehm}.}
+Choose a sufficiently fine triangulation of $P$, 
+say the diameter of each triangle is less than $\eps$.
+If $\{a_1,a_2,\dots,a_n\}$ is the set of vertices for this triangulation,
+take $b_i=f(a_i)$ and apply Brehm's extension theorem.
+We obtain a map $f_\eps\:P\to\RR^m$ which coincides with $f$ on the set $\{a_1,a_2,\dots,a_n\}$.
+
+Then the statement follows since the triangulation is fine 
+and  both $f$ and $f_\eps$ are distance non-expanding.
+
+
+\parbf{Exercise \ref{ex:tripod}.}
+
+\parbf{Exercise \ref{LP=>short}.}
+
+\parbf{Exercise \ref{ex:S->R--not-inj}.}
+
+\parbf{Exercise \ref{ex:limit-above}.}
+
+
+\parbf{Problem \ref{pr:zalgaller-acute}.}
+
+\parbf{Problem \ref{pr:brehm}.}
+Let $A$ be as in Brehm's theorem.
+According to Problem~\ref{problem2}, 
+there is a distance non-expanding map $h\:\RR^2\to A$
+such that $h(a)=a$ for any $a\in A$.
+Taking the composition $f\circ h$ we get the needed distance non-expanding map $\RR^2\to \RR^2$.
+
+\begin{wrapfigure}{r}{48mm}
+\begin{lpic}[t(-0mm),b(-0mm),r(0mm),l(0mm)]{pics/bigger-area(0.75)}
+\lbl[t]{13,0;$a_1$}
+\lbl[b]{3,21;$a_2$}
+\lbl[t]{33,0;$a_3$}
+\lbl[t]{42,0;$b_1$}
+\lbl[b]{43,23;$b_2$}
+\lbl[t]{65,0;$b_3$}
+\lbl[]{16,6;$A$}
+\lbl[]{48,7;$B$}
+\end{lpic}
+\end{wrapfigure}
+
+\parbf{Problem \ref{pr:perimeter}.}
+The second inequality does not hold in general.
+This can be seen in the picture.
+
+The first inequality follows easily from two famous theorems in discreet geometry,
+one is Alexander's theorem \cite{alexander}
+and the other is the 
+Kneser--Poulsen conjecture which was solved in 2-dimensional case by Bezdek and Connelly in \cite{bezdek-connelly}.
+(The reduction to each of these theorems takes one line, 
+but might be not completely evident.)
+I encourage you to read these papers, they are totally  beautiful.
+You will be surprised to learn that to solve this 2-dimensional problem it is convenient to work in 4-dimensional space, the reason can be seen in Problem~\ref{pr:alexander}.
+Here I present an other solution from \cite{petrunin-ruble},
+it is not nearly as nice, 
+but more elementary.
+
+Given a finite collection of points $a_1,a_2,\dots,a_n$,
+Set 
+$$\ell(a_1,\dots, a_n)=\per\Conv(a_1,\dots, a_n).$$
+Then $\per A\ge\per B$ can be written as
+$$\ell(a_1,\dots, a_n)\ge \ell(b_1,\dots, b_n).$$
+Applying Brehm's extension theorem (\ref{thm:brehm})
+we get a piecewise distance preserving map $f\:A\to\RR^2$
+such that $f(a_i)=b_i$ for each $i$.
+
+Assume contrary;
+i.e.,
+$$\ell(a_1,\dots, a_n)< \ell(b_1,\dots, b_n).\eqlbl{eq:conta-a-b}$$
+We can assume that 
+$\{a_1,a_2,\dots,a_n\}$ and $f$ are chosen in such a way that 
+\begin{clm}{}
+\label{min-n} The number $n$ takes the minimal value for which \ref{eq:conta-a-b} can hold.
+\end{clm}
+\begin{clm}{}\label{max-l} If $x_1,\dots, x_n\in A$
+and $y_i=f(x_i)$ then
+$$\ell(y_1,\dots,y_n)-\ell(x_1,\dots,x_n)\le\ell(b_1,\dots, b_n)- \ell(a_1,\dots, a_n).$$
+
+\end{clm}
+\noi
+To meet Condition~\ref{max-l}, 
+one has to take instead of $a_1,\dots,a_n$ 
+an $n$-point subset $x_1,\dots, x_n\in A$ 
+for which the difference taking the maximal value.
+It is possible since $A$ is compact.
+
+Note that all $b_i$ are distinct vertices of $B$.
+Indeed, assume $b_n$ lies inside or on side of $B$ or $b_n=b_i$ for some $i\not=n$.
+Then
+\begin{align*}
+\ell(b_1,\dots,b_{n-1})&=\ell(b_1,\dots,b_{n-1},b_{n}),
+\\
+\ell(a_1,\dots,a_{n-1})&\le \ell(a_1,\dots,a_{n-1},a_{n}).
+\end{align*}
+This contradicts Condition~\ref{min-n}.
+
+By $\mangle a_i$, we will denote the angle of $A$ at $a_i$, 
+and by $\mangle b_i$ the angle of $B$ at $b_i$.
+Let us show that
+$$\mangle b_i\ge \mangle a_i\eqlbl{eq:a<b}$$
+Move $a_i$ with unit speed inside $A$ along the bisector of the angle, 
+then the value $\ell(a_1,a_2,\dots,a_{n})$ 
+decrease with rate $2{\cdot}\cos\tfrac\alpha2$.
+The point $b_i=f(a_i)$ will also move with unit speed;
+it is not hard to see that at the value $\ell(b_1,\dots,b_{n})$ 
+can not decrease faster than with  $2{\cdot}\cos\tfrac{\beta}2$.
+By Condition~\ref{max-l}, 
+the difference 
+$$\ell(b_1,\dots,b_{n})-\ell(a_1,\dots,a_{n})$$
+can not increase.
+Therefore
+$2{\cdot}\cos\tfrac{\mangle b_i}2
+\ge
+2{\cdot}\cos\tfrac{\mangle a_i}2;$
+hence \ref{eq:a<b}.
+
+Applying the theorem about sum of angles of $n$-gon to \ref{eq:a<b},
+we get that all $a_i$ are vertices of $A$.
+(We also get $\mangle b_i=\mangle a_i$, 
+but we will not need it.)
+
+We can assume that  $a_i$ are labeled in the cyclic order as they appear on the boundary of $A$.
+In this case
+$$\ell(a_1,\dots,a_{n})=|a_1-a_2|+\dots+|a_{n-1}-a_n|+|a_n-a_1|$$
+Since  $|b_i-b_j|\le |a_i-a_j|$ for all $i$ and $j$,
+we get
+$$|b_1-b_2|+\dots+|b_n-b_1|\le|a_1-a_2|+\dots+|a_n-a_1|.$$
+
+\begin{wrapfigure}{r}{45mm}
+\begin{lpic}[t(-0mm),b(-0mm),r(0mm),l(0mm)]{pics/obkhvat-shorter(0.75)}
+\lbl[tr]{6,17;$b_1$}
+\lbl[b]{34,52;$b_2$}
+\lbl[lt]{54,1;$b_3$}
+\lbl[r]{1,35;$b_4$}
+\lbl[t]{28,1;$b_5$}
+\lbl[bl]{55,39;$b_6$}
+\lbl[l]{59,17;$b_7$}
+\end{lpic}
+\caption*{red $\ge$ green $\ge$ black.}
+\end{wrapfigure}
+
+Finally, note that 
+$$\ell(b_1,\dots,b_{n})\le|b_1-b_2|+\cdots+|b_n-b_1|.$$
+In other words the $\ell$ of the vertices of a closed broken 
+line can not exceed the total length of the broken line.
+The later statement should be evident from the picture.
+
+Therefore 
+$$\ell(A_1',A_2',\dots,A_{n}')\le\ell(a_1,a_2,\dots,a_{n}),$$ 
+a contradiction.
+
+\parbf{Problem \ref{pr:alexander}.}
+Here is an example of such curves.
+$$
+\alpha_i(t) = \left(\frac{a_i + b_i}{2} + 
+\cos(\pi\cdot t)\cdot \frac{a_i - b_i}2,\  
+\sin(\pi\cdot t)\cdot \frac{a_i - b_i}2\right). 
+$$
+It is straightforward to check that
+$\ell_{i,j}$ are monotonic.
+
+\refstepcounter{section}
+\section*{Chapter~\ref{chap:flex}}
+
+\parbf{Exercise \ref{ex:rigit/flex}.}
+
+\parbf{Problem \ref{pr:trig-S2}.}
+
+\parbf{Problem \ref{bricard-second}.}
+
+\parbf{Problem \ref{pr:alexander-flex}.}
+Apply the same construction as in the proof of Alexander's theorem (\ref{thm:alexander}).
+
+\refstepcounter{section}
+\section*{Chapter~\ref{chap:unique}}
+
+\parbf{Exercise \ref{ex:poly+geod}.}
+
+\parbf{Exercise \ref{ex:mnfl-combi}.}
+
+\parbf{Exercise \ref{ex:sum=2pi}.} Let $k$, $l$ and $m$  be the number of vertices, edges, and triangles respectively in the triangulation $\mathcal{T}$. 
+Use that sum of angles of in any triangle is $\pi$
+together with Euler's formula 
+$k-l+m=2$ and the identity $3\cdot m=2\cdot l$.
+
+\parbf{Exercise \ref{ex:curv-is-nonneg}.} 
+Let $K_p$ be the intersection of $K$ with a small sphere centered at $p$.
+Note that $K_p$ is a convex spherical polygon.
+
+Applying  the idea in the proof of Lemma~\ref{lem:perimeter},
+we get that perimeter of $K_p$ is not bigger than 
+perimeter of half-sphere.
+Hence the statement follow.
+
+\parbf{Problem \ref{pr:sum>1pi}.}
+
+\parbf{Problem \ref{pr:aa+2}.}
+
+\parbf{Problem \ref{pr:arm}.}
+
+\parbf{Problem \ref{pr:tetrahedron}.}
+
+\parbf{Problem \ref{pr:zalgaller}.}
+
+\parbf{Problem \ref{pr:K-P-simmetry}.}
+
+
+\refstepcounter{section}
+\section*{Chapter~\ref{chap:exist}}
+
+\parbf{Exercise \ref{ex:P,eps-delta}.}
+Let us first show \ref{clm:surjective}.
+Assume $P'\in\left] \mathbf{P}_k\right[$ 
+and $|P'-P|_\mathcal{M}<\tfrac\delta2$,
+let $f\:P'\to P$ be a $2\cdot\delta$-isometry;
+it exists according to Exercise~\ref{ex:GH=>eps-isom}.
+For $\eps$ and $\delta$ as in Exercise~\ref{ex:P,eps-delta},
+we can label the vertices of $P'$ 
+by $v_1'$, $v_2',\dots,v_k'$ so that 
+$|f(v_i')-v_i|<\eps$.
+In particular 
+$$|v'_i-v'_j|_{P'}\lege|v_i-v_j|_{P}\pm 3\cdot\eps$$
+for any $i$ and $j$.
+
+Let us join a pair of vertices $(v_i',v_j')$ by a geodesic in $P'$
+if the corresponding pair $(v_i,v_j)$ is connected by an edge 
+in $\mathcal{T}$.
+
+Notice that if $\delta$ is small enough
+the constructed geodesics intersect only at the common end points. 
+Indeed, assume contrary holds for arbitrary small $\eps>0$;
+i.e., we have a sequence of polyhedral spaces 
+$P_n\in\left]\mathbf{P}_k\right[$
+such that $P_n\GHto P$ 
+as $n\to\infty$.
+Let $\alpha_n$ and $\beta_n$ be geodesics which at $p_n$ in $P_n$.
+Let $p$ be a partial limit of $f_n(p_n)\in P$.
+Note that $p$ lies on a geodesic between two pairs of vertices,
+a contradiction. 
+
+
+In follows that these geodesics appear as edges 
+of a triangulation of $P'$.
+It means that the constructed geodesics subdivide $P'$
+in flat triangles;
+so we obtain a triangulation $\mathcal{T}'$ 
+of $P'$ 
+with the same combinatorics as $\mathcal{T}$.
+
+
+Note if $[P']\in\mathbf{P}_k$ 
+is sufficiently close to $[P]$ then $P'$ can be triangulated by the same simplicial complex as $P$ in such a way that the lengths of all corresponding edges in $P$ and $P'$ are sufficiently close. 
+???
+
+Note that the length of the edges and triangulation completely describe the polyhedral space.
+Thus we get a parametrization of a neighborhood of $[P]$ 
+by an open set in $\RR^l$, where $l$ is the number of edges in the triangulation.
+Recall that according to Euler's formula (\ref{thm:euler}), 
+$l=3\cdot k-6$.
+Hence the lemma follows.
+
+Now assume $P$ is a realizable space.
+Let $K$ be a convex polyhedron with the surface isometric to $P$.
+By Lemmas ??? and ???, we can choose neighborhoods $W\ni \bar P$ in $\mathbf{P}_k$ 
+and $V\ni \bar K$ in $\mathbf{K}_k$ which homeomorphic to open sets in $\RR^{2\cdot k-6}$.
+Since $\Phi_k$ is continuous, we may assume that $\Phi_k(V)\subset W$.
+Applying Domain invariance theorem, 
+we get $\Phi_k(V)$ is open in $W$.
+Hence $\Phi_k(V)$ contains a small ball around $\bar P$.
+Hence the result.
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+\refstepcounter{section}
+\section*{Chapter~\ref{chap:euclid}}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+\refstepcounter{section}
+\section*{Chapter~\ref{chap:cbb}}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+\refstepcounter{section}
+\section*{Chapter~\ref{chap:erdos}}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+\refstepcounter{section}
+\section*{Chapter~\ref{chap:cba}}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\refstepcounter{section}
+\section*{Chapter~\ref{chap:collisions}}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\parbf{Problem \ref{}.}
+
+\refstepcounter{section}
+\section*{Chapter~\ref{chap:degressions}}

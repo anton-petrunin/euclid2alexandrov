@@ -1,0 +1,1011 @@
+\chapter{Alexandrov's existence theorem}\label{chap:exist}
+
+\section{The goal}
+
+In this chapter we prove the following theorem.
+
+\begin{thm}{Alexandrov's existence theorem}\label{thm:alex-exist}
+Let $P$ be a polyhedral space which is homeomorphic to $\SS^2$.
+If $P$ has non-negative curvature at each point,
+then there is a convex polyhedron $K$ whose surface is isometric to $P$.
+
+(The convex polyhedron in the theorem can degenerate to a convex polygon.
+In this case its surface is defined as its doubling; 
+i.e., two copies of the polygon glued along the boundary. 
+See Section~\ref{sec:suface}.)
+\end{thm}
+
+The proof of this theorem relies on Alexandrov's uniquencess theorem (\ref{thm:alexandrov-uni'}).
+Together with Alexandrov's uniquencess theorem, Alexandrov's existence theorem 
+give an ``if and only if'' characterization of surfaces of convex polyhedra.
+Namely the following result holds.
+
+\begin{thm}{Alexandrov's theorem}\label{thm:alexandrov}
+A metric space $P$ is isometric to the surface of a convex polyhedron in $\RR^3$ %???
+if and only if $P$ is a polyhedral space which is homeomorphic to $\SS^2$,
+and the curvature of $P$ is non-negative at each point.
+
+Moreover, the polyhedron associated to $P$ is unique up to isometry of $\RR^3$.
+\end{thm}
+
+\parbf{The plan.}
+In Section~\ref{sec:polhedra} 
+we consider the space of convex polyhedra in $\RR^3$.
+In Section~\ref{sec:poly-space} we consider the space of polyhedal spaces.
+In these two sections we introduce a number of notations, 
+and prove that if we fix the number $k$ of vertices,
+then after removing neglectable sets,
+both of the spaces become $(3\cdot k-6)$-dimensional manifolds.
+
+In Section~\ref{sec:outline},
+we use the introduced notation to give an outline of the proof of the existence theorem.
+After that, it remains to prove three lemmas:
+the Open lemma, the Closed lemma and the Connecting lemma.
+The Closed lemma and the Open lemma are proved in Section~\ref{closed+open}.
+The proof of the Connecting lemma (\ref{lem:Phi(P)-connect}) occupies two sections
+\ref{sec:deformation}
+and \ref{sec:connect}.
+In Section \ref{sec:deformation} we give a couple more definitions and introduce Alexandrov's patching construction, which is a key ingredient in the proof.
+
+
+\section{Space of convex polyhedra}\label{sec:polhedra}
+
+In this section, we consider the space $\mathbf{K}_k$
+formed by the congruence classes of
+convex polyhedra in $\RR^3$ with exactly $k$ vertices.
+The main result of this section is Lemma~\ref{lem:P-mnld-nosimm}.
+
+Assume $K$ is a convex polyhedron in $\RR^3$ with exactly $k$ vertices.
+Let us denote by $[K]$ its congruence class;
+i.e., if $K'$ is another convex polyhedron in $\RR^3$ with exactly $k$ vertices, then $[K]=[K']$ if and only if $K$ is congruent to $K'$.
+
+The set of all congruence class of convex polyhedra in $\RR^3$ with exactly $k$ vertices 
+will be denoted by $\mathbf{K}_k$.
+This set is equipped with the metric
+$$|[P]-[P']|_{\mathbf{K}_k}
+\df
+\inf_{\iota}\{|P-\iota(P')|_{\mathcal{H}(\RR^3)}\},$$
+where the infimum is over all isometries $\iota\:\RR^3\to\RR^3$.
+(In other words, $\mathbf{K}_k$ is the subspace of $\mathcal{H}(\RR^3)/_{\cong}$ formed by congruence classes of convex polyhedra with exactly $k$ vertices,
+see Exercise~\ref{ex:hausdorff-upto-cong}.)
+
+The statement \emph{$K$ is a convex polyhedron with exactly $k$ vertices in $\RR^3$} can be written as $[K]\in \mathbf{K}_k$, 
+but we often will write it as $$K\in\left]\mathbf{K}_k\right[,$$ formally here $\left]\mathbf{K}_k\right[$ stands for the union of all congruence classes in $\mathbf{K}_k$.
+
+We say that $K\in\left]\mathbf{K}_k\right[$ \emph{has a symmetry} if there is an isometry $\iota\:\RR^3\to\RR^3$, which is distinct from identity,
+such that $\iota(K)=K$.
+If there is no such isometry, we say that  $K$ has \emph{no symmetry}.
+
+Note that any segment or triangle in $\RR^3$ has a symmetry.
+On the other hand, for any $k\ge 4$,
+a generic $K\in\left]\mathbf{K}_k\right[$ 
+has no symmetry.
+
+\begin{thm}{Exercise}\label{ex:nosym-K}
+Prove that the set of congruence classes of polyhedra with no symmetry form an open dense subset of $\mathbf{K}_k$ for any $k\ge 4$.
+\end{thm}
+
+
+\begin{thm}{Lemma}\label{lem:P-mnld-nosimm}
+Fix an integer $k\ge 4$.
+Assume $K\in\left]\mathbf{K}_k\right[$ has no symmetry.
+Then $[K]$ admits 
+an open neighborhood in $\mathbf{K}_k$ 
+which is homeomorphic 
+to an open domain in $\RR^{3\cdot k-6}$.
+\end{thm}
+
+In the proof, we will use the following technical statement.
+Roughly it states that if two polyhedra are close in the sense of Hausdorff, then their vertex sets are also close.
+(Do not be scared by the long formulation;
+this statement is much easier to prove than it is to formulate.)
+
+\begin{thm}{Exercise}\label{ex:eps-delta}
+Let $K$ be a convex polyhedron in $\RR^3$ 
+with $k$ vertices,
+say $w_1$, $w_2,\dots,w_k$.
+Then for any $\eps>0$ there is $\delta>0$ 
+such that if $K'$ is another convex polyhedron 
+with $k$ vertices
+such that 
+$|K-K'|_{\mathcal{H}(\RR^3)}<\delta$ 
+then the vertices of 
+$K'$
+can be labeled by $w_1'$, $w_2',\dots,w_k'$
+in such a way that 
+$$|w_i-w_i'|<\eps$$ 
+for each $i$.
+
+Moreover for the unique orientation preserving isometries $\iota,\iota'\:\RR^3\to \RR^3$
+such that 
+\begin{align*}
+\iota(w_1)&=(0,0,0)
+&
+\iota'(w_1')&=(0,0,0),
+\\
+\iota(w_2)&=(x_2,0,0),
+&
+\iota'(w_2')&=(x_2',0,0),
+\\
+\iota(w_3)&=(x_3,y_3,0),
+&
+\iota'(w_2')&=(x_3',y_3',0)
+\end{align*}
+with $x_2,x_2',y_3,y_3'>0$
+we have 
+$$|\iota(w_i)-\iota'(w_i')|<\eps$$ 
+for each $i$.
+\end{thm}
+
+\parit{Proof of Lemma~\ref{lem:P-mnld-nosimm}.}
+Let $K$ be a convex polyhedron with vertices $w_1,w_2,\dots,w_k$.
+
+Let us choose orthogonal coordinates $(x,y,z)$ in $\RR^3$
+so that
+\begin{align*}
+ w_1&=(0,0,0),
+\\
+w_2&=(x_2,0,0),
+\\
+w_3&=(x_3,y_3,0),
+\\
+w_4&=(x_4,y_4,z_4),\\
+&\vdots\\
+w_k&=(x_k,y_k,z_k)
+\end{align*}
+and $x_2,y_3> 0$.
+
+Note that one can choose small enough $\eps>0$
+such that if   
+$$\begin{aligned}
+x_i'&\lg x_i\pm\eps,&
+y_i'&\lg y_i\pm\eps,&
+z_i'&\lg z_i\pm\eps
+\end{aligned}
+\eqlbl{eq:xyz}$$
+for all $i$ then
+ the points
+$$\begin{aligned}
+w_1'&=(0,0,0),
+\\
+w_2'&=(x_2',0,0),
+\\
+w_3'&=(x_3',y_3',0),
+\\
+w_4'&=(x_4',y_4',z_4'),\\
+&\vdots\\
+w_k'&=(x_k',y_k',z_k').
+\end{aligned}
+\eqlbl{eq:000x}
+$$
+form vertices of a convex polyhedron, say $K'$.
+
+
+Since $K$ has no symmetry and $\eps>0$ is small,
+the polyhedron $K'$ also has no symmetry.
+
+\begin{thm}{Exercise}
+Prove the last statement.
+\end{thm}
+
+Therefore 
+$$(x_2',x_3',y_3',x_4',y_4',z_4',\dots,x_k',y_k',z_k')
+\mapsto 
+[K']$$ 
+describes a continuous injective map 
+$f\:U\to\mathbf{K}_k$,
+where
+\begin{align*}
+ U=(x_2-\eps,x_2+\eps)\times (x_3-\eps,x_3+\eps)&\times (y_3-\eps,y_3+\eps)\times
+\dots
+\\
+&\dots\times(z_k-\eps,z_k+\eps)\subset\RR^{3\cdot k-6}.
+\end{align*}
+
+It remains to show that $f(U)$ contains a small neghborhood of the congruence class $[K]$ in $\mathbf{K}_k$.
+In other words, given a convex polyhedron $K'$ 
+with exactly $k$ vertices such that $|K-K'|_{\mathcal{H}(\RR^3)}$ is sufficiently small,
+we need to find an isometry of $\RR^3$ which moves $K'$ into a new position, say $K''$,
+such that its vertices could be described as in \ref{eq:000x} and \ref{eq:xyz} holds 
+for all $i$.
+This follows from the Exercise~\ref{ex:eps-delta}.
+\qeds
+
+
+
+\section{Space of polyhedral spaces}\label{sec:poly-space}
+
+The main result of this section is Lemma~\ref{lem:poly-mnfld}.
+
+Let $P$ be a polyhedral space 
+with nonnegative curvature that is
+homeomorphic to $\SS^2$.
+A point $v\in P$ will be called a
+\emph{vertex of $P$}\index{vertex of polyhedral space}
+if $v$ has positive curvature.
+
+Fix $k\ge 4$.
+Let us denote by $\mathbf{P}_k$
+the subspace of $\mathcal{M}$
+formed by the isometry classes of polyhedral spaces
+with nonnegative curvature,
+with exactly $k$ vertices,
+and which are
+homeomorphic to $\SS^2$.
+ 
+
+For $\mathbf{P}_k$ we will use conventions similar to the ones made for $\mathbf{K}_k$.
+Namely given a polyhedral space $P$, 
+we denote by $[P]$ its isometry class.
+The statement 
+\emph{$P$ is a polyhedral space with nonnegative curvature, with exactly $k$ vertices, and which is homeomorphic to $\SS^2$} 
+can be written as $[P]\in \mathbf{P}_k$, 
+but we often will write it as 
+$$P\in\left]\mathbf{P}_k\right[,$$ 
+formally here $\left]\mathbf{P}_k\right[$ 
+stays for the union of all isometry classes in $\mathbf{P}_k$.
+
+A space $P\in \left]\mathbf{P}_k\right[$ is called
+\emph{realizable}\index{realizable}
+if there is $K\in \left]\mathbf{K}_k\right[$ such that $P$ is isometric to the surface of $K$.
+So the Alexandrov's existence theorem can be stated as 
+\emph{any space in $\left]\mathbf{P}_k\right[$ is realizable}.
+
+
+\begin{thm}{Lemma}\label{lem:poly-mnfld}
+Let $P\in\left]\mathbf{P}_k\right[$ be a realizable polyhedral with no symmetry. 
+Then $[P]$ has a neighborhood in $\mathbf{P}_k$ which is homeomorphic to an open domain in $\RR^{3\cdot k-6}$.
+\end{thm}
+
+In the proof we will use the following technical statement.
+
+\begin{thm}{Exercise}\label{ex:P,eps-delta}
+Let $P, P'\in\left] \mathbf{P}_k\right[$ and $\eps>0$.
+Assume $P$ admits a triangulation $\mathcal{T}$ 
+with $k$ vertices 
+such that each edge is formed by the unique geodesic between its endpoints.
+Then there is $\delta>0$ such that if $f\:P'\to P$ is a $\delta$-isometry then
+
+\begin{subthm}{}
+The vertices of $P$ and $P'$ can be labeled 
+as $v_1,v_2,\dots,v_k$ and $v_1',v_2',\dots,v_k'$ correspondingly
+in such a way that $|f(v_i')-v_i|<\eps$ for any $i$.
+\end{subthm}
+
+\begin{subthm}{}
+$P'$ admits a triangulation  $\mathcal{T}'$
+such that a pair of vertices $(v_i',v_j')$ 
+is connected by an edge if and only if 
+the corresponding pair $(v_i,v_j)$ 
+is connected by an edge in $\mathcal{T}$ 
+and each edge of $\mathcal{T}'$ is the necessarily unique geodesic.
+\end{subthm}
+\end{thm}
+
+
+
+\parit{Proof of Lemma~\ref{lem:poly-mnfld}.}
+Since $P$ is realizable, 
+we can identify $P$ with the surface of a convex polyhedron, 
+say $K$.  Since $P$ has no symmetry,
+Exercise~\ref{pr:K-P-simmetry} implies that $K$ has no symmetry.
+
+Note that one can triangulate each face of $K$ in
+a such a way that only vertices of the face are the vertices of the triangulation.
+This follows from Exercise~\ref{pr:tringulation-of-poly},
+but it is much easier since the face is convex;
+see the comment in the solution to this exercise.
+
+These triangulations together give a triangulation, 
+say $\mathcal{T}$,
+of $P$ with vertices only at the vertices of $P$.
+In particular $\mathcal{T}$ has exactly $k$ vertices;
+by  Euler's formula (\ref{thm:euler}), 
+$\mathcal{T}$ has $3\cdot k-6$ edges.
+Note that each edge of $\mathcal{T}$ is a line segment in $\RR^3$.
+Therefore each edge of $\mathcal{T}$ is the necessarily unique geodesic between its endpoints in $P$.
+(This property is not achieved  if $K$ degenerates to a plane polygon, but since $P$ has no symmetry, it cannot be degenerate.)
+
+Note that the triangulation $\mathcal{T}$ together with the lengths of its edges, 
+say $a_1$, $a_2,\dots,a_l$, 
+describe $P$ up to isometry.
+Indeed, the side lengths describe each triangle in $\mathcal{T}$
+and $P$ can be obtained by gluing these triangles according the rule encoded in $\mathcal{T}$.
+
+The same construction can be performed 
+if we change the lengths of edges a bit.
+Say, fix a sufficiently small $\eps>0$ 
+and make the lengths of edges to be 
+$a_1'$, $a_2',\dots, a_l'$,
+such that 
+$$a_i'\lg a_i\pm\eps$$ 
+for each $i$.
+If $\eps$ is small enough,
+the sides of each triangle of $\mathcal{T}$ satisfy the strict triangle inequality.
+Therefore one can cut such triangles from the plane and glue them 
+together according the rule encoded in $\mathcal{T}$ and obtain a polyhedral space $P'$ which is homeomorphic to $\SS^2$.
+Further note that the angle of a triangle depends continuously on its sides.
+Hence for small enough $\eps>0$, 
+the curvature of any vertex in $P'$ is still positive;
+i.e., $P'\in\left]  \mathbf{P}_k\right[$.
+
+Clearly if $\eps>0$ is small enough
+then so is $|P-P'|_{\mathcal{M}}$.
+I.e.,
+$$f\:(a_1', a_2',\dots, a_l')
+\mapsto 
+[P']$$ 
+give a continuous map 
+$f\:U\to\mathbf{P}_k$,
+where
+\begin{align*}
+ U=(a_1-\eps,a_1+\eps)\times (a_2-\eps,a_2+\eps)
+\times\dots\times
+(a_l-\eps,a_l+\eps)
+\subset
+\RR^l.
+\end{align*}
+It remains to establish the following two claims. 
+\begin{clm}{}\label{clm:injective}
+$f$ is injective. 
+\end{clm}
+ 
+\begin{clm}{}\label{clm:surjective} $f(U)$ contains a neighborhood of $[P]$ in $\mathbf{P}_k$.
+\end{clm}
+
+Assume $f$ is not injective for all $\eps>0$.
+I.e.,
+there is a collection of numbers $(a_1',a_2',\dots, a_l')$ arbitrarily close to $(a_1,a_2,\dots, a_l)$ such that $K'=f(a_1',a_2',\dots, a_l')$ has a symmetry.
+Note that a symmetry of $K'$ has to give a nontrivial permutation of the vertexes of $K'$.
+Passing to the limit as $a_i'\to a_i$ for each $i$,
+we get that $K$ has a symmetry,
+a contradiction.
+
+The condition \ref{clm:surjective} follows from Exercise~\ref{ex:GH=>eps-isom}.
+\qeds
+
+
+
+
+
+
+
+\section{Outline of the proof}\label{sec:outline}
+
+Let us denote by $\mathbf{R}_k$ the subset of $\mathbf{P}_k$
+formed by isometry classes of realizable spaces.
+As was already mentioned, it is sufficient to prove that
+\begin{clm}{}
+$\mathbf{R}_k=\mathbf{P}_k$ for any integer $k\ge 3$.
+\end{clm}
+
+In the proof, we use the following lemmas.
+
+\begin{thm}{Closed lemma}\label{lem:Phi(P)-closed}
+$\mathbf{R}_k$ is a closed subset of $\mathbf{P}_k$.
+\end{thm}
+
+Let us denote by $\mathbf{P}_k'$ the subspace of $\mathbf{P}_k$
+formed by the isometry classes of spaces without symmetry.
+
+\begin{thm}{Exercise}\label{ex:open-dense}
+$\mathbf{P}'_k$ is an open dense%
+\footnote{i.e., the closure of $\mathbf{P}'_k$ is $\mathbf{P}_k$.}
+ subspace of $\mathbf{P}$.
+\end{thm}
+
+Further, 
+set $\mathbf{R}_k'=\mathbf{R}_k\cap \mathbf{P}_k'$;
+i.e. $P\in \left]\mathbf{R}_k'\right[$ if $P$  is a realizable space without symmetry from $\left]\mathbf{P}_k\right[$. 
+
+\begin{thm}{Open lemma}\label{lem:Phi(P)-open}
+$\mathbf{R}_k'$ is an open subset of $\mathbf{P}_k'$.
+\end{thm}
+
+
+\begin{thm}{Connecting lemma}\label{lem:Phi(P)-connect}
+???Any two points in the space $\mathbf{P}_{k}$ can be connected by a path.
+Moreover, any path in $\mathbf{P}_{k}$ with endpoints in $\mathbf{P}_{k}'$
+can be deformed into a path in $\mathbf{P}_{k}'$
+
+??? $\mathbf{P}'_{k}$ is connected;
+i.e., $\emptyset$ and whole $\mathbf{P}'_{k}$
+are the only subsets of $\mathbf{P}_{k}'$ which are open and closed at the same time.
+\end{thm}
+
+
+\parit{Proof of Existence theorem modulo the lemmas above.}
+From the Closed and Open lemmas, 
+it follows that  $\mathbf{R}_k'=\mathbf{R}_k\cap \mathbf{P}_k'$ is a subset of $\mathbf{P}_{k}'$ which is closed and open at the same time.
+Clearly $\mathbf{R}_k'$ is nonempty.
+Therefore, by the Connecting lemma, $\mathbf{R}_k'=\mathbf{P}_{k}'$.
+Finally, applying Exercise~\ref{ex:open-dense} and the Closed lemma again, we get $\mathbf{R}_k=\mathbf{P}_{k}$.
+\qeds
+
+In the next section we prove the Closed and Open lemmas.
+The Connecting lemma is proved in sections \ref{sec:deformation} and \ref{sec:connect}.
+The proof of the connecting lemma goes by induction on $k$;
+it is the hardest part of the remaining part of the proof.
+
+
+
+
+
+
+
+
+\section{Closed and open lemmas}\label{closed+open}
+
+\parit{Proof of Closed lemma.}
+We need to  show that $P_n$ 
+is a sequence of realizable spaces from $\left]\mathbf{P}_k\right[$
+which is converging in the sense of Gromov--Hausdorff to a space $P_\infty\in \left]\mathbf{P}_k\right[$
+then $P_\infty$ is realizable.
+
+\begin{thm}{Exercise}
+The diameter of convex polyhedron does not exceed the diameter of its surface.
+\end{thm}
+
+For each $P_n$, consider $K_n\in \left]\mathbf{K}_k\right[$
+such that the surface of $K_n$ is isometric to $P_n$.
+Note that diameter of all $P_n$ is bounded above by some real constant $R$.
+According to the exercise, 
+we may assume that all $K_n$ lie in a fixed ball of radius $R$ in $\RR^3$.
+Therefore by Blaschke's compactness theorem (\ref{thm:compact+Hausdorff}) we may choose a subsequence of $K_n$
+which converge in the sense of Hausdorff to say $K_\infty$.
+Clearly $K_\infty$ is a polyhedron with at most $k$ vertices.
+According to Problem~\ref{pr:H>GH-boundary}, the surface of $K_\infty$ is isometric to $P_\infty$. 
+In particular, by ???, $K_\infty$ has exactly $k$ vertices and hence $P_\infty$ is realizable.
+\qeds
+
+The proof of Open lemma relies on lemmas \ref{lem:P-mnld-nosimm}, \ref{lem:poly-mnfld}
+and the following theorem;
+its rigorous proof of it given in Section \ref{sec:domain-invariance}.
+
+\begin{thm}{Domain invariance theorem}\label{thm:domain-invariance}
+If $\Omega$ is an open subset of $\RR^n$ 
+and $f\:\Omega \to \RR^n$ is an injective continuous map,
+then the image $f(\Omega)$ is open.
+\end{thm}
+
+Note that from Exercise~\ref{ex:compact-homeo} it follows that $f$ is a homeomorphism from $\Omega$ to $f(\Omega)$.
+So this theorem might seem trivial, 
+since a homeomorphic mapping of one space onto
+another always takes open sets into open sets by the definition of homeomorphism.
+However, what was said above implies only that the image of an open set is open
+as a subset of $f(\Omega)$, but not as a subset of $\RR^n$. For example, under the identity mapping $[0,\infty)\to \RR$ the image is not an open subset of $\RR$, although it is open as a subset of $[0,\infty)$.
+
+
+\parit{Proof of Open lemma.} 
+Consider map $\Phi_k\:\mathbf{K}_k\to\mathbb{P}_k$
+which sends congruence class $[K]\in \mathbf{K}_k$
+to the isometry class of its surface.
+
+According to Exercise ???, $\Phi_k$ is continuous
+and by Alexandrov uniqness theorem $\Phi_k$ is injective.
+If $[K]\in \mathbf{K}_k'$ then according to Problem ???, $\Phi_k[K]\in \mathbb{P}_k'$.
+By Lemma ???, we can choose small neighborhoods $U\ni [K]$ in $\mathbf{K}_k'$ and $V\ni [K]$ in $\mathbb{P}_k'$
+such that both $U$ and $V$ are homeomorphic to open sets in $\RR^{3\cdot n-6}$ and $\Phi(U)\subset V$.
+By  Domain invariance theorem (\ref{thm:domain-invariance}),
+$\Phi_k(U)$ is open subset of $V$.
+In particular, the image $\Phi_k(\mathbf{K}_k')$ is open.
+\qeds
+
+
+
+
+ 
+ 
+\section{Deformation by patching}\label{sec:deformation}
+
+In this section we describe a construction which will be used in the next section to prove Connecting lemma (\ref{lem:Phi(P)-connect}).
+
+
+\parbf{Deformation of metric.}
+Let $P$ be a compact metric space space;
+as usual, denote by $|{*}-{*}|$ the metric on $P$.
+
+A family of metrics $|{*}-{*}|_t$,
+$t\in[0,1]$ on $P$
+will be called \emph{deformation of $P$}
+if $|{*}-{*}|_0=|{*}-{*}|$ 
+and 
+$$(t,x,y)\mapsto |x-y|_t$$
+is a continuous function on
+$[0,1]\times P\times P$.
+
+Set $P_t=(P,|{*}-{*}|_t)$;
+i.e., $P_t$ is a metric space with underlying space $P$ and the metric $|{*}-{*}|_t$, in particular $P_0=P$.  
+
+Note that the family of metric spaces $P_t$ is continuous in the sense of Gromov--Hausdorff;
+i.e., for any $t_0\in[0,1]$ we have 
+$$t\to t_0\ \ \Rightarrow\ \ P_t\GHto P_{t_0}.$$
+
+\parbf{Deformations and continuous families.}
+To make a deformation from
+a one parameter family of metric spaces $P_t$  
+one has to produce a homeomorphism 
+$h_t\:P_0\to P_t$ for each $t$,
+such that
+$$(t,x,y)\mapsto |h_t(x)-h_t(y)|_{P_t}$$
+is a continuous function on  $[0,1]\times P_0\times P_0$.
+
+Thus one may think of deformation as about 
+a family of metric spaces $P_t$ with a family of homeomorphisms $h_t\:P_0\to P_t$ as above.
+
+Note that not any one parameter family of metric spaces which is continuous in the sense of Gromov--Hausdorff forms a deformation.
+
+\medskip
+
+Now assume in addition that $P_t\in\left]\mathbf{P}_k\right[$ 
+for any $t\in [0,1]$.
+Fix a homeomorphism $\SS^2\to P_0$;
+so we may think that $P_t=(\SS^2,|{*}-{*}|_t)$ 
+for all $t$.
+Note that in this case, one can label vertices of $P_t$,
+say as $v^1_t, v^2_t,\dots,v^k_t$
+in such a way that $t\mapsto v^i_t$ forms a path in $\SS^2$.
+Moreover this labeling is unique up to permutation of the upper indexes.
+
+\begin{thm}{Exercise}
+Prove the last two statements. 
+\end{thm}
+
+This labeling gives a bijection between the vertices of $P_0$ and $P_t$, which will be referred further as the \emph{vertex correspondence of the deformation}.
+We also will say that the vertex  $v^i_t\in P_t$
+\emph{corresponds} to vertex $v^i\in P$.
+
+\medskip
+
+Let us use the introduced notation to formulate a slightly stronger version 
+of Connecting Lemma (\ref{lem:Phi(P)-connect}), 
+which turns out to be easier to prove using induction by $k$. 
+
+Further we say that a 
+\emph{deformation $(P,|{*}-{*}|_t)$ is from $P$ to $P'$}%
+\index{deformation from $P$ to $P'$}
+if $P\z\iso (P,|{*}-{*}|_0)$ 
+and $P'\iso (P,|{*}-{*}|_1)$.
+ 
+
+
+\parit{Patching construction.}\index{patching construction}
+Choose any two vertices $p$ and $q$ in $P$  denote their curvatures by $\omega_p$ and $\omega_q$.
+
+\begin{wrapfigure}{r}{50mm}
+\begin{lpic}[t(-5mm),b(-0mm),r(0mm),l(0mm)]{pics/Pt(0.5)}
+\lbl[rt]{9,15;$\tfrac{\omega_p}{2}$}
+\lbl[lt]{82,14;$\tfrac{\omega_q}{2}$}
+\lbl[rb]{16,17,-10;$\hat p=p$}
+\lbl[lb]{77,17,10;$q=\hat q$}
+\lbl[rb]{46,47;$p_t$}
+\lbl[lb]{66,41;$q_t$}
+\end{lpic}
+\end{wrapfigure}
+
+Cut $P$ along an arbitrary geodesic $[pq]$. 
+In the obtained hole,
+we will glue a one-parameter family of patches $A_t$; 
+this way we obtain a deformation $P_t$ of $P$.  
+
+Consider a one parameter family of convex quadrilaterals 
+$[\hat{p}p_tq_t\hat{q}]$ in the plane
+such that
+$$\begin{aligned}
+\mangle p_t\hat{p}\hat{q}
+&=\tfrac {\omega_q}2,
+&
+\mangle\hat{p}\hat{q}q_t
+&=\tfrac {\omega_q}2
+\end{aligned}
+\eqlbl{eq:<pqq_t}
+$$
+and
+$|\hat{p}-\hat{q}|_{\RR^2}=|p-q|_P$.
+We assume that the points $p_t$ and $q_t$ depend continuously on the parameter $t\in [0,1]$
+and $p_0=\hat p$, $q_0=\hat q$;
+so at $t=0$ the quadrilateral degenerates to the segment $[\hat p\hat q]$.
+
+To construct the patch $A_t$,
+take two copies of $[\hat{p}p_tq_t\hat{q}]$
+and identify them along corresponding points on the sides 
+$[\hat{p}p_t]$,
+$[p_tq_t]$,
+$[q_t\hat{q}]$.
+Now  glue $A_t$ in the hole of $P$ 
+so that 
+$\hat p$ is glued to $p$ and $\hat q$ to $q$.
+Denote by $P_t$ the obtained space.
+
+\begin{thm}{Exercise}
+Prove that $P_t$ is a deformation of $P$
+by constructing the needed one parameter family of homeomorphisms 
+$P\z\to P_t$.
+\end{thm}
+
+The polyhedral space $P_t$ has vertices at the points $p_t$ and $q_t$,
+it also inherits every vertex of $P$ except $p$ and $q$. 
+To see this, 
+notice that 
+a neighborhood of $[pq]$ in $P$ 
+is isometric to two copies 
+of the green quadrilateral on the picture, with identified the corresponding points 
+on the sides marked by blue and black.
+The patch $A_t$ is isometric to two copies 
+of the purple quadrilateral, with identified corresponding points 
+on the sides marked by red.
+After cutting $P$ along $[pq]$ (the black edge on the picture) and gluing in the patch $A_t$, 
+it will look like two copies of the union of two quadrilaterals, green and purple,
+with the corresponding points 
+on the sides marked by blue and red identified.
+
+\begin{wrapfigure}{r}{50mm}
+\begin{lpic}[t(-3mm),b(-0mm),r(0mm),l(0mm)]{pics/Pt-3(0.5)}
+\lbl[rt]{9,15;$\tfrac{\omega_p}{2}$}
+\lbl[lt]{82,14;$\tfrac{\omega_q}{2}$}
+\lbl[rb]{16,17,-10;$\hat p=p$}
+\lbl[lb]{77,17,10;$q=\hat q$}
+\lbl[r]{54,56;$p_1=q_1$}
+\end{lpic}
+\end{wrapfigure}
+
+\parit{Case of small curvature.}
+If in addition 
+$$\omega_p+\omega_q<2\cdot \pi$$
+then one can choose $|p_1-q_1|$ arbitrary small and even equal zero.
+
+In the later case the quadrilateral degenerates to a triangle;
+so $P_1$ has $k-1$ vertices,
+one less than $P_0$.
+
+\medskip
+
+Now we will use the patching construction to prove the following Lemma.
+Briefly, it states that if $k\ge 4$, 
+then any space $P_0$ with isometry class in $\mathbf{P}_k$ 
+and two marked vertices $p_0,q_0$
+can be deformed in $\mathbf{P}_{k}$
+so that the the vertices corresponding to $p_0$ and $q_0$ get much closer than any other pair of vertices of  and their curvatures getting small.
+
+\section{Connecting lemma; first part}\label{sec:connect}
+
+In this section we use the patching construction described above to prove the following lemma.
+
+\begin{thm}{Lemma}\label{lem:cont+}
+Given $P, P'\in\left] \mathbf{P}_k\right[$, 
+there is a deformation $P_t$ from $P$
+to $P'$
+such that 
+ $P_t\in\left]\mathbf{P}_k\right[$ for all $t$.
+
+Moreover:
+
+\begin{subthm}{}
+Any bijection between vertices of $P$ 
+and $P'$ can be realized as the vertex correspondence  of the deformation $P_t$.
+\end{subthm}
+
+\begin{subthm}{}
+???
+The space $P_t$ has no symmetry for any $t\ne0,1$.
+\end{subthm}
+
+
+\end{thm}
+
+First we prove the following.
+
+\begin{thm}{Lemma}\label{lem:k>=4}
+Let $k\ge 4$, $\eps>0$,
+$P_0\in\left] \mathbf{P}_k\right[$ 
+and $p_0,q_0$ be two vertices of $P_0$.
+Then there is a deformation $P_t\in\left] \mathbf{P}_{k}\right[$
+from $P_0$ to $P_1$ such that 
+\begin{subthm}{}
+The corresponding vertices $p_1$ and $q_1$ lie on the distance at least 10 times smaller than the distance between any other pair of vertices in $P_1$
+\end{subthm}
+\begin{subthm}{}
+The curvatures of $P_1$ at $p_1$ and $q_1$ are smaller than $\eps$.
+\end{subthm}
+\end{thm}
+
+\parit{Proof.} Note that the patching construction makes possible to a move any portion of curvature from one vertex to an other
+as far as at each vertex the curvature is in the range $(0,2\cdot\pi)$.
+I.e., given two vertices $x_0$ and $y_0$ in $P_0$ we can construct a deformation $P_t$ with corresponding vertices $x_t$ and $y_t$
+such that the curvatures $\omega_{x_1}$ and $\omega_{y_1}$ take any values in $(0,2\cdot\pi)$ such that
+$$\omega_{x_1}+\omega_{y_1}=\omega_{x_0}+\omega_{y_0}.$$
+
+
+
+I claim that almost all curvature of $P_1$ 
+can be moved to a given two vertices.
+This can be easily arranged by applying the patching construction recursively;
+i.e.,
+\begin{itemize}
+\item Start with $P_0$; 
+choose a pair of vertices and construct a deformation $P_t$.
+\item Choose an other pair of vertices in $P_1$ and apply the construction again to obtain a deformation from $P_1$ to $P_2$ and $t\in [1,2]$.
+\item Repeat this as many times as necessary.
+\item After $n$ times you get a ``long'' deformation $P_t$ with $t\in [0,n]$, which can be linearly  reparametrized by $[0,1]$.
+\end{itemize}
+
+Therefore, if $k\ge 4$,
+then almost all curvature can be moved to the vertices different form $p_1$ and $q_1$,
+making the curvatures at $p_1$ and $q_1$ arbitrary small.
+Once it is done we may apply the case of small curvature of the patching construction 
+to meet the condition on the distance
+$|p_1-q_1|_{P_1}$.
+\qeds
+
+
+
+
+
+
+ 
+
+
+
+
+
+\parit{Proof of Lemma~\ref{lem:cont+}.}
+I will apply induction on $k$.
+
+\parit{Base case, $k=3$.}
+Let $u$, $v$ and $w$ be the vertices of $P$
+and $u'$, $v'$ and $w'$ be the vertices of $P'$.
+Assume we want to construct a deformation $P_t$ for which 
+$u$ corresponds to $u'$, 
+$v$ corresponds to $v'$
+and
+$w$ corresponds to $w'$.
+
+Cut $P$ by geodesics $[uv]$, $[vw]$ and $[wu]$.
+Note that according to Exercise~\ref{ex:poly+geod}, these geodesics
+intersect only at the common vertices.
+Therefore after the cutting,
+we obtain two congruent flat triangles.
+It follows that $P$ is completely determined 
+by three distances $a=|u-v|_P$, $b=|v-w|_P$ and $c=|w-u|_P$.
+
+Repeat the same procedure for $P'$, 
+we obtain three numbers $a'$, $b'$ and $c'$.
+
+Set
+\begin{align*}
+a_t
+&=(1-t)\cdot a+t\cdot a'
+&
+b_t
+&=(1-t)\cdot b+t\cdot b'
+&
+c_t
+&=(1-t)\cdot c+t\cdot c'.
+\end{align*}
+The both triples $a,b,c$ and $a',b',c'$
+satisfy the strict triangle inequality.
+Therefore the same holds for the triple $a_t,b_t,c_t$ for any $t\in[0,1]$.
+
+Now, for each $t\in[0,1]$, 
+glue the space $P_t$ from two copies of triangle with sides $a_t,b_t$ and $c_t$.
+denote by $u_t$, $v_t$ and $w_t$ the corresponding vertices of $P_t$.
+
+To make a deformation from the family $P_t$,
+choose a homeomorphism $P\to P_t$ which sends linearly triangle to triangle and such that $u\mapsto u_t$, $v\mapsto v_t$ and $w\mapsto w_t$.
+
+\parit{Induction step.}
+Fix $k\ge 4$
+and assume that the lemma is already proved if the number of vertices is strictly less then $k$.
+
+Applying Lemma \ref{lem:k>=4},
+we may assume that $P$ has two vertices
+$p$ and $q$ with very small curvatures and on distance at least 10 times smaller than the distance between any other pair of vertices in $P$.
+Analogously, we may assume in $P'$ the corresponding (by the given bijection) vertices 
+$p'$ and $q'$ satisfy the same condition.
+
+Let us apply the case of small curvature of the patching construction for $P$.
+I.e.,
+let us cut $P$ along $[pq]$ and glue in the hole a patch glued from two congruent triangles. 
+This way we obtain a new polyhedral space, say $Q$,
+which isometry class belongs to $\mathbf{P}_{k-1}$.
+In the obtained space $Q$, the points $p$ and $q$ become regular, instead we get an other vertex which will be denoted by $z$.
+Note that there are unique geodesics $[zp]$ and $[zq]$ and they cut at $z$ two equal angles.
+ 
+Let $Q'\in\left]\mathbf{P}_{k-1}\right[$ be the result 
+of the same construction for $P'$;
+we denote by $z'$ the vertex which appear in $Q'$ instead of $p'$ and $q'$.
+
+Applying the induction hypothesis, we can find a deformation $Q_t$ from $Q$ to $Q'$ 
+such that $z$ corresponds to $z'$
+and and the vertex correspondence for the rest of the vertices taken the same as the correspondence for $P$ and $P'$.
+Denote by $z_t$ the vertex of $Q_t$ which corresponds to $z\in Q$.
+
+Now we will use the obtained deformation $Q_t$
+to construct the needed deformation $P_t$.
+Note that we can choose points $p_t, q_t\in Q_t$ such that 
+\begin{enumerate}[(i)]
+\item $p_0=p$, $p_1=p'$, $q_0=q$, $q_1=q'$.
+\item For any $t$, each distance $|z_t-p_t|_{Q_t}$ and $|z_t-q_t|_{Q_t}$ is positive
+but smaller then the distance between any pair of vertices of $Q_t$
+\item The (necessary unique) geodesics $[z_tp_t]$ and $[z_tq_t]$ cut two equal angles at $z_t$.
+\item $p_t$, $q_t$ depend continuously on $t$; 
+i.e., for the one parameter family of homeomorphisms $h_t\:Q\to Q_t$ of the deformation,
+the maps $t\mapsto h^{-1}_t(p_t)$ and $t\mapsto h^{-1}_t(q_t)$ are both continuous paths in $Q$.
+\end{enumerate}
+
+Note that these conditions imply that the existence of two geodesics,
+say $\gamma_1$ and $\gamma_2$
+from $p_t$ to $q_t$ which form a digon in $Q_t$ containing $z_t$ inside. 
+Cut $Q_t$ along the digon, 
+in the remaining part (the one without $z_t$)
+glue the corresponding points on $\gamma_1$ and $\gamma_2$.
+We obtain a polyhedral space $P_t$;
+the points $p_t$ and $q_t$ become vertices in $P_t$.
+
+By construction, $P_0= P$ and $P_1= P'$.
+It remains to construct a homeomorphism $P\to P_t$ for each $t$ which makes a deformation from the family $P_t$.
+The later is left to the reader.
+\qeds
+
+
+
+
+
+
+\section{???Braking the symmetry}
+
+It remains to show that ???.
+Note that any symmetry of $P_t$ 
+induce a nontrivial permutation of its vertices.
+In particular, if the curvatures of all vertices are different then the space has no symmetry.
+If both $P$ and $P'$ have no symmetry, it is easy to modify the above deformation in such a way that all curvatures are different
+for all values with exception for finite number of values $t_1,t_2,\dots,t_n$
+and at each $t_i$ there is exactly one pair of vertices with the same curvature.
+If $P_{t_i}$ has a symmetry then the induced permutation only changes the places of these two vertices.
+
+
+
+\section{Remarks}
+
+The rest of the proof presented here is nearly the same as in original one.
+
+There is an alternative, very interesting proof due to Volkov,
+???.
+
+\parbf{Connecting lema.}
+The patching construction described below was introduced by Alexandrov in ???;
+it was much later than his publiction of Existence theorem ???. 
+It seems that I was the first to realize that this construction simplifies the the proof of Alexandrov existence theorem.
+
+The Connecting lemma has a simple but not elementary proof using Teichm\"uller theory.
+
+Here is the idea.
+Let $P$ be a polyhedral space with exactly $k$ vertices.
+Note that $P$ with all its vertices removed admits natural complex structure.
+It describes a map, say $\Psi_k$ from $\mathbf{P}_k$ to the Teichm\"uller space $\mathcal{T}_k$ which is the space of that the space of conformal structures on sphere with $k$ points removed.
+(The map consists of forgetting the metric, and
+remembering only the conformal structure.)
+
+The space $\mathcal{T}_k$ is homeomorphic to the space of configurations of $k$ points in the $\SS^2$
+up to a conformal map $\SS^2\to \SS^2$.
+It is easy to see that $\mathcal{T}_k$ is connected.
+
+Further the preimage $\Psi_k^{-1}(T)\subset \mathbf{P}_k$ is also connected for any $T\in \mathcal{T}_k$.
+To prove the later statement, one has to observe that $P$ can be uniquely recovered if one knows 
+$T=\Psi_k(P)$,
+the curvatures at each vertex 
+and the total area of $P$.
+
+
+
+\section*{Exercises}
+
+\begin{pr}
+Consider a regular octahedra $H$,
+with vertices $a$, $a'$, $b$, $b'$, $c$, $c'$
+and assume that the pairs $(a,a')$, $(b,b')$ and $(c,c')$
+are opposite. 
+
+Cut from $H$ a pyramid with vertex $a$ by a plane $\Pi$ parallel to the plane containing $b$, $b'$, $c$ and $c'$.
+Denote by $P$ the remaining surface of $H$;
+it is bounded by a broken line $xyx'y'$ which bounds a square in $\Pi$.
+
+Consider the patch $R_\alpha$, which is a planar rhombus with the same side length as $xyx'y'$ and with angle $\alpha$ at one vertex.
+Glue $R_\alpha$ to $P$ along $xyx'y'$ by a length-preserving map of its boundary vertex-to-vertex.
+Denote the obtained space as $P_\alpha$.
+
+\begin{enumerate}
+\item For which $\alpha$ does the space $P_\alpha$ has non-negative curvature?
+For such $\alpha$ denote by $K_\alpha$ the convex polyhedron with surface isometric to $P_\alpha$.
+
+\item For which pairs of $\alpha, \alpha'$ are the polyhedra $K_\alpha$ and $K_{\alpha'}$ congruent?
+
+\item Construct another polygonal patch (not a rhombus) which gives a space with non-negative curvature.
+
+\item   Characterize all such patches.
+\end{enumerate}
+\end{pr}
+
+\begin{pr}
+Let $P$ be a non-negatively curved polyhedral metric on $\SS^2$. 
+Cut a triangle $\Delta$ from $P$ along geodesics and equip it with the induced length metric.
+Show that $\Delta$ is isometric to a planar triangle if and only if the sum of its angles is $\pi$.
+\end{pr}
+
+Hint: Use Problem~\ref{pr:sum>=pi} to prove the ``only if'' part. To prove the ``if'' part, construct a distance preserving map explicitly.
+
+
+
+
+
+\begin{pr}\label{pr:sum>=pi}
+Let $P$ be a non-negatively curved polyhedral space homeomorphic to a sphere
+and let $\Delta$ be a triangle in $P$ bounded by 3 geodesics.
+Denote by $\alpha, \beta$ and $\gamma$ the angles of $\Delta$.
+Show that $\alpha+\beta+\gamma-\pi$  is equal to the sum of curvatures of all points in the interior of $\Delta$. 
+
+In particular, the sum of the angles of any triangle in $P$ is at least $\pi$.
+\end{pr}
+
+Hint: Pass to the doubling of $\Delta$ and apply \ref{ex:sum=2pi} together with Exercise~\ref{ex:poly+geod}.
+
+\begin{pr}  
+Let $P$ be the surface of a regular tetrahedron.
+Find a periodic local geodesic%
+\footnote{see Definition~\ref{def:local-geod}} in $P$.
+Show that any two distinct vertices can be joined by arbitrary long local geodesic.   
+\end{pr}
+
+
+
+
+
+\begin{pr}
+Let $P$ be a non-negatively curved polyhedral space homeomorphic to a sphere with exactly 4 vertices
+$a$, $b$, $c$ and $d$.
+Let us draw on $P$ a geodesic between each pair of vertices $[ab]$,
+$[bc]$, $[cd]$ and $[da]$.
+Show that either these geodesics intersect only at the common ends, 
+or exactly two of them intersect at an interior point.
+
+In the latter case, show that $P$ is isometric to the doubling of a convex quadrilateral. 
+
+(You may use Alexandrov's theorem, doing this problem directly is harder.)
+\end{pr}
+
+
+\begin{pr}
+Show that $\mathbf{K}_k$ is connected.%
+\footnote{Note that Alexandrov's theorem implies that $\mathbf{P}_k$ is also connected.}
+\end{pr}
+
+
+
+
+???\parbf{Base.} 
+$\mathbf{R}_3=\mathbf{P}_3$.
+
+\parit{Proof.}
+Assume that $P\in \left]\mathbf{P}_3\right[$ has exactly three vertices, say $u$, $v$, and $w$. 
+It is sufficient to show that 
+\begin{clm}{}\label{clm:doule-trig}
+$P$ is isometric to a
+doubling of a planar triangle.
+i.e., the surface of this triangle in $\RR^3$.
+\end{clm}
+
+Choose geodesics  $[uv]$, $[vw]$ and $[wu]$ between each pair of points.
+According to Exercise~\ref{ex:poly+geod}
+these geodesics do not intersect each other at the interior points. 
+
+Cut $P$ along the geodesics $[uv]$, $[vw]$ and $[wu]$.
+As a result we get two congruent flat triangles $\Delta$ and $\Delta'$.
+Hence \ref{clm:doule-trig} follows.
+\qeds 
+
+
+
+
+
+   
+

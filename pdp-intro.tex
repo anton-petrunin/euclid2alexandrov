@@ -1,0 +1,465 @@
+\chapter*{Preface}
+These lectures were a part of the geometry course held during the Fall 2011 Mathematics Advanced Study Semesters (MASS) Program at Penn State (\url{http://www.math.psu.edu/mass/}).
+
+The lectures are meant to be accessible to advanced undergraduate and early graduate students in mathematics.  
+We have placed a great emphasis on clarity and exposition, and we have included many exercises.  Hints and solutions for most of the exercises are provided in the end. 
+
+The lectures discuss piecewise distance preserving maps from a 2-dimensional polyhedral space into the plane.  Roughly speaking, a polyhedral space is a space that is glued together out of triangles, for example the surface of a polyhedron.  If one imagines such a polyhedral space as a paper model, then a piecewise distance preserving map into the plane is essentially a way to fold the model so that it lays flat on a table. 
+We have five lectures on the following topics:
+
+\begin{itemize}
+\item Zalgaller's folding theorem, which guarantees the existence of a piecewise distance preserving map from a 2-dimensional polyhedral space into the plane.  In other words, it is always possible to fold the paper model onto the table.
+\item Brehm's extension theorem, which allows one to build piecewise distance preserving maps from a convex polygon into the plane with prescribed images on a finite subset of the polygon.
+\item Akopyan's approximation theorem, which allows one to approximate  maps from a 2-dimensional polyhedral space into the plane by piecewise distance preserving maps.
+\item Gromov's rumpling theorem, which shows the existence of a length-preserving map from the sphere into the plane; 
+i.e., a map that preserves the lengths of all curves.
+\item An entertaining problem of Arnold on paper folding, which asks if it is possible to fold a square in the plane so that the perimeter increases.
+\end{itemize}
+
+We only consider the 2-dimensional case to keep things easy to visualize.
+However, 
+most of the results admit generalizations to higher dimensions.
+These results are discussed in the Final Remarks, where proper credit and references are given.
+
+\parbf{Acknowledgments.} 
+We would like to thank
+Arseniy Akopyan, 
+Robert Lang, 
+Alexei Tarasov
+for their help.
+Also we would like to thank all the students in our class
+for their participation and true interest.
+
+\tableofcontents
+
+\chapter*{Preliminaries}
+\addcontentsline{toc}{chapter}{Preliminaries}
+\addtocontents{toc}{\protect\begin{quote}}
+
+This chapter serves as a quick review of the necessary background material.  It's primary purpose is to refresh the reader's memory and to familiarize the reader with our notation.  For a more in-depth account of this material, we recommend the first three chapters of the book
+``Metric Geometry'' by Burago--Burago--Ivanov \cite{BBI}.
+
+
+\section*{Metric spaces}
+\addtocontents{toc}{Metric spaces.}
+
+\begin{thm}{Definition}
+\label{def:metric-space}
+A metric space is a pair $(X,\Dist)$ where $X$ is a set and 
+$$\Dist \: X \times X \rightarrow [0,\infty)$$
+is a function satisfying
+
+\begin{subthm}{def:metric-space:zero}
+$\Dist(x,y) = 0$ if and only if $x=y$,
+\end{subthm}
+
+\begin{subthm}{}
+$\Dist(x,y) = \Dist(y,x)$ for any $x, y \in X$,
+\end{subthm}
+
+\begin{subthm}{triangle-inq}
+$\Dist(x,z)\le \Dist(x,y)+\Dist(y,z)$ for any $x, y, z \in X$.
+\end{subthm}
+
+\end{thm}
+
+Condition (\ref{SHORT.triangle-inq}) is called the \emph{triangle inequality}\index{triangle inequality}.
+An element $x \in X$ is called a \emph{point}\index{point} of the metric space $X$.
+The function $\Dist\: X \times X \rightarrow [0,\infty)$ is called a \emph{metric}\index{metric}, 
+and the non-negative value $\Dist(x,y)$ is called the \emph{distance}\index{distance} from $x$ to $y$.
+
+Most of the time, it will be understood which metric we are using on a given set.
+In such cases, we may refer to the \emph{metric space $X$}, instead of the \emph{metric space $(X,\Dist)$}.
+We will often use the notation $|x-y|$ to denote\footnote{Be aware that this is just alternate notation for $\Dist(x,y)$, and $x - y$ itself has no meaning in a general metric space.} the distance $\Dist(x,y)$, and we shall occasionally write $|x-y|_X$ to emphasize that we are using the metric on the space $X$.
+%Also, in this case, 
+%the distance $\Dist(x,y)$ may be denoted simply as $|x-y|$ 
+%or $|x-y|_X$, if we want to emphasize that the points $x$ and $y$ belong to the metric space $X$.  
+
+An important example for us is $n$-dimensional Euclidean space $\RR^n$ with the standard metric
+\[|x-y|_{\RR^n} = \sqrt{(x_1 - y_1)^2+\dots+(x_n - y_n)^2},\]
+defined for the points $x = (x_1, \ldots , x_n)$ and $y = (y_1, \ldots , y_n)$ in $\RR^n$.
+
+Any subset of a metric space is also a metric space, by restricting the original metric to the subset.  In this way, all subsets of Euclidean space, in particular convex polyhedra,
+are metric spaces.
+The unit sphere $\SS^n$, which is the set of all unit vectors in $\RR^{n+1}$, is also a metric space in this way.  
+However, we shall be also interested in a different metric on $\SS^n$, the \emph{angle metric}\index{angle metric}.\label{angle-metric}
+This metric can be formally defined as
+\[ |x - y|_{\SS^n} = \arccos\langle x, y\rangle,\]  
+where, $\langle x, y \rangle$ is the standard inner product of the two unit vectors $x, y \in \RR^{n+1}$.
+The relationship between these two metrics on $\SS^n$ will be described below, in the discussion of induced length metrics.
+
+\begin{thm}{Definition}
+Let $X$ and $Y$ be metric spaces.
+\begin{subthm}{}
+A map $f\:X\to Y$ is \emph{distance non-expanding}\index{distance non-expanding map} if
+$$|f(x)-f(x')|_Y\le |x-x'|_X$$
+for any $x,x'\in X$.
+\end{subthm}
+
+\begin{subthm}{}
+A map $f\:X\to Y$ is \emph{distance preserving}\index{distance preserving map} if
+$$|f(x)-f(x')|_Y= |x-x'|_X$$
+for any $x,x'\in X$.
+\end{subthm}
+
+\begin{subthm}{}
+A distance preserving bijection $f\:X\to Y$ is called an \emph{isometry}\index{isometry}.
+\end{subthm}
+
+\begin{subthm}{}
+The spaces $X$ and $Y$ are called \emph{isometric}\index{isometric spaces} (briefly $X\iso Y$)
+ if there is an isometry  $f\:X\to Y$.
+\end{subthm}
+
+\end{thm}
+
+
+\begin{thm}{Exercise}\label{ex:IsometriesOfR2}
+
+\begin{subthm}{} \label{ex:IsometriesOfR2Uniqueness}
+Prove that an isometry $\iota: \RR^2 \to \RR^2$ is uniquely determined by its effect on any three non-collinear points.
+\end{subthm}
+
+\begin{subthm}{}\label{ex:IsometriesOfR2Existence}
+Show that if $x, y, z$ and  $x', y', z'$ are two collections of non-collinear points in $\RR^2$ satisfying
+$$|x - y| = |x' - y'|, \quad |x - z| = |x' - z'|, \quad |y - z| = |y' - z'|,$$
+then there is an isometry $\iota$ of $\RR^2$ such that
+\[ \iota(x) = x', \quad \iota(y) = y', \quad \iota(z) = z'. \]  By part a), $\iota$ is unique.
+\end{subthm}
+\end{thm}
+
+\section*{Calculus}
+\addtocontents{toc}{Calculus.}
+
+\begin{thm}{Definition}
+ Let $X$ be a metric space.
+A sequence of points $x_1, x_2, \ldots$ in $X$ is called \emph{convergent}\index{convergent}
+if there is 
+$x_\infty\in X$ such that $|x_\infty -x_n|\to 0$ as $n\to\infty$.  
+That is, for every $\eps > 0$, there is a natural number $N$ such that for all $n \ge N$, we have $$|x_\infty-x_n| < \eps.$$
+
+In this case we say that the sequence $(x_n)$ \emph{converges} to $x_\infty$, 
+or $x_\infty$ is the \emph{limit} of the sequence $(x_n)$.
+Notationally, we write $x_n\to x_\infty$ as $n\to\infty$
+or $x_\infty=\lim_{n\to\infty} x_n$.
+\end{thm}
+
+\begin{thm}{Definition}
+Let $X$ and $Y$ be metric spaces.
+A map $f\:X\to Y$ is called continuous if for any convergent sequence $x_n\to x_\infty$ in $X$,
+%the sequence $y_n\z=f(x_n)$ converges to $y_\infty=f(x_\infty)$ in $Y$.
+we have $f(x_n) \to f(x_\infty)$ in $Y$.
+
+Equivalently, $f\:X\to Y$ is continuous if for any $x\in X$ and any $\eps>0$,
+there is $\delta>0$ such that 
+$$|x-x'|_X<\delta\ \text{ implies }\ |f(x)-f(x')|_Y<\eps.$$
+%$$|x-x'|_X<\delta\ \Rightarrow\ |f(x)-f(x')|_Y<\eps.$$
+
+\end{thm}
+
+\begin{thm}{Definition}
+Let $X$ and $Y$ be metric spaces.
+A continuous bijection $f\:X\to Y$ 
+is called a \emph{homeomorphism}\index{homeomorphism} 
+if its inverse $f^{-1}\:Y\z\to X$ is also continuous.
+
+If there exists a homeomorphism $f\:X\to Y$,
+we say that $X$ is \emph{homeomorphic}\index{homeomorphic} to $Y$,
+or  $X$ and $Y$ are \emph{homeomorphic}.
+\end{thm}
+Notice that a distance non-expanding map is always continuous, and an isometry is an example of a homeomorphism.
+
+
+
+
+\begin{thm}{Definition}
+A subset $A$ of a metric space $X$ is called \emph{closed}\index{closed set} if whenever a sequence $(x_n)$ of points from $A$ converges in $X$, we have that $\lim_{n\to\infty} x_n \in A$.
+
+A set $\Omega \subset X$ is called \emph{open}\index{open set} if the complement $X \setminus \Omega$ is a closed set.
+Equivalently, $\Omega \subset X$ is open if for any $z\in \Omega$, 
+there is $\eps>0$ such that if $|x-z|<\eps$, then $x \in \Omega$.
+\end{thm}
+
+Note that the intersection of an arbitrary family of closed sets is closed.
+It follows that for any set $Q$ in a metric space $X$, there is a minimal closed set which contains $Q$.
+This set is called the \emph{closure of $Q$}\index{closure} and is denoted $\Closure Q$.
+The closure of $Q$ can be obtained as the intersection of all closed sets $A$ containing $Q$.\footnote{Notice that the whole space $X$ is a closed subset, hence there is at least one closed set which contains $Q$.}
+The closure of $Q$ is also equal to the set of all limits of all sequences in $Q$.
+
+
+Similarly, the union of an arbitrary family of open sets is open.
+It follows that for any set $Q$ in a metric space, there is a maximal open set which is contained in $Q$.
+This set is called the \emph{interior of $Q$}\index{interior} and is denoted as $\Interior Q$.
+The interior of $Q$ can be obtained as the union of all open sets contained in $Q$.
+
+The set-theoretic difference
+$$\partial Q=\Closure Q\backslash \Interior Q$$
+is called the \emph{boundary}\index{boundary} of $Q$.
+Since the boundary of $Q$ depends on the space in which it is embedded, we may use the notation $\partial_X Q$ if we want to emphasize that $Q$ is a subset of the metric space $X$.
+Notice that $\partial Q$ is a closed set.
+One can show that a point $p$ is in $\partial Q$ if and only if for any $\eps>0$, there are points $q\in Q$ and $q'\notin Q$ such that $|p-q| < \eps$ and $|p-q'|<\eps$.
+
+\section*{Curves}
+\addtocontents{toc}{Curves.}
+
+A \emph{real interval}\index{real interval} is a convex subset of $\RR$ which contains more than one point.
+Examples include $(0,1)$, $(-\infty, 0]$, and $\RR$.
+
+\begin{thm}{Definition}\label{def:curve}
+A \emph{curve}\index{curve} is a continuous mapping $\alpha\:\II\to X$,
+where $\II$ is a real interval and $X$ is a metric space. 
+
+If $\II=[a,b]$ and $$\alpha(a)=p,\ \ \alpha(b)=q,$$
+we say that $\alpha$ is a \emph{curve from $p$ to $q$}\index{curve from $p$ to $q$}.
+\end{thm}
+
+\begin{thm}{Definition}\label{def:length}
+Let $\alpha\:\II\to X$ be a curve. Define the \emph{length}\index{length of curve} of $\alpha$ to be
+\begin{align*}
+\length \alpha
+&= 
+\sup \{|\alpha(t_0)-\alpha(t_1)|+|\alpha(t_1)-\alpha(t_2)|+\dots
+\\
+&\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \dots+|\alpha(t_{k-1})-\alpha(t_k)|\}, 
+\end{align*}
+where the supremum is taken over all positive integers $k$ and all sequences $t_0 < t_1 < \cdots < t_k$ in $\II$.
+
+A curve is called \emph{rectifiable}\index{rectifiable curve} if its length is finite.
+\end{thm}
+
+
+\begin{thm}{Semicontinuity of length}\label{thm:length-semicont}
+Length is a lower semi-continuous functional on the space of curves
+$\alpha\:\II\to X$ with respect to point-wise convergence. 
+
+In other words: assume that a sequence
+of curves $\alpha_n\:\II\to X$ converges point-wise 
+to a curve $\alpha_\infty\:\II\to X$;
+i.e., for any fixed $t\in\II$, we have $\alpha_n(t)\to\alpha_\infty(t)$ as $n\to\infty$. 
+Then 
+$$\liminf_{n\to\infty} \length\alpha_n \ge \length\alpha_\infty.\eqlbl{eq:semicont-length}$$
+
+\end{thm}
+
+See \cite[Proposition 2.3.4.]{BBI} for a proof.
+
+\begin{wrapfigure}{r}{32mm}
+\begin{lpic}[t(-8mm),b(-3mm),r(0mm),l(0mm)]{pics/stairs(0.5)}
+%\lbl[lb]{162,180;$\alpha_0$}
+%\lbl[lb]{82,150;{\small $\alpha_1$}}
+%\lbl[lb]{42,130;{\tiny $\alpha_2$}}
+\end{lpic}
+\end{wrapfigure}
+
+
+Note that the inequality \ref{eq:semicont-length} might be strict.
+For example, the diagonal $\alpha_\infty$ of unit square (gray in the picture)
+can be  approximated by a sequence of stairs-like
+polygonal curves $\alpha_n$
+with sides parallel to the sides of the square (for example, $\alpha_6$ is black the picture.)
+In this case
+$\length\alpha_\infty=\sqrt{2}$
+and $\length\alpha_n=2$ for all $n$.
+
+%Note that applying triangle inequality to the definition of length, 
+%we get that if $\gamma$ is a curve from $x$ to $y$ in a metric space $X$ 
+%then
+%$$\length \gamma\ge |x-y|_X.$$
+
+By taking $t_0$ and $t_1$ to be the endpoints of $\II$ in the definition of length, it follows that
+$$\length \alpha\ge |x-y|_X$$ whenever $\alpha$ is a curve in $X$ from $x$ to $y$.
+
+\begin{thm}{Definition}\label{def:length-space}
+A metric space $X$ is called a \emph{length space}\index{length space} if for any two points $x,y\in X$ and any $\eps>0$, there is a curve $\alpha$ from $x$ to $y$ such that
+$$\length \alpha<|x-y|_X+\eps.$$
+
+\end{thm}
+
+Let $X$ be a metric space. 
+Consider the function $\hat d\:X\z\times X\to\RR \cup \{\infty\}$ defined by
+$$\hat d(x,y)\df\inf_\alpha\{\length\alpha\}$$
+where the infimum is taken along all the curves $\alpha$ from $x$ to $y$
+(if there is no such curve, then $\hat d(x,y)=\infty$.)
+
+It is straightforward to see that $\hat d\:X\times X\to\RR$ satisfies all conditions of a metric, provided $\hat d(x,y)<\infty$ for all $x,y\in X$.
+In this case, the metric $\hat d$ will be called the \emph{induced length metric}\index{induced length metric} of the metric $|{*}-{*}|_X$.  By construction, $(X, \hat d)$ is a length space.
+
+For example, the angle metric on $\SS^n$ discussed on page \pageref{angle-metric}, 
+is the induced length metric of the restriction of the Euclidean metric on $\RR^{n+1}$ to $\SS^n$.
+
+
+\begin{thm}{Definition}\label{def:length-preserving}
+A continuous map $f\:X\z\to Y$ between two metric spaces
+is called \emph{length-preserving}\index{length-preserving map} if for any curve $\alpha\:\II\to X$,
+we have 
+$$\length\alpha=\length(f\circ\alpha).$$
+
+\end{thm}
+
+Note that since $f$ is continuous, the composition $f\circ\alpha$ is continuous, hence a curve in $Y$. %(see Definition~\ref{def:curve});
+Therefore the above definition makes sense.
+
+
+\begin{thm}{Exercise}\label{LP=>short}
+Let $X$ and $Y$ be length spaces.
+Show that 
+
+\begin{enumerate}[a)]
+\item\label{LP=>short:a} Any length-preserving map $f: X\to Y$
+is also distance non-expanding.
+\item\label{LP=>short:b} A distance non-expanding $f: X\to Y$ is length-preserving if 
+for any two points $p$ and $q$ in $X$
+and any curve $\alpha$ from $p$ to $q$, we have 
+$$\length(f\circ\alpha)\ge |p-q|.$$
+\end{enumerate}
+\end{thm}
+
+\begin{thm}{Definition}\label{def:geodesic}
+ A curve $\alpha\:\II\to X$ is called a \emph{geodesic}\index{geodesic}%
+\footnote{Formally our ``geodesic'' should be called ``unit-speed minimizing geodesic'',
+and the term ``geodesic'' is reserved for curves which \emph{locally} satisfy the identity
+$$|\alpha(t_0)-\alpha(t_1)|_X=\Const\cdot|t_0-t_1|$$
+for some $\Const\ge 0$.}
+ if it is a distance preserving map;
+i.e., if 
+$$|\alpha(t_0)-\alpha(t_1)|_X=|t_0-t_1|$$
+for any $t_0,t_1\in\II$.
+\end{thm}
+
+If $\alpha$ is a geodesic from $p$ to $q$ then the image $\alpha(\II)$
+will be also denoted as $[p,q]$.
+Once we write $[p,q]$, we mean that there is at least one geodesic from $p$ to $q$ and we made a choice of one of them.
+
+\section*{Polyhedral spaces}
+\addtocontents{toc}{Polyhedral spaces.}
+
+A subset $C \subseteq \RR^n$ is \emph{convex} if for any two points $x, y \in C$, the line segment connecting $x$ and $y$ lies entirely in $C$.
+In other words,
+\[(1-t)\cdot x + t\cdot y\in C\]
+for any $t\in[0,1]$.
+
+Given a subset $V\subset\RR^n$, 
+the intersection of all convex sets containing $V$ is called 
+the \emph{convex hull}\index{convex hull} of $V$,
+and will be denoted by $\Conv V$.
+
+The convex hull of a finite subset of $\RR^n$ is called a \emph{convex polyhedron}\index{convex polyhedron}.  A convex polyhedron is a metric space under the metric it inherits as a subset of $\RR^n$.
+
+\parbf{Simplices.}
+Assume $V=\{v_0,\dots,v_m\}$ is a finite subset of $\RR^n$
+such that the $m$ vectors 
+$$v_1-v_0,\  v_2-v_0,\ \dots,\ v_m-v_0$$ 
+are linearly independent.
+Then the convex hull $\Delta^m=\Conv V$
+is called an \emph{$m$-dimensional (Euclidean) simplex}\index{simplex}.
+
+So,
+a 0-dimensional simplex is a one-point set; 
+a 1-dimensional simplex is a line segment;
+a 2-dimensional simplex is a triangle;
+a 3-dimensional simplex is a tetrahedron.
+
+If $\Delta^m$ is as above,
+then the convex hull of any $(k+1)$-point subset of $\{v_0,\dots,v_m\}$ is a $k$-dimensional simplex, which will be called a \emph{face}\index{face} of $\Delta^m$.
+
+
+\parbf{Barycentric coordinates.}
+Let $\Delta^m=\Conv\{v_0,\dots,v_m\}$ be an $m$-dimensional simplex.
+Note that $x\in \Delta^m$ if and only if 
+$$x=\lambda_0\cdot v_0+\dots+\lambda_m\cdot v_m$$
+for some (necessary unique) array of non-negative real numbers $\lambda_0,\z\dots,\lambda_m$ such that
+\[\lambda_0+\dots+\lambda_m=1.\]
+In this case, the real array $(\lambda_0,\dots,\lambda_m)$ will be called the \emph{barycentric coordinates}\index{barycentric coordinates} of the point $x$.
+
+\parbf{Simplicial complexes.}
+A \emph{simplicial complex}\index{simplicial complex} is defined as a finite collection $\mathcal{K}$
+of simplices in $\RR^n$ that satisfies the following conditions:
+\begin{itemize}
+\item Any face of a simplex from $\mathcal{K}$ is also in $\mathcal{K}$.
+\item The intersection of any two simplices $\Delta_1$ and $\Delta_2\in \mathcal{K}$ is either the empty set or it 
+is a face of both $\Delta_1$ and $\Delta_2$.
+\end{itemize}
+
+The dimension  of simplicial complex $\mathcal{K}$
+(briefly $\dim \mathcal{K}$)
+is defined as the maximal dimension of all of its simplices.
+
+For example, a $1$-dimensional simplicial complex,
+also called a \emph{graph},
+is a finite collection of points 
+with a collection of non-crossing edges connecting some of these points.  
+An example of a $2$-dimensional simplicial complex is the surface of a tetrahedron in $\RR^3$, or more general the surface of any polyhedron in $\RR^3$.  
+Two disjoint $2$-simplices with a single segment connecting a vertex from each simplex gives an other example of a $2$-dimensional simplicial complex.
+Note that in the last example 
+not every simplex forms a face in a simplex of maximal dimension.
+
+We say that a point $x$ belongs to simplicial complex $\mathcal{K}$ if it belongs to one of its simplices.
+The set of all points of  $\mathcal{K}$ is called \emph{underlying set} of $\mathcal{K}$,
+which will be denoted by $|\mathcal{K}|$.  Since $|\mathcal{K}| \subseteq \RR^n$, $|\mathcal{K}|$ is naturally a metric space.
+
+A metric space $X$ is called a \emph{topological polytope}
+if there is a simplicial complex $\mathcal{K}$
+and a homeomorphism
+$f\:|\mathcal{K}|\to X$.
+In this case the complex $\mathcal{K}$ and the homeomorphism are called a
+\emph{triangulation}\index{triangulation}\footnote{The term is a bit misleading, as a triangulation may contain simplices of dimension larger than $2$.} 
+of $X$.
+The images of simplicies of $\mathcal{K}$ in $X$ will be called the simplices of the triangulation\footnote{Since the image of straight lines under a homeomorphism are curves, the simplices in a topological polytope may not ``look like" Euclidean simplices.}.
+
+\begin{thm}{Definition}\label{def:poly}
+A length space $P$ is called a \emph{polyhedral space}\index{polyhedral space}
+if it admits a triangulation such that each simplex in $P$ is isometric to a simplex in Euclidean space.
+\end{thm}
+
+When we refer to a triangulation of a polyhedral space in the future, we will always mean a triangulation as in the above definition.
+
+To construct an example of polyhedral space,
+one may take the underlying set of any simplicial complex in $\RR^n$
+and equip it with the induced length metric.%
+\footnote{In fact any polyhedral space is  isometric to one of these examples; see Exercise~\ref{ex:zalgalle+embedding}.}
+
+Given a triangulation of a polyhedral space, 
+we can consider the associated \emph{barycentric coordinates}\index{barycentric coordinates}.
+If $\{v_1,\dots,v_n\}$ is the set of all vertices of the triangulation,
+then any point $x$ is described uniquely by $n$ numbers $\lambda_1,\dots,\lambda_n$
+such that $\lambda_i\ge 0$ for all $i$,
+$\lambda_1+\dots+\lambda_n=1$,
+and there is a simplex $\Delta$ in the triangulation such that
+$\lambda_i\ne 0$ if and only if $v_i$ is a vertex of $\Delta$.
+Indeed, assume $\Delta$ be the minimal simplex which contains $x$.
+Since $\Delta$ is isometric to a Euclidean simplex,
+we can use barycentric coordinates described above and take $\lambda_i=0$
+if $v_i$ is not a vertex of $\Delta$.
+
+The \emph{dimension of polyhedral space}\index{dimension of polyhedral space} is defined as the maximum dimension of the simplices in its triangulation. (One can show that this value does not depend on the choice of triangulation.)
+
+\begin{thm}{Exercise}
+Prove that a convex polygon $A$ in $\RR^2$ with the subspace metric is a 2-dimensional polyhedral space.  Moreover, show that for any triangulation of $A$ as in the definition of polyhedral space, the simplices of $A$ are Euclidean simplices.
+\end{thm}
+
+Two other important examples of polyhedral spaces for us will be
+a convex polyhedron in $\RR^3$,
+as well as the boundary of a convex polyhedron equipped with its induced length metric.
+In order to prove that these spaces are indeed polyhedral, 
+one might triangulate these spaces by hands. 
+Along the same lines one can also prove the following
+ characterization of polyhedral spaces:
+
+\begin{thm}{Theorem}
+A length space $P$ is a polyhedral space if it can be covered by finite number of subsets $M_1,\dots, M_n$
+such that each $M_i$, as well as every intersection of a subcollection of $M_i$'s, is isometric to a convex polyhedron.  
+\end{thm}
+
+
+%\parbf{Piecewise ``awesome'' maps.}
+%We will use terms ``piecewise distance preserving map'', 
+%``piecewise linear map'' and so on. 
+%We will define it separately each time but here we need to explain the general usage of word piecewise on one example.
+%
+%Assume $f$ is a map defined on polyhedral space $P$.
+%We say that $f$ ``piecewise awesome''
+%if there is a triangulation of $P$ such that the restriction of $f$ to each simplex in the triangulation is  ``awesome''.
+
+
+
+\addtocontents{toc}{\protect\end{quote}}

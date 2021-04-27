@@ -1,0 +1,210 @@
+\chapter{Digressions into discrete geometry}\label{chap:degressions}
+
+This complete chapter is beautiful and useless 
+
+
+
+
+\section{Bezdek--Connelly theorem}
+
+This is yet another relaxing section%???
+.
+
+\begin{thm}{Proposition}
+Let $R>0$ and $a_1,a_2,\dots,a_n$ and $b_1,b_2,\dots,b_n$ be two collections of points in $\RR^m$ such that 
+$$|a_i-a_j|\ge |b_i-b_j|$$
+for all $i$ and $j$.
+Then
+$$\bigcap_{i=1}^n B_R(a_i)\not=\emptyset\ \ \Longrightarrow\ \ \bigcap_{i=1}^n B_R(b_i)\not=\emptyset.$$
+\end{thm}
+
+\parit{Proof.}
+Applying  Kirszbraun's theorem (\ref{thm:kirszbraun}),
+we get a distance non-contracting map $f\:\RR^m\to\RR^m$ such that $f(a_i)=b_i$.
+Choose $x\in\bigcap_{i=1}^n B_R(a_i)$.
+Since $f$ distance non-contracting, 
+$$|f(x)-b_i|\le |x-a_i|\le R$$ 
+for each $i$.
+In particular, $f(x)\in B_R(b_i)$ for each $i$;
+hence the result. 
+\qeds
+
+Given a set $A \subset \RR^m$, let $\vol_m(A)$ denote $m$-dimensional volume of $A$.  For example $\vol_1$ measures length in $\RR^1$, $\vol_2$ measures area in $\RR^2$, and $\vol_3$ measures the usual notion of volume in $\RR^3$.
+
+\begin{thm}{Conjecture} \label{conj:volumesOfBalls}
+Let $R>0$ and $a_1,a_2,\dots,a_n$ and $b_1,b_2,\dots,b_n$ be two collections of points in $\RR^m$ such that 
+$$|a_i-a_j|\ge |b_i-b_j|$$
+for all $i$ and $j$.
+Then
+$$\vol_m \left(\bigcap_{i=1}^n B_R(a_i)\right)\le \vol_m \left(\bigcap_{i=1}^n B_R(b_i)\right)\eqlbl{eq:n}$$
+and
+$$\vol_m \left(\bigcup_{i=1}^n B_R(a_i)\right)\ge \vol_m \left(\bigcup_{i=1}^n B_R(b_i)\right).
+\eqlbl{eq:u}$$
+
+\end{thm}
+
+\begin{thm}{Exercise}
+Prove this conjecture in case $m=1$.
+\end{thm}
+
+
+The inequality \ref{eq:u} was conjectured by Poulsen in 1954 and Kneser in 1955 and Hadwiger in 1956.
+The inequality \ref{eq:n} was conjectured much later, it appears in list of problems of Klee and
+Wagon published in 1991.
+Both inequalities are trivial in the case $m=1$;
+both are open problems for $m>2$.
+Both were proved in case $m=2$ by Bezdek and Connelly in 2002.
+Here we will describe ideas in their proof without going into details.
+
+\parit{Not quite working idea.}
+Assume one can construct $n$ smooth curves $\alpha_i\:[0,1]\z\to\RR^2$ such that  
+$$\text{$\alpha_i(0)=a_i$, $\alpha_i(1)=b_i$ and}\ \ell_{i,j}(t)=|\alpha_i(t)-\alpha_j(t)|\ \text{is nonincreasing}.
+\eqlbl{eq:nonincreasing}$$
+In this case one can consider functions
+$$v(t)=\area \left(\bigcap_{i=1}^n B_R(\alpha(t))\right)
+\ \ \text{and}\ \ 
+V(t)=\area \left(\bigcup_{i=1}^n B_R(\alpha(t))\right).$$
+In order to prove \ref{eq:n}, it is sufficient to show that $v'(t)\ge 0$ for all $t$.
+Similarly, to prove \ref{eq:u}, it is sufficient to show that $V'(t)\le 0$ for all $t$.
+The latter is a calculus problem; it is technical, but straightforward.
+
+\medskip
+
+As one can see by the following exercise,
+this approach cannot lead to a solution directly. 
+
+\begin{thm}{Exercise}
+Construct points $a_1,a_2,a_3,a_4,b_1,b_2,b_3,b_4\in\RR^2$ such that 
+$$|a_i-a_j|\ge |b_i-b_j|$$
+for all $i$ and $j$, but there are no curves $\alpha_1,\alpha_2,\alpha_3,\alpha_4\:[0,1]\to\RR^2$ which satisfy \ref{eq:nonincreasing}.
+\end{thm}
+
+In their proof, Bezdek and Connelly found a work around which uses the following theorems.
+
+ 
+\begin{thm}{Alexander's theorem}\label{thm:alexander}
+Let $a_1,a_2,\dots,a_n$ and $b_1,b_2,\dots,b_n$ be two collections of points in $\RR^m$.
+Viewing $\RR^{2\cdot m}$ as $\RR^m \times \RR^m$, we shall consider $\RR^m = \RR^m \times \{0\}$ as a coordinate subspace of $\RR^{2\cdot m}$.
+Then there is a choice of curves $\alpha_i\:[0,1]\to \RR^{2\cdot m}$ such that
+$\alpha_i(0)=a_i=(a_i,0)$, $\alpha_i(1)=b_i=(b_i,0)$ and 
+the function $\ell_{i,j}(t)=|\alpha_i(t)-\alpha_j(t)|$ is monotonic for each $i$ and $j$.
+\end{thm}
+
+\parit{Proof.} Straightforward calculations show that conclusion of the theorem hold for
+$$
+\alpha_i(t) = \left(\frac{a_i + b_i}{2} + 
+\cos(\pi\cdot t)\cdot \frac{a_i - b_i}2,\  
+\sin(\pi\cdot t)\cdot \frac{a_i - b_i}2\right). 
+$$
+\qedsf
+
+\begin{thm}{Archimedes' theorem}
+Consider the unit sphere $\SS^2\subset \RR^3$.
+Denote by $\Pi\:\SS^2\to\RR$ a coordinate projection.
+Then for any subinterval interval $[a,b]\z\subset [-1,1]$,
+we have 
+$$\area\left[\Pi^{-1}([a,b])\right]=2\cdot\pi\cdot(b-a).$$
+In other words, the area of the unit sphere which lies between two cutting parallel planes of distance $h$ is equal to $2\cdot\pi\cdot h$.  
+\end{thm}
+
+\parit{Proof.} 
+The set $\Pi^{-1}([a,b])$ is a surface of revolution of function 
+$$f(x)=\sqrt{1-x^2}$$ 
+restricted to the interval $[a,b]$.
+Therefore
+\begin{align*}
+ \area\left[\Pi^{-1}([a,b])\right]
+&=2\cdot\pi\cdot \int\limits_a^b f(x)\cdot\sqrt{1+(f'(x))^2}\cdot dx
+\\
+&=2\cdot\pi\cdot (b-a).
+\end{align*}
+\qedsf
+
+
+Let us denote by $\BB^m$ the unit ball in $\RR^m$ 
+and $\vol_m$ the $m$-dimensional volume.  Note that when we write $\vol_m \SS^m$, we are considering the $m$-dimensional analogue of surface area of the unit sphere, not the $(m+1)$-dimensional volume of the region it bounds in $\RR^{m+1}$.
+Archimedes' theorem admits the following generalization in higher dimensions.
+The proof goes along the same lines.
+The case $m=1$ coincides with the original Archimedes' theorem;
+we will use only the case $m=2$.
+
+
+\begin{thm}{Generalized Archimedes' theorem}
+Let $m$ be a positive integer.
+Consider the unit sphere $\SS^{m+1}\subset \RR^{m+2}$.
+Denote by $\Pi\:\SS^{m+1}\to \RR^m$ a coordinate projection;
+clearly $\Pi(\SS^{m+1})=\BB^m$.
+Then for any domain $\Omega\subset \BB^m$,
+we have 
+$$\vol_{m+1}\left[\Pi^{-1}(\Omega)\right]=2\cdot\pi\cdot\vol_m\Omega.$$
+In particular
+$$\vol_{m+1}\SS^{m+1}=2\cdot\pi\cdot\vol_m\BB^m.$$
+
+\end{thm}
+
+\parit{The working idea of Conjecture~\ref{conj:volumesOfBalls} for $m=2$.} According to Alexander's theorem we can construct curves $\alpha_i\:[0,1]\to\RR^4$ which satisfy \ref{eq:nonincreasing}.
+Since we are considering $\RR^2$ as a subspace of $\RR^4$,
+given $x\in \RR^2 \subset \RR^4$ we need to distinguish the notions of balls centered at $x$ in $\RR^2$ and balls centered at $x$ in $\RR^4$.
+We will denote them $B_R(x;\RR^2)$ and $B_R(x;\RR^4)$ respectively.
+From the Generalized Archimedes' theorem, we get that 
+$$
+\begin{aligned}
+\area \left(\bigcap_{i=1}^n B_R(a_i;\RR^2)\right)
+&=\tfrac{1}{2\cdot\pi\cdot R}\cdot\vol_3\left(\partial \bigcap_{i=1}^n B_R(a_i;\RR^4)\right)
+\\
+\area \left(\bigcap_{i=1}^n B_R(b_i;\RR^2)\right)
+&=\tfrac{1}{2\cdot\pi\cdot R}\cdot\vol_3\left(\partial \bigcap_{i=1}^n B_R(b_i;\RR^4)\right)
+\end{aligned}
+\eqlbl{eq:nab}$$
+Now consider the function 
+$$w(t)=\tfrac{1}{2\cdot\pi\cdot R}\cdot\vol_3\left(\partial \bigcap_{i=1}^n B_R(\alpha_i(t);\RR^4)\right).$$
+If $w(t)$ nonincreasing for all $t$, then together with \ref{eq:nab} it would imply \ref{eq:n}.
+
+To show that $w(t)$ nonincreasing one needs to calculate its derivative and show that it is nonpositive.
+The latter follows since 
+$$w'(t)=-\sum_{i<j} \ell_{i,j}'(t)\cdot \theta_{i,j}(t),
+$$ 
+for some nonnegative values $\theta_{i,j}(t)$.
+In fact for any fixed $t$, the value $\theta_{i,j}(t)$ can be expressed using only the values $\ell_{i,j}(t)$ and $R$.
+(The inequality $\theta_{i,j}\ge 0$ follows from the geometric interpretation of this number as the area of certain sets in  $\bigcap_{i=1}^n B_R(\alpha_i(t);\RR^4)$, which we do not discuss here.) 
+
+
+The inequality \ref{eq:u} is proved in a similar way.
+We have to define 
+$$W(t)=\tfrac{1}{2\cdot\pi\cdot R}\cdot\vol_3\left(\partial \bigcup_{i=1}^n B_R(\alpha_i(t);\RR^4)\right)$$
+and prove that 
+$$W'(t)=\sum_{i<j} \ell_{i,j}'(t)\cdot \Theta_{i,j}(t),
+$$
+for some nonnegative values $\Theta_{i,j}(t)$.
+Then, apply the Generalized Archimedes theorem to get
+$$\area \left(\bigcup_{i=1}^n B_R(a_i;\RR^2)\right)=W(0),$$
+$$\area \left(\bigcup_{i=1}^n B_R(b_i;\RR^2)\right)=W(1).$$
+Hence \ref{eq:u}.
+
+\begin{thm}{Exercise}\label{ex:try3dim}
+Try to understand why the same idea does not work in the case $m=3$.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:try-a4}
+Construct points $a_1,a_2,a_3,a_4,b_1,b_2,b_3,b_4\in\RR^2$ such that 
+$$|a_i-a_j|\ge |b_i-b_j|$$
+for all $i$ and $j$, but
+$$\length \left(\partial\bigcup_{i=1}^4 B_R(a_i)\right)
+<
+\length \left(\partial\bigcup_{i=1}^4 B_R(b_i)\right).$$
+
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:try-R-infty}
+Apply inequality \ref{eq:u} for $R\to \infty$ to show that 
+if $a_1$, $a_2,\z\dots,a_n$, $b_1$, $b_2,\z\dots,b_n\in\RR^2$ such that 
+$$|a_i-a_j|\ge |b_i-b_j|$$
+for all $i$ and $j$ then
+$$\length \left(\partial\Conv(a_1,a_2,\dots,a_n)\right)\ge \length \left(\partial\Conv(b_1,b_2,\dots,b_n)\right).$$
+
+\end{thm}
+
+
+
+
+

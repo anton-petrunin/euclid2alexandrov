@@ -1,0 +1,42 @@
+\documentclass[oneside,b5paper]{book}
+\usepackage{euclid2alexandrov}
+\makeindex
+\begin{document}
+\frontmatter
+\title{From Euclid to Alexandrov; a guided tour}
+\author{Anton Petrunin and Allan Yashinski}
+\date{}
+\maketitle
+\tableofcontents
+\include{todo}
+\mainmatter
+
+\include{prereq}
+\part{The rules of the game}
+\include{metric}
+\include{hausdorff}
+\include{gromov-hausdorff}
+\include{length}
+%\include{euclid}
+\include{triangulation}
+\part{No curvature}
+\include{pdp}
+%\include{lp}
+\part{Nonpositive curvature}
+\include{saddle}
+\include{cba}
+\include{collisions}
+\part{Nonnegative curvature}
+\include{unique}
+\include{exist}
+\include{cbb}
+\include{erdos}
+\part{Details}
+\include{degressions}
+\include{flex}
+\include{details}
+\include{hints}
+\input{euclid2alexandrov.ind}
+\include{bibl}
+\end{document}
+

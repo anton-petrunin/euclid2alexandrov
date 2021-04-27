@@ -1,0 +1,330 @@
+\chapter{Saddle surfaces}
+
+\section{Polyhedral saddle surfaces}
+
+%???+PIC
+
+A 2-dimensional polytope in $\RR^3$ is called 
+\emph{polyhedral disc} if it is homeomorphic to a the unit disc
+\[\DD=\set{(x,y)\in\RR^2}{x^2+y^2\le 1}.\]
+
+A vertex of a triangulation of a polyhedral disc 
+is called interior if it lies in the \emph{interior vertex} of $\DD$ 
+and \emph{boundary vertex} if it lies on the boundary of $\DD$.
+The boundary and interior vertices can be defined in a more combinatorial fashion.
+The link of any vertex is formed by a broken line.
+For interior vertex the link is a closed line,
+and for boundary vertex it is open; 
+i.e., it has the beginning and the end.
+This equivalence as well as the correctness of this definition folows from domain invariance;
+see \ref{thm:domain-invariance}.
+
+A polyhedral disc $P$ in $\RR^3$
+is called \emph{saddle} if any interior vertex of $P$ lies in the convex hull of its link.
+
+\begin{thm}{Proposition}\label{prop:neg-poly}
+Let $P$ be a saddle polyhedral disc in $\RR^3$
+equipped with the induced length metric. 
+Then $P$ has non-positive curvature;
+that is the total angle around any point in the interior of $P$ is at least $2\cdot\pi$.
+\end{thm}
+
+The proof relies on the following lemma
+
+\begin{thm}{Hemisphere lemma}
+\label{lem:hemisphere}
+Any closed curve of length $<2\cdot \pi$  in $\SS^2$ lies in an open hemisphere. 
+\end{thm}
+
+\parit{Proof.} 
+Let $\alpha$ be a closed curve in $\SS^2$ of length $2\cdot\ell$.
+Assume $\ell<\pi$.
+
+Let us dived $\alpha$ in two subarcs, 
+say $\alpha_1$ and $\alpha_2$ with length $\ell$ each. 
+Denote by $p$ and $q$ their endpoints. 
+Since $\dist{p}{q}{}\z\le\ell<\pi$, there is a unique geodesic $[pq]$ in $\SS^2$.  
+Let $z$ be the midpoint of $[pq]$.  
+
+We claim that $\alpha$ lies in the open hemisphere centered at $z$.  
+If not, $\alpha$ intersects the boundary  great circle,
+say at the point $x$.
+Without loss of generality we may assume that $x\in\check\alpha_1$. 
+
+Consider rotation of $\SS^2$ 
+by angle $\pi$ with fixed point $z$.
+Arc $\alpha_1$ together with its rotation form a closed curve of length $2\cdot \ell$ that passes through $x$ and its antipodal point $x'=-x$.
+Thus 
+\begin{align*}
+\ell
+&=\length \alpha_1\ge
+\\
+&\ge \dist{x}{x'}{\SS^2}=
+\\
+&=\pi,
+\end{align*}
+where $\dist{x}{x'}{\SS^2}$ denotes the distance from $x$ to $x'$ in the length metric on $\SS^2$, contradiction.
+\qeds
+
+\parit{Proof of Proposition~\ref{prop:neg-poly}.}
+Let $x$ be an interior vertex of the saddle surface $\Sigma$, denote by $\theta$ the total angle around $x$.
+
+Choose sufficiently small $r>0$;
+it should be smaller that the distance from $x$ to any simplex of $\Sigma$ which does not contain $x$.
+Note that the intersection of $\Sigma$ with
+a sphere of radius $r$ centered at $x$ forms a closed curve, say $\alpha$.
+
+Since $\Sigma$ is saddle,
+each equator in the sphere intersects $\alpha$. 
+Therefore by Hemisphere lemma, 
+the $\length\alpha\ge 2\cdot\pi\cdot r$.
+On the other hand,
+$\length\alpha=\theta\cdot r$.
+Hence the result.
+\qeds
+
+\section{Thin triangles} \label{sec:thin-triangle} 
+ 
+\begin{thm}{Definition of thin triangles
+}\label{def:k-thin}
+Let $\trig{x^1}{x^2}{x^3}$ be a triangle in a metric space.
+Consider its model triangle
+$\trig{\tilde x^1}{\tilde x^2}{\tilde x^3}=\modtrig0({x^1}{x^2}{x^3})$ 
+and the  \emph{natural map}\index{natural map} $\trig{\tilde x^1}{\tilde x^2}{\tilde x^3}\to \trig{x^1}{x^2}{x^3}$ 
+that sends a point $\tilde z\in[\tilde x^i\tilde x^j]$ to the corresponding point $z\in[x^ix^j]$
+(i.e. such that $\dist{\tilde x^i}{\tilde z}{}=\dist{x^i}{z}{}$ and therefore $\dist{\tilde x^j}{\tilde z}{}=\dist{x^j}{z}{}$).
+
+We say the triangle $\trig{x^1}{x^2}{x^3}$ is \emph{thin}\index{thin} if the natural map $\trig{\tilde x^1}{\tilde x^2}{\tilde x^3}\to \trig{x^1}{x^2}{x^3}$ is distance nonexpanding.
+\end{thm}
+
+
+\begin{thm}{Inheritance lemma for thin triangles}
+\label{lem:inherit-angle} 
+In a metric space, consider a triangle $\trig p x y$ that \emph{decomposes}\index{decomposed triangle} 
+into two triangles $\trig p x z$ and $\trig p y z$;
+that is, $\trig p x z$ and $\trig p y z$ have common side $[p z]$, and the sides $[x z]$ and $[z y]$ together form the side $[x y]$ of $\trig p x y$.
+
+If  both triangles $\trig p x z$ and $\trig p y z$ are thin, then triangle $\trig p x y$ is  thin.
+\end{thm} 
+
+We shall need the following model-space lemma.
+
+\begin{thm}{Lemma}\label{lem:quadrangle}
+Let $\trig{\tilde p}{\tilde x}{\tilde y}$ be a triangle in $\RR^2$ and $\tilde z\in[\tilde x\tilde y]$.
+Set $\tilde D=\Conv\trig{\tilde p}{\tilde x}{\tilde y}$.  
+Construct  points $\dot p, \dot x, \dot y, \dot z\in \RR^2$ such that 
+$\dist{\dot p}{\dot x}{}=\dist{\tilde p}{\tilde x}{}$, 
+$\dist{\dot p}{\dot y}{}=\dist{\tilde p}{\tilde y}{}$,
+$\dist{\dot x}{\dot z}{}=\dist{\tilde x}{\tilde z}{}$, 
+$\dist{\dot y}{\dot z}{}=\dist{\tilde y}{\tilde z}{}$,
+$\dist{\dot p}{\dot z}{}\le \dist{\tilde p}{\tilde z}{}$
+and points $\dot x$ and $\dot y$ lie on either side of $[\dot p\dot z]$.
+Set $\dot D=\Conv\trig {\dot p}{\dot x}{\dot z}\cup \Conv\trig {\dot p} {\dot y} {\dot z}$.
+
+Then there is a distance nonexpanding map $F\:\tilde D\to \dot D$ that maps $\tilde p$, $\tilde x$, $\tilde y$ and $\tilde z$ to $\dot p$, $\dot x$, $\dot y$ and $\dot z$ respectively.
+\end{thm}
+
+\begin{wrapfigure}{r}{27mm}
+\begin{lpic}[%draft,
+t(-5mm),b(0mm),r(0mm),l(0mm)]{pics/resh(0.3)}
+\lbl[t]{47,9;$\tilde p$}
+\lbl[l]{82,88;$\tilde x$}
+\lbl[r]{2,74;$\tilde y$}
+\lbl[b]{37,82;$\tilde z$}
+\lbl[tr]{33,62;$\tilde z_x$}
+\lbl[tl]{46,63;$\tilde z_y$}
+\end{lpic}
+\end{wrapfigure}
+
+\parit{Proof.} 
+By Alexandrov's lemma (\ref{lem:alex}), 
+there are nonoverlapping triangles 
+$\trig{\tilde p}{\tilde x}{\tilde z_y}\iso\trig {\dot p}{\dot x}{\dot z}$ 
+and 
+$\trig{\tilde p}{\tilde y}{\tilde z_x}\iso\trig {\dot p}{\dot y}{\dot z}$
+ inside triangle $\trig{\tilde p}{\tilde x}{\tilde y}$.
+
+Connect points in each pair
+$(\tilde z,\tilde z_x)$, 
+$(\tilde z_x,\tilde z_y)$ 
+and $(\tilde z_y,\tilde z)$ 
+with arcs of circles centered at 
+$\tilde y$, $\tilde p$, and $\tilde x$ respectively. 
+Define $F$ as follows.
+\begin{itemize}
+\item Map  $\Conv\trig{\tilde p}{\tilde x}{\tilde z_y}$ isometrically onto  $\Conv\trig {\dot p}{\dot x}{\dot y}$;
+similarly map $\Conv \trig{\tilde p}{\tilde y}{\tilde z_x}$ onto $\Conv \trig {\dot p}{\dot y}{\dot z}$.
+\end{itemize}
+
+\begin{itemize}
+\item If $x$ is in one of the three circular sectors, say at distance $r$ from center of the circle, let $F(x)$ be the point on the corresponding segment 
+$[p z]$, 
+$[x z]$ 
+or $[y z]$ whose distance from the lefthand endpoint of the segment is $r$.
+\item Finally, if $x$ lies in the remaining curvilinear triangle $\tilde z \tilde z_x \tilde z_y$, 
+set $F(x) = z$. 
+\end{itemize}
+By construction, $F$ satisfies the conditions of the lemma. 
+\qeds
+
+
+\parit{Proof of Inheritance for thin triangles (\ref{lem:inherit-angle}).}
+Construct model triangles $\trig{\dot p}{\dot x}{\dot z}\z=\modtrig0(p x z)$ 
+and $\trig {\dot p} {\dot y} {\dot z}=\modtrig0(p y z)$ so that $\dot x$ and $\dot y$ lie on opposite sides of $[\dot p\dot z]$.
+
+\begin{wrapfigure}{r}{28mm}
+\begin{lpic}[t(2mm),b(0mm),r(0mm),l(0mm)]{pics/cat-monoton-ineq(0.45)}
+\lbl[b]{23,29;$\dot z$}
+\lbl[lt]{20,1;$\dot p$}
+\lbl[r]{0,20;$\dot x$}
+\lbl[l]{51,20;$\dot y$}
+\lbl[tl]{23,19;$\dot w$}
+\end{lpic}
+\end{wrapfigure}
+
+Suppose
+\[\angk0{z}{p}{x}+\angk0{z}{p}{y}
+<
+\pi.\]
+Then for some point $\dot w\in[\dot p\dot z]$, we have \[\dist{\dot x}{\dot w}{}+\dist{\dot w}{\dot y}{}
+<
+\dist{\dot x}{\dot z}{}+\dist{\dot z}{\dot y}{}=\dist{x}{y}{}.\]
+Let $w\in[p z]$ correspond to $\dot w$; i.e. $\dist{z}{w}{}=\dist{\dot z}{\dot w}{}$. 
+Since $\trig p x z$ and $\trig p y z$ are thin, we have 
+\[\dist{x}{w}{}+\dist{w}{y}{}<\dist{x}{y}{},\]
+contradicting the triangle inequality. 
+
+Thus 
+\[\angk0{z}{p}{x}+\angk0{z}{p}{y}
+\ge
+\pi.\]
+By Alexandrov's lemma (\ref{lem:alex}), this is equivalent to 
+\[\angk0 x p z\le\angk0 x p y.
+\eqlbl{eq:for|pz|}\]
+
+Let $\trig{\tilde  p}{\tilde  x}{\tilde  y}=\modtrig0 (p x y)$ 
+and $\tilde  z\in[\tilde  x\tilde  y]$ correspond to $z$; i.e. $\dist{x}{z}{}=\dist{\tilde  x}{\tilde  z}{}$.
+Inequality~\ref{eq:for|pz|} is equivalent to $\dist{ p}{ z}{}\le \dist{\tilde  p}{\tilde  z}{}$.
+Hence  Lemma~\ref{lem:quadrangle} applies.  Therefore 
+there is a distance nonexpanding map $F$ that  sends 
+$\trig{\tilde  p}{\tilde  x}{\tilde  y}$ to $\dot D=\Conv\trig {\dot p}{\dot x}{\dot z}\cup \Conv\trig {\dot p} {\dot y} {\dot z}$ 
+in such a way that 
+$\tilde p\mapsto \dot p$,
+$\tilde x\mapsto \dot x$,
+$\tilde z\mapsto \dot z$
+and
+$\tilde y\mapsto \dot y$.
+
+By assumption, the natural maps $\trig {\dot p} {\dot x} {\dot z}\to\trig p x z$ and $\trig {\dot p} {\dot y} {\dot z}\to\trig p y z$ are distance nonexpanding.  
+By composition,  the natural map from $\trig{\tilde  p}{\tilde  x}{\tilde  y}$ to $\trig p y z$ is distance nonexpanding, as claimed.
+\qeds
+
+\section{Polyhedral discs with non-positive curvature}
+
+\begin{thm}{Lemma}
+In a polyhedral disc non-positive curvature
+any two points are joint by unique geodesic.
+
+Moreover the unique geodesic depends continuously from its end points.
+\end{thm}
+
+\parit{Proof}
+Let $P$ be a polyhedral disc non-positive curvature and $x,y\in P$ and $|x-y|=\ell$.
+Since $P$ is compact,
+there is a geodesic from $x$ to $y$.
+
+Assume that there are two geodesics $\alpha,\beta\:[0,\ell]\to P$ from  from $x$ to $y$.
+Note that the intersection of $\alpha$ as well as $\beta$
+with any triangle in a triangulation of $P$ is a line segment.
+
+
+Without loss of generality, we may assume that 
+$\alpha(t)= \beta(t)$ if and only if $t=0$ or $l$.
+Otherwise choose a maximal with respect to inclusion open interval 
+$(a,b)\subset [0,\ell]$ such that $\alpha(t)\ne \beta(t)$ for any $t\in (a,b)$ and set $x=\alpha(a)$ and $y=\alpha(b)$.
+
+According to Jordan curve theorem (\ref{thm:jordan}), 
+$\alpha$ and $\beta$ cut from $P$ a polyhedral disc $P'$.
+Denote by $\phi$ and $\psi$ the angles of this disc at $x$ and $y$.
+Note that turn of the boundary is $\pi-\phi$ at $x$,
+$\pi-\psi$ at $y$ and at the remaining boundary points it is nonpositive. 
+
+According to \ref{thm:poly-disc+gauss},\[\mathrm{T}+\Omega=2\cdot\pi.\]
+where $\mathrm{T}$ and $\Omega$ 
+are correspondingly 
+the turn of boundary 
+and the curvature of interior point of $P'$.
+
+From above we have that $\mathrm{T}\le 2\cdot\pi -\phi-\psi$
+and $\Omega\le 0$.
+Hence $\phi=\psi=0$;
+in particular, the geodesics $\alpha$ and $\beta$ coincide at the beginning edge,
+a contradiction.
+
+It remains to prove the second part of lemma.
+Let $x_n\to x_\infty$ and $y_n\to y_\infty$ be two sequences of points in $P$.
+Let $\ell_n=|x_n-y_n|$,
+denote by $\alpha_n\:[0,\ell_n]\to P$ 
+the geodesic from $x_n$ to $y_n$.
+Note that any converging subsequence of $\alpha_n$ converges to the unique geodesic from $x$ to $y$.
+On the other hand, since $P$ is compact,
+any sequence of geodesics has a converging subsequence (see ???).
+Hence the secont part of lemma follows. 
+\qeds
+
+
+\begin{thm}{Proposition}
+In a polyhedral disc with non-positive curvature
+any triangle is thin.
+\end{thm}
+
+
+\section{Shefel's theorem}
+
+\begin{thm}{Shefel's theorem}\label{thm:shefel}
+Let $P\subset \RR^2$ be a convex polygon
+and $f\:P\to \RR$ a Lipschitz function.
+Assume that the graph 
+\[\Gamma_f=\set{(x,y,z)\in\RR^3}{z=f(x,y),\ \ (x,y)\in P}\]
+equipped with length metric has nonpositive curvature.
+\end{thm}
+
+\parit{Proof.}
+Fix small $\eps>0$.
+Note that there is a piecewise linear function $h\:P\to \RR$ such that 
+$$h(x,y)\lg f(x,y)\pm\eps$$
+for any $(x,y)\in P$.
+In other words, the graph $\Gamma_h$ of $h$ lies between 
+two graphs $\Gamma_{f+\eps}$
+ and  $\Gamma_{f-\eps}$.
+
+Now we start to cut hats from below of $\Gamma_h$.
+Cutting a hat is the following procedure...
+
+Note that since $\Gamma_{f}$ and therefore $\Gamma_{f+\eps}$ has no hats.
+Hence by applying cutting a hat to any graph which lies below $\Gamma_{f+\eps}$, we get a graph which is still below $\Gamma_{f+\eps}$.
+In particular, after cutting all hats,
+we get a graph of a function which lies below $\Gamma_{f+\eps}$.
+
+\begin{clm}{}\label{clm:shefel-poly}
+After cutting all hats from $\Gamma_h$,
+we get a graph of a piecewise linear function.
+\end{clm}
+
+
+
+From \ref{clm:shefel-poly} it follows that for any $n$
+there is a saddle piecewise linear function 
+$h_n\:P\to\RR$ such that $h(x)\lg f(x)\pm\tfrac1n$
+for any $x\in P$.
+
+Denote by $|x-y|_n$ the ???
+and $|x-y|_\infty$ the ???.
+It is sufficient to show that
+\[|x-y|_n\to|x-y|_\infty\ \text{as}\ n\to\infty\]
+for any $x,y\in P$,
+
+
+\qeds
+
+

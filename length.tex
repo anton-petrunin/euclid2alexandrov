@@ -1,0 +1,510 @@
+\chapter{Geodesics}\label{chap:length}
+\section{Length of curves}
+
+Recall that \emph{real interval} is an arbitrary convex set of real line;
+i.e. a set $\II$ such that $a,b\in \II$ and $a<x<b$ implies $x\in\II$.
+For example, given two real numbers $a<b$ we may consider the following intervals
+\begin{align*}
+[a,b]
+&\df
+\set{x\in \RR}{a\le x\le b},
+&
+[a,b)
+&\df
+\set{x\in \RR}{a\le x< b},
+\\
+(a,b]
+&\df
+\set{x\in \RR}{a< x\le b},
+&
+(a,b)
+&\df
+\set{x\in \RR}{a< x< b}.
+\end{align*}
+In addition to the bounded intervals described above, there are unbounded intervals
+\begin{align*}
+[a,\infty)
+&\df
+\set{x\in \RR}{a\le x},
+&
+(a,\infty)
+&\df
+\set{x\in \RR}{a< x},
+\\
+(-\infty,a]
+&\df
+\set{x\in \RR}{a\ge x},
+&
+(-\infty,a)
+&\df
+\set{x\in \RR}{a> x}.
+\end{align*}
+Finally the whole real line is also an interval
+$$(-\infty,\infty)=\RR.$$
+
+\begin{thm}{Definition}\label{def:curve}
+A \emph{curve}\index{curve} is a continuous mapping $\alpha\:\II\to X$,
+where $\II$ is a real interval and $X$ is a metric space. 
+
+If $\II=[a,b]$ and $$\alpha(a)=p,\ \ \alpha(b)=q,$$
+we say that $\alpha$ is a \emph{curve from $p$ to $q$}\index{curve from $p$ to $q$}.
+\end{thm}
+
+\begin{thm}{Definition}\label{def:length}
+Let $\alpha\:\II\to X$ be a curve. Define \emph{length}\index{length of curve} of $\alpha$ as
+\begin{align*}
+\length \alpha
+&= 
+\sup \{|\alpha(t_0)-\alpha(t_1)|+|\alpha(t_1)-\alpha(t_2)|+\dots
+\\
+&\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \dots+|\alpha(t_{k-1})-\alpha(t_k)|\}. 
+\end{align*}
+where the supremum is taken over all $k$ and all sequences $t_0 < t_1 < \cdots < t_k$ in $\II$.
+
+A curve is called \emph{rectifiable}\index{rectifiable curve} if its length is finite.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:nonrectifiable-curve}
+Construct a curve $\alpha\:[0,1]\to\RR^2$ which is not rectifiable.
+\end{thm}
+
+
+\begin{thm}{Semicontinuity of length}\label{thm:length-semicont}
+Length is a lower semi-continuous functional on the space of curves
+$\alpha\:\II\to X$ with respect to point-wise convergence. 
+
+In other words: assume that a sequence
+of curves $\alpha_n\:\II\to X$ converges point-wise 
+to a curve $\alpha_\infty\:\II\to X$;
+i.e., for any fixed $t\in\II$, we have $\alpha_n(t)\to\alpha_\infty(t)$ as $n\to\infty$. 
+Then 
+$$\liminf_{n\to\infty} \length\alpha_n \ge \length\alpha_\infty.\eqlbl{eq:semicont-length}$$
+
+\end{thm}
+
+
+
+\begin{wrapfigure}{r}{33mm}
+\begin{lpic}[t(-5mm),b(0mm),r(0mm),l(0mm)]{pics/stairs(0.3)}
+%\lbl[lb]{162,180;$\alpha_0$}
+%\lbl[lb]{82,150;{\small $\alpha_1$}}
+%\lbl[lb]{42,130;{\tiny $\alpha_2$}}
+\end{lpic}
+\end{wrapfigure}
+
+Note that the inequality \ref{eq:semicont-length} might be strict.
+For example the diagonal of unit square say $\alpha_\infty$ (red on the picture)
+can be  approximated by a sequence of stairs-like
+polygonal curves $\alpha_n$
+with sides parallel to the sides of the squre,
+$\alpha_6$ is black the picture.
+In this case
+$\length\alpha_\infty=\sqrt{2}$
+and $\length\alpha_n=2$ for all $n$.
+
+\parit{Proof.}
+Fix $\eps > 0$ and choose a sequence $t_0<t_1<\dots<t_k$ in $\II$
+such that 
+\begin{align*}
+\length\alpha_\infty-
+(|\alpha_\infty(t_0)-\alpha_\infty(t_1)|&+|\alpha_\infty(t_1)-\alpha_\infty(t_2)|+\dots
+\\
+&\dots+|\alpha_\infty(t_{k-1})-\alpha_\infty(t_k)|)<\eps
+\end{align*}
+
+
+Set 
+\begin{align*}\Sigma_n
+&\df
+|\alpha_n(t_0)-\alpha_n(t_1)|+|\alpha_n(t_1)-\alpha_n(t_2)|+\dots
+\\
+&\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \dots+|\alpha_n(t_{k-1})-\alpha_n(t_k)|.
+\\
+\Sigma_\infty
+&\df
+|\alpha_\infty(t_0)-\alpha_\infty(t_1)|+|\alpha_\infty(t_1)-\alpha_\infty(t_2)|+\dots
+\\
+&\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \dots+|\alpha_\infty(t_{k-1})-\alpha_\infty(t_k)|.
+\end{align*}
+Note that $\Sigma_n\to \Sigma_\infty$ as $n\to\infty$
+and $\Sigma_n\le\length\alpha_n$ for each $n$.
+Hence
+$$\liminf_{n\to\infty} \length\alpha_n \ge \length\alpha_\infty-\eps.$$
+Since $\eps>0$ is arbitrary, we get \ref{eq:semicont-length}.\qeds
+
+\section{Length spaces}%???Change to length spaces; do we need almost-mid-point property???
+
+\begin{thm}{Definition}
+A metric space $X$ is called \emph{length space}\index{length space} if for any two points $x,y\in X$ and any $\eps>0$, there is a curve $\gamma$ from $x$ to $y$ such that
+$$\length \gamma<|x-y|_X+\eps.$$
+
+\end{thm}
+
+\parbf{Examples.} The real line as well as higher dimensional Euclidean spaces are length spaces.
+A discrete space (with at least two points) is not a length space.
+Also, a circle in the plane forms a subspace of a length space which is not a length space.
+
+\begin{thm}{Exercise}\label{ex:length=closed-in-GH}
+Show that the set of (isometry classes of) length spaces in $\mathcal{M}$ is closed. 
+\end{thm}
+
+
+
+Given a complete metric space $(X,d)$, 
+consider the function $\hat d\:X\z\times X\to\RR$ defined as
+$$\hat d(x,y)\df\inf_\alpha\{\length\alpha\}$$
+where the infimum is taken along all the curves $\alpha$ from $x$ to $y$.
+
+It is straightforward to see that $\hat d\:X\times X\to\RR$ satisfies all conditions of the metric if $\hat d(x,y)<\infty$ for all $x,y\in X$.
+In this case, the metric $\hat d$ will be called the \emph{induced length metric}\index{induced length metric} of $d$.
+
+\begin{thm}{Exercise}\label{ex:length-is-not-homeo}
+Construct a metric space $(X,d)$ such that the length  metric $\hat d$ is finite
+but $(X,d)$ is not homeomorphic to $(X,\hat d)$.
+\end{thm}
+
+
+ 
+\section{Hopf--Rinow theorem}
+
+\begin{thm}{Definition}\label{def:geodesic}
+ A curve $\alpha\:\II\to X$ is called a \emph{geodesic}\index{geodesic}%
+\footnote{formally our ``geodesic'' should be called ``unit-speed minimizing geodesic'',
+and the term ``geodesic'' is reserved for curves which \emph{locally} satisfy the identity
+$$|\alpha(t_0)-\alpha(t_1)|_X=\Const\cdot|t_0-t_1|$$
+for some $\Const\ge 0$.}
+ if it is a distance preserving map;
+i.e., if 
+$$|\alpha(t_0)-\alpha(t_1)|_X=|t_0-t_1|$$
+for any $t_0,t_1\in\II$.
+
+The metric space $X$ is called \emph{geodesic}\index{geodesic space}
+if any two points in $X$ can be joined by a geodesic. 
+\end{thm}
+
+
+
+
+
+\begin{thm}{Exercise}\label{ex:proper=>geodesic}
+Show that any proper length space is geodesic.
+\end{thm}
+
+\begin{thm}{Definition}
+A metric space $X$ is called \emph{locally compact}\index{locally compact space} if for any $x\in X$ there is an $\eps>0$ such that the closed ball
+$$\bar B_\eps(x)=\set{y\in X}{|x-y|_X\le \eps}$$
+is compact.
+\end{thm}
+
+Note that any proper metric space is locally compact (see definition \ref{def:proper} on page \pageref{def:proper}).
+The converse does not hold in general.
+For example, any infinite set equipped with the discrete metric is locally compact, but not proper.
+
+\begin{thm}{Exercise} \label{ex:lc-not-complete}
+Give an example of metric space which is locally compact, but not complete. 
+\end{thm}
+
+
+\begin{thm}{Hopf--Rinow theorem}\label{thm:Hopf-Rinow}
+Any complete, locally compact length space is proper.
+\end{thm}
+
+\parit{Proof.}
+Let $X$ be a locally compact length space.
+Given $x\in X$, denote by $\rho(x)$ the supremum of all $R>0$ such that
+the closed ball $\bar B_R(x)$ is compact.
+Since $X$ is locally compact 
+$$\rho(x)>0\ \ \text{for any}\ \ x\in X.\eqlbl{eq:rho>0}$$
+It is sufficient to show that $\rho(x)=\infty$ for some (and therefore any) point $x\in X$.
+
+Assume contrary; i.e. $\rho(x)<\infty$.
+Let us show that the closed ball $W=\bar B_{\rho(x)}(x)$ is compact.
+To prove this claim, notice that the closed ball $\bar B_{\rho(x)}(x)$
+is a closed set,
+therefore it  forms a complete subspace of $X$ (see Exercise~\ref{ex:close-complete}).
+Further, since $X$ is a length space, for any $\eps>0$, the set $\bar B_{\rho(x)-\eps}(x)$ is a compact $\eps$-net in $\bar B_{\rho(x)}(x)$;
+it remains to apply Problem~\ref{pr:compact-net}.
+
+Next we will reapeat the argument in the Lebesgue number lemma (\ref{lem:lebesgue-number}).
+
+Note that if $\rho(x)+|x-y|<\rho(y)$, then 
+$\bar B_{\rho(x)+\eps}(x)$ is a closed subset of $\bar B_{\rho(y)}(y)$ for some $\eps>0$.
+In this case compactness of $\bar B_{\rho(y)}(y)$ implies compactness of $\bar B_{\rho(x)+\eps}(x)$, a contradiction.
+Applying the same observation again switching $x$ and $y$, we get 
+$$|\rho(x)-\rho(y)|\le |x-y|_X;$$
+in particular $\rho$ is a continuous function.
+Set $\eps=\min_{y\in W}\{\rho(y)\}$; 
+the minimum is defined since $W$ is compact.
+From \ref{eq:rho>0}, we have $\eps>0$.
+
+Choose a finite $\tfrac\eps{10}$-net $\{a_1,a_2,\dots,a_n\}$ in $W$.
+The union $U$ of the closed balls $\bar B_\eps(a_i)$ is compact.
+Clearly $\bar B_{\rho(x)+\frac\eps{10}}(x)\subset U$.
+Therefore $\bar B_{\rho(x)+\frac\eps{10}}(x)$ is compact
+or $\rho(x)>\rho(x)$, 
+a contradiction.\qeds
+
+\section{Geodesics, triangles and hinges}
+
+Let $X$ be a metric space.
+
+\parbf{Geodesics.}
+Given a pair of points $x,y\in X$,
+we will denote by $[xy]$ the image of a geodesic from $x$ to $y$. 
+
+In general, a geodesic between $x$ and $y$ need not exist and if it exists, it need not be unique.  However,  once we write $[x y]$ we mean that we made a choice of a geodesic between $x$ and $y$.
+
+Also we will use the following notational short-cuts:
+\begin{align*}
+\left] x y \right[&=[xy]\backslash\{x,y\},
+&
+\left] x y \right]&=[xy]\backslash\{x\},
+&
+\left[ x y \right[&=[xy]\backslash\{y\}.
+\end{align*}
+
+\parbf{Triangles.}
+For a triple of points $x,y,z\in X$, 
+a choice of a triple of geodesics $([x y], [y z], [z x])$ will be called a \emph{triangle}\index{triangle} and we will use the short notation 
+$\trig x y z \z=([x y], [y z], [z x])$.
+
+Given a triple $x,y,z\in \spc{X}$ there may be no triangle 
+$\trig x y z$ simply because one of the pairs of these points cannot be joined by a geodesic, and also there may be many different triangles with these vertices, any of which can be denoted by $\trig x y z$.
+Once we write $\trig x y z$, it means that we made a choice of such a triangle, 
+i.e. a choice of each $[x y], [y z]$ and $[z x]$.
+
+\section{Model triangles and angles}
+
+\parbf{Model triangles.}
+Given 
+$x,y,z\in \spc{X}$. 
+Let us define its \emph{model triangle}\index{model triangle} $\trig{\tilde x}{\tilde y}{\tilde z}$ 
+(briefly, 
+$\trig{\tilde x}{\tilde y}{\tilde z}=\modtrig0(x y z)$%
+\index{$\modtrig0$!$\modtrig0({*}{*}{*})$}) to be a triangle in the Euclidean plane  such that
+\[\dist{\tilde x}{\tilde y}{\RR^2}=\dist{x}{y}{X},
+\ \ \dist{\tilde y}{\tilde z}{\RR^2}=\dist{y}{z}{X},
+\ \ \dist{\tilde z}{\tilde x}{\RR^2}=\dist{z}{x}{X}.\]
+Note that a model triangle exists and is unique up to congruence.
+
+In this case, a point $\tilde p\in [{\tilde x}{\tilde y}]$ is said to be \emph{corresponding} to the point $p\in [xy]$
+if $\tilde p$ divides $[\tilde x\tilde y]$ in the same ratio as $p$ divides $[xy]$.
+(Equivalently, $\dist{\tilde x}{\tilde p}{\RR^2}\z=\dist{x}{p}{X}$ or 
+ $\dist{\tilde y}{\tilde p}{\RR^2}\z=\dist{y}{p}{X}$.)
+
+
+
+\parbf{Model angles.}
+Given $x,y,z \in X$ such that
+$$\dist{x}{y}{},\dist{x}{z}{}>0,$$ the angle measure of the model triangle
+$\trig{\tilde x}{\tilde y}{\tilde z}=\modtrig0(x y z)$ at $\tilde  x$ will be called the \emph{model angle}\index{model angle} of the triple $x$, $y$, $z$ and it will be denoted by
+$\angk0 x y z$.
+
+\parbf{Fat and thin triangles.}
+Let $\trig{x_1}{x_2}{x_3}$ be a triangle in a metric space
+and 
+$\trig{\tilde x_1}{\tilde x_2}{\tilde x_3}=\modtrig0({x_1}{x_2}{x_3})$ be its model triangle.
+For any point $\tilde z$ $\trig{\tilde x_1}{\tilde x_2}{\tilde x_3}$,
+one can consider the corresponding point $z$ on the sides of the original $\trig{x_1}{x_2}{x_3}$;
+i.e., if $\tilde z\in [\tilde x_i\tilde x_j]$ then $z\in[x_ix_j]$ and it divides $[x_ix_j]$ in the same ratio as $\tilde z$ divides $[\tilde x_i\tilde x_j]$.
+This construction defines so called \emph{natural map}\index{natural map} $\tilde z\mapsto z$ from the model triangle
+$\trig{\tilde x_1}{\tilde x_2}{\tilde x_3}=[{\tilde x_1}{\tilde x_2}]\cup[{\tilde x_2}{\tilde x_3}]\cup[{\tilde x_3}{\tilde x_1}]$ 
+to the original triangle $\trig{x_1}{x_2}{x_3}= [{x_1}{x_2}]\cup[{x_2}{x_3}]\cup[{x_3}{x_1}]$.
+
+\begin{thm}{Definition}\label{def:fat-thin}
+We say the triangle $\trig{x_1}{x_2}{x_3}$ in a metric space is 
+\emph{fat}\index{fat} (respectively \emph{thin}\index{thin}) 
+if the natural map $\trig{\tilde x_1}{\tilde x_2}{\tilde x_3}\to \trig{x_1}{x_2}{x_3}$ is distance non-contracting (respectively distance non-expanding).
+\end{thm}
+For example, in Euclidean space any triangle is both fat and thin.
+In fact, it is true that any proper length space with this property is isometric to a convex subset of a Hilbert space.
+
+The following is a statement in plane geometry,
+although its formulation uses fancier terms.
+
+\begin{wrapfigure}[5]{r}{30mm}
+\begin{lpic}[t(-5mm),b(-10mm),r(0mm),l(0mm)]{pics/lem_alex1(0.35)}
+\lbl[br]{17,59;$x$}
+\lbl[r]{1,2;$y$}
+\lbl[l]{86,13;$z$}
+\lbl[lb]{67,32;$p$}
+\end{lpic}
+\end{wrapfigure}
+
+\begin{thm}{Alexandrov's lemma}
+\index{Alexandrov's lemma}
+\index{Alexandrov's lemma}
+\label{lem:alex}  
+Let $x,y,z,p$ be distinct points in a metric space such that $p\in \left]x z\right[$.
+Then the following expressions have the same sign:
+\begin{subthm}{lem-alex-difference}
+$\angk0 x y p
+-\angk0 x y z$,
+\end{subthm} 
+
+\begin{subthm}{lem-alex-angle}
+$\pi - \angk0 p y x
+-\angk0 p y z$.
+\end{subthm}
+
+\end{thm}
+
+\parit{Proof.} 
+Consider the model triangle $\trig{\tilde x}{\tilde y}{\tilde p}=\modtrig0 x y p$.
+Take 
+a point $\tilde z$ on the extension of 
+$[\tilde x \tilde p]$ beyond $\tilde p$ so that $\dist{\tilde x}{\tilde z}{}=\dist{x}{z}{}$ (and therefore $\dist{\tilde p}{\tilde z}{}=\dist{p}{z}{}$). 
+ 
+Since increasing a side in a planar triangle increases the opposite angle, 
+the following expressions have the same sign:
+\begin{enumerate}[(i)]
+\item $\mangle\hinge{\tilde x}{\tilde y}{\tilde z}-\angk0{x}{y}{z}$;
+\item $\dist{\tilde y}{\tilde z}{}-\dist{y}{z}{}$;
+\item $\mangle\hinge{\tilde p}{\tilde y}{\tilde z}-\angk0{p}{y}{z}$.
+\end{enumerate}
+Since 
+\[\mangle\hinge{\tilde x}{\tilde y}{\tilde z}=\mangle\hinge{\tilde x}{\tilde y}{\tilde p}=\angk0{x}{y}{p}\]
+and
+\[ \mangle\hinge{\tilde p}{\tilde y}{\tilde z}
+=\pi-\mangle\hinge{\tilde p}{\tilde x}{\tilde y}
+=\pi-\angk0{p}{x}{y},\]
+the statement follows.
+\qeds
+
+
+\section{Hinges and angles}
+
+\parbf{Hinges.}
+Let $p,x,y\in \spc{X}$ be a triple of points such that $p$ is distinct from $x$ and $y$.
+A pair geodesics $([p x],[p y])$ will be called a \emph{hinge}\index{hinge} and it will be denoted by 
+$\hinge p x y=([p x],[p y])$\index{$\hinge{{*}}{{*}}{{*}}$}.
+
+
+\parbf{Angles.}
+Given a hinge $\hinge p x y$, we define its \emph{angle}\index{angle} as 
+\index{$\mangle$!$\mangle\hinge{{*}}{{*}}{{*}}$}
+\[\mangle\hinge p x y
+\df
+\lim_{\bar x,\bar y\to p} \angk0 p{\bar x}{\bar y},\]
+where $\bar x\in\left ]p x\right]$ and $\bar y\in\left]p y\right]$, if the limit exists.
+
+\begin{thm}{Exercise}\label{ex:no-angle}
+Given an example of a hinge in a proper length space for which the angle is not defined, i.e. the above limit does not exist.
+\end{thm}
+
+
+
+\begin{thm}{Triangle inequality for angles}
+\label{claim:angle-3angle-inq}
+Let  $[px]$, $[py]$ and $[pz]$  
+be three geodesics in a metric space.
+If all of the angles $\alpha=\mangle\hinge p {x}{y}$, $\beta=\mangle\hinge p {y}{z}$ and $\gamma=\mangle\hinge p {x}{z}$ are defined, then they satisfy the triangle inequality:
+\[\gamma\le \alpha+\beta.\]
+
+\end{thm}
+
+\begin{wrapfigure}[7]{r}{30mm}
+\begin{lpic}[t(-0mm),b(0mm),r(0mm),l(0mm)]{pics/s-choice(0.33)}
+\lbl[rb]{45,100;$t$}
+\lbl[rt]{45,31;$\tau$}
+\lbl[W]{50,65;$s\ \ $}
+\lbl[l]{18,60,-25;$=\beta+\eps$}
+\lbl[l]{18,69,24;$=\alpha+\eps$}
+\end{lpic}
+\end{wrapfigure}
+
+\parit{Proof.} 
+Since $\gamma\le\pi$, we can assume that $\alpha+\beta< \pi$.
+Parametrize $[px]$, $[py]$, and $[pz]$
+by arc-length starting from $p$ and denote the obtained curves
+ by $\sigma_x$, $\sigma_y$ and $\sigma_z$.
+Given any $\eps>0$, for all sufficiently small $t,\tau,s\in\RR_+$ we have
+\begin{align*}
+\dist{\sigma_x(t)}{\sigma_z(\tau)}{}
+\le 
+&\,\dist{\sigma_x(t)}{\sigma_y(s)}{}+\dist{\sigma_y(s)}{\sigma_z(\tau)}{}\\
+<
+&\,\sqrt{t^2+s^2-2\cdot t\cdot  s\cdot \cos(\alpha+\eps)}+
+\\
+&+\sqrt{s^2+\tau^2-2\cdot s\cdot \tau\cdot \cos(\beta+\eps)}
+\\
+\intertext{Below we define $s(t,\tau)$ so that for $s=s(t,\tau)$, this chain continues}
+\le
+&\,\sqrt{t^2+\tau^2-2\cdot t\cdot \tau\cdot \cos(\alpha+\beta+2\cdot \eps)}.
+\end{align*}
+Thus for any $\eps>0$, 
+\[\gamma\le \alpha+\beta+2\cdot \eps.\]
+Hence the result.
+
+To define $s(t,\tau)$, consider three rays $\tilde \sigma_x$, $\tilde \sigma_y$, $\tilde \sigma_z$ in the Euclidean plane starting at one point, such that $\mangle(\tilde \sigma_x,\tilde \sigma_y)=\alpha+\eps$, $\mangle(\tilde \sigma_y,\tilde \sigma_z)=\beta+\eps$ and $\mangle(\tilde \sigma_x,\tilde \sigma_z)=\alpha+\beta+2\cdot \eps$.
+We parametrize each ray by length from the common end.
+Given two positive numbers $t,\tau\in\RR_+$, let $s=s(t,\tau)$ be %a 
+the 
+number such that 
+$\tilde \sigma_y(s)\in[\tilde \sigma_x(t)\ \tilde \sigma_z(\tau)]$. Clearly $s\le\max\{t,\tau\}$, % i.e. if $t$ and $\tau$ are both sufficiently small then so is $s$.
+so $t,\tau,s$ may be taken sufficiently small.
+\qeds
+
+
+\section*{Exercises}
+
+
+
+
+
+
+\begin{pr} \label{pr:H(R^2)-length-space}
+Show that $\mathcal{H}({\RR^2})$ is a length space.
+\end{pr}
+
+\begin{pr}\label{pr:M-length-space}
+Show that $\mathcal{M}$ is a length space.
+\end{pr}
+
+
+
+\begin{pr}\label{pr:H>GH-boundary}
+Let $K_n\to K_\infty$ be a sequence of compact convex bodies in $\RR^3$ 
+which converges in the sense of Hausdorff.
+Assume $K_\infty$ is nondegenerate (i.e., its interior is not empty).
+Denote by $\partial K_n$ the surface of $K_n$; i.e. the boundary%
+\footnote{ A point $x$ belongs to the boundary of a subset $S$ of a metric space if for any $\eps>0$,
+the ball $B_\eps(x)$ contains a point in $S$ as well as a point in the complement of $S$.} 
+ of $K_n$ equipped with induced length metric.
+Show that $\partial K_n\GHto \partial K_\infty$.
+
+What happens if $K_\infty$ degenerates to a plane figure or an interval?
+\end{pr}
+
+\begin{pr}\label{pr:trig-inq=>interval}
+Assume that for any three points $x$, $y$ and $z$ of a compact length metric space $X$ we have 
+$$|x-z|_X\ge |x-y|_X, |y-z|_X\ \Longrightarrow\  |x-z|_X= |x-y|_X+ |y-z|_X$$
+Show that $X$ is isometric to a closed real interval.
+\end{pr}
+
+
+
+\begin{pr}\label{pr:1-st-var}%
+\footnote{Hint: Apply the definition of angle and triangle inequality
+$$|z-\bar y|\ge|\bar z-\bar y|+ |\bar z -z|$$ 
+for $\bar z\in  \left]xz\right]$.}
+Let $X$ a metric space with hinge $\hinge x y z$.
+Assume that the angle $\alpha=\mangle\hinge x y z$ is defined.
+Show that
+$$|z-\bar y|\le |z-x|-|x-\bar y|\cdot\cos\alpha+o(|x-\bar y|)$$
+for $\bar y\in \left]xy\right]$.
+\end{pr}
+
+\begin{pr}\label{pr:adj-angles} Prove that the sum of adjacent angles is at least $\pi$.
+
+More precisely: let $\spc{X}$ be a geodesic space and $p,x,y,z\in \spc{X}$.
+If $p\in \left] x y \right[$, then 
+\[\mangle\hinge pxz+\mangle\hinge pyz\ge \pi\]
+whenever  each angle on the left-hand side is defined.
+\end{pr}
+
+
+ 
+
+
+

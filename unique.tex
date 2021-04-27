@@ -1,0 +1,715 @@
+\chapter{Convex surfaces}\label{chap:unique}
+
+\section{Surface of convex polyhedron}\label{sec:suface}
+
+Let $K$ be a  convex polyhedron in $\RR^3$.
+
+Assume $K$ is \emph{non-degenerate}; i.e., it has nonempty interior.
+In this case the boundary of $K$ equipped with the induced length metric will be called the \emph{surface of $K$}\index{surface}\label{def:surface}.
+According to Exercise~\ref{ex:bry-is-poly}, the surface of a polyhedron is a polyhedral space.
+
+In the \emph{degenerate} case,
+i.e., if $K$ is a flat polygon, the surface of $K$ is defined differently.
+You have to imagine that you are living in $\RR^3$
+and can walk on a flat polygon made from rigid material;
+so to get from one of its sides to the other, you have to travel over a boundary edge.
+
+More formally, we define the surface of a convex polygon $K$ as its \emph{doubling}\index{doubling};
+i.e., two copies of $K$ glued along the corresponding points of their boundaries.
+
+We shall be interested in when an abstract polyhedral space $P$ can be realized as the surface of a convex polyhedron in $\RR^3$.  
+The proposition below 
+says that a necessary condition for this is that $P$ must be homeomorphic to $\SS^2$.
+
+\begin{thm}{Proposition}\label{prop:P-is-S^2}
+Let $K$ be a non degenerate convex polyhedron or a convex polygon.
+Then the surface of $K$ is homeomorphic to $\SS^2$.
+\end{thm}
+
+\parit{Proof.}
+Any convex flat polygon,
+is homeomorphic to disc.
+Therefore its doubling is homeomorphic to a sphere. 
+
+If $K$ is nondegenerate polyhedron, 
+we may assume that the origin $0\in\RR^3$ lies in the interior of $K$.
+Consider the map $f\:P\to \SS^2$ defined by $f(x) = x/|x|$;
+in other words, a point $x\in P$ is mapped to the intersection of the ray $[0x)$ with the unit sphere $\SS^2\subset \RR^3$.
+
+Since $K$ is convex and the origin $0$ is an interior point, 
+for any $z\neq 0$,
+the ray $[0z)$ intersects $P$ at exactly one point.
+It follows that, $f\:P\to\SS^2$ is a bijection. 
+
+Since $0\notin P$, the map $f\:P\to\SS^2$ is continuous.
+Given $y\in \SS^2$,
+denote by $h(y)$ the length of the intersection of the ray $[0y)$ with $P$. 
+Then it is easy to see that $f^{-1}(y)=h(y)\cdot y$;
+since $h$ is continuous function on $\SS^2$, so is $f^{-1}$.
+(Alternatively, you may apply
+ Exercise~\ref{ex:compact-homeo}.)
+Therefore $f\:P\to\SS^2$ is a homeomorphism.
+\qeds
+
+\section{Surface of convex body}
+
+\begin{thm}{Theorem}
+Let $K$ be a nondegenerate convex body
+then its surface has nonnegative curvature in the sense of Alexandrov.
+\end{thm}
+
+
+
+\section{Curvature}
+
+
+By Proposition~\ref{prop:P-is-S^2},
+if $P$ which be realized as the surface of a nondegenerate convex polyhedron or polygon in $\RR^3$ then it is homeomorphic to $\SS^2$;
+in particular $P$ is a polyhedral surface.
+Now we will formulate another necessary condition on $P$.
+
+\begin{thm}{Exercise}\label{ex:curv-is-nonneg}
+Let $P$ be the surface of a convex polyhedron $K$. Show that the curvature of any point $p\in P$ is non-negative. 
+\end{thm}
+
+Further in this section, 
+we study geometry of polyhedral surfaces with non-negative curvature.
+We start with an exercise.
+
+\begin{thm}{Exercise}\label{ex:poly+geod}
+Let $P$ be a non-negatively curved polyhedral surface.
+
+\begin{subthm}{}
+Show that if two geodesics in $P$ intersect at two points, 
+then these are the end points for both geodesics.
+\end{subthm}
+
+\begin{subthm}{}
+Show that a geodesic in $P$ cannot pass through a vertex of $P$.
+\end{subthm}
+
+\end{thm}
+
+Here is the main theorem in the section;
+it gives a global geometric property of 
+non-negatively curved polyhedral surface.
+
+\begin{thm}{Theorem}\label{thm:poly-cbb}
+Let $P$ be a polyhedral surface.
+Assume $P$ has non-negative curvature at each point.
+Then 
+\[\mangle\hinge pxy\ge\angk{}pxy\]
+for any hinge $\hinge pxy$ in $P$.
+\end{thm}
+
+\begin{thm}{Corollary}
+Let $P$ be a polyhedral surface.
+Then $P$ has non-negative curvature at each point if and only if 
+\[\angk{}pxy+\angk{}pyz+\angk{}pzx
+\le 
+2\cdot\pi\]
+for any hinge quadruple of points $p,x,y,z$ in $P$
+such that $p$ is distinct from each of $x$, $y$ and $z$.
+\end{thm}
+
+
+
+\parit{Proof.}
+Let $[pxy]$ be a triangle in $P$ and let $[\tilde p\tilde x\tilde y]$ be the model triangle of $[pxy]$.
+Set $\ell=|x-y|_P=|\tilde x-\tilde y|_{\RR^2}$.
+
+Denote by $\gamma(t)$ the geodesic $[xy]$ parametrized by length starting from $x$
+and let $\tilde \gamma(t)$ be the geodesic $[\tilde x\tilde y]$ parametrized by length starting from $\tilde x$.
+It is sufficient to show that 
+$$| p- \gamma(t)|\le|\tilde p-\tilde \gamma(t)| 
+\eqlbl{eq:comp-gamma}$$
+for any $t$ in $[0,\ell]$.
+
+A point $p$ in $P$ will be calles \emph{regular}%
+\index{regular point} if $p$ is not a vertex
+ of $P$ or equivalently, the curvature of $P$ vanish at $p$.
+Since any vertex can be approximated by regular points, 
+we may assume that $p$ is a regular point.
+
+
+From the cosine law, we get that the function 
+$$\tilde f(t)=|\tilde p-\tilde \gamma(t)|^2-t^2$$
+is linear.
+Consider the function
+$$f(t)=|p- \gamma(t)|^2-t^2.$$
+Note that 
+\begin{align*}
+f(0)&=\tilde f(0),\\
+f(\ell)&=\tilde f(\ell).
+\end{align*}
+Note that the inequality~\ref{eq:comp-gamma} is equivalent to
+$$f(t)\ge \tilde f(t).
+\eqlbl{eq:comp-f}$$
+
+
+According to Jensen's inequality, 
+to prove \ref{eq:comp-f} it is sufficient to show that $f$ is a concave function.
+The latter follows once we prove the following:
+\begin{clm}{}\label{clm:h>=f}
+For any $t_0\in\left]0,\ell\right[$ there is a \emph{supporting linear function}\index{supporting linear function};
+i.e., a function $h(t)$ such that 
+ $$h(t_0)=f(t_0)\ \  \text{and} \ \ h(t)\ge f(t)$$
+for any $t\in(t_0-\eps,t_0+\eps)$ and some fixed $\eps>0$.
+\end{clm}
+
+
+
+Note that according to Exercise~\ref{ex:poly+geod}, 
+$\gamma(t_0)$ is regular.
+Since $p$ is regular,
+a geodesic $[p\gamma(t)]$ contains only regular points.
+Therefore for small enough $\eps>0$,
+ the $\eps$-neighborhood of $[p\gamma(t)]$, say $\Omega$ contains only regular points. 
+We may assume that $\Omega$ is homeomorphic to a disc;
+in this case there is a locally distance preserving embedding $\iota\:\Omega\to\RR^2$.
+Note the image $\iota([p\gamma(t)])$ is a line segmentthat 
+and $\iota(\Omega)$ is the $\eps$-neighborhood of $\iota([p\gamma(t)])$ in $\RR^2$;
+in particular $\iota(\Omega)$ is convex.
+Thus $\iota(\Omega)$ contains a triangle with  base $\iota([\gamma(t_0-\eps)\ \gamma(t_0+\eps)])$  and vertex $\iota(p)$.
+
+Clearly, for any $t\in[t_0-\eps,t_0+\eps]$ 
+we have 
+$$|\iota(p)-\iota(\gamma(t))|\ge|p-\gamma(t)|.$$
+Note that
+the function
+$$h(t)= |\iota(p)-\iota(\gamma(t))|^2-t^2$$
+is linear and it 
+satisfies the condition \ref{clm:h>=f}.
+\qeds
+
+If in the above proof the geodesic from $p$ to $\gamma(t_0)$ is not unique,
+then the inequality $h(t)\ge f(t)$ might be strict for $t$ arbitrary close to $t_0$.
+
+
+\section{Cauchy's theorem}
+
+The first step in the proof of Alexandrov's theorem (\ref{thm:alexandrov}) 
+is Alexandrov's uniqueness theorem (\ref{thm:alexandrov-uni'}) 
+which in turn generalizes Cauchy's theorem formulated below.
+We start with the proof of Cauchy's theorem and then modify it to prove Alexandrov's uniqueness theorem.
+ 
+\begin{thm}{Cauchy's theorem}\label{thm:cauchy} Let $K$ and $K'$ be two non-degenerate convex polyhedra in $\RR^3$;
+denote their surfaces%
+\footnote{Their boundaries equipped with the induced length metric.} 
+by $P$ and $P'$.
+If there is an isometry $P\to P'$ which sends each face of $K$ to a face of $K'$,
+then $K$ is congruent to $K'$.
+\end{thm}
+
+
+First I break the proof into two parts, ``local'' and ``global'',
+which will be proved in the following sections.
+
+\parit{Outline of the proof.} 
+Consider the graph $\Gamma$ formed by the edges of $K$ 
+(the edges of $K'$ form the same graph).
+ 
+For an edge $e$ in $\Gamma$, 
+\begin{itemize}
+\item denote by $\alpha_e$ the corresponding dihedral angle of $K$;
+\item denote by $\alpha'_e$ the corresponding dihedral angle of $K'$.
+\end{itemize}
+Mark an edge $e$ of $\Gamma$ with 
+$({+})$ if $\alpha_e < \alpha'_e$ and with $({-})$ if $\alpha_e > \alpha'_e$.
+
+Now remove from $\Gamma$ everything which was not marked;
+i.e., leave only the edges marked by $(+)$ or $(-)$ and their endpoints.
+The statement of Cauchy's theorem is equivalent to the fact that $\Gamma$ is an empty graph.
+Let us assume the contrary and try to arrive at a contradiction.
+
+\medskip
+
+Note that $\Gamma$ is embedded into $P$, which is homeomorphic to $\SS^2$ (see Proposition~\ref{prop:P-is-S^2}).
+In particular, the edges coming from one vertex have a natural cyclical order. 
+Given a vertex $v$ of $\Gamma$, we can count the \emph{number of sign changes} around $v$;
+i.e., the number of pairs of adjacent edges which are marked by different signs. 
+
+\begin{thm}{Local lemma}\label{lem:local}
+For any vertex of $\Gamma$ the number of sign changes is at least $4$.
+\end{thm}
+
+In other words, the local lemma states that at each vertex of $\Gamma$, one can choose 4 edges  marked by $(+)$, $(-)$, $(+)$ and $(-)$ which are in the same cyclical order.
+
+Once the Local lemma is proved, we get a contradiction by applying the following lemma.
+
+\begin{thm}{Global lemma}\label{lem:global}
+Let $\Gamma$ be a nonempty sub-graph of the graph formed by the edges of a convex polyhedron.  Then it is impossible to mark all of the edges of $\Gamma$ by $(+)$ or $(-)$ 
+such that the number of sign changes around each vertex of $\Gamma$ is at least $4$.
+\end{thm}
+\qedsf
+
+\begin{wrapfigure}{r}{27mm}
+\begin{lpic}[t(-12mm),b(-5mm),r(0mm),l(-3mm)]{pics/penta(0.15)}
+\end{lpic}
+\end{wrapfigure}
+
+\begin{thm}{Exercise}
+Assume that we glue one pentagon and 10 triangles in $\RR^3$ along the rule shown in the picture.
+Assume that it forms a part of a surface of a convex polyhedron and each vertex is a vertex of the polyhedron.
+
+Use the local lemma to show that this configuration is rigid;  say one can not fix the position of the pentagon and continuously move the remaining 5 vertices in a new position so that each triangle moves by a one parameter family of isometries of $\RR^3$.
+\end{thm}
+
+\section{Arm lemma and Local lemma}
+
+To prove the Local lemma, we will need the following.
+
+\begin{thm}{Arm lemma}\label{lem:arm}
+Assume that $A=[a_0 a_1\dots a_n]$ is a convex polygon in $\RR^2$
+and $A'=[a'_0 a'_1\dots a'_n]$ be a closed broken line in $\RR^3$
+such that 
+$$|a_i-a_{i+1}|=|a'_i-a'_{i+1}|$$ for any $i\in\{0,\dots,n-1\}$
+and 
+$$\angle a_i\le \angle a'_i$$ 
+for each $i\in\{1,\dots,n-1\}$.
+Then 
+$$|a_0-a_n|\le |a'_0-a'_n|$$
+and equality holds if and only if $A$ is congruent to $A'$.
+\end{thm}
+
+One may view the broken lines $[a_0a_1\dots a_n]$ and $[a'_0a'_1\dots a'_n]$ as a robot's arm in two positions.
+The arm lemma states that when the arm opens, 
+the distance between the ``shoulder'' and ``tips of the fingers'' increases. 
+
+\begin{thm}{Exercise}
+Show that the arm lemma does not hold if 
+instead of the convexity,
+one only the local convexity;
+i.e.,  if you go along the broken line $a_0 a_1\dots a_n$, then you only turn left.
+\end{thm}
+
+In the proof, we will use the following exercise. Equivalently, one can think of this as of triangle inequality on the unit sphere $\SS^2$ with the induced length metric.  
+
+\begin{thm}{Exercise}\label{ex:angle-triangle}
+Let $w_1,w_2,w_3$ be unit vectors in $\RR^3$.
+Denote by $\theta_{i,j}$ the angle between the vectors $v_i$ and $v_j$.
+Then 
+$$\theta_{1,3}\le \theta_{1,2}+\theta_{2,3}$$
+and in case of equality, the the vectors $w_1,w_2,w_3$ lie in a plane.
+\end{thm}
+
+
+
+
+\parit{Proof.}
+We will view $\RR^2$ as the $xy$-plane in $\RR^3$, 
+so that both $A$ and $A'$ lie in $\RR^3$.
+Let $a_m$ be the vertex of $A$ which has maximal distance to the line $(a_0a_n)$.
+
+Let us shift indexes of $a_i$ and $a'_i$ down by $m$,
+so that 
+\begin{align*}
+a_{-m}&:=a_0,
+&
+a'_{-m}&:=a'_0,
+\\
+a_{-(m-1)}&:=a_1,
+&
+a'_{-(m-1)}&:=a'_1,
+\\
+&\vdots&&\vdots
+\\
+a_{0}&:=a_m,
+&
+a'_{0}&:=a'_m,
+\\
+&\vdots&&\vdots
+\\
+a_k&:=a_n&a'_k&:=a'_n,
+\end{align*}
+where $k=n-m$.
+The symbol ``$:=$'' means \emph{an assignment} as in programming 
+(the order of variables in an assignment statement is important: $a:=b$ means that both $a$ and $b$ take the value $b$
+and $b:=a$ means that both take the value $a$).
+
+Without loss of generality, we may assume that
+\begin{itemize}
+\item $a_0=a'_0$ and they both coinside with the origin $(0,0,0)\in\RR^3$;
+\item all $a_i$ lie in the $xy$-plane and the $x$-axis is parallel to the line $(a_{-m}a_k)$;
+\item the angle $\angle a'_0$ lies in $xy$-plane and contains the angle $\angle a_0$ inside
+and the directions to $a'_{-1}$,$a_{-1}$, $a_{1}$ and $a'_{1}$ from $a_0$ appear in the same cyclic order.
+\end{itemize}
+
+\begin{wrapfigure}{r}{58mm}
+\begin{lpic}[t(-20mm),b(-20mm),r(0mm),l(-3mm)]{pics/arm(0.3)}
+\lbl[tr]{69,67;$a_0$}
+\lbl[tl]{135,107;$a_1$}
+\lbl[t]{135,67;\small{$x_1$}}
+\lbl[l]{167,142;$a_2$}
+\lbl[t]{168,67;\small{$x_2$}}
+\lbl[l]{158,209;$a_3$}
+\lbl[t]{156,67;\small{$x_3$}}
+\lbl[l]{22,155;$a_{-1}$}
+\lbl[t]{22,67;\small{$x_{-1}$}}
+\lbl[lt]{46,206;$a_{-2}$}
+\lbl[t]{46,67;\small{$x_{-2}$}}
+\lbl{88,74;\small{$\sigma_1$}}
+\lbl{117,76;$\sigma_2$}
+\lbl{186,80;$\sigma_3$}
+\end{lpic}
+\end{wrapfigure}
+
+Denote by $x_i$ and $x'_i$ the projections of $a_i$ and $a'_i$ to $x$-axis.
+We can assume in addition that $x_k\ge x_{-m}$.
+In this case 
+$$|a_k-a_{-m}|=x_k-x_{-m}$$
+and
+$$|a'_k-a'_{-m}|\ge x'_k-x'_{-m}.$$
+The latter follows because projection is a distance non-expanding map.  
+
+Therefore it is sufficient to show
+that 
+$$x'_k-x'_{-m}\ge x_k-x_{-m}.$$
+The later holds if
+$$x'_i-x'_{i-1}\ge x_i-x_{i-1}.\eqlbl{eq:|bb|=<|aa|}$$
+for each $i$.
+
+It remains to prove \ref{eq:|bb|=<|aa|};
+in the proof we assume that $i>0$, 
+the case $i\le 0$ is similar.
+Let us
+\begin{itemize}
+\item denote by $\sigma_i$ the angle between the vector $w_i=a_{i}-a_{i-1}$ and the $x$-axis;
+\item denote by $\sigma'_i$ the angle between the vector $w'_i=a'_{i}-a'_{i-1}$ and the $x$-axis.
+\end{itemize}
+Note that
+$$\begin{aligned}
+x_i-x_{i-1}&=|a_i-a_{i-1}|\cdot\cos\sigma_i,
+\\
+x'_i-x'_{i-1}&=|a_i-a_{i-1}|\cdot\cos\sigma'_i
+\end{aligned}
+\eqlbl{eq:proj}$$
+for each $i>0$.
+By construction $\sigma_1\ge \sigma'_1$.
+Note that $\angle (w_{i-1},w_i)=\pi -\angle a_i$.
+From convexity of $[a_1 a_1\dots a_i]$, we have
+$$\sigma_i=\sigma_1+(\pi-\angle a_1)+\dots+(\pi-\angle a_i)$$
+ for any $i>0$.
+Since $\angle (w'_{i-1},w'_i)=\pi -\angle a'_i$.
+Applying Exercise~\ref{ex:angle-triangle} $i-1$ times,
+we get
+$$\sigma'_i\le\sigma'_1+(\pi-\angle a'_1)+\dots+(\pi-\angle a'_i).$$
+Since $\angle a_j\le \angle a'_j$ for each $j$, summing it we get
+$$\sigma_i\ge \sigma'_i.$$
+Applying \ref{eq:proj}, we get \ref{eq:|bb|=<|aa|}.
+
+In the case of equality, we have $\sigma_i=\sigma'_i$ for each $i$,
+that implies $\angle a_i=\angle a'_i$ for each $i$.
+This also implies that all $a'_i$ lie in $xy$-plane.
+The latter easily follows from the equality case in the Exercise~\ref{ex:angle-triangle}.
+\qeds
+ 
+\parit{Proof of Local lemma (\ref{lem:local}).}
+Assume that the Local lemma does not hold at the vertex $v$ of $\Gamma$.
+Let cut from $P$ a small pyramid $\Delta$ 
+with vertex $v$.
+Then one can choose two points $a$ and $b$ on the base of $\Delta$
+so that on one side of the segments $[va]$ and $[vb]$ we have only $(+)$'s, 
+and on the other side only $(-)$'s.
+
+%\begin{wrapfigure}{r}{53mm}
+%\begin{lpic}[t(-15mm),b(-12mm),r(0mm),l(0mm)]{pics/4-changes(0.25)}
+%\lbl[wtl]{110,153;$v$}
+%\lbl[tr]{70,88;$a_0=a$}
+%\lbl[tr]{14,128;$a_1$}
+%\lbl[br]{19,181;$a_2$}
+%\lbl[br]{73,228;$a_3$}
+%\lbl[bl]{139,222;$a_4$}
+%\lbl[bl]{170,195;$b=a_5$}
+%\lbl[w]{60,143;\tiny{$(+)$}}
+%\lbl[w]{90,190;\tiny{$(+)$}}
+%\lbl[w]{155,127;\tiny{$(-)$}}
+%\end{lpic}
+%\end{wrapfigure}
+
+The base polygon is formed by two broken lines with ends at $a$ and $b$.
+Assume that 
+$$a=a_0,\ a_1,\ \dots,\ a_n=b$$ 
+form the broken line along the side marked with $(+)$'s.
+Denote by 
+$$a'=a_0',\  a_1',\ \dots,\ a'_n=b'$$ 
+the corresponding points in $P'$.
+Since each marked edge passing through $a_i$ has a $(+)$ on it or nothing, 
+we have $$\angle a_{i-1}a_ia_{i+1}\le\angle  a'_{i-1}a'_ia'_{i+1}$$
+for each $i$.
+\begin{thm}{Exercise}
+Prove the last statement. 
+\end{thm}
+By construction we have $|a_i-a_{i-1}|=|a'_i-a'_{i-1}|$ for all $i$.
+By the Arm lemma (\ref{lem:arm}), 
+we get 
+\begin{clm}{}\label{clm:ab<ab}
+$|a-b|\le |a'-b'|$ and equality holds if no edge from $v$ is marked with a $(+)$.
+\end{clm}
+Repeating the same construction exchanging the places of $K$ and $K'$ gives  
+\begin{clm}{}\label{clm:ab>ab}
+$|a-b|\ge |a'-b'|$ and equality holds no edge from $v$ is marked with a $(-)$.
+\end{clm}
+
+The claims 
+\ref{clm:ab<ab}  and \ref{clm:ab>ab} 
+together imply $|a-b|=|a'-b'|$ 
+and it follows that no edge at $v$ is marked;
+i.e., $v$ is not a vertex of $\Gamma$,
+a contradiction.
+\qeds
+
+\section{Global lemma}
+
+Before going into the proof, we suggest to do the following.
+
+\begin{thm}{Exercise}
+Try to mark the edges of an octahedron
+by $(+)$'s and $(-)$'s
+such that there would be 4 sign changes at each vertex.
+
+Show that this is impossible.
+\end{thm}
+
+The proof of the Global lemma is based on counting the sign changes 
+in two ways;
+the first is as one moves around each vertex of $\Gamma$ 
+and the second is as one moves around each of the regions separated by $\Gamma$
+on the surface $P$. 
+If two edges are adjacent at a vertex,
+then they are also adjacent in moving around the region to whose boundary
+they belong. 
+The converse is true as well. 
+Therefore, both of the ways of counting give the same number.
+
+
+
+
+\parit{Proof of \ref{lem:global}.}
+We can assume that $\Gamma$ is connected;
+that is, one can get from any vertex to any other vertex by walking along edges.
+(If not, pass to any connected component of $\Gamma$.)
+Denote by $k$ and  $l$ the number of vertices and edges respectively in $\Gamma$.
+Denote by $m$ the number of \emph{regions} which $\Gamma$ cuts from $P$.
+Since $\Gamma$ is connected, each region is homeomorphic to an open disc.%
+\begin{thm}{Exercise}
+Prove the last statement.
+\end{thm}
+Now we can apply Euler's formula
+$$k-l+m=2.
+\eqlbl{eq:cauchy:euler}$$
+
+Denote by $s$ the total number of sign changes in $\Gamma$ for all vertices. 
+By the Local lemma (\ref{lem:local}), we have 
+$$ 4\cdot k\le s.\eqlbl{eq:S>=4k}$$
+
+Now let us get an upper bound on $s$ by counting the number of sign changes when you go around
+each region. 
+Denote by $m_n$ the number of regions which are bounded by $n$ edges;
+if an edge appear twice when you go around the regions it is counted twice.
+Note that each region is bounded by at least $3$ edges;
+therefore
+$$m=m_3+m_4+m_5+\dots\eqlbl{eq:3-4-5}$$
+Counting edges and using the fact that each edge belongs to exactly two regions, we get
+$$2\cdot l=3\cdot m_3+ 4\cdot m_4+5\cdot m_5+\dots.$$
+Combining this with Euler's formula (\ref{eq:cauchy:euler}), we get
+$$4\cdot k=8+2\cdot m_3+4\cdot m_4+6\cdot m_5+\dots
+\eqlbl{eq:k=2+}$$
+Observe that the number of sign changes in $n$-gon regions has to be even number which is at most $n$.
+Therefore
+$$s \le 2\cdot m_3 + 4\cdot m_4 + 4\cdot m_5 + 6\cdot m_6+\dots
+\eqlbl{eq:23-44-45}$$
+Clearly,  \ref{eq:S>=4k} and \ref{eq:23-44-45} contradict \ref{eq:k=2+}.
+\qeds
+
+
+\section{Alexandrov's uniqueness theorem}
+
+Alexandrov's uniqueness theorem states that the conclusion of Cauchy's theorem (\ref{thm:cauchy}) still holds if one removes the phrase ``which sends each face of $K$ to a face of $K'$'' from it.
+For your convenience we repeat the formulation here:
+
+\begin{thm}{Alexandrov's uniqueness theorem}\label{thm:alexandrov-uni'}
+Any two convex polyhedra in $\RR^3$ with isometric surfaces are congruent.
+\end{thm}
+
+The proof is along the same lines as the proof of Cauchy's theorem.
+We will only describe the necessary modifications.
+
+Let $\iota\:P\to P'$ be an isometry.
+Mark in $P$ all the edges of $K$ and all the $\iota$-preimages of edges of $K'$, which will further be called fake edges.
+These lines divide $P$ into convex polygons, say $\{Q_i\}$, and the restriction of $\iota$ to each $Q_i$ is a rigid move.
+These polygons will play the role of faces in the proof of Cauchy's theorem.
+
+\begin{center}
+\begin{lpic}[t(-35mm),b(-30mm),r(0mm),l(0mm)]{pics/fake(0.35)}
+\lbl[r]{10,120;$a$}
+\lbl[r]{116,120;$a'$}
+\lbl[rb]{34,170;$b$}
+\lbl[rb]{143,170;$b'$}
+\lbl[bl]{86,145;$c$}
+\lbl[tl]{202,167;$c'$}
+\lbl[tl]{79,108;$d$}
+\lbl[tl]{158,108;$d'$}
+\lbl[rt]{54,139;$v$}
+\lbl[lt]{162,143;$v'$}
+\lbl[]{100,86;A fake vertex $v\in K$ and the corresponding point $v'\in K'$.}
+\end{lpic}
+\end{center}
+
+A vertex of $Q_i$ can be a vertex of $K$ or it can be a fake vertex;
+i.e., lie on intersection of an edge and fake edge.
+For the first type of vertex, the Local lemma can be proved in exactly the same way. 
+For a fake vertex $v$, it is easy to see that both parts of the edge coming through $v$ are marked with $(+)$
+while both of the fake edges at $v$ are marked with $(-)$.
+Therefore, the Local lemma holds for the fake vertices as well.
+
+The remainder of the proof needs no further modifications.
+
+
+
+
+
+\section{Comments}
+
+In the Euclid's Elements, 
+solids were called equal if the same holds for their faces, but no proof was given.
+Legendre   became   interested   in   it
+towards   the   end   of   the   18th
+century   and
+talked to his colleague Lagrange
+about it,  who  in  turn  suggested  this problem to  Cauchy in 1813
+who soon proved it.
+In 1950, Alexandrov understood that the condition on the equality of faces can be exchanged by much weaker condition on the surface of polyhedra.
+
+We present a proof which has only minor modifications of Alexandrov's original proof in \cite{alexandrov}.
+Two alternative proofs due to Pogorelov 
+and Senkin--Zalgaller 
+are nicely discussed in Pak's lecture notes \cite{pak},
+both of these proofs are fun to read.
+
+\parit{Arm lemma.}
+The original Cauchy's proof (if you read French, see \cite{cauchy})
+also used Arm lemma, 
+but its proof contained an error 
+which was corrected in 1928 by Steinitz.
+
+The proof of Arm Lemma which we present is due to  Zaremba.
+This and yet couple other beautiful proofs can be found in the letters between Schoenber and Zaremba published in \cite{schoenberg-zaremba}.
+
+The following variation of Arm Lemma 
+which makes sense for nonconvex shperical polygons.
+
+\begin{thm}{Zalgaller's Arm Lemma}
+Let $A=a_1a_2\dots a_n$ and $A'=a'_1a'_2\dots a'_n$ be two spherical $n$-gons (not nesessury convex).
+Assume that $A$ lies in a half-sphere,
+corresponding sides of $A$ and $A'$ are equal
+and each angle of $A$ is bigger or equal to the corresponding angle in $A'$.
+Then $A$ is congruent to $A'$.   
+\end{thm}
+
+See the original paper in Russian \cite{zalgaller} or its translation in ???.
+This lemma is used in the Senkin--Zalgaller proof of the uniqueness theorem mentioned above.
+
+
+\parit{Global lemma.} 
+Alexandrov's book includes an other proof of Global lemma in addition to the one given here.
+This proof require no calculations, it is easier to explain but harder to write down.
+
+
+
+\section*{Exercises}
+
+\begin{pr}\label{pr:sum>1pi}
+Show that the sum of the exterior angles of any closed broken line in $\RR^3$ is at least $2\cdot\pi$.
+\end{pr}
+
+\noi Hint: Use induction on the number of edges.
+
+Use the previous problem to solve the next one.
+
+\begin{pr}\label{pr:aa+2} 
+Consider a convex polygons $A=[a_1a_2\dots a_n]$ in $\RR^2$ 
+and a closed broken line
+$A'=[a'_1a'_2\dots a'_n]$ in $\RR^3$.
+Let us enumerate the vertices in an $n$-periodic way;
+i.e., set $a_{n+k}=a_k$ and $a'_{n+k}=a'_k$ for any $k$.
+
+Assume $|a_i-a_{i-1}|=|a'_i-a'_{i-1}|$ and $|a_i-a_{i-2}|\le |a'_i-a'_{i-2}|$ for all $i$.
+Show that $A$ is congruent to $A'$.
+\end{pr}
+
+\begin{pr}\label{pr:arm}
+Give a complete proof of the Arm lemma (\ref{lem:arm}) using the following plan.
+
+Use induction on $n$.
+Prove the base case $n=2$.
+
+For a point $b$ on the broken line $[a_0a_1\dots a_n]$, 
+denote by $b'$ the corresponding point on $[a'_0a'_1\dots a'_n]$;
+i.e., if $b\in[a_{i-1}a_i]$ then $b'\in[a'_{i-1}a'_i]$ and $|a_i-b|=|a'_i-b'|$.
+
+Assume  $|a_0-a_n|\ge |a'_0-a'_n|$.
+Applying the induction hypothesis,  $|a_i-a_j|\le |a'_i-a'_j|$ if $|i-j|<n$.
+Moreover for any point $b$ on the broken line $[a_0a_1\dots a_n]$, we have
+$|a_i-b|\le |a'_i-b'|$ if $0<i<n$.
+
+Choose $b\in [a_{n-1}a_n]$ to be the closest point to $a_n$ auch that
+$|a_0-b|=|a'_0-b'|$.
+
+Show that the case $b= a_{n-1}$ can be reduced to the case $n=2$.
+
+In the remaining case,  apply the previous problem to the broken lines
+$[a_0a_1\z\dots a_{n-1}b]$ and $[a'_0a'_1\z\dots a'_{n-1}b']$.
+\end{pr}
+
+\begin{pr}\label{pr:tetrahedron} 
+Assume that the surface of a nonregular tetrahedron $T$ has curvature $\pi$ at each of it vertices.
+Show that 
+
+\begin{enumerate}[i)]
+\item all faces of $T$ are congruent;
+\item the line passing through midpoints of opposite edges of $T$ itersects these edges at right angles. 
+\end{enumerate}
+ 
+\end{pr}
+
+
+
+\begin{pr}\label{pr:K-P-simmetry}
+Let $K$ be a convex polyhedron in $\RR^3$;
+denote by $P$ its surface.
+Show that each isometry $\iota\:P\z\to P$,
+can be extended to an isometry of $\RR^3$. 
+\end{pr}
+
+The following problem is a quantitative version of Exercise \ref{ex:poly+geod}
+
+\begin{pr}\label{pr:poly+geod+}
+Let $P$ be a non-negatively curved polyhedral space homeomorphic to a sphere.
+
+Assume two vertices in $P$ are jointed by two geodesics,
+denote by $m_1$ and $m_2$ their midpoints.
+Show that
+$$|m_1-m_2|_P> \tfrac1{100}\cdot\ell\cdot\eps$$
+where $\eps$ is the minimum of curvatures of the vertices of $P$
+and $\ell$ is the minimal distance between pairs of vertices of $P$.
+\end{pr}
+
+
+\begin{wrapfigure}{r}{43mm}
+\begin{lpic}[t(-10mm),b(-15mm),r(0mm),l(0mm)]{pics/cauchy-zalgaller(0.2)}
+\end{lpic}
+\end{wrapfigure}
+
+\begin{pr}\label{pr:zalgaller}  
+Assume that we glue in $\RR^3$
+four regular pentagons 
+and 22 equilateral triangles 
+along the rule shown on the picture
+such that they form a part of surface of a convex polyhedron.
+
+Use the Local lemma to show that this configuration has 
+a rotational symmetry with axis passing through the midpoint of the marked edge.
+\end{pr}
+
+

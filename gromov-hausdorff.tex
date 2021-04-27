@@ -1,0 +1,528 @@
+\chapter{The space of spaces}\label{chap:gromov-hausdorff}
+
+Here we introduce so called Gromov--Hausdorff convergence for metric spaces.
+This convergence was introduced by Gromov around 1980, published in \cite{gromov-polynomial-growth}.
+Very soon this notion began to be used in all branches of geometry.
+In fact today I have difficulty to understand 
+how one could do geometry without this type of convergence.%
+(Some types of convergences of metric spaces was considered before Gromov,
+but they had lack of generality;
+each type of convergence was desined to solve one particular problem.)
+
+
+
+\section{Gromov--Hausdorff metric}
+
+The goal of this section is to cook up a metric space out of metric spaces.
+More precisely, we want to define the so called  Gromov--Hausdorff metric on the set of \emph{isometry classes} of compact metric spaces.
+(Being isometric is an equivalence relation on the class of metric spaces, 
+and an isometry class is an equivalence class with respect to this equivalence relation.)
+
+The obtained metric space will be denoted as $\mathcal{M}$.
+Given two metric spaces $X$ and $Y$,
+denote by $[X]$ and $[Y]$ their isometry classes;
+i.e., $X'\in [X]$ if and only if $X'\iso X$.
+Pedantically, the Gromov--Hausdorff distance from $[X]$ 
+to $[Y]$ should be denoted as $|[X]-[Y]|_{\mathcal{M}}$;
+but we will often write it as $|X-Y|_{\mathcal{M}}$ and say (not quite correctly) 
+``$|X-Y|_{\mathcal{M}}$ is the Gromov--Hausdorff distance from  $X$ 
+to  $Y$''.
+In other words, from now on, if I say ``metric space'',
+you should guess from the context if I mean ``metric space'' 
+or ``isometry class of this metric space'' (this is an abuse of notation).
+
+Let us describe the idea behind
+the definition. 
+First, we want to define the metric on $\mathcal{M}$ so that the distance between subspaces in
+the same metric space has to be no greater than the Hausdorff distance between
+them. 
+In other words, if two subspaces of the same space are close to each
+other in the sense of Hausdorff distance in the ambient space, their isometry classes must be
+close to each other in $\mathcal{M}$. 
+Second, we want
+the distance between isometric spaces to be zero. 
+The Gromov--Hausdorff
+distance is in fact the maximum distance satisfying these two requirements.
+
+
+\begin{thm}{Definition}\label{def:GH}
+Let $X$ and $Y$ be compact metric spaces. 
+The Gromov--Hausdorff distance $|X-Y|_{\mathcal{M}}$
+between them is defined by the following
+relation.
+ 
+Given  $r > 0$, we have that $|X-Y|_{\mathcal{M}} < r$ if and only if there exist a metric
+space $Z$ and subspaces $X'$ and $Y'$ in $Z$ which are isometric to $X$ and $Y$
+respectively and such that $|X'-Y'|_{\mathcal{H}(Z)} < r$. 
+(Here $|X'-Y'|_{\mathcal{H}(Z)}$ denotes the Hausdorff distance between sets $X'$ and $Y'$ in $Z$.)
+\end{thm}
+
+In other words, $|X-Y|_{\mathcal{M}}$ is
+the infimum of all $r>0$ for which the above $Z$, $X'$ and $Y'$ exist. 
+
+
+We say that a sequence
+of (isometry classes of) compact metric spaces $X_n$ 
+\emph{converges in the sense of Gromov--Hausdorff}\index{converges in the sense of Gromov--Hausdorff} to the (isometry classes of)
+compact metric space $X_\infty$ if $|X_n - X_\infty|_{\mathcal{M}} \to 0$ as $n\z\to\infty$;
+in this case we write $X_n\GHto X_\infty$.
+
+
+
+\begin{thm}{Theorem}\label{thm:GH-is-a-metric}
+The set of isometry classes of compact metric spaces equipped with Gromov--Hausdorff metric forms a metric space.
+
+This metric space will be denoted further as $\mathcal{M}$; named for ``metric space''.
+\end{thm}
+
+Before proving this theorem, we give couple of variations 
+of the definition of Gromov--Hausdorff distance.
+
+\subsection*{Metrics on disjoined union of \textit{X} and \textit{Y}}
+
+
+Definition~\ref{def:GH} deals with a huge class of metric spaces,
+namely, all metric spaces $Z$ that contain subspaces isometric to $X$ and $Y$.
+It is possible to reduce this class to metrics on the disjoint unions of $X$ and $Y$. 
+More precisely, 
+
+\begin{thm}{Proposition}\label{prop:GH=X+Y}
+The Gromov--Hausdorff distance between two compact metric spaces $X$
+and $Y$ is the infimum of $r > 0$ such that there exists a metric
+$|{*}-{*}|_W$ on the disjoint union $W=X\sqcup Y$ 
+such that the restrictions of $|{*}-{*}|_W$ to $X$ and $Y$
+coincide with $|{*}-{*}|_X$ and $|{*}-{*}|_Y$ 
+and $|X-Y|_{\mathcal{H}(W)} < r$. 
+\end{thm}
+
+
+\parit{Proof.}
+Identify $X\sqcup Y$ with $X'\cup Y' \subset Z$ 
+(the notation
+is from Definition~\ref{def:GH}). 
+
+More formally, fix isometries $f\: X \to X'$ and
+$g\: Y \to Y'$, then define the distance between $x \in X$ and $y \in Y$ by
+$|x-y|_W = |f (x)- g(y)|_Z+\eps$ for small enough $\eps>0$.%
+\footnote{We add $\eps$ to ensure that $d(x, y) > 0$ for any $x\in X$ and $y\in Y$;
+so $|x-y|_W$ is indeed a metric.}
+This yields a metric on $W=X\sqcup Y$ for which
+$|X- Y|_{\mathcal{H}(W)} \z< r$.
+\qeds
+ 
+
+
+
+\subsection*{A definition with fixed \textit{Z}}
+
+\begin{thm}{Proposition}\label{prop:GH-with-fixed-Z}
+In the Definition~\ref{def:GH}, 
+one can fix the space $Z$ once for all, by taking $Z=\mathcal{F}(\NN)$%
+\footnote{i.e., the space of bounded infinite sequences.}.  
+That is, 
+$$|X-Y|_{\mathcal{M}} = \inf \{|X'-Y'|_{\mathcal{H}(\mathcal{F}(\NN))}\}$$ 
+where the infimum is taken over all pairs of sets $X'$ and $Y'$ in $\mathcal{F}(\NN)$
+which isometric to  $X$ and $Y$ correspondingly.  
+\end{thm}
+
+\parit{Proof.}
+It is clear that $|X-Y|_{\mathcal{M}} \leq \inf \{|X'-Y'|_{\mathcal{H}(\mathcal{F}(\NN))}\}$.  
+Let $W$ be an arbitrary metric space with the underlying set $X\sqcup Y$ as in the proof of Proposition~\ref{prop:GH=X+Y}.
+Note $W$ is compact since it is union of two compact subsets $X,Y\subset W$.
+According to Problem~\ref{pr:compact->F_N},
+$W$ admits a distance preserving map to $\mathcal{F}(\NN)$.
+So $\inf \{|X-Y)|_{\mathcal{H}(\mathcal{F}(\NN))}\} \leq |X-Y|_{\mathcal{H}(W)}$, and taking the infimum over all such $W$ gives $\inf \{|X-Y|_{\mathcal{H}(\mathcal{F}(\NN))} \}\leq |X-Y|_{\mathcal{M}}$.
+\qeds
+
+\begin{thm}{Exercise}\label{ex:euclid-isom}
+Let $X,Y$ be two compact sets in the Euclidean plane $\RR^2$.
+Show that $X$ is isometric to $Y$ if and only if there is an isometry $\iota\:\RR^2\to \RR^2$
+which sends $X$ to $Y$.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:mink-isom}
+Find two isometric subsets $X,Y$ of $\mathcal{F}(\NN)$
+such that there is no isometry $\iota\:\mathcal{F}(\NN)\to \mathcal{F}(\NN)$ 
+which sends $X$ to $Y$.
+\end{thm}
+
+\section{Almost isometries}\label{sec:alm-isom}
+
+\begin{thm}{Definition} Let $X$ and $Y$ be metric spaces and $\eps > 0$. 
+A  map\footnote{possibly noncontinuous} $f\: X \z\to Y$ is called an $\eps$-isometry 
+if 
+$$|f(x)-f(x')|_Y\lege |x-x'|_X\pm\eps$$
+for any $x,x'\in X$ 
+and if $f(X)$ is an $\eps$-net in $Y$.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:alm-isom:compositon}
+Let $f\:X\to Y$ and $g\:Y\to Z$ be two $\eps$-isometries.
+Show that $g\circ f\: X\to Z$ is a $(3\cdot\eps)$-isometry.
+\end{thm}
+
+
+\begin{thm}{Exercise}\label{ex:alm-isom:inverse}
+ Assume $f\: X \z\to Y$ is an $\eps$-isometry.
+Show that there is a $(3\cdot\eps)$-isometry 
+$g\: Y\to X$.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:GH=>eps-isom}
+Assume $|X-Y|_{\mathcal{M}}<\eps$, show that there is a $(2\cdot\eps)$-isometry 
+$f\: X\to Y$.
+\end{thm}
+
+\begin{thm}{Proposition}\label{prop:alm-isom=>GH}
+Let $X$ and $Y$ be metric spaces 
+and let $f\: X\to Y$ be an $\eps$-isometry.
+Then $|X-Y|_{\mathcal{M}}\le 2\cdot \eps$.
+\end{thm}
+
+\parit{Proof.} Let us equip $W=X\sqcup Y$ with the metric defined the following way:
+\begin{enumerate}
+\item  For any $x,x'\in X$
+$$|x-x'|_W=|x-x'|_X;$$
+\item For any $y,y'\in Y$,
+$$|y-y'|_W=|y-y'|_Y$$
+\item For any $x\in X$ and $y\in Y$,
+$$|x-y|_W=\eps+\inf_{x'\in X}\{|x-x'|_X+|f(x')-y|_Y\}.$$
+\end{enumerate}
+
+\begin{thm}{Exercise}\label{ex:alm-isom=>GH}
+ Show $|{*}-{*}|_W$ is indeed a metric on $W$.
+\end{thm}
+
+Since $f(X)$ is an $\eps$-net in $Y$,
+for any $y\in Y$ there is $x\in X$ such that $|f(x)-y|_Y\z\le\eps$;
+therefore $|x-y|_W\le 2\cdot\eps$.
+On the other hand for any $x\in X$, we have $|x-y|_W\le\eps$
+for $y=f(x)\in Y$.
+
+It follows that $$|X-Y|_{\mathcal{H}(W)}\le 2\cdot\eps.$$
+Hence the result.
+\qedsf
+
+\section{Gromov--Hausdorff metric is a metric}
+
+In this section we prove  Theorem~\ref{thm:GH-is-a-metric}.
+
+
+Let $X$, $Y$ and $Z$ be arbitrary  compact metric spaces.
+We need to check the following (see Definition~\ref{def:metric-space}).
+\begin{enumerate}[{\it (i)}]
+\item\label{GH-1} $|X-Y|_{\mathcal{M}}\ge 0$;
+\item\label{GH-2} $|X-Y|_{\mathcal{M}}=0$ if and only if $X$ is isometric to $Y$;
+\item\label{GH-3} $|X-Y|_{\mathcal{M}}=|Y-X|_{\mathcal{M}}$;
+\item\label{GH-4} $|X-Y|_{\mathcal{M}}+|Y-Z|_{\mathcal{M}}\ge |X-Z|_{\mathcal{M}}$.
+\end{enumerate}
+
+
+Note that {\it (\ref{GH-1})}, {\it(\ref{GH-3})} and ``if''-part of {\it(\ref{GH-2})} follow directly from the definition of Gromov--Hausdorff metric (\ref{def:GH}).
+
+\parit{Proof of (\ref{GH-4}).}
+Choose arbitrary $a,b \in \mathbb{R}$ such that
+$$a>|X-Y|_{\mathcal{M}}\ \ \text{and}\ \  b>|Y-Z|_{\mathcal{M}}.$$
+Choose two metrics on $U=X\sqcup Y$ and $V=Y\sqcup Z$ so that
+$|X-Y|_{\mathcal{H}(U)}<a$ and $|Y-Z|_{\mathcal{H}(V)}<b$ 
+and the inclusions $X\hookrightarrow U$, $Y\hookrightarrow U$, $Y\hookrightarrow V$ and $Z\hookrightarrow V$ are distance preserving.
+
+Consider the metric on $W=X\sqcup Z$ 
+so that inclusions $X\hookrightarrow W$ and $Z\hookrightarrow W$ are distance preserving
+and 
+$$|x-z|_W=\inf_{y\in Y}\{|x-y|_U+|y-z|_V\}.$$
+Note that $|{*}-{*}|_W$ is indeed a metric and 
+$$d^W_H(X,Z)<a+b.$$
+The last inequality holds for any $a>|X-Y|_{\mathcal{M}}$ and $b>|Y-Z|_{\mathcal{M}}$;
+hence {\it (\ref{GH-4})} follows.
+\qeds
+
+\parit{Proof of ``only if''-part of (\ref{GH-2}).}
+According to Exercise~\ref{ex:GH=>eps-isom},
+for any sequence $\eps_n\to0^+$ there is a sequence of $\eps_n$-isometries 
+$f_n\:X\to Y$.
+
+Since $X$ is compact, 
+we can choose a countable dense set
+$S$ in $X$.
+Use a diagonal procedure if necessary, to pass to a subsequence of $(f_n)$
+such that for every $x \in S$ the sequence $(f_n(x))$ 
+converges in $Y$. 
+Consider the pointwise limit map  $f_\infty \: S \to Y$ defined by
+ $$f_\infty(x) = \lim_{n\to\infty} f_n (x)$$ for every $x \in S$. 
+Since $$|f_n (x)- f_n (x')|_Y\lege |x- x'|_X \pm\eps_n,$$ 
+we have 
+$$|f_\infty(x)-f_\infty (x')|_Y 
+= \lim_{n\to\infty} |f_n(x)-f_n (x')|_Y 
+= |x -x'|_X$$ for all
+$x, x' \in S$; 
+i.e., $f_\infty\:S\to Y$ is a distance-preserving map. 
+Then $f_\infty$ can be extended to a distance-preserving map from all of $X$ to $Y$.
+The later is done by setting 
+$$f_\infty(x)=\lim_{n\to\infty} f_\infty(x_n)$$ 
+for some (and therefore any) sequence of points $(x_n)$ in $S$
+which converges to $x$ in $X$.
+(Note that if $x_n\to x$ then $(x_n)$ is Cauchy.
+Since $f_\infty$ is distance preserving, $y_n=f_\infty(x_n)$ is also a Cauchy sequence in $Y$;
+therefore it converges.)
+
+This way we obtain a distance preserving map $f_\infty\:X\to Y$. 
+It remains to show that $f_\infty$ is surjective; i.e. $f_\infty(X)=Y$.
+
+Note that in the same way we can obtain a distance preserving map $g_\infty\:Y\z\to X$.
+If $f_\infty$ is not surjective, then neither is $f_\infty\circ g_\infty\:Y\to Y$.
+So $f_\infty \circ g_\infty$ is a distance preserving map from a compact space to itself which is not an isometry.
+The later contradicts Problem~\ref{pr:non-contracting=>isometry}. 
+\qeds
+
+\begin{thm}{Exercise}\label{ex:point-diam}
+Let $P$ be a one-point metric space. 
+Prove that 
+$$|X-P |_{\mathcal{M}} = \frac{\diam X}2$$ for any compact metric space $X$.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:d_GH-and-diam}
+ Let $X$ and $Y$ be two compact metric spaces.
+Prove that 
+$$|\diam X - \diam Y |\le 2\cdot |X-Y|_{\mathcal{M}}.$$
+In other words, $\diam$ is a $2$-Lipschitz function on $\mathcal{M}$.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:pack-GH}
+Assume $X_n$ be a sequence of compact metric spaces which converges to a compact metric space $X_\infty$
+in the sense of Gromov--Hausdorff.
+Show that for any $\eps>0$
+$$\pack_\eps X_n\ge\pack_\eps X_\infty$$ 
+for all large enough $n$.
+In particular, $\pack_\eps$ is a lower semicontinuous function on $\mathcal{M}$.
+\end{thm}
+
+
+\section{Gromov--Hausdorff convegence}
+
+%???Check, maybe we are happy with d'_{GH}???
+
+The Gromov--Hausdorff metric defines Gromov--Hausdorff convegence
+and this is the only thing it is good for.
+In other words in all applications, we use only topology on $\mathcal{M}$
+and we do not care about particular value of Gromov--Hausdorff distance between spaces.
+
+In order to determine that a given sequence of metric spaces $(X_n)$ converges in the Gromov--Hausdorff sense to $X_\infty$, it is sufficient to estimate distances $|X_n-X_\infty|_{\mathcal{M}}$ and  check if $|X_n-X_\infty|_{\mathcal{M}}\to 0$.
+This problem turns to be simpler than finding Gromov--Hausdorff distance between a particular pair of spaces.
+The proposition below gives one way to do this.
+
+\begin{thm}{Proposition}\label{prop:GH-e-isom}
+A sequence of compact metric spaces $(X_n)$ converges to  $X_\infty$ in the sense of Gromov--Hausdorff if and only if there is a sequence $\eps_n\to0^+$
+and an $\eps_n$-isometry $f_n\:X_n\to X_\infty$ for each $n$.
+\end{thm}
+
+\parit{Proof.} Follows from Propsition~\ref{prop:alm-isom=>GH} and Exercise~\ref{ex:GH=>eps-isom}
+\qeds
+
+
+\section{Gromov's compactness theorem}
+
+The following theorem is analogous to Blaschke's compactness theorems (\ref{thm:compact+Hausdorff}).
+
+\begin{thm}{Gromov's compactness theorem}\label{thm:gromov-compactness}%
+Let $\mathcal{Q}$ be a closed subset of $\mathcal{M}$.
+Then $\mathcal{Q}$ is compact if and only if there is a sequence of positive numbers $\eps_1,\eps_2,\dots$ such that $\eps_n\to 0$ and 
+$$\pack_{\eps_n}X\le n\eqlbl{eq:pack<n}$$
+for any space $X$ in $\mathcal{Q}$.
+\end{thm}
+
+\begin{thm}{Exercise}\label{pack<n;n>1}
+Show that the conclusion of the theorem does not hold
+if the inequality \ref{eq:pack<n} holds only for $n\ge 2$.
+\end{thm}
+
+
+
+
+\begin{thm}{Lemma}
+$\mathcal{M}$ is complete.
+\end{thm}
+
+\parit{Proof.}
+Let $(X_n)$ be a Cauchy sequence in $\mathcal{M}$.
+Passing to a subsequence if necessary, 
+we can assume that $|X_n-X_{n+1}|_{\mathcal{M}}<\tfrac1{2^n}$ for each $n$.
+In particular, for each $n$ one can equip $W_n=X_n \sqcup X_{n+1}$ with a metric such that
+inclusions $X_n\hookrightarrow W_n$ and $X_{n+1}\hookrightarrow W_n$ are distance preserving
+and $$|X_n-X_{n+1}|_{\mathcal{H}(W_n)}\z<\tfrac1{2^n}$$
+for each $n$.
+
+Set $W$ to be the disjoint union of all $X_n$.
+Let us equip $W$ with a metric defined the following way:
+\begin{itemize}
+\item for any fixed $n$ and any two points $x_n,x_n'\in X_n$ set
+$$|x_n-x_n'|_W=|x_n-x_n'|_{X_n}$$
+\item for any positive integers $m>n$ and any two points $x_n\in X_n$ and $x_m\in X_m$ set
+$$|x_n-x_m|_W=\inf\left\{\sum_{i=n}^{m-1}|x_i-x_{i+1}|_{W_i}\right\},$$
+where the infimum is taken for all sequences $x_i\in X_i$.
+\end{itemize}
+
+\begin{thm}{Exercise}
+Check that this indeed defines a metric on $W$.
+\end{thm}
+
+Let $\bar W$ be the completion of $W$.
+Note that $|X_m-X_n|<\tfrac1{2^{n-1}}$ if $m>n$.
+Therefore the union of $X_1\cup X_2\cup\dots\cup X_n$ forms a $\tfrac1{2^{n-1}}$-net in $\bar W$.
+Since each $X_i$ is compact, we get that $\bar W$ admits a compact $\eps$-net for any $\eps>0$.
+According to Problem~\ref{pr:compact-net}, $\bar W$ is compact.
+
+According to Blaschke's compactness theorem (\ref{thm:compact+Hausdorff}),
+we can pass to a subsequence of $(X_n)$ which converge in $\mathcal{H}(\bar W)$ and therefore in $\mathcal{M}$.
+\qeds
+
+\parit{Proof of \ref{thm:gromov-compactness}; ``only if'' part.}
+If there is no sequence $\eps_n\to0$ as described in the problem, then for a fixed fixed $\delta>0$
+there is a sequence of spaces $X_n\in\mathcal{Q}$ such that $$\pack_\delta X_n\to\infty\ \ \text{as}\ \  n\to\infty.$$
+Since $\mathcal{Q}$ is compact, 
+this sequence has a partial limit say $X_\infty\in\mathcal{Q}$.
+It is easy to see that $\pack_{\delta/10} X_\infty=\infty$;
+the later contradicts Theorem~\ref{thm:finite_pack=compact}.
+
+\parit{``If'' part.}
+Let us fix the sequence $\eps_n\to 0$ as in the problem and consider the set $\hat{\mathcal{Q}}$ of all (isometry classes of all) metric spaces $X$ such that
+$\pack_{\eps_n} X\le n$ for any $n$. 
+According to Exercise~\ref{ex:pack-GH}, $\hat{\mathcal{Q}}$ is closed in $\mathcal{M}$.
+Clearly $\mathcal{Q}\subset\hat{\mathcal{Q}}$.
+Therefore it is sufficient to prove that $\hat{\mathcal{Q}}$ is compact.
+
+Note that $\diam X\le \eps_1$ for any $X\in \hat{\mathcal{Q}}$.
+Given positive integer $n$ consider set of all metric spaces $\mathcal{W}_n$
+with number of points at most $n$ and diameter $\le \eps_1$.
+Note that $\mathcal{W}_n$ is compact for each $n$.
+Further a maximal $\eps_n$-packing of any $X\in\hat{\mathcal{Q}}$ forms a subspace from $\mathcal{W}_n$.
+Therefore $\mathcal{W}_n\cap\hat{\mathcal{Q}}$ is a comapct $\eps_n$-net in  $\hat{\mathcal{Q}}$.
+Problem~\ref{pr:compact-net} implies that $\hat{\mathcal{Q}}$ is compact.
+\qeds
+
+
+
+\section{Comments} 
+
+Given two metric spaces $X$ and $Y$, we will write $X\preccurlyeq Y$ if there is a noncontracting map $f\:X\to Y$;
+i.e., if 
+$$ |x-x'|_X\le|f(x)-f(x')|_Y$$
+for any $x,x'\in X$.
+
+Further, given $\eps>0$, we will write $X\preccurlyeq Y+\eps$
+if there is a map $f\:X\to Y$ such that 
+$$|x-x'|_X\le|f(x)-f(x')|_Y+\eps$$
+for any $x,x'\in X$.
+
+Define 
+$$d'_{GH}(X,Y)=\inf\set{\eps}{X\preccurlyeq Y+\eps\ \ \text{and}\ \ Y\preccurlyeq X+\eps}$$
+It turns out that $d'_{GH}$ is a different metric on the set of isometry classes of compact metric spaces; i.e., in general $d'_{GH}(X,Y)\not=|X-Y|_{\mathcal{M}}$. 
+However, these two metrics define the same topology on $\mathcal{M}$.
+More precicely:
+
+\begin{thm}{Proposition}\label{GH-po}
+For any sequence of compact metric spaces $(X_n)$ and a compact metric space $X_\infty$,
+we have
+$$|X_n-X_\infty|_{\mathcal{M}}\to 0 \ \ \ \Leftrightarrow\ \ \ d'_{GH}(X_n,X_\infty)\to 0$$ 
+as $n\to\infty$.
+\end{thm}
+
+We will not give a proof of this proposition. 
+Likely, we will not use it further in the lectures, 
+but it might help you to build intuition for Gromov--Hausdorff convergence.
+If you want to prove it yourself look in the proof of Theorem~\ref{thm:GH-is-a-metric} 
+and try to modify it using ideas from the proof of Problem~\ref{pr:non-contracting=>isometry}.
+
+The Gromov--Hausdorff distance can be defined for arbitrary pair of metric space.
+Therefore it is natural to ask why we only consider compact metric spaces.
+First note the Gromov--Hausdorff distance from amy metric space $X$ 
+to its completion $\bar X$ is zero.
+Therfore if you want to end up in a metric space, it is better to consider only complete metric spaces.
+
+Further, the distance between one-point-space and a metric spce with infinite diameter is infinite.
+Therefore one has to either consider only bounded metric spaces (i.e., the spaces with finite diameter)
+or relux the definition of metric space which allow metric to take infinite value.
+
+Finally, the class of isometry classes of all bounded complete metric spaces forms a class, but not a set.
+Hence again we have two choices: either relux the definition of metric space so its points will form a class, or restrict further the class of spaces for which the isometry classes will form a set.
+
+\begin{thm}{Exercise}
+Prove that isometry classes of compact metric spaces form a set. 
+\end{thm}
+
+
+\section*{Exercises}
+
+\begin{pr}\label{pr:GH1}
+Let $X=\{x,y,z\}$ be a three point subset of Euclidean plane with distances
+$$|x-y|=|y-z|=|z-x|=1.$$
+\begin{enumerate}[(i)]
+\item Find the minimal Hausdorff distance from $X$ to a one-point subset of the plane.
+\item Find the Gromov--Hausdorff distance from $X$ to the one-point metric space. 
+\end{enumerate}
+\end{pr}
+
+\begin{pr}\label{pr:GH2}
+Let $X$ and $Y$ be a compact metric spaces which have isometric $\eps$-nets.
+Show that 
+$$|X-Y|_{\mathcal{M}}\le 2\cdot\eps.$$
+Is it always true that 
+$$|X-Y|_{\mathcal{M}}\le \eps?$$
+\end{pr}
+
+
+
+
+\begin{pr}\label{pr:GH3}
+Define the \emph{radius of a metric space}\index{radius of a metric space} $X$ as 
+$$\rad X=\inf_x\left\{\sup_y\{|x-y|_X\}\right\}.$$
+Equivalently, 
+$$\rad X=\inf\set{R>0}{\text{there is}\ x\in X\  \text{such that}\ B_R(x)\supset X}.$$
+ 
+\begin{enumerate}[(i)]
+\item Show that for any compact metric space $X$ we have
+$$\tfrac12\cdot\diam X\le \rad X\le \diam X.$$
+\item Show that for any compact metric spaces $X,Y$ we have
+$$|\rad X-\rad Y|\le 2\cdot |X-Y|_{\mathcal{M}}.$$
+\end{enumerate}
+\end{pr}
+
+\begin{pr}\label{pr:F-X}
+Let $X$ be a metric space.
+If two compact sets $A, B$ in $X$ are isometric,
+we will write $A\iso B$. 
+Set
+$$d(A,B)=\inf \set{|A'-B'|_{\mathcal{H}(X)}}{A'\iso A \ \text{and}\ B'\iso B}.$$
+Note that if $X=\mathcal{F}(\NN)$ then according to Proposition~\ref{prop:GH-with-fixed-Z}, 
+$d$ is a metric on $\mathcal{H}(X)/\iso$ (i.e., on the ``$\iso$''-equivalecne classes of $\mathcal{H}(X)$).
+
+Show that it does not hold for arbitrary metric space $X$.
+Understand the reason why it holds for $X=\mathcal{F}(\NN)$.
+\end{pr}
+
+\begin{pr}\label{pr:under}
+Let $X$ be a comapact metric space.
+Denote by $\Under(X)$ the set of all isometry classes of metric spaces $Y$ 
+which admit a distance non-contracting map $Y\to X$.
+
+\begin{subthm}{pr:under:if}
+Show that $\Under(X)$ forms a compact set in $\mathcal{M}$.
+\end{subthm}
+
+\begin{subthm}{pr:under:only-if}
+Show that for any compact set $K$ in $\mathcal{M}$ there is a compact space $X$
+such that  $\Under(X)\supset K$.
+\end{subthm}
+
+\end{pr}
+
+\begin{pr}\label{pr:GH-variation}
+Consider the pairs $(X,A)$, where $X$ is a compact metric space and $A$ is a closed subset in $X$.
+Two such pairs, say $(X,A)$ and $(X',A')$ will be called equivalent (briefly $(X,A)\sim(X',A')$)
+if there is an isometry $\iota\:X\to X'$ such that $\iota(A)=A'$.
+
+Modify the definition of Gromov--Hausdorff metric to construct a natural metric on the set of $\sim$-equivalence classes of the pairs $(X,A)$.
+\end{pr}
+
+
+

@@ -1,0 +1,1568 @@
+
+
+
+In the proof we will \emph{approximate} $\SS^2$ by a sequence of polyhedral spaces $P_n$.
+For each polyhedral space w 
+
+\parit{The plan of the proof.}
+We will use the following exercise 
+to construct a sequence of 2-dimensional polyhedral spaces $P_n$ with surjective distance non-expanding maps $\phi_n\:P_n\to P_{n-1}$
+and $\psi_n\:\SS^2\to P_n$ such that
+$\psi_{n-1}=\phi_n\circ\psi_n$ for each $n$ 
+and 
+$$|\psi_n(x)-\psi_n(y)|_{P_n}\to |x-y|_{\SS^2}$$
+for any $x,y\in \SS^2$.%
+\footnote{Such sequences of spaces and maps 
+$$\dots\xto{\phi_{2}}X_2\xto{\phi_{2}} X_1\xto{\phi_{1}}X_0$$
+appear in all branches of mathematics. 
+They are called \emph{inverse systems}\index{inverse systems}.
+A sequence $(x_0, x_1, x_2, \ldots)$ such that $x_n \in X_n$ and $\phi_n(x_n)=x_{n-1}$ could be considered as a point in a new space $X$ which is called the \emph{inverse limit}\index{inverse limit} of the system and is denoted $X=\varprojlim X_n$. 
+Given $x=(x_0,x_1,\dots )\in X$, the evaluation maps $\psi_n: X \to X_n$ given by $\psi_n(x)=x_n$ are called \emph{projections}.}
+
+
+
+Further, we construct piecewise distance preserving maps $f_n\:P_n\z\to\RR^2$.
+To construct $f_n$ we apply Akopyan's approximation theorem (\ref{thm:approx}) to the composition $f_{n-1}\circ\phi_n\:P_n\z\to\RR^2$.
+
+The needed length-preserving map $f$ is  the limit of the compositions 
+$$f_n\circ\psi_n\:\SS^2\z\to\RR^2.$$
+
+\parbf{Remarks.}
+From Exercise~\ref{LP=>short},
+it follows that $f$ is distance non-expanding.
+Some extra care will be needed to ensure that the  $f$ is actually length-preserving.
+
+The existence of some piecewise distance preserving maps $P_n\to\RR^2$ is provided by Zalgaller's mapping theorem (\ref{thm:zalgaller}).
+However if $f_n$ is the map constructed in the proof of Zalgaller's theorem for polyhedral space $P_n$
+then diameter of the image of $f_n$ can not exceed the maximal diameter of triangle in a triangulation of $P_n$.
+Therefore, the compositions $f_n\circ\psi_n$ 
+might only converge to a \emph{constant map};
+i.e., the map which sends everything to one point.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+From \ref{eq:w-on-edge}, in the latter case, we can assume that the points $x$ and $y$ lie on the different edges of $\mathcal{T}$.
+It follows that in this case $x$ and $y$ have to lie near one vertex of $\mathcal{T}$.
+
+\medskip
+
+The constructed map $w$ almost satisfies the needed conditions;
+it only fails to meet \ref{clm:global} for $x$ and $y$ 
+near one of the vertex of $\mathcal{T}$.
+We now make a modification of the above construction to fix this issue.
+
+\parit{Correction to the construction of $w$.} Let us construct $w$ as above
+ so that in addition it satisfies the following property:
+\begin{clm}{}\label{cond:ends}
+There is $\lambda>0$ such that 
+if
+$$|v-x|_P=|v-y|_P \leq \lambda$$
+ for two points on $1$-skeleton $x$ and $y$ and a vertex $v$ of $\mathcal{T}$ then
+$$w(x)=w(y).$$
+
+\end{clm}
+Once such a $w$ is  constructed, $|v-x|_P,|v-y|_P\le \lambda$
+ would  imply 
+\begin{align*}
+ |w(x)-w(y)|_{\RR^2}
+&\le \bigl||v-x|_P-|v-y|_P\bigr|\le
+\\
+&\le|x-y|_P
+\end{align*}
+for $\tfrac\theta\delta\ll\lambda$ the same way as in \ref{eq:w-on-edge}.
+
+To make such a modification,
+fix a small $\lambda > 0$.
+Denote by $\mathcal{T}^1$ the 1-skeleton of $\mathcal{T}$.
+Consider the map $q_\lambda\:\mathcal{T}^1\to\mathcal{T}^1$ which sends each edge to itself 
+in such a way that any point of distance $\le\lambda$ to a vertex maps to this vertex 
+and the map is linear on the remaining part of edge.
+For each $\lambda>0$ we can find minimal $\mu\ge 0$ such that 
+$(1-\mu)\cdot f\circ q_\lambda$ is distance nonexpanding.
+
+It can be shown that $\mu\to0$ as $\lambda\to 0$.
+Note that it is sufficienct to show this for three sides of a fixed triangle in $\mathcal{T}$.
+The latter can be done by straightforward calculations.
+
+Choose sufficiently large $n$, so $\tfrac{\theta(n)}\delta\ll\lambda$
+and apply the zigzag procedure to each of the three portions of each edge separately in such a way that all the $\lambda$-long intervals starting at one vertex are mapped in an identical way.
+The constructed $w$ meets condition~\ref{cond:ends}.
+
+
+
+
+
+
+
+
+
+
+\begin{thm}{Exercise}\label{ex:PDP+fixed-triang}
+Construct a $2$-dimensional polyhedral space $P$ 
+with a fixed triangulation which does not admit 
+a map $f\:P\to\RR^2$ which is distance preserving on each simplex.
+\end{thm}
+
+
+
+
+
+Given a point $v$ in a simplicial complex,
+the minimal subcomplex containing a small neigborhood of $v$ is called \emph{star of $v$}.
+
+
+
+\begin{thm}{Exercise}
+Check the proof and make sure that the condition \ref{star-condition} is indeed sufficient.
+\end{thm}
+
+
+\begin{thm}{Exercise}\label{ex:star-triangulation}
+Show that one can add a finite number of points on the edges of $P$ triangulation so that the condition \ref{star-condition} holds.
+\end{thm}
+
+These exercises finish the proof of two dimensional case.
+
+\parit{Higher dimensions.}
+First let me give one more definition.
+
+\begin{thm}{Definition}
+ Let $\Sigma$ be a metric space with diameter $\le \pi$. 
+A metric space $K$ is called a Euclidean cone over $\Sigma$
+if its underlying set 
+is the quotient $\Sigma\times [0,\infty)/{\sim}$, 
+where $(x,0)\sim(y,0)$ for any $x,y\in \Sigma$
+and the metric is defined by the cosine rule;
+i.e. 
+$$|(x,a)-(y,b)|^2_K=a^2+b^2-2\cdot a\cdot b\cdot\cos|x-y|_\Sigma.$$
+
+\end{thm}
+
+The general case can be proved by induction on $m$. 
+First, one has to choose a finite set of points $\{w_1,w_2,\dots,w_n\}$
+so that the condition \ref{star-condition} holds.
+The proof of existence of this set is not hard but tedious;
+see a comment in the solution of Exercise~\ref{ex:star-triangulation}.
+
+Now let us glue any pair of points $x$ and $y\in P$
+if for some point $z\in V_i\cap V_j$, 
+$x$ lies on the geodesic $[w_iz]$,
+$y$ lies on the geodesic $[w_jz]$
+and $|w_i-x|_P=|w_j-y|_P$.
+
+It is not hard to check that these gluing maps are piecewise distance preseving.
+Thus we get a piecewise distance preseving map from $P$ to a new  polyhedral space,
+say $P'$.
+Note that $P'$ can be viewed as a star shaped subset of a Euclidean cone,
+ say $K$.
+
+Therefore, it is sufficient to construct a  piecewise distance preseving map $K\z\to\RR^m$.
+The latter is equivalent to finding a piecewise distance preserving map from any $(m-1)$-dimensional spherical polyhedral space%
+\footnote{It is defined the same way as Euclidean polyhedral space, but using spherical simplices.}
+ to $\SS^{m-1}$.
+
+For a spherical polyhedral space,
+one can repeat the same construction once the cone is exchanged to so called 
+\emph{spherical suspension}\index{spherical suspension} defined below.
+On each step we get a dimension reduction, and the $\dim P=1$ case can be proved the same way for spherical polyhedral space
+
+\begin{thm}{Definition}
+ Let $\Sigma$ be a metric space with diameter $\le \pi$. 
+A metric space $\Lambda$ is called a spherical suspension over $\Sigma$
+if its underlying set 
+is the quotient $\Sigma\times [0,\pi]/{\sim}$, 
+where $(x,0)\sim(y,0)$ and $(x,\pi)\sim(y,\pi)$ for any $x,y\in \Sigma$
+and the metric is defined by the spherical cosine rule;
+i.e. 
+$$\cos|(x,a)-(y,b)|_\Lambda
+=\cos a\cdot \cos b
++\sin a\cdot\sin b\cdot\cos|x-y|_\Sigma.$$
+
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+
+We start with the proof of 1-dimensional case.
+Further we give a regurus proof of Zalgaller's mapping theorem in dimension 2 
+assuming in addition that polyhedral space admits a triangulation by acute triangles.
+After that we give two hints;
+the first leads to the proof in general 2-dimensional case
+and the secont leads the general $m$-dimensional case.
+
+
+\parit{Proof; case $\dim P=1$.}
+Choose a triangulation of $P$;
+in addition to  the vertices (the $0$-dimensional simplices), 
+it contains a finite number of edges ($1$-dimensional simplices).
+
+Let $\{v_1,v_2,\dots,v_n\}$ be the set of vertices
+ of this triangulation.
+Consider the map $f\:P\to\RR$
+$$f(x)\df\min_i\{|x-v_i|_P\}.$$
+Bisecting each edge, we get a new triangulation of $P$
+and $f$ is distance preserving on each simplex of 
+the new triangulation.
+
+Indeed, label the edges of the triangulation as
+$\ell_1,\ell_2,\dots,\ell_k$.
+According to the definition of polyhedral space (\ref{def:poly}),
+each edge $\ell_j$ in the triangulation admits an isometry
+$\iota_j\:[0,a]\to \ell_j$ for some $a \in \RR$.
+Then 
+$$f\circ\iota_j(x)=\min\{|x|,|a-x|\}.$$
+Therefore $f$ is distance preserving on each half of $\ell_j$.
+\qeds
+
+
+
+
+
+
+\parbf{Abstract finite simplicial complex.}
+To describe a simplicial complex $\mathcal{K}$, it is sufficient to list the set of its vertices 
+$\mathcal{V}=\{v_1,v_2,\dots,v_n\}$ and list all the subsets $\mathcal{S}$ of $\mathcal{V}$ which appear as vertices of single simplex in $\mathcal{K}$.
+I.e., $W=\{w_0,w_1,\dots,w_k\}\z\in \mathcal{S}$ if and only if 
+there is a simplex in $\mathcal{K}$ with vertices $\{w_0,w_1,\dots,w_k\}$.
+The above condition imply that if $W\in \mathcal{S}$ then any subset $W'\subset W$ is also in $S$.
+
+Any point $x$ in $\ushort{\mathcal{K}}$ can be described using barycentric coordinates 
+$(\lambda_1,\lambda_2,\dots,\lambda_n)$ in a way such the set 
+$$\set{v_i\in\mathcal{V}}{\lambda_i>0}$$
+belongs to $\mathcal{S}$.
+
+The latter gives a metric on $\ushort{\mathcal{K}}$ which is completely determined by the combinatorial structure described above.
+If $(\lambda_1,\lambda_2,\dots,\lambda_n)$ and $(\mu_1,\mu_2,\dots,\mu_n)$
+are barycentric coordinates of $x$ and $y$ in $\ushort{\mathcal{K}}$ we set
+$$|x-y|_{\ushort{\mathcal{K}}}=\max_{i\in\{1,2,\dots,n\}}\{|\lambda_i-\mu_i|\}.$$
+This metric differ from the one described above, but it defines the same convergence.
+
+
+
+\parbf{Locally finite simplicial complex.}
+A few times we will need notion of \emph{locally finite simplicial complex}\index{simplicial complex!locally finite simplicial complex}.
+Instead of giving the definition, let us describe the necessary modification in the definition of abstract simplicial complex.
+
+In the above construction, one can take $\mathcal{V}$ to be an infinite set and 
+$\mathcal{S}$ to be any collection of finite subsets such that
+\begin{itemize}
+\item if $W\in \mathcal{S}$ then any subset $W'\subset W$ is also in $\mathcal{S}$;
+\item For any $v\in \mathcal{V}$, there are only finitely many $W \in \mathcal{S}$ such that $v \in W$.
+\end{itemize}
+Then one can identify a point of simplicial complex with a nonnegative function
+$\lambda\:\mathcal{V}\to\RR$ such that the set
+$$\set{v\in\mathcal{V}}{\lambda(v)>0}$$
+belongs to $\mathcal{S}$
+and 
+$$\sum_{v\in \mathcal{V}}\lambda(v)=1.$$
+(Formally this sum has an infinite number of terms,
+but only finitely many of these terms differ from $0$.)
+The obtained set of points can be then equipped with the metric 
+$$|\lambda-\mu|=\sup_{v\in\mathcal{V}}\{|\lambda(v)-\mu(v)|\}.$$
+In particular we may talk about convergence of points in a locally finite simplicial complex.
+
+\begin{thm}{Exercise}
+Show that a compact locally finite simplicial complex has to be finite. 
+\end{thm}
+
+
+
+
+
+
+
+Given $K\in \left]\mathbf{K}_k\right[$,
+consider its surface $P$.
+According to ???, $P\in \left]\mathbf{P}_k\right[$.
+Note that congruent polyhedra have isometric boundaries;
+therefore we can consider map, say $\Phi_k\:\mathbf{K}_k\to\mathbf{P}_k$,
+which sends $[K]$ to $[P]$.
+Note that 
+\begin{itemize}
+\item A polyhedral space $P\in\left]\mathbf{P}_k\right[$ 
+is realizable if and only if it 
+lies in the image of $\Phi_k$.
+\item According to Alexandrov uniqueness theorem $\Phi_k$ is injective.
+\item According to Exercise~\ref{pr:K-P-simmetry}, $K\in \left]\mathbf{K}_k\right[$ has no symmetry if and only if $\Phi_k(K)\in\left]\mathbf{P}_k\right[$ has no symmetry. 
+\end{itemize}
+
+Finally,
+the Alexandrov's existence theorem can be reformulated the following way.
+
+\begin{thm}{Reformulation of Alexandrov's existence theorem}
+For each integer $k\ge 3$, the map 
+$$\Phi_k\:\mathbf{K}_k\to \mathbf{P}_k$$ 
+is surjective.
+\end{thm}
+
+This reformulation will be proved by induction on $k$.
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{Braking the symmetry}
+
+\parit{Whati is the problem?}
+Note that conclusion of lemmas \ref{lem:P-mnld-nosimm} and \ref{lem:M-mnld-nosimm}
+does not hold if one removes ``no simmetry'' condition.
+For eaxample, the generic convex plane quadralieraral $Q$ 
+has one nontrivial symmetry, the reflection in its plane.
+The tetrahedra (possibly degenerate to quadralitra) near $Q$ 
+can be parametrized by $6$ coordinates
+$(x_2,x_3,y_3,x_4,y_4,z_4)$,
+but due to the simmetry we may assume that $z_4\ge 0$.
+This way we get a parametrization of a neigborhood of $[Q]$ in $\mathbf{K}_4$ 
+by $(-\eps,\eps)^5\times [0,\eps)$.
+
+The same thing happens in a neighborhood of symmetric metric in  $\mathbf{P}_4$.
+
+For the neigborhood $(-\eps,\eps)^5\times [0,\eps)$ an analog of Domain Invariance theorem does not hold and that explain the difficulty which we face for the space with symmetry.
+
+Two find a walk arround, we need to brake symmetry of the space.
+this can be done by introducing extra structure on the convex polyhedron,
+for example we may fix orientation and yet choose ordered three points.
+This way we obtain a new a bigger set formed by finer equivalece classes say $\mathbf{K}_k^\#$.
+Further we need to equip $\mathbf{K}_k^\#$ with a metric which takes into account the introduced extra struture.
+Say ???
+
+Now in  the new space an analog of Lemma \ref{lem:P-mnld-nosimm} holds in a neghborhood of any point.
+
+A similar procedure has to be done with the space $\mathbf{P}_k$.
+Again, we may choose ordered triple of vertices in a metric and its orientation;
+this way we obtain an othe set of equivalence classes say $\mathbf{P}_k^\#$
+and come up with a way to introduce metric on $\mathbf{P}_k^\#$ which takes into account this extra struture so that an analog of Lemma \ref{lem:M-mnld-nosimm} holds in a neghborhood of any point.
+
+The surface of equipped polyheron $K$ appears to be an equipped metric.
+Thus we define a map $\Phi_k^\#\:\mathbf{K}_k^\#\to \mathbf{P}_k^\#$.
+In addition we get natural \emph{forgetting} maps $\mathbf{K}_k^\#\to\mathbf{K}_k$ and  $\mathbf{P}_k^\#\to\mathbf{P}_k$;
+these maps simply forget the introduces extra structure in both cases.
+Both maps ??? and ??? are continuous and they also send open sets to open sets
+in addition the following diagram commutes.
+
+???
+
+The argument as above prove that show that $\Phi_k^\#(\mathbf{K}_k^\#)$ is open in $\mathbf{P}_k^\#$, which implies that $\Phi_k(\mathbf{K}_k)$ is open in $\mathbf{P}_k$.
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Notations and conventions.}
+
+
+
+
+
+Let $K\mathbf{K}_k$ and $P$ be its surface.
+According to ??? $P\in \mathbf{K}_k$.
+Let us define the map $\Phi_k\:\mathcal{K}_k\to \mathcal{P}_k$
+so that $\Phi_k\:[K]\mapsto [P]$;
+note that according to ??? the map is well defined.
+
+
+
+
+
+In this section we construct few metric spaces and maps between them which will be used in a reformulation of the Alexandrov's existence theorem which we will be proved later.
+
+Further in this section we fix an integer $k\ge 3$.
+
+\parbf{$\mathbf{S}_k$ and $\mathbf{S}_k'$.} 
+Consider the set of all $k$-point subsets in $\RR^3$ equipped with Hausdorff metric.
+The obtained metric space will be denoted as $\mathbf{S}_k$.
+The space $\mathbf{S}_k$ is a subspace of $\mathcal{H}(\RR^3)$.
+Note that $\mathbf{S}_k$ is not closed in $\mathcal{H}(\RR^3)$;
+the closure of $\mathbf{S}_k$ in $\mathcal{H}(\RR^3)$ contains all $\mathbf{S}_m$ for $m\le k$.
+
+We say that $k$-point subset $Q\subset \RR^3$ \emph{has a simmetry} if there is an isometry $\iota\:\RR^3\to\RR^3$ which is distinct from indentity
+such that $\iota(Q)=Q$.
+If there is no such isometry, we say that  $Q$ has \emph{no simmetry}.
+The subset of $\mathbf{S}_k$ formed by $k$-point subset of $\RR^3$ with no simmetry will be denoted as $\mathbf{S}_k'$
+
+Note that any $2$-point subset as well as any $3$-point subset in $\RR^3$ have a simmetry;
+i.e., $\mathbf{S}_2'=\mathbf{S}_3'=\emptyset$.
+On the other hand, for any $k\ge 4$,
+a $k$-point subset in \emph{general position} has no simmetry.
+
+\parbf{$\mathbf{K}_k$ and $\mathbf{K}_k'$.}
+Denote by $\mathbf{K}_k$ the space of all convex polyhedron in $\RR^3$ which has exactly $k$ vetices.
+Given a convex polyhedron $K$ denote by $\Verts K$ the set of vetices of $K$.
+Let us equip $\mathbf{K}_k$ with the following metric
+$$|K-K'|_{\mathbf{K}_k}=|\Verts K-\Verts K'|_{\mathcal{H}(\RR^3)}.$$
+According to Problem~\ref{pr:Hausdorff-Conv},
+$$|K-K'|_{\mathbf{K}_k}\ge |K-K'|_{\mathcal{H}(\RR^3)}.$$
+
+\begin{thm}{Exercise}
+These two metrics define the same topology on $\mathbf{K}_k$;
+i.e., if $K_\infty, K_1,K_2,\dots\in \mathbf{K}_k$ then
+$$|K_n-K_\infty|_{\mathbf{K}_k}\to 0\ \iff \ |K_n-K_\infty|_{\mathcal{H}(\RR^3)}\to 0.$$
+
+\end{thm}
+
+
+
+Consider a polyhedron $K$ with $k-1$ vertices,
+mark one point $v$ on its surface, choose a curve $v_t$, $t\ge 0$ 
+which starts at $v$ 
+and goes outside of $K$ and consider one parameter family of convex polyhdrons
+$K_t=\Conv(K\cup \{p_t\})$.
+If $v\notin\Verts K$ then $K_t\in\mathbf{K}_k$ for all sufficiently small $t>0$ and $K_t\to K$ as $t\to 0$.
+
+In particular $\mathbf{K}_k$ is not complete 
+and its completion contains all convex polyhdrons $K\in K_{k-1}$ 
+with marked point $v\notin \Verts K$ on its surface.
+Such spaces will be called ???
+(Note that if $\mathbf{K}_k$ would be equipped with Hausdorff metric then its completion would be different;
+it wold contain all $\mathbf{K}_m$ for $m\le k$.)
+
+
+ 
+
+
+
+Let $K\in \mathbf{K}_k$, denote by $\{w_1,w_2,\dots,w_k\}$ the set of its verices.
+Consider the map $\Upsilon_k\:\mathbf{K}_k\to \mathbf{S}_k$ defined as $K\mapsto \{w_1,w_2,\dots,w_k\}$. 
+
+\begin{thm}{Exerise}
+Show that $\Upsilon_k$ is injective. 
+\end{thm}
+
+\begin{thm}{Exerise}
+Show that $\Upsilon_k$ is continuous. 
+\end{thm}
+
+\begin{thm}{Exerise}
+Show that $\Upsilon_k(\mathbf{K}_k)$ is open in $\mathbf{S}_k$. 
+\end{thm}
+
+We say that a convex polhedron $K$ \emph{has a simmetry} if there is an isometry $\iota\:\RR^3\to\RR^3$ which is distinct from indentity
+such that $\iota(K)=K$.
+If there is no such isometry, we say that  $K$ has \emph{no simmetry}.
+The subset of $\mathbf{K}_k$ formed by polhedra with no simmetry will be denoted as $\mathbf{K}_k'$.
+Assume $K\in \mathbf{K}_k$;
+clearly 
+$$K\in   \mathbf{K}_k'\ \iff\ \Upsilon_k(K)\in \mathbf{S}_k'.$$
+
+\parbf{$\bm{\mathbf{P}_k}$, $\bm{\mathbf{P}_k'}$ and $\bm{\Phi_k\:\mathbf{K}_k\to\mathbf{P}_k}$.}
+Given a polyhedral space $P$,
+denote by $[P]$ its isometry class;
+thus $[P]=[Q]$ if and only if $P\iso Q$.
+Let us denote by $\mathbf{P}_k$ the set of isometry classes of all polyhedral all polyhdral spaces homeomorphic to $\SS^2$  
+with non-negative curvature 
+and exactly $k$ vertices (recal that \textit{vertex} means \textit{point with strictly positive curvature}).
+
+Given a polyhderal space $P$, 
+denote by $\Verts P$ the set of vertices of  $P$.
+Since $\Verts P$ is completely defined by $P$,
+we can think of $P$ as a pair $(P,\Verts P)$, a compact metric space and its subset.
+
+We need to equip $\mathbf{P}_k$ with a metric,
+which is slightly mere sensitive than Gromov--Hausdorff metric.
+This is described for the pairs $(P,\Verts P)$ in the Exercise~\ref{pr:GH-variation}.
+For two polyhedral spaces $P$ and $P$,
+we write $|[P]-[P']|_{\mathbf{P}_k}\le r$
+if there is a metric  space $Z$ 
+and distance preserving maps
+$\iota\:P\to Z$ and $\iota'\:P'\to Z$
+such that $|\iota(P)-\iota'(P')|_{\mathcal{H}(Z)}\le r$
+and $|\iota(\Verts P)-\iota'(\Verts P')|_{\mathcal{H}(Z)}\le r$.
+
+Note that two polyhedral spaces $P$ and $P'$ are considered to be close in $\mathbf{P}_k$
+if there is an $\eps$-isometry $\iota\: P\to P'$
+such that $\iota(A)$ is close to $A'$ in the sense of Hausdorff
+as the subsets of $P'$.
+
+Note that Gromov--Hausdorff metric and the metric described above 
+give the same topology on $\mathbf{P}_k$.
+
+\begin{thm}{Exercise}
+Prove the last statement.
+Namely, show that if $P_1,P_2,\dots$ and $P_\infty$ 
+are polyhedral spaces with
+exactly $k$-vertices
+and 
+$|P_n-P_\infty|_\mathcal{M}\to 0$ 
+if and only if
+$|P_n-P_\infty|_{\mathbf{P}_k}\to 0$
+\end{thm}
+
+Note that the completions of $\mathbf{P}_k$ 
+taken for these two metrics are different.
+Denote by $\bar{\mathbf{P}}_k$ the completion of the obtained metric space.
+
+
+
+
+
+
+
+
+
+Elements in $\bar{\mathbf{P}}_k\backslash \mathbf{P}_k$
+can be visualized as isometry classes of polyhedral spaces with 
+smaller number of vertices and maybe with some marked points --- the limit points of the vertices with curvature convering to zero.
+In particular, any polyhdral space with $k-1$ vertices
+and one marked point is a limit point of a seqence of ...
+To construct such a sequence choose any triangulation of ...
+so with marked point as a vertex and one triangle wit ... 
+
+The constructed metric
+and Hausdorff metric
+both define the same topology on $\mathbf{P}_k$,
+but they have different completions.
+
+To see the last statement note that the completion of consider a polyhedral metric with $k-1$ vetrices
+
+
+
+Note that the space $\mathbf{P}_k$ is not complete.
+As usual we denote by $\bar{\mathbf{P}}_k$ the completion of $\mathbf{P}_k$.
+Note that $\bar{\mathbf{P}}_k$???
+
+
+Let $K\in \mathbf{K}_k$,
+denote by $P$ the surface of $K$.
+Note that $P$ has exactly $k$ vertices;
+i.e.,  $[P]$ belongs to $\mathbf{P}_k$.
+Hence we obtain a map $\Phi_k\:\mathbf{K}_k\to \mathbf{P}_k$, defined as $K\mapsto [P]$.
+Acording to Problem~\ref{pr:H>GH-boundary}, the map $\Phi_k$ is continuous.
+
+We say that a polyhedral space $P$ \emph{has a simmetry} if there is an isometry $\iota\:P\to P$ which is distinct from indentity.
+If there is no such isometry, we say that  $P$ has \emph{no simmetry}.
+The subset of $\mathbf{P}_k$ formed by polhedra with no simmetry will be denoted as $\mathbf{P}_k'$.
+
+According to Alexandrov's uniqueness theorem,
+$$\Phi_k(K)=\Phi_k(K')\ \iff\ K\cong K'$$
+for any $K,K'\in \mathbf{K}_k$.
+According to Problem~\ref{pr:K-P-simmetry}, a convex polyhedron with no simmetry has surface with no simmetry; i.e., 
+$$K\in   \mathbf{K}_k'\ \iff\ \Phi_k(K)\in \mathbf{P}_k'$$
+for any $K\in \mathbf{K}_k$.
+
+\begin{thm}{Exercise}
+Let $X$ be a compact metric space.
+Then for any $\eps>0$ there is $\delta>0$ such that 
+if $f_0,_1\:Y\to X$ be two $\delta$-isometries then 
+ there is an isometry $\iota\:X\to X$ such that
+$|f_0(y)-\iota\circ f_1(y)|_X<\eps$ for any $y\in Y$.
+
+In particular, if $X$ has no simmetry than 
+$|f_0(y)-f_1(y)|_X<\eps$ for any $y\in Y$.
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\parit{Case of triagular faces and no symmetry.}
+We first consider the ``generic'' case.
+We assume  the $P$ has \emph{no symmetry};
+i.e., the only isometry $\iota\: P\to P$ is the identyty map.
+In addition we assume that the polyhedron $K$ has only triangular faces.
+
+In this case $P$ can be triangulated by faces of $K$.
+The edges of this triangulation are formed by unique geodesics between vertices of $P$.
+Note that once we know the edge-lengths, 
+we can reconstruct each triangle of the triangulation
+and glue them according to the rule to obtain $P$.
+In particular, these edge-lengths completely describe $P$.
+
+Let us change the edge-lengths slightly 
+and repeat the above construction.
+We will obtain an other polyhderal space  say $P'$.
+Note that $P'$ is still homeomorphic to the sphere.
+Further, the total angle at each vertex of $P'$
+is nearly the same as in $P$.
+In particular, $P'\in\in\mathbf{P}_k$ has non-negative curvature.
+
+On the other hand, if $[P']$ is sufficiently close to $[P]$
+then $P'$ can be obtained as the result of the above construction.
+It is sufficient to make a correspondance between vetexes of $P'$ and $P$
+and triangulate $P'$ cutting it by geodesics bewteen ??? 
+  
+Let us start with two preliminary lemmas
+
+
+
+
+
+
+
+
+
+
+
+\begin{thm}{Exercise}
+Let $P\in\in \mathbf{P}_k$ and $v_1,v_2,\dots,v_k$ be the vertices of $P$.
+Assume $P$ admits a triangulation $\mathcal{T}$ with vertices only at $v_i$.
+Then for any $\eps>0$ there is $\delta>0$ such that if 
+$|P-P'|_\mathcal{M}<\delta$ for some
+$P'\in \mathbf{P}_k$ then
+there is a homeomorphism $P\to P'$ which sends vertex to vertex and 
+each triangle to a flat triangle in $P'$
+and the difference between the length of edge ???
+\end{thm}
+
+
+
+
+much closer than any other pair of vertices of $P_1$ and $\omega_{p_1}+\omega_{q_1}<2\cdot \pi$
+where $\omega_{p_1}$ and $\omega_{q_1}$ denote the curvatures of $P_1$ at $p_1$ and $q_1$.
+
+More precisely, there is a deformation from $P_0$ to $P_1$, such that 
+\begin{subthm}{}
+$P_t\in\in \mathbf{P}_{k}$ for all $t$.
+\end{subthm}
+
+\begin{subthm}{lem:k>=4:pq}
+It we denote by $p_1,q_1$
+the vertices of $P_1$
+corresponding to the vertices 
+$p_0,q_0\z\in P_0$
+then the distance $|p_1-q_1|_{P_1}$ is at least 10 times smaller than the distance between any other pair of vertices of $P_1$
+and
+$\omega_{p_1}+\omega_{q_1}<2\cdot \pi$
+where $\omega_{p_1}$ and $\omega_{q_1}$ denote the curvatures of $P_1$ at $p_1$ and $q_1$.
+\end{subthm}
+
+
+
+
+
+
+
+
+
+\begin{thm}{Lemma}
+Let $k\ge 4$ and $P\in\in \mathbf{P}_k$ and $p,q$ be two vertices of $P$ with curvatures $\omega_p$ and $\omega_q$.
+Assume $\omega_p+\omega_q<2\cdot\pi$ and 
+the distance $|p-q|_P$ is at least 10 times smaller than the distance between any other pair of vertices of $P$
+then there is a deformation $P_t$ of $P$ such that
+$P_t\in\in\mathbf{P}_k$ for $t<1$,
+$P_1\in\in\mathbf{P}_{k-1}$.
+
+More over if $W_t$ is a deformation 
+such that $W_t\in\in \mathbf{P}_{k-1}$ 
+then 
+\end{thm}
+
+
+
+
+\parbf{Observations.}
+\begin{enumerate}
+\item\label{obs:k-1} In the patching construction, we are free to choose the one parameter families of points $p_t$ and $q_t$ satisfying \ref{eq:<pqq_t}.
+Note that if $\omega_p+\omega_q<2\cdot \pi$
+then one can choose this family so that $p_1=q_1$;
+in this case the quadrilateral $[\hat p p_1 q_1 \hat q]$
+degenerates to a triangle and $P_1$ has $k-1$ vertices.
+
+\item\label{obs:curvature} If $\omega_p+\omega_q\ge 2\cdot \pi$ then $p_t$ and $q_t$ stay apart and their curvatures 
+$\omega_{p_1}$ and $\omega_{q_1}$ in $P_1$ 
+can made arbitrary as far as $\omega_{p_1}, \omega_{q_1}>0$ and
+$$
+\omega_{p_1}+\omega_{q_1}
+=
+\omega_{p}+\omega_{q}.
+$$ 
+\item\label{obs:recursion} 
+
+\item\label{obs:k}
+Finally notice that if $P_t$ is a deformation of polyhedral spaces such that $P_t\in\in \mathbf{P}_{k-1}$
+then one can apply an inverse of the patching construction to get a deformation $P'_t$ such that $P_t'\in\in \mathbf{P}_{k}$
+
+To do this, choose arbitrary vertex $v_0$ in $P_0$,
+and denote by $v_t$ be the corresponding vertex in $P_t$.
+For each $t\in[0,1]$,
+choose two points $x_t$ and $y_t$ such that
+\begin{enumerate}
+\item Both $x_t$ and $y_t$ depend continuously on $t$;
+i.e., ???
+\item Both $x_t$ and $y_t$
+are sufficiently close to $v_t$;
+say the distances $|v_t-x_t|_{P_t}$ and $|v_t-y_t|_{P_t}$ are at least twice smaller than the distance from $v_t$ to any other vertex of $P_t$.
+\item the (necessary unique) geodesics 
+$[v_tx_t]$ and $[v_ty_t]$ cut at $v$ two equal angles.   
+\end{enumerate}
+The points it the points satisfy the above properties then for each $t$ there are two geodesics from $x_t$ to $y_t$. 
+One can cut out a neighborhood of $v$ 
+along these geodesics.
+in the remaining part of $P$,
+glue the corresponding points 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Now choose 
+\begin{itemize}
+\item Fist we construct a one-parameter family of polyhedral spaces $P_t$ such that 
+for each $t\in [0,1]$ the space $P_t$
+has non-negative curvature and in the process of deformation of metric 
+two vertices are cumming together and then spread apart again;
+in particular the number of vertices 
+of $P_t$ is either $n$ or $n-1$ for all $t\in[0,1]$.
+In the proof of this part we use the induction hypothesis;
+we deform construct a deformation of metrics on $P_0$ so that two vertices come together and becoming one vertex. 
+Denote by $Q_0$ the obtained polyhedral space. 
+The same way we deform $P_1$ into a polyhdral space $Q_1$ with $n-1$ vertices.
+Finally we apply the induction hypothesis to deform $Q_0$ into $Q_1$.
+Joining these three deformations we get a deformation from $P_0$ to $Q_0$ then to $Q_1$ and finally arrive to $P_1$.
+
+\item Second we deform the obtained deformation so that in all intrmidiate times the metric has exactly $n$ vertices.
+\end{itemize}
+
+
+
+
+
+
+
+\begin{thm}{Lemma}\label{lem:path-to-(k-1)}
+Assume $k\ge 4$. 
+Then given  $P\in \mathbf{P}_k$, there is a family of polyhedral spaces $P_t$ with $t\in[0,t_{\max}]$
+which is continuous with respect to the Gromov--Hausdorff metric 
+and such that 
+\begin{itemize}
+\item $P_0=P$;
+\item $P_t\in\mathbf{P}_k$ for $t<t_{\max}$;
+\item $P_{t_{\max}}\in \mathbf{P}_{k-1}$.
+\end{itemize}
+\end{thm}
+
+In other words, we can change $P$ continuously in $\mathbf{P}_k$ so that exactly one of the vertices disappear; i.e., its curvature will approach $0$ as $t\to t_{\max}$ and so the limit metric will lie in $\mathbf{P}_{k-1}$. 
+
+Note that the induction hypothesis is that
+$\Phi_{k-1}(\text{\bf P}_{k-1})=\mathbf{P}_{k-1}$,
+and this lemma makes it possible to apply it.
+
+Assume $P=P_0$ is
+a non-negatively curved polyhedral space which is a manifold
+and $p,q$ are two vertices in $P_0$. 
+Let us describe a construction
+which produce one-parameter family $P_t$,
+of polyhedral spaces which is continuous 
+in the sense of Gromov--Hausdorff;
+i.e., for any $t$ in some real interval 
+we construct a polyhedral space $P_t$ 
+and
+$$P_t\GHto P_{t_0}$$
+once $t\to t_0$.
+
+
+
+Now let us collect the corollaries from the above 
+construction.
+
+Assume that $k$, the number of vertices in $P$, is $\ge 5$.
+Since the sum of all curvatures in $P$ is $4\cdot\pi$,
+we always can choose $p$ and $q$ so that $\omega_p+\omega_q\le\tfrac8k\cdot\pi$.
+In this case the above construction gives a non-negatively curved space for $t\le \tfrac{\omega_p}{2}$.
+At the moment $t_0=\tfrac{\omega_p}{2}$,
+the metric of $P$ has $k-1$ vertices;
+the vertex $p$ degenerates to a point and the curvature of $p$ and $q$ is eaten by the new vertex $z$ in $P_{t_0}$.
+
+According to the induction hypothesis,
+$P_{t_0}$ is realizable;
+i.e., there is a convex polyhedron $K$ with the surface isometric to $P_{t_0}$.
+
+Our next aim is to show that 
+for all $t$ close enough to $t_0$,
+the space $P_t$ is realizable.
+
+Let us triangulate each face of $K$,
+we can do it in such a way that
+
+
+The above construction can be applied recursively;
+i.e.,
+\begin{enumerate}
+\item We may start with $P_0$, mark there two vertices $p$ and $q$, construct a family of polyhedral metrics $P_t$.
+\item Stop at some time $t_0$, choose an other parir of vertices in $P_{t_0}$ and apply the construction again. 
+\end{enumerate}
+
+ 
+
+
+If 
+$$\omega_p+\omega_q<2\cdot\pi,\eqlbl{eq:2curv<2pi}$$ 
+the family $P_\alpha$ for $\alpha\in [0,\tfrac{\omega_p}2]$ satisfies the Lemma.
+
+Recall that $p$ and $q$ are the vertices in $P$ with minimal possible curvature.
+Since the sum of all curvatures in $P$ is $4\cdot\pi$,
+we always have $\omega_p+\omega_q<2\cdot\pi$.
+Therefore \ref{eq:2curv<2pi} holds for $k\ge 5$.
+
+In the remaining case $k=4$, \ref{eq:2curv<2pi} does not hold if and only if curvature at each vertex is $\pi$.
+In this case, we choose an arbitrary pair of vertices and apply the same construction as above to move our metric continuously into a metric such that the curvature at one vertex is strictly less than $\pi$.
+For the obtained polyhedral space \ref{eq:2curv<2pi} holds.
+
+In the latter case our family $P_t$ is joined from two families described above for two choices of pairs of vertices.
+\qeds
+
+Apply the lemma and set $Q=P_{t_{\max}}$.
+Note that by the induction hypothesis, we can present $Q$ as the surface of a convex polyhedron with $k-1$ vertices, say $K$.
+
+Mark a point $p$ on $K$ (the same notation as in the proof of the lemma).
+The point $p$ lies on the side or face of some triangle of $\mathcal T$.
+Note that if we move $p$ outside of $K$ a bit
+then the convex hull $p$ and $K$ will form a convex polyhedron, say $K'$, 
+with exactly $k$ vertices.
+Clearly we can choose $K'$ to be arbitrarily close to $K$ and therefore its surface, say $Q'$ will be arbitrarily close to $Q$.
+Clearly $Q'$ is realizable.
+Therefore
+it is sufficient to connect $Q'$ to some $P_t$ by a continuous family in $\mathbf{P}_k$.
+
+Subdivide $\mathcal T$ to make $p$ one of its vertices.
+
+Let $\ell_1,\ell_2,\dots,\ell_{3\cdot k-6}$ be the lengths of the edges of $\mathcal T$.
+Let $\ell_1',\ell_2',\dots,\ell_{3\cdot k-6}'$ be a collection of real numbers, 
+such that $\ell_i'$ is $\eps$-close to $\ell_i$ for each $i$ and some small enough $\eps>0$.
+We can construct triangles in $\mathcal T$ with the side-lengths $\ell_i'$ instead of $\ell_i$;
+denote by $Q(\ell_1',\ell_2',\dots,\ell_{3\cdot k-6}')$ the constructed polyhedral metric. 
+If $\eps>0$ is small enough, triangle inequalities still hold in each triangle and the curvature of each vertex except $p$ is still positive.
+
+\begin{wrapfigure}{r}{34mm}
+\begin{lpic}[t(-5mm),b(0mm),r(-13mm),l(-15mm)]{pics/subgraph(0.3)}
+\lbl[lb]{135,130;$\Gamma_f$}
+\lbl{110,50;$\Gamma^-_f$}
+\lbl[rb]{99,160;$q$}
+\lbl{105,200;$V$}
+\end{lpic}
+\end{wrapfigure}
+
+Without loss of generality, we may assume that $\ell_1$ is the length of the edge opposite from $p$ in some triangle.
+Note that increasing $\ell_1$ while leaving all the remaining edges fixed decreases the curvature at $p$.
+
+Thus the set $(\ell_1',\ell_2',\dots,\ell_{3\cdot k-6}')$ for which the curvature at $p$ is zero
+is formed by a graph $\ell_1= f(\ell_2',\dots,\ell_{3\cdot k-6}')$ for some continuous real-valued function $f$ defined in a small neighborhood of $(\ell_2,\dots,\ell_{3\cdot k-6})\in\RR^{3\cdot k-7}$.
+Above this graph curvature at $p$ is negative and below is positive.
+Thus the condition (\ref{SHORT.lem:mapping:connect}) boils down to the following lemma.
+
+\begin{thm}{Lemma}
+Let $U\subset \RR^n$ be an open subset and $f\:U\to\RR$ be a continuous function.
+Consider the graph and the open hypo-graph of $f$
+$$
+\Gamma_f
+=
+\set{(x,y)\in U\times \RR }{y=f(x)}
+$$
+$$
+\Gamma^-_f
+=
+\set{(x,y)\in U\times \RR }{y<f(x)}
+$$
+Then any point $q\in\Gamma_f$ has an arbitrarily small neighborhood $V$ 
+such that $V\cap \Gamma^-_f$ is connected.
+\end{thm}
+
+
+\begin{thm}{Exercise}
+Look at the picture and
+try to reconstruct the proof of this lemma.
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+Note that from Alexandrov's theorem and Problem~\ref{pr:H>GH-boundary} we have the following:
+
+\begin{thm}{Theorem}\label{thm:pre-body}
+Let $P_\infty$ be a metric space.
+Then $P_\infty$ is isometric to the surface of convex body in $\RR^3$
+if and only if $P_\infty$ can be presented as Gromov--Hausdorff limit of a sequence of non-negatively curved polyhedral spaces $P_n$ homeomorphic to $\SS^2$.
+\end{thm}
+
+Assume you have  a metric space $P_\infty$ and you want to know if it is isometric to the surface of a convex body in $\RR^3$.
+The above theorem can be applied easily if the answer is ``yes'';
+it is seems to be harder to use this theorem to give a ``no'' answer to the question.
+It turns out that non-negative curvature can be defined for general metric spaces
+and this new definition will make it equally easy to answer either ``yes'' or ``no'' to the question.
+
+
+
+The proof is using 
+Theorem~\ref{thm:pre-body}, 
+Proposition~\ref{prop:GH-lim(CBB)} and the following two propositions:
+
+\begin{thm}{Proposition}\label{prop:poly-in-cbb}
+Any non-negatively curved polyhedral space homeomorphic to%
+\footnote{Instead of $\SS^2$, we could say homeomorphic to a two-dimensional manifold.} 
+$\SS^2$ is a $\CBB{}{0}$ space. 
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+
+From Proposition~\ref{prop:angk=<}, we get the following.
+
+\begin{thm}{Corollary}\label{cor:angk-decres}
+Let $X\in\CBB{}{0}$.
+Given a hinge $\hinge p x y$ in $X$, consider the function of two arguments
+$$\alpha\:(|p-\bar x|,|p-\bar y|)\mapsto\angk0 p {\bar x}{\bar y}$$
+where 
+$\bar x\in\left ]p x\right]$ and $\bar y\in\left]p y\right]$.
+
+Then $\alpha(s,t)$ is nonincreasing in both arguments.
+\end{thm}
+
+From Corollary~\ref{cor:angk-decres}, we get the following.
+
+\begin{thm}{Proposition}\label{prop:angle-mono}
+Let $X\in\CBB{}{0}$.
+Then for any hinge $\hinge p x y$ in $X$, the angle $\mangle\hinge p x y$ is defined.
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+
+Since increasing one side of a planar triangle makes the opposite side bigger,
+we get the following.
+
+\begin{thm}{Proposition}\label{prop:angk=<}
+The inequality \ref{eq:def:cbb} can be rewritten in the following way
+\[
+\angk0 x p z
+\ge
+\angk0 x y z.
+\]
+
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Alexandrov's existence theorem}
+
+
+\parit{Proof.}
+A polyhedral space $P$ will be called \emph{realizable}\index{realizable polyhedral space}
+if it is isometric to the surface of a convex polyhedron in $\RR^3$.
+We need to show that
+any non-negatively curved polyhedral space homeomorphic to sphere is realizable.
+
+The proof is by induction on $k$,
+where $k$ denotes the number of points in $P$ with positive curvature.
+From now on, these points will be called \emph{vertices}\index{vertex} of $P$.
+
+Clearly $k$ is finite (see Exercise~\ref{ex:non0curv}).
+Further, $k\ge 3$ for any $P$.
+Indeed, according to  Exercise~\ref{ex:sum=2pi}, 
+the sum of the curvatures of $P$ is $4\cdot\pi$ 
+and the other hand the curvature of each point in $P$ is strictly less than $2\cdot\pi$.
+
+
+\parit{Base case; $k=3$.}
+Assume that $P$ has exactly three vertices, say $u$, $v$, and $w$. 
+It is sufficient to show that 
+\begin{clm}{}\label{clm:doule-trig}
+$P$ is isometric to a
+doubling of a planar triangle.
+i.e., the surface of this triangle in $\RR^3$.
+\end{clm}
+
+Choose geodesics  $[uv]$, $[vw]$ and $[wu]$ between each pair of points.
+According to Exercise~\ref{ex:poly+geod}
+these geodesics do not intersect each other at the interior points. 
+
+Cut $P$ along the geodesics $[uv]$, $[vw]$ and $[wu]$.
+As a result we get two triangles $\triangle$ and $\triangle'$.
+Since all the remaining points have curvature $0$%???
+,
+both $\triangle$ and $\triangle'$ are planar
+and 
+they are congruent since they have the same side lengths.
+Hence \ref{clm:doule-trig} follows.
+
+\parit{Few definitions.} %%%%??? we have P\in M_k and K \in P_k --- should we find better letters???
+Given a polyhedral space $P$ homeomorphic to $\SS^2$,
+denote by $[P]$ its isometry class;
+thus $[P]=[Q]$ if and only if $P\iso Q$.
+Let us denote by $\text{\bf M}_k$ the set of isometry classes of all polyhedral metrics on $\SS^2$  with non-negative curvature and exactly $k$ vertices (recal that \textit{vertex} means \textit{point with strictly positive curvature}).
+Equip $\text{\bf M}_k$ with Gromov--Hausdorff metric.
+
+Given a convex polyhedron $K$ in $\RR^3$ denote by $[K]$ its congruence class;
+thus $[K]=[L]$ if and only if $K\cong L$; i.e., if there is an isometry of $\RR^3$ which sends $K$ to $L$.
+Denote by $\text{\bf P}_k$ the set of congruence classes of convex polyhedra in $\RR^3$
+with exactly $k$ vertices.
+Let us equip $\text{\bf P}_k$ with a metric.
+Let $K$ be  a convex polyhedron with exactly $k$ vertices,
+say $\{w_1,w_2,\dots,w_k\}$.
+Clearly the set $W=\{w_1,w_2,\dots,w_k\}$ completely describe $K$ and vise versa.
+Given an other convex polyhedron $K'$ with vetexes $W'=\{w'_1,w'_2,\dots,w'_k\}$
+set $\Dist([K],[K'])$
+to be \emph{Hausdorff metric up to isometry of $\RR^3$} between their sets of vertices $W$ and $W'$;
+i.e.,
+$$\Dist([K],[K'])=\inf_{\iota} |W-\iota(W')|_{\mathcal{H}(\RR^3)}.$$
+
+Note that $\text{\bf P}_k$ can be considered as a subspace of the following metric space:
+as the set we take the set of isometry classes of $k$-point sets in $\RR^3$ 
+and the metric is  Hausdorff metric up to isometry of $\RR^3$.
+
+
+Given a convex polyhedron $K$ with exactly $k$ vertices, consider its surface $P$.
+According to Exercise~\ref{ex:curv-is-nonneg}, $P$ also has exactly $k$ vertices.
+This way we construct a map $\Phi_k\:\text{\bf P}_k\to\text{\bf M}_k$
+defined as $\Phi_k\:[K]\mapsto [P]$; i.e.,
+$\Phi_k$ sends \textit{the congruence class of $K$} to \textit{the isometry class of $P$}.
+Note that according to Problem~\ref{pr:H>GH-boundary}, $\Phi_k$ is a continuous map.
+
+Clearly $P$ is realizable if and only if $[P]\in\Phi_k(\text{\bf P}_k)$.
+Note that by Alexandrov's uniqueness theorem (\ref{thm:alexandrov-uni'}), $\Phi_k$ is injective.
+
+To prove Alexandrov's existence theorem, 
+it is sufficient to show that 
+\begin{clm}{}\label{clm:Phi-sur}
+$\Phi_k\:\text{\bf P}_k\to \text{\bf M}_k$ is surjective.
+\end{clm}
+
+\parit{Step.} The Claim~\ref{clm:Phi-sur} will be proved by induction.
+The base case $k=3$ is already proved. 
+To prove the induction step it is sufficient to prove the following three lemmas.
+Their proofs will be given in the following sections.
+
+Let us say that a polyhedral space $P$ has no simmetry if the identity map is the only isometry $P\to P$. 
+
+\begin{thm}{Closed lemma}\label{lem:Phi(P)-closed}
+$\Phi_k(\text{\bf P}_k)$ is a closed subset of $\text{\bf M}_k$.
+\end{thm}
+
+\begin{thm}{Open lemma}\label{lem:Phi(P)-open}
+$\Phi_k(\text{\bf P}_k)$ is an open subset of $\text{\bf M}_k$.
+\end{thm}
+
+
+\begin{thm}{Connecting lemma}\label{lem:Phi(P)-connect}
+Assume $\Phi_{k-1}\:\text{\bf M}_{k-1}\to \text{\bf P}_{k-1}$ is surjective.
+
+Then given $[P]\in \text{\bf M}_{k}$,
+there is one parameter family of polyhedral spaces $P_t$, $t\in [0,1]$
+such that
+$P_0=P$, $P_1$ is realizable and the map 
+$t\mapsto [P_t]$ forms a curve in $\text{\bf M}_{k}$
+\end{thm}
+
+Let us finish the step of induction modulo these lemmas.
+
+By induction hypothsis we can assume that 
+$\Phi_{k-1}\:\text{\bf M}_{k-1}\to \text{\bf P}_{k-1}$ is surjective.
+Assume there is a nonrealizable polyhedral space in $\text{\bf M}_{k}$.
+Applying Connecting lemma (\ref{lem:Phi(P)-connect}), 
+we get a one parameter family of polyhedral spaces in $P_t$, $t\in [0,1]$
+such that
+$P_0=P$, $P_1$ is realizable and the map 
+$t\mapsto [P_t]$ forms a curve in $\text{\bf M}_{k}$.
+Let $t_0$ be the supremum of all values $t\in [0,1]$
+such that $P_t$ is not realizable.
+
+From Closed lemma it follows that $P_{t_0}$ is realizable.
+Further from Open lemma, it follows that $P_t$ is realizable for all $t$ sufficiently close to $t_0$.
+This contradicts the way we defined $t_0$.
+\qeds
+
+\section{Proof of Closed lemma (\ref{lem:Phi(P)-closed})}
+
+\parit{Proof.}
+Let $P_1,P_2,\dots$ be a sequence of realizable polyhedral spaces.
+Assume $P_n$ converges in the sense of Gromov--Hausdorff to $P_\infty$;
+we need to show that $P_\infty$ is realizable.
+
+Denote by $K_n$ a convex polyhedron in $\RR^3$ with surface isometric to $P_n$.
+Without loss of generality we my assume that each $K_n$ contains the origin $0\in\RR^3$.
+
+Since $P_n$ converges 
+and diameter changes continuously with respect to Gromov--Hausdorff metric (see Exercise~\ref{ex:d_GH-and-diam}), 
+the diameters of $P_n$ are uniformly bounded;
+i.e., $\diam P_n\le D$ for some fixed $D$.
+Note that 
+$\diam K_n\le \diam P_n$
+for each $n$.
+In particular $\diam K_n\le D$ for any $n$.
+
+Without loss of generality we may assume that each $K_n$ contains the origin $0\in\RR^3$.
+In this case each $K_n$ lie in a closed ball of radius $D$ centered at the origin.
+Pass to a convergent subsequence of $K_n$ in the Hausdorff metric;
+it exists according to Blaschke's compactness theorem (\ref{thm:compact+Hausdorff}).
+
+It is easy to see that the limit set $K_\infty$ is a convex polyhedron.
+According to  Problem~\ref{pr:H>GH-boundary},
+the surface of $K_\infty$ is isometric to $P_\infty$.
+\qeds
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The following lemma implies that without loss of generality we may assume that $f$ is smooth.
+
+\begin{thm}{Lemma}
+Any distance nonexpanding map $f\:M\to\RR^m$ can be approximated by a smooth distance nonexpanding map.
+\end{thm}
+
+The needed approximation can be constructed by taking convolution of $f$.
+(If you do not know what is convolution look in the book of ???.)
+
+
+\parbf{Comments on the proof of Gromov's theorem.}
+The above argument can be also applied to proof our partial case of Gromov's theorem (\ref{thm:gromov}).
+One only needs to take $\eps_0$ sufficiently small,
+choose the sequence $P_n$ so that $P_0$ is sufficiently closet to $\SS^2$
+and construct a piecewise distance preserving map $f_0\:P_0\to \RR^2$ 
+so that the composition $f_0\circ \phi_0$ is close enough to $f$.
+
+According to the theorem on approximation (\ref{thm:approx}),
+in order to construct $f_0$ it is sufficient to construct a piecewise linear 
+distance nonexpanding map $h_0\:P_0\to \RR^2$ so that the composition $h_0\circ \phi_0$ is close enough to $f$.
+
+A piecewise linear map $P_0\to \RR^2$ is uniquely determined by images of all the vertices
+in a given triangulation. 
+So given a vertex $v$, one can choose a value $h_0(v)$ in the set $(f\circ\psi^{-1})(v)$ and extend $h_0$ piecewise linearly to $P$.
+
+In general the obtained map is not distance nonexpanding; see Problem~\ref{pr:long-triangle}.
+It turns out however that if $f$ is smooth then given $\eps>0$ one can choose $P_0$ close enough to $\SS^2$
+so the map $(1-\eps)\cdot h_0$ will be distance nonexpanding.
+If $\eps$ is small $(1-\eps)\cdot h_0$ will be still close enough to $f$.
+
+It remains to prove show the following lemma.
+
+
+
+To prove this lemma, extend $f$ to $\RR^3$, say the following way 
+$$\bar f(x)= f(\tfrac{x}{|x|}).$$
+(The value $\bar f(0)$ is undefined, but we can still take the integral below.)
+Choose a mollifier, i.e., a sufficiently smooth nonnegative function $w\:\RR^3\to \RR$
+such that $w(x)=0$ if $|x|>\eps$ and $\int_{\RR^3}w=1$.
+Consider convolution 
+$$(\bar f*w)(x)
+\df \int_{\RR^3} \bar f(y)\cdot w(x-y)\cdot dy$$
+It is straightforward to check that the restriction of $\bar f*w$ to $\SS^2$ is distance nonexpanding 
+and that for small $\eps$ it has to be close enough to $f$.
+
+
+
+
+
+
+
+
+
+
+\begin{wrapfigure}{r}{35mm}
+\begin{lpic}[t(-5mm),b(-10mm),r(0mm),l(0mm)]{pics/blind-zone(0.17)}
+\lbl[b]{150,200;\color{white}{blind}}
+\lbl[t]{150,190;\color{white}{zone}}
+\lbl[t]{98,131;$a_n$}
+\lbl[]{60,130;$\Omega$}
+\end{lpic}
+\end{wrapfigure}
+
+ $\partial_{A}\Omega\subset \partial_{\RR^2}\Omega$.
+Therefore it remains t
+If $\Omega$ is unbounded then using property $(*)$ for $h$,
+one can divide $\partial\Omega$ into finite number of rays and segments so that the restriction of $h$ to each is distance preserving.
+We can apply the construction above to define $f$ on the part of $\Omega$ which is mareked blue on the picture.
+But in addition we will have a ``blind zone'' formed by the angle (or few angles)  with vertex at $a_n$ which lie completely in $\Omega$.
+Note that (the continuous extension of) $f$ maps each of the boundary rays 
+by rotations around $a_n$.
+
+Since $f$ is distance nonexpanding, the angle between the images of these rays 
+is smaller than the corresponding angle of the blind zone.
+It is then easy to extend $f$ as a piecewise distance preserving map into the blind zone
+by folding the angle along one ray.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\parit{Proof.} First do the following exercise.
+
+\begin{thm}{Exercise}\label{ex:alm-isom=>GH}
+ Show that the following defines a metric on $W=X\sqcup Y$
+\begin{enumerate}
+\item  For any $x,x'\in X$
+$$|x-x'|_W=|x-x'|_X;$$
+\item For any $y,y'\in Y$,
+$$|y-y'|_W=|y-y'|_Y$$
+\item For any $x\in X$ and $y\in Y$,
+$$|x-y|_W=\eps+\inf_{x'\in X}\{|x-x'|_X+|f(x')-y|_Y\}.$$
+\end{enumerate}
+\end{thm}
+
+Since $f(X)$ is an $\eps$-net in $Y$,
+for any $y\in Y$ there is $x\in X$ such that $|f(x)-y|_Y\z\le\eps$;
+therefore $|x-y|_W\le 2\cdot\eps$.
+On the other hand for any $x\in X$, we have $|x-y|_W\le\eps$
+for $y=f(x)\in Y$.
+
+It follows that the Hausdorff distance $d_{H}^W(X,Y)$ between $X$ and $Y$ in $W$ is at most $2\cdot\eps$.
+Therefore
+$$d_{GH}(X,Y)\le d_{H}^W(X,Y)\le 2\cdot\eps.$$
+\qedsf
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Gromov--Hausdorff metric}
+
+The goal of this section is to cook up a metric space out of metric spaces.
+More precisely, we want to define the so called  Gromov--Hausdorff metric on the set of \emph{isometry classes} of compact metric spaces.
+(Being isometric is an equivalence relation on the class of metric spaces, 
+and an isometry class is an equivalence class with respect to this equivalence relation.)
+
+Given two metric spaces, the Gromov--Hausdorff distance from the isometry class of $X$ 
+to the isometry class of $Y$ will be denoted as $d_{GH}(X,Y)$;
+but we will often say (not quite correctly) 
+``$d_{GH}(X,Y)$ is the Gromov--Hausdorff distance from  $X$ 
+to  $Y$''.
+As you will see further, $d_{GH}(X,Y)=0$ if and only if $X$ is isometric to $Y$.
+In other words, from now on, if I say ``metric space'',
+you should guess from the context if I mean ``metric space'' 
+or ``isometry class of this metric space'' (this is an abuse of notation).
+
+Let us describe the idea behind
+the definition. 
+First, the Gromov--Hausdorff distance between subspaces in
+the same metric space has to be no greater than the Hausdorff distance between
+them. 
+In other words, if two subspaces of the same space are close to each
+other in the sense of Hausdorff distance in the ambient space, they must be
+close to each other as abstract metric spaces. 
+Second, we want
+the distance between isometric spaces to be zero. 
+The Gromov--Hausdorff
+distance is in fact the maximum distance satisfying these two requirements.
+
+
+\begin{thm}{Definition}\label{def:GH}
+Let $X$ and $Y$ be compact metric spaces. 
+The Gromov--Hausdorff $d_{GH}(X, Y )$
+distance between them is defined by the following
+relation.
+ 
+Given  $r > 0$, we have that $d_{GH}(X, Y ) < r$ if and only if there exist a metric
+space $Z$ and subspaces $X'$ and $Y'$ of it which are isometric to $X$ and $Y$
+respectively and such that $|X'-Y'|_{\mathcal{H}(Z)} r$. 
+(Here $|X'-Y'|_{\mathcal{H}(Z)}$ denotes the Hausdorff distance between sets $X'$ and $Y'$ in $Z$.)
+\end{thm}
+
+In other words, $d_{GH} (X, Y )$ is
+the infimum of all $r>0$ for which the above $Z$, $X'$ and $Y'$ exist. 
+
+
+We say that a sequence
+of (isometry classes of) compact metric spaces $X_n$ 
+\emph{converges in the sense of Gromov--Hausdorff}\index{converges in the sense of Gromov--Hausdorff} to the (isometry classes of)
+compact metric space $X_\infty$ if $d_{GH}(X_n , X_\infty) \to 0$ as $n\z\to\infty$.
+
+
+
+\begin{thm}{Theorem}\label{thm:GH-is-a-metric}
+The set of isometry classes of compact metric spaces equipped with Gromov--Hausdorff metric forms a metric space.
+
+This metric space will be denoted further as $\mathcal{M}$; named for ``metric space''.
+\end{thm}
+
+Before proving this theorem, we give couple of variations 
+of the definition of Gromov--Hausdorff distance.
+
+\subsection*{Metrics on disjoined union of \textit{X} and \textit{Y}}
+
+
+Definition~\ref{def:GH} deals with a huge class of metric spaces,
+namely, all metric spaces $Z$ that contain subspaces isometric to $X$ and $Y$.
+It is possible to reduce this class to metrics on the disjoint unions of $X$ and $Y$. 
+More precisely, 
+
+\begin{thm}{Proposition}\label{prop:GH=X+Y}
+The Gromov--Hausdorff distance between two compact metric spaces $X$
+and $Y$ is the infimum of $r > 0$ such that there exists a metric
+$|{*}-{*}|_W$ on the disjoint union $W=X\sqcup Y$ 
+such that the restrictions of $|{*}-{*}|_W$ to $X$ and $Y$
+coincide with $|{*}-{*}|_X$ and $|{*}-{*}|_Y$ 
+and $|X-Y|_{\mathcal{H}(W)}  < r$. 
+\end{thm}
+
+
+\parit{Proof.}
+Identify $X\sqcup Y$ with $X'\cup Y' \subset Z$ 
+(the notation
+is from Definition~\ref{def:GH}). 
+
+More formally, fix isometries $f\: X \to X'$ and
+$g\: Y \to Y'$, then define the distance between $x \in X$ and $y \in Y$ by
+$|x-y|_W = |f (x)- g(y)|_Z+\eps$ for small enough $\eps>0$.%
+\footnote{We add $\eps$ to ensure that $d(x, y) > 0$ for any $x\in X$ and $y\in Y$;
+so $|x-y|_W$ is indeed a metric.}
+This yields a metric on $W=X\sqcup Y$ for which
+$|X-Y|_{\mathcal{H}(W)} < r$.
+\qeds
+ 
+
+\begin{thm}{Exercise}\label{ex:point-diam}
+Let $P$ be a one-point metric space. 
+Prove that 
+$$d_{GH} (X, P ) = \frac{\diam X}2$$ for any compact metric space $X$.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:d_GH-and-diam}
+ Let $X$ and $Y$ be two compact metric spaces.
+Prove that 
+$$|\diam X - \diam Y |\le 2\cdot d_{GH} (X, Y ).$$
+In other words, $\diam$ is a $2$-Lipschitz function on $\mathcal{M}$.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:pack-GH}
+Assume $X_n$ be a sequence of compact metric spaces which converges to a compact metric space $X_\infty$
+in the sense of Gromov--Hausdorff.
+Show that for any $\eps>0$
+$$\pack_\eps X_n\ge\pack_\eps X_\infty$$ 
+for all large enough $n$.
+In particular, $\pack_\eps$ is a lower semicontinuous function on $\mathcal{M}$.
+\end{thm}
+
+\subsection*{A definition with fixed \textit{Z}}
+
+\begin{thm}{Proposition}\label{prop:GH-with-fixed-Z}
+In the Definition~\ref{def:GH}, 
+one can fix the space $Z$ once for all, by taking $Z=\mathcal{F}(\NN)$%
+\footnote{i.e., the space of bounded infinite sequences.}.  
+That is, 
+$$d_{GH}(X,Y) = \inf \{|X'-Y'|_{\mathcal{H}(\mathcal{F}(\NN))}\}$$ 
+where the infimum is taken over all pairs of sets $X'$ and $Y'$ in $\mathcal{F}(\NN)$
+which isometric to  $X$ and $Y$ correspondingly.  
+\end{thm}
+
+\parit{Proof.}
+It is clear that $d_{GH}(X,Y) \leq \inf \{|X'-Y'|_{\mathcal{H}(\mathcal{F}_\NN)}\}$.  
+Let $W$ be an arbitrary metric space with the underlying set $X\sqcup Y$ as in the proof of Proposition~\ref{prop:GH=X+Y}.
+Note $W$ is compact since it is union of two compact subsets $X,Y\subset W$.
+According to Problem~\ref{pr:compact->F_N},
+$W$ admits a distance preserving map to $Z=\mathcal{F}_\NN$.
+So $\inf \{|X-Y|_{\mathcal{H}(\mathcal{F}_\NN)}\} \leq |X-Y|_{\mathcal{H}(W)}$, and taking the infimum over all such $W$ gives $\inf \{|X-Y_{\mathcal{H}(\mathcal{F}_\NN)}\} \leq d_{GH}(X,Y)$.
+\qeds
+
+\begin{thm}{Exercise}\label{ex:euclid-isom}
+Let $X,Y$ be two compact sets in the Euclidean plane $\RR^2$.
+Show that $X$ is isometric to $Y$ if and only if there is an isometry $\iota\:\RR^2\to \RR^2$
+which sends $X$ to $Y$.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:mink-isom}
+Find two isometric subsets $X,Y$ of $\mathcal{F}_\NN$
+such that there is no isometry $\iota\:\mathcal{F}_\NN\to \mathcal{F}_\NN$ 
+which sends $X$ to $Y$.
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Gromov--Hausdorff metric is a metric}
+
+In this section we prove  Theorem~\ref{thm:GH-is-a-metric}.
+
+
+Let $X$, $Y$ and $Z$ be arbitrary  compact metric spaces.
+We need to check the following (see Definition~\ref{def:metric-space}).
+\begin{enumerate}[{\it (i)}]
+\item\label{GH-1} $d_{GH}(X,Y)\ge 0$;
+\item\label{GH-2} $d_{GH}(X,Y)=0$ if and only if $X$ is isometric to $Y$;
+\item\label{GH-3} $d_{GH}(X,Y)=d_{GH}(Y,X)$;
+\item\label{GH-4} $d_{GH}(X,Y)+d_{GH}(Y,Z)\ge d_{GH}(X,Z)$.
+\end{enumerate}
+
+
+Note that {\it (\ref{GH-1})}, {\it(\ref{GH-3})} and ``if''-part of {\it(\ref{GH-2})} follow directly from the definition of Gromov--Hausdorff metric (\ref{def:GH}).
+
+\parit{Proof of (\ref{GH-4}).}
+Choose arbitrary $a,b \in \mathbb{R}$ such that
+$$a>d_{GH}(X,Y)\ \ \text{and}\ \  b>d_{GH}(Y,Z).$$
+Choose two metrics on $U=X\sqcup Y$ and $V=Y\sqcup Z$ so that
+$|X-Y|_{\mathcal{H}(U)}<a$ and $|Y-Z|_{\mathcal{H}(V)}<b$ 
+and the inclusions $X\to U$, $Y\to U$, $Y\to V$ and $Z\to V$ are distance preserving.
+
+Consider the metric on $W=X\sqcup Z$ 
+so that inclusions $X\to W$ and $Z\to W$ are distance preserving
+and 
+$$|x-z|_W=\inf_{y\in Y}\{|x-y|_U+|y-z|_V\}.$$
+Note that $|{*}-{*}|_W$ is a metric and 
+$$d^W_H(X,Z)<a+b.$$
+The last inequality holds for any $a>d_{GH}(X,Y)$ and $b>d_{GH}(Y,Z)$;
+hence {\it (\ref{GH-4})}.
+\qeds
+
+\parit{Proof of ``only if''-part of (\ref{GH-2}).}
+According to Exercise~\ref{ex:GH=>eps-isom},
+for any sequence $\eps_n\to0^+$ there is a sequence of $\eps_n$-isometries 
+$f_n\:X\to Y$.
+
+Since $X$ is compact, 
+we can choose a countable dense set
+$S$ in $X$.
+Use a diagonal procedure if necessary, to pass to a subsequence of $(f_n)$
+such that for every $x \in S$ the sequence $(f_n(x))$ 
+converges in $Y$. 
+Consider the pointwise limit map  $f_\infty \: S \to Y$ defined by
+ $$f_\infty(x) = \lim_{n\to\infty} f_n (x)$$ for every $x \in S$. 
+Since $$|f_n (x)- f_n (x')|_Y\lege |x- x'|_X \pm\eps_n,$$ 
+we have 
+$$|f_\infty(x)-f_\infty (x')|_Y 
+= \lim_{n\to\infty} |f_n(x)-f_n (x')|_Y 
+= |x -x'|_X$$ for all
+$x, x' \in S$; 
+i.e., $f_\infty\:S\to Y$ is a distance-preserving map. 
+Then $f_\infty$ can be extended to a distance-preserving map from all of $X$ to $Y$.
+The later is done by setting 
+$$f_\infty(x)=\lim_{n\to\infty} f_\infty(x_n)$$ 
+for some (and therefore any) sequence of points $x_n$ in $S$
+which converges to $x$ in $X$.
+(Note that if $x_n\to x$ then $(x_n)$ is Cauchy.
+Since $f_\infty$ is distance preserving, $y_n=f_\infty(x_n)$ is also a Cauchy sequence in $Y$;
+therefore it converges.)
+
+This way we obtain a distance preserving map $f_\infty\:X\to Y$. 
+It remains to show that $f_\infty$ is surjective; i.e. $f_\infty(X)=Y$.
+
+Note that in the same way we can obtain a distance preserving map $g_\infty\:Y\to X$.
+If $f_\infty$ is not surjective, then neither is $f_\infty\circ g_\infty\:Y\to Y$.
+So $f_\infty \circ g_\infty$ is a distance preserving map from a compact space to itself which is not an isometry.
+The later contradicts Problem~\ref{pr:non-contracting=>isometry}. 
+\qeds
+

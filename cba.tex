@@ -1,0 +1,190 @@
+\chapter{??? Curvature bounded above}\label{chap:cba}
+
+\section{Definitions}
+
+\begin{thm}{Definition}\label{def:cba}
+A proper length space $X$ has non-negative curvature in the sense of Alexandrov (briefly $X\in\CAT{}{0}$%
+\footnote{$\CAT{}{0}$ stays for ``curvature bounded above by $0$''. 
+If in the definition of model triangle, one exchanges the Euclidean plane with a sphere or Lobachevsky plane of constant curvature $k$, then one gets the definition of \emph{spaces with curvature $\le k$ in the sense of Alexandrov}, which denoted as $\CAT{}{k}$. We will only consider the case $k=0$.})
+if the following inequality
+$$|z-p|_X\le |\tilde z-\tilde p|_{\RR^2}
+\eqlbl{eq:def:cba}$$
+holds for any triangle $[xyz]$ in $X$, its model triangle $[\tilde x\tilde y\tilde z]=\modtrig{}(xyz)$,
+any point $p\in\left]xy\right[$ and the corresponding point $\tilde p\in \left]\tilde x\tilde y\right[$.
+\end{thm}
+
+\begin{thm}{Unique geodesics}\label{lem:cat-unique} 
+In a $\Cat{}{0}$ space, pairs of points  are joined by unique geodesics, and these geodesics depend continuously on their endpoint pairs.
+\end{thm}
+
+\parit{Proof.} 
+Let $\spc{U} \in \Cat{}{0}$, $p^1,p^2\in \spc{U}$.
+Suppose $p^1_n\to p^1$, $p^2_n\to p^2$ as $n\to\infty$.
+Let $z_n$ be the midpoint of a geodesic $[p^1_n p^2_n]$ and $z$ be the midpoint of a geodesic $[p^1p^2]$.  
+
+It suffices to show that 
+\[\dist{z_n}{z}{}\to0
+\ \ \text{as}\ \ 
+n\to\infty.
+\eqlbl{eq:z_n->z}\]
+
+By the triangle inequality, the $z_n$ are approximate midpoints of $p^1$ and $p^2$. 
+Apply (2+2)-point comparison (\ref{def:2+2}) to the quadruple $p^1,p^2,z_n,z$. 
+For $p=p^1$ or $p=p^2$, we see that $\angk{0} {p}{z_n}{z}$ is arbitrarily small when $n$ is sufficiently large.  
+By the law of cosines, \ref{eq:z_n->z} follows.
+\qeds
+
+\begin{thm}{Theorem}
+\label{thm:defs_of_cat} 
+Let  $\spc{U}$ be a geodesic space.  Then
+\begin{subthm}{cat-ineq} 
+$\spc{U}\in\Cat{}{0}$
+\end{subthm}
+if and only if 
+one of the following conditions holds for all $p,x,y\in \spc{U}$:
+
+\begin{subthm}{cat-2-sum} (adjacent-angles comparison\index{comparison!adjacent-angles comparison}) for any geodesic $[x y]$ and $z\in \left]x y\right[$, we have
+\[\angk0 z p x
++\angk0 z p y\ge \pi.\]
+\end{subthm}
+
+\begin{subthm}{cat-monoton}
+(point-on-side comparison\index{comparison!point-on-side comparison}) 
+for any geodesic $[x y]$ and $z\in \left]x y\right[$, we have
+\[\angk0 x p y\ge\angk0 x p z,\]
+or equivalently, 
+\[\dist{\tilde p}{\tilde z}{}\ge \dist{p}{z}{},\]
+where $\trig{\tilde p}{\tilde x}{\tilde y}=\modtrig0(p x y)$, 
+$\tilde z\in\left] \tilde x\tilde y\right[$, $\dist{\tilde x}{\tilde z}{}=\dist{x}{z}{}$.
+\end{subthm}
+
+\begin{subthm}{cat-hinge}(%hinge 
+angle comparison\index{% hinge comparison})
+for any hinge $\hinge x p y$, the angle 
+$\mangle\hinge x p y$ exists and
+\[\mangle\hinge x p y\le\angk0 x p y.\]
+\end{subthm}
+%SBA:  a ``hinge'' in English is a ``movable mechanism''.  It must MOVE. BBI uses it correctly:  if you look up ``hinge'' in BBI index, it sends you to monotonicity.
+\end{thm}
+
+
+\parbf{Remark.}
+\label{22remark}
+In the following proof, the part (\ref{SHORT.cat-ineq})$\Rightarrow$(\ref{SHORT.cat-2-sum})
+only requires that the (2+2)-point comparison (\ref{def:2+2}) hold for any quadruple, and does not require the existence of geodesics. 
+The same is true of the parts (\ref{SHORT.cat-2-sum})$\Leftrightarrow$(\ref{SHORT.cat-monoton}) and
+(\ref{SHORT.cat-monoton})$\Rightarrow$(\ref{SHORT.cat-hinge}).  Thus the conditions (\ref{SHORT.cat-2-sum}), (\ref{SHORT.cat-monoton}) and (\ref{SHORT.cat-hinge}) are valid for any metric space (not necessarily intrinsic) which satisfies (2+2)-point comparison (\ref{def:2+2}). 
+The converse does not hold; for example, all these conditions are 
+vacuously true in a 
+totally disconnected space, while 
+(2+2)-point comparison is not.
+
+\parit{Proof. (\ref{SHORT.cat-ineq}) $\Rightarrow$ (\ref{SHORT.cat-2-sum})}. 
+By Alexandrov's lemma (\ref{lem:alex}), 
+\[\angk0 p z x +\angk0 p z y  < \angk{0} p x y \text{\,\,\, or \,\,\,} \angk0 z p x  +\angk0 z p y  =\pi.\]
+In the former case, (2+2)-point comparison (\ref{def:2+2}) applied to the quadruple $p, z, x, y$ implies
+\[\angk0 z p x  +\angk0 z p y  \ge \angk{0} z x y =\pi.\]
+
+\parit{(\ref{SHORT.cat-2-sum}) $\Leftrightarrow$ (\ref{SHORT.cat-monoton})}. Follows directly from  Alexandrov's lemma (\ref{lem:alex}).
+
+\parit{(\ref{SHORT.cat-monoton}) $\Rightarrow$ (\ref{SHORT.cat-hinge}).} 
+By (\ref{SHORT.cat-monoton}), for $\bar p\in\left]x p\right]$ and $\bar y\in\left]x y\right]$ the function $(\dist{x}{\bar p}{},\dist{x}{\bar y}{})\mapsto\angk0 x{\bar p}{\bar y}$ is nondecreasing in each argument.
+In particular, 
+$\mangle\hinge x p y\z=\inf\angk0 x{\bar p}{\bar y}$.
+Thus $\mangle\hinge x p y$ exists and is
+at most $\angk0 x p y$. 
+
+\parit{(\ref{SHORT.cat-hinge}) $\Rightarrow$ (\ref{SHORT.cat-2-sum}).} 
+By (\ref{SHORT.cat-hinge}) and the triangle inequality for angles (\ref{claim:angle-3angle-inq}),
+\[\angk0 z p x
++\angk0 z p y \ge \mangle\hinge z p x
++\mangle\hinge z p y \ge \pi.\]
+
+\begin{wrapfigure}{r}{25mm}
+\begin{lpic}[t(0mm),b(0mm),r(0mm),l(0mm)]{pics/cat-monoton-ineq(0.45)}
+\lbl[rb]{23,30;$\tilde p^1$}
+\lbl[lt]{22,1;$\tilde p^2$}
+\lbl[rb]{3,20;$\tilde x^1$}
+\lbl[lt]{48,20;$\tilde x^2$}
+\lbl[tl]{23,19;$\tilde q$}
+\end{lpic}
+\end{wrapfigure}
+
+\parit{(\ref{SHORT.cat-monoton}) $\Rightarrow$ (\ref{SHORT.cat-ineq}).}
+Given a quadruple  $p^1,p^2,x^1,x^2$, we must verify (2+2)-point comparison (\ref{def:2+2}).
+Construct the model triangles  $\trig{\tilde p^1}{\tilde p^2}{\tilde x^1} = \modtrig0(p^1 p^2 x^1 )$ 
+and $\trig{\tilde p^1}{\tilde p^2}{\tilde x^2}= \modtrig0(p^1 p^2 x^2)$, lying on either side of a common segment $[\tilde p^1 \tilde p^2]$.
+We may suppose 
+\[\angk{0} {p^1}{p^2}{x^1}+\angk{0} {p^1}{p^2}{x^2}
+\le
+\pi
+\ \ \text{and}\ \ 
+\angk{0}{p^2}{p^1}{x^1}+\angk{0} {p^2}{p^1}{x^2}
+\le 
+\pi,\] 
+since otherwise (2+2)-point comparison holds trivially.  
+Then $[\tilde p^1 \tilde p^2]$ and $[\tilde x^1 \tilde x^2]$ intersect, say at $\tilde q$.  
+
+By assumption, there is a geodesic $[p^1 p^2]$.
+Choose $q\in[p^1 p^2]$ corresponding to $\tilde q$; 
+that is, $\dist{p^1}{q}{}=\dist{\tilde p^1}{\tilde q}{}$.
+Then 
+\[\dist{x^1}{x^2}{} \le \dist{x^1}{q}{} + \dist{q}{x^2}{} \le \dist{\tilde x^1}{\tilde q}{} + \dist{\tilde q}{\tilde x^2}{} = \dist{\tilde x^1}{\tilde x^2}{},\]
+where the second inequality follows from (\ref{SHORT.cat-monoton}). 
+Since increasing one side of a planar triangle increases the opposite angle,
+\begin{align*}
+\angk{0} {p^1}{x^1}{x^2} \le  \mangle\hinge{ \tilde p^1}{ \tilde x^1}{ \tilde x^2}
+= \angk{0} {p^1}{p^2}{x^1} + \angk{0} {p^1}{p^2}{x^2}.
+\end{align*}
+\qedsf
+
+
+
+\section{Reshetnyak's gluing theorem}
+
+\begin{thm}{Reshetnyak's Gluing Theorem}\label{thm:reshetnyak}
+Let $X$ be a proper geodesic space which contains two convex subsets
+$X_1$ and $X_2$ such that $X_i\in \CAT{}{0}$ and $X=X_1\cup X_2$ then $X\in\CAT{}{0}$
+\end{thm}
+
+This theorem is mostly used to construct examples
+of $\CAT{}{0}$ spaces. One can take two $\CAT{}{0}$ spaces $X_1$ and $X_2$
+with convex sets $C_i \subset X_i$ 
+and an isometry $f\: C_1 \to C_2$.
+Then attach these spaces together along the isometry $f$.
+It is easy to check that the induced map of $X_i$ in the glued space, say $X$, 
+is distance preserving and from ??? it follows that  
+$X$ is geodesic. 
+Therefore, according to above theorem the resulting space $X$ is a $\CAT{}{0}$ space.
+
+For example, one can glue two copies of $\RR^n$ along an isometry between closed unit balls in them,
+the resulting space will be $\CAT{}{0}$.
+
+
+\parit{Proof.}
+Set $C= X_1\cap X_2$.
+Since both $X_i$ are convex, we have that so is $C$.
+
+We need to show that any given triangle $[xyz]$ in $X$ is thin.
+The comparison trivially holds if all the vertices lie in one of $X_i$.
+Hence, without loss of generality, we may assume that $x\in X_1$ and $y,z\in X_2$.
+
+Then there are points 
+$\bar y,\bar z\in C$ such that
+$\bar y\in [xy]$
+and $\bar z\in [xz]$. 
+Decompose triangle $[xyz]$ into three triangles $[x\bar y\bar z]$, $[\bar y\bar z z]$ and $[\bar y z y]$.
+Applying Inheritance for thin triangles (\ref{lem:inherit-angle}) twice,
+first for the triangle $[x\bar y z]$ decomposed into $[x\bar y\bar z]$, $[\bar y\bar z z]$
+and then for  the $[x y z]$ decomposed into $[x\bar y z]$, $[\bar y y z]$,
+we get that $[x y z]$ is thin. \qeds
+
+\section*{Exercises}
+
+\begin{pr}
+Let $P$ be a two-dimensional polyhedral space.
+Show that $P\in\CAT{}{0}$ 
+if and only if any two points in $P$ are joined by unique geodesic. 
+
+Does the same hold for higher dimensional polyhedral spaces?
+\end{pr}

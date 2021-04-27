@@ -1,0 +1,532 @@
+\section*{Hints and solutions}
+\addcontentsline{toc}{section}{Hints and solutions}
+\refstepcounter{section}
+\markboth{\MakeUppercase{Hints and solutions}}{}
+
+\parbf{Exercise \ref{ex:IsometriesOfR2Uniqueness}.}
+Given an isometry $\iota: \RR^2 \to \RR^2$, let
+$$F_{\iota} = \set{x \in \RR^2}{\iota(x) = x}$$ be the set of fixed points of $\iota$.  Show that if $x, y \in F_{\iota}$, then the line through $x$ and $y$ is contained in $F_{\iota}$.  Conclude that for any isometry, $F_{\iota}$ is either empty, a point, a line, or all of $\RR^2$.
+
+Given two isometries $\iota_1$ and $\iota_2$ that agree on three non-collinear points, use the above to argue that
+$$\iota_1 \circ (\iota_2)^{-1} = \id_{\RR^2},$$ the identity map on $\RR^2$.
+
+
+\parbf{Exercise \ref{ex:IsometriesOfR2Existence}.}
+Notice that translations by a fixed vector, rotations about a point, and reflections through a line are all examples of isometries of $\RR^2$.  The required isometry can be constructed as the composition of a translation, followed by a rotation, and then (possibly) a reflection.
+
+\parbf{Exercise \ref{LP=>short}; (\ref{LP=>short:a})} follows from the definition of length space \ref{def:length-space}.
+
+\parbf{(\ref{LP=>short:b})}
+Suppose $f$ is distance non-expanding.  It follows from the definition of length that $\length (f\circ \alpha) \le \length \alpha$.
+
+For the reverse inequality, let $\eps > 0$ be arbitrary and choose a partition $t_0 < t_1 < \dots < t_n$ such that
+$$\length \alpha - \eps < \sum_{i=1}^n |\alpha(t_i) - \alpha(t_{i-1})|_X.$$
+Let $\alpha_i = \alpha|_{[t_{i-1}, t_i]}$, which is the arc of $\alpha$ from $\alpha(t_{i-1})$ to $\alpha(t_i)$.  Then using the assumption on $f$, we have
+$$\length \alpha - \eps < \sum_{i=1}^n |\alpha(t_i) - \alpha(t_{i-1})|_X \le \sum_{i=1}^n \length(f \circ \alpha_i) = \length(f\circ \alpha).$$  Since $\eps >0$ was arbitrary, this shows $\length \alpha \le \length (f \circ \alpha)$.
+
+%Assume $f$ distance nonexpanding 
+%but not length preserving.
+%Then we can choose a curve $\gamma\:[0,1]\to X$ such that 
+%$$\length \gamma>\length (f\circ\gamma)+\eps$$
+%for some $\eps>0$.
+%Applying the definition of length (\ref{def:length}), 
+%we can find a partition $0=t_0<t_1<\dots<t_n=1$
+%such that
+%$$|\gamma(t_0)-\gamma(t_1)|_{X}+\dots+|\gamma(t_{n-1})-\gamma(t_n)|_{X}
+%>
+%\length \gamma-\tfrac\eps2.$$
+%It follows that
+%we can take $p=\gamma(t_{i-1})$, $q=\gamma(t_i)$ and
+%$\alpha$ to be the arc $\gamma|_{[t_{i-1},t_i]}$ for some $i$.
+
+\parbf{Exercise \ref{ex:n=<m}.}
+Fix an $m$-dimensional simplex $\Delta$ and a distance preserving map $f: \Delta \to \RR^n$.
+
+Note that line segments in $\Delta$ are mapped to line segments in $\RR^n$.
+Moreover perpendicular line segments are mapped to perpendicular line segments.
+Both statements follow since they can be formulated entirely in terms of the metrics on the spaces.
+
+Notice that $m$ is the maximal number of mutually perpendicular line segments that can pass through a point in $\Delta$, and $n$ is the maximal number of mutually perpendicular line segments that can pass through a point in $\RR^n$.
+Hence the statement follows.
+
+
+
+
+
+\parbf{Exercise \ref{pdp-for-tetrahedron}.}
+It would be helpful to glue a paper model of $\partial\Delta$ and try to fold it onto the plane.
+
+\begin{wrapfigure}{r}{35mm}
+\begin{lpic}[t(-6mm),b(-2mm),r(0mm),l(0mm)]{pics/surface-of-tetrahedron(1)}
+\lbl[br]{2,11;$a$}
+\lbl[lb]{33,11;$b$}
+\lbl[b]{25.5,27;$c$}
+\lbl[t]{8,2.5;$d$}
+\lbl[lb]{21.5,13;$a'$}
+\lbl[brw]{12,13.5;$b'$}
+\lbl[lw]{19.5,17;$x$}
+\end{lpic}
+\end{wrapfigure}
+
+Let $a, b, c$ and $d$ be the vertices of $\Delta$.
+If $f\: \partial \Delta \to \RR^2$
+is distance preserving on each face then it also distance preserving on the subset $\{a, b, c, d\}$.
+Thus, $\Conv\{f(a), f(b), f(c), f(d)\}$ is an isometric copy of $\Delta$ in $\RR^2$, which is impossible by Exercise \ref{ex:n=<m}.
+
+The picture shows a triangulation for a piecewise distance preserving map $f: \partial \Delta \to \RR^2.$  The boundary $\partial \Delta$ is subdivided into 10 triangles.
+The points $a'$ and $b'$ are tangent points on the faces $\triangle bcd$ and $\triangle acd$
+to the sphere inscribed in $\Delta$.
+In particular $\triangle a'cd \cong \triangle b'cd$.
+
+If $c'$ and $d'$ denote the tangent points on the faces $\triangle abd$ and $\triangle abc$ to the inscribed sphere, then we also have 
+$\triangle a'bc \cong \triangle d'bc$, 
+$\triangle a'bd \cong \triangle c'bd$
+and so on, with 6 pairs of congruent triangles altogether.
+This makes it possible to fold it onto the plane so that corresponding points in these pairs will coincide. (In particular, all the points $a'$, $b'$, $c'$ and $d'$ will be mapped to one point.)
+
+\parbf{Exercise \ref{ex:acute-triangulation}.}
+The solution should be clear from the picture.
+
+\parit{Comment.}
+%In fact any 2-dimensional polyhedral space admits a triangulation all of which triangles are acute,
+%see \cite{saraf}.  Notice that there is more to this than simply subdividing each triangle into acute triangles.  One must be careful that the subdivisions of two triangles that share an edge are compatible on that common edge.
+As shown in \cite{saraf}, any 2-dimensional polyhedral space admits a triangulation in which all of the triangles are acute.
+
+\begin{wrapfigure}{r}{47mm}
+\begin{lpic}[t(-0mm),b(-5mm),r(0mm),l(0mm)]{pics/acute-triangulation(1)}
+\end{lpic}
+\end{wrapfigure}
+
+One may call a higher dimensional simplex \emph{acute}\index{acute simplex}
+if it contains its own circumcenter
+--- 
+this provides a natural generalization of an acute triangle to higher dimensions.
+The existence of acute triangulations in higher dimensions seems to be unlikely, but as far as we can see, nothing is known about these triangulations.
+
+
+\parbf{Exercise \ref{ex:voronoi-in-star}.}
+First note that if $x\in V_i$, then any geodesic $[w_i,x]$ lies in $V_i$.
+Indeed if $y\in [w_i,x]$, then for any $j$ we have
+\begin{align*}
+|w_i-y|
+&=|w_i-x|-|y-x|\le
+\\
+&\le |w_j-x|-|y-x|\le
+\\
+&\le 
+|w_j-y|.
+\end{align*}
+This shows $y\in V_i$.
+
+Therefore if $V_i\not\subset S_i$
+then there is a triangle $\Delta$ of the triangulation such that $w_i\in \Delta$
+and $V_i$ contains a point $x$ on a side $E$ of $\Delta$
+which does not contain $w_i$.
+
+Choose $j$ so that $w_j\in E$ and $|w_j-x|$ takes minimal possible value.
+Note that $|w_i-x|\le |w_j-x|<\eps$.
+Since $\eps< \tfrac{\ell\cdot \alpha}{100}$,
+there is a vertex, say $v$ of $\Delta$ such that
+$|w_i-v|<\tfrac\ell2$.
+Therefore there is $w_n\in E$ such that $|v-w_i|=|v-w_n|$.
+Finally note that 
+$$|w_i-x|>\big| |v-x|-|v-w_i| \big|=|w_n-x|;$$
+i.e. $x\notin V_i$, a contradiction.
+
+
+
+\parbf{Exercise \ref{ex:zalgalle+embedding}.}
+In other words, we need to show that there is an injective piecewise distance preserving map from the $2$-dimensional polyhedral space $P$
+into a Euclidean space of sufficiently large dimension.
+
+Fix a triangulation $f\:|K|\to P$ of $P$, where $K$ is a simplicial complex in some $\RR^n$.
+We can assume that the triangulation is linear,
+that is, $f$ sends a point in $K$ to the corresponding point in $P$ with the same barycentric coordinates.
+
+Equip the underlying set $|K|$ with the induced length metric from $\RR^n$. 
+The complex $K$ can be rescaled to ensure that the map $f\:|K|\to P$ is distance expanding,
+meaning there is $\lambda < 1$ such that if $x, y\in |K|$, then
+\[|x-y|_{|K|}\le \lambda\cdot|x'-y'|_{P},\]
+where $x' = f(x)$ and $y' = f(y)$.
+
+Show that there is unique length metric $\rho$ on $P$
+such that for any two point $x,y$ in one simplex $\triangle$ of $K$
+we have \[\rho(x',y')=\sqrt{|x'-y'|_P^2-|x-y|_{|K|}^2},\]
+where again $x'=f(x)$ and $y'=f(y)$.
+
+Note that $(P,\rho)$ is a polyhedral space.
+Applying Zalgaller's theorem, we get piecewise distance preserving map $h\:(P,\rho)\to \RR^2$.
+Note that the map $P\to \RR^2\times\RR^n=\RR^{n+2}$ defined by 
+\[x\mapsto (h(x),f^{-1}(x))\] is injective and piecewise distance preserving.
+Hence the statement follows.
+
+
+
+
+
+\parbf{Exercise \ref{ex:black-and-white}.}
+First note that the statement is trivial
+if the triangulation has only one interior vertex.
+
+Order the triangles of the triangulation 
+in such a way that each triangle intersects 
+the union of the previous triangles on one or two sides.
+(This might look obviously possible, 
+but try to give a proof.
+In more sophisticated language,
+our triangulation is \emph{shellable}; you can search for this term on web.)
+
+
+Let us fix the map on the first triangle
+and extend to the subsequent triangles in order by ``folding" (i.e. reflecting) along the sides where the color changes.
+Note that on each step if the map exists, then it has to be is unique.
+
+The existence might only fail if the new triangle 
+has two common sides with the old triangles.
+In this case one only has to check a neighborhood of the common vertex of these two sides.
+In this way we reduce to the case to the triangulation with only one interior vertex.
+
+
+\begin{wrapfigure}{r}{48mm}
+\begin{lpic}[t(-0mm),b(-5mm),r(0mm),l(0mm)]{pics/Q12(1)}
+\lbl[tr]{2,1;$a_1$}
+\lbl[tl]{43.5,1;$x_1$}
+\lbl[bl]{44,22;$x_2$}
+\lbl[b]{28,37,-10;$\dots$}
+\lbl[br]{8,33;$x_k$}
+\lbl[tl]{27,21;$y_k$}
+\lbl[br]{22,38;$\ell$}
+\lbl{10,25;$Q_2$}
+\lbl{30,10;$Q_1$}
+\end{lpic}
+\end{wrapfigure}
+
+\parbf{Exercise \ref{ex:triangle-reflect}.} 
+Without loss of generality, we may assume that
+$a_1=b_1$, 
+$y_1=x_1$, 
+and both points $x_k$ and $y_k$ lie on the same side from the line $a_1x_1$.  These can be arranged by applying a translation, followed by a rotation, and then possibly a reflection.  The case where $|y_1-y_k| = |x_1-x_k|$ is handled by Exercise \ref{ex:IsometriesOfR2Existence}.  So assume that
+$|y_1-y_k|<|x_1-x_k|$
+
+Let $\ell$ be the bisector of the angle $\angle x_k a_1 y_k$.
+Note that the reflection of $x_k$ in $\ell$ is $y_k$.
+Since 
+\[|y_1-y_k|<|x_1-x_k|,
+\]
+ $\ell$ cuts the polygon $Q$
+into two parts, say $Q_1\ni x_1$ and $Q_2\ni x_k$.
+
+Let $f(x)=x$ if $x\in Q_1$, and let $f(x)$ be the reflection of $x$ in $\ell$ if $x\in Q_2$.
+
+\pagebreak
+
+\begin{wrapfigure}{r}{65mm}
+\begin{lpic}[t(-1mm),b(-0mm),r(0mm),l(0mm)]{pics/bigger-area(1)}
+\lbl[b]{13,-1;$a_1$}
+\lbl[b]{3,22;$a_2$}
+\lbl[b]{33,-1;$a_3$}
+\lbl[b]{41.5,-1;$b_1$}
+\lbl[b]{44,24;$b_2$}
+\lbl[b]{61.5,-1;$b_3$}
+\lbl[]{16,7;$A$}
+\lbl[]{48,8;$B$}
+\end{lpic}
+\end{wrapfigure}
+
+\parbf{Exercise  \ref{pr:perimeter}.}%
+\footnote{The first inequality follows easily from two famous theorems in discrete geometry:
+one is Alexander's theorem \cite{alexander}
+and the other is the 
+Kneser--Poulsen conjecture, which was solved in the 2-dimensional case by Bezdek and Connelly in \cite{bezdek-connelly}.
+(The reduction to each of these theorems takes one line, 
+but it might be not completely evident.)
+We encourage you to read these papers, they are totally beautiful.
+You will be surprised to learn that to solve this 2-dimensional problem, it is convenient to work in 4-dimensional space.  The reason is explained in Exercise~\ref{pr:alexander}.}
+The second inequality does not hold in general.
+This can be seen in the picture. 
+Below we give a proof of the first inequality from \cite{petrunin-ruble}.
+
+Given a finite collection of points $a_1,\dots,a_n$,
+set 
+$$\ell(a_1,\dots, a_n)=\per[\Conv\{a_1,\dots, a_n\}].$$
+Then $\per A\ge\per B$ can be written as
+$$\ell(a_1,\dots, a_n)\ge \ell(b_1,\dots, b_n).$$
+Applying Brehm's extension theorem (\ref{thm:brehm})
+we get a piecewise distance preserving map $f\:A\to\RR^2$
+such that $f(a_i)=b_i$ for each $i$.
+
+Assume to the contrary that
+$$\ell(a_1,\dots, a_n)< \ell(b_1,\dots, b_n).\eqlbl{eq:conta-a-b}$$
+We can assume that 
+$\{a_1,\dots,a_n\}$ and $f$ are chosen in such a way that 
+\begin{clm}{}
+\label{min-n} The number $n$ is the minimal value for which \ref{eq:conta-a-b} can hold.
+\end{clm}
+and
+\begin{clm}{}\label{max-l} If $x_1,\dots, x_n\in A$
+and $y_i=f(x_i)$ then
+$$\ell(y_1,\dots,y_n)-\ell(x_1,\dots,x_n)\le\ell(b_1,\dots, b_n)- \ell(a_1,\dots, a_n).$$
+
+\end{clm}
+\noi
+To meet Condition~\ref{max-l}, 
+one has to take instead of $\{a_1,\dots,a_n\}$ 
+an $n$-point subset $\{a_1',\dots, a_n'\}$ of $A$ 
+for which the difference
+$$\ell(f(a_1'),\dots,f(a_n')) - \ell(a_1',\dots, a_n')$$
+takes the maximal value.
+This is possible since this function is continuous and $A$ is closed and bounded.
+
+Note that all $b_i$ are distinct vertices of $B$.
+Indeed, if $b_n$ lies inside or on a side of $B$, then% or $b_n=b_i$ for some $i\not=n$.
+\begin{align*}
+\ell(b_1,\dots,b_{n-1})&=\ell(b_1,\dots,b_{n-1},b_{n}),
+\\
+\ell(a_1,\dots,a_{n-1})&\le \ell(a_1,\dots,a_{n-1},a_{n}).
+\end{align*}
+This contradicts Condition~\ref{min-n}.
+
+\begin{wrapfigure}{r}{41mm}
+\begin{lpic}[t(-0mm),b(-0mm),r(0mm),l(0mm)]{pics/obkhvat-shorter(1)}
+\lbl[tr]{2,15;$b_1$}
+\lbl[b]{21,39;$b_2$}
+\lbl[lt]{33,2;$b_3$}
+\lbl[r]{2,32;$b_4$}
+\lbl[t]{15,2;$b_5$}
+\lbl[bl]{31,36;$b_6$}
+\lbl[l]{38,20;$b_7$}
+\end{lpic}
+\end{wrapfigure}
+
+By $\mangle a_i$ and $\mangle b_i$, 
+we will denote the angles 
+of $A$ and $B$ at $a_i$ and $b_i$ respectively.
+If $a_i$ lies inside or on a side of $A$ we set $\mangle a_i=\pi$.
+Let us show that
+\[\mangle b_i\le \mangle a_i.
+\eqlbl{eq:a<b}\] 
+If we move $a_i$ with unit speed inside $A$ along the bisector of $\mangle a_i$, 
+then the value $\ell(a_1,\dots,a_{n})$ 
+decreases at a rate of $2{\cdot}\cos\tfrac{\mangle a_i}2$.
+The point $b_i=f(a_i)$ will also move with unit speed,
+one can show that at the value $\ell(b_1,\dots,b_{n})$ 
+cannot decrease faster than a rate of  $2{\cdot}\cos\tfrac{\mangle b_i}2$.
+By Condition~\ref{max-l}, 
+the difference 
+$$\ell(b_1,\dots,b_{n})-\ell(a_1,\dots,a_{n})$$
+cannot increase.
+Therefore
+$2{\cdot}\cos\tfrac{\mangle b_i}2
+\ge
+2{\cdot}\cos\tfrac{\mangle a_i}2$,
+hence \ref{eq:a<b}.
+
+Applying the theorem about the sum of the angles of an $n$-gon to \ref{eq:a<b},
+we get that $A$ is an $n$-gon with vertices $\{a_1,\dots,a_n\}$.
+(We also get $\mangle b_i=\mangle a_i$, 
+but we will not need it.)
+
+By relabeling if necessary, we can assume that the $a_i$ are labeled in the cyclic order that they appear on the boundary of $A$.  Note that the same may not be true for the $b_i$.
+In this case
+$$\ell(a_1,\dots,a_{n})=|a_1-a_2|+\dots+|a_{n-1}-a_n|+|a_n-a_1|.$$
+Since  $|b_i-b_j|\le |a_i-a_j|$ for all $i$ and $j$,
+we get
+$$|b_1-b_2|+\dots+|b_n-b_1|\le|a_1-a_2|+\dots+|a_n-a_1|.$$
+Finally, note that 
+$$\ell(b_1,\dots,b_{n})\le|b_1-b_2|+\cdots+|b_n-b_1|.$$
+The idea of the proof should be evident from the picture.
+
+
+Therefore 
+$$\ell(b_1,\dots,b_{n})\le\ell(a_1,\dots,a_{n}),$$ 
+a contradiction.
+
+
+\parbf{Exercise \ref{pr:alexander}.}
+Here is an example of such curves:
+$$
+\alpha_i(t) = \left(\frac{a_i + b_i}{2} + 
+\cos(\pi\cdot t)\cdot \frac{a_i - b_i}2,\  
+\sin(\pi\cdot t)\cdot \frac{a_i - b_i}2\right). 
+$$
+It is straightforward to check that
+$\ell_{i,j}$ are monotonic.
+
+\parbf{Exercise \ref{pr:brehm}.}
+Let $A = \Conv Q$ and let $f: A \to \RR^2$ be the map produced by Brehm's theorem.
+According to Exercise~\ref{problem2}, 
+there is a distance non-expanding map $h\:\RR^2\to A$
+such that $h(a)=a$ for any $a\in A$.
+Taking the composition $F = f\circ h$, we get the needed distance non-expanding map $F: \RR^2\to \RR^2$.
+
+\parbf{Exercise \ref{ex:PDPisPL}.}
+First show that if $\Delta$ is a Euclidean $2$-simplex, then $f: \Delta \to \RR^2$ is linear if and only if the restriction of $f$ to any line segment in $\Delta$ is linear.  Use this to show that a distance preserving map is linear.
+
+\parbf{Exercise \ref{ex:akopyan-brehm}.}
+Choose a sufficiently fine triangulation of $P$, 
+say the diameter of each triangle is less than $\eps$.
+If $\{a_1,\dots,a_n\}$ is the set of vertices for this triangulation,
+take $b_i=h(a_i)$ and apply Brehm's extension theorem.
+We obtain a map $f\:P\to\RR^m$ which coincides with $h$ on the set $\{a_1,\dots,a_n\}$.
+
+Then the statement follows since the triangulation is fine 
+and  both $h$ and $f$ are distance non-expanding.
+
+
+\parbf{Exercise \ref{ex:tripod}.}
+Assume the contrary, and let $f$ be the piecewise distance preserving map 
+from the tripod to the plane which fixes $a$, $b$ and $c$.  Since $f$ is distance non-expanding, we also get that $f(o)=o$.
+
+\begin{wrapfigure}{r}{35mm}
+\begin{lpic}[t(-2mm),b(-0mm),r(0mm),l(0mm)]{pics/abcox(1)}
+\lbl[l]{34,22;$a$}
+\lbl[br]{1,43;$b$}
+\lbl[tr]{1,1;$c$}
+\lbl[lb]{12,24;$o$}
+\lbl[t]{15,7;$x'$}
+\end{lpic}
+\end{wrapfigure}
+
+Take $x$ on the edge $[o,p]$ and set $x'\z=f(x)$.
+Note that 
+\begin{align*}
+|x'-a|&\le |x-a|,\\
+|x'-b|&\le |x-b|,\\
+|x'-c|&\le |x-c|.
+\end{align*}
+
+
+Moreover, if we assume that $x$ is sufficiently close to $o$ 
+then 
+\[|x'-o|=|x-o|.\]
+
+It follows that
+\begin{align*}
+\measuredangle aox'&\le \measuredangle aox,
+\\
+\measuredangle box'&\le \measuredangle box,
+\\
+\measuredangle cox'&\le \measuredangle cox.
+\end{align*}
+However
+\[\measuredangle aox=\measuredangle box=\measuredangle cox=\tfrac\pi2,\]
+and therefore
+\[\measuredangle aox',\measuredangle box',
+\measuredangle cox'\le \tfrac\pi2.\]
+
+On the other hand, it is clear that for any point $x'\ne o$
+in the plane of $\triangle abc$,
+at least one of the values $\measuredangle aox',\measuredangle box',
+\measuredangle cox'$ exceeds $\tfrac\pi2$,
+a contradiction.
+
+\parbf{Exercise \ref{problem2}.}\label{sol-problem2}
+The set $K$ is bounded and closed, so by the Extreme Value Theorem there is a point $\bar x\in K$ 
+which minimize the distance $|\bar x-x|$.
+
+
+\begin{wrapfigure}{r}{45mm}
+\begin{lpic}[t(-5mm),b(-3mm),r(0mm),l(0mm)]{pics/hilbert(1)}
+\lbl[l]{43,18;$x$}
+\lbl[br]{8,41;$y$}
+\lbl[tl]{33,14;$\bar x$}
+\lbl[br]{10,26;$\bar y$}
+\lbl[br]{41,35;$\Pi_x$}
+\lbl[tl]{19,42;$\Pi_y$}
+\end{lpic}
+\end{wrapfigure}
+
+Assume there are two distinct points of minimal distance, say $\bar x$ and $\bar x'$.
+From convexity, their midpoint $z=\tfrac{\bar x+\bar x'}{2}$ lies in $K$.
+Clearly 
+$$|x-z|<|x-\bar x|=|x-\bar x'|,$$
+a contradiction.
+
+It remains to show that 
+$$|\bar x-\bar y|\le|x-y|
+\eqlbl{eq:|xy|=<|xy|}$$ 
+for any $x,y\in\RR^3$. 
+We can assume that $\bar x\ne \bar y$,
+otherwise there is nothing to prove.
+
+Consider the two planes $\Pi_x$ and $\Pi_y$ which pass through $\bar x$ and $\bar y$ and are perpendicular to the line segment $[\bar x,\bar y]$.
+Note that $x$ and $\bar y$ lie on opposite sides of $\Pi_x$,
+otherwise there would be a point on $[\bar x,\bar y]$ which is closer to $x$ than $\bar x$.
+This is not possible since $[\bar x,\bar y]\subset K$.
+In the same way we see that $y$ and $\bar x$ lie on the opposite sides of $\Pi_y$.
+
+Therefore the segment $[x,y]$ has to intersect both planes $\Pi_x$ and $\Pi_y$.
+It remains to note that the distance from any point on $\Pi_x$ to any other point on $\Pi_y$ is at least $|\bar x-\bar y|$.
+Hence \ref{eq:|xy|=<|xy|} follows.
+
+\parbf{Exercise \ref{ex:limit-above}.}
+Set $y_{n,k}=z_k$ for $n> k$.
+
+Note that if $n>k$ then $z_k\in K_n$
+and therefore $z_k=\phi_n(z_k)$.
+I.e., the identity 
+$$y_{n,k}=\phi_{n}(y_{n+1,k})$$ 
+still holds for all $n$ and $k$.
+
+Fix $k$ and $m$.
+According to Exercise \ref{problem2},
+the sequence 
+$$\ell_n=|y_{n,k}-y_{n,m}|$$
+is nondecreasing.
+Since $\ell_n=|z_k-z_m|$ for $n>\max\{m,k\}$,
+we get
+$$|y_{n,k}-y_{n,m}|\le |z_k-z_m|$$
+for all $n$.
+It follows that for any fixed $n$,
+the sequence
+$\left(y_{n,m}\right)_{m=n}^\infty$ is a Cauchy sequence of points in $P_n$, 
+and thus has a limit $x_n \in P_n$.
+Since $\phi_n$ is continuous, we get 
+$$\phi_n(x_{n+1}) \z= \phi_n\left(\lim_{m\to\infty} y_{n+1,m} \right) \z= \lim_{m\to\infty} y_{n,m} \z= x_n$$
+for all $n$.
+
+Let $\eps > 0$ and choose $N$ large enough so that $|z_m - z_n| < \tfrac{\eps}{3}$ for all $m,n \ge N$, and $|x - z_n| < \tfrac{\eps}{3}$ for all $n \ge N$.  Let $n \ge N$ and choose $m \ge N$ such that $|x_n - y_{n,m}| < \tfrac{\eps}{3}$.  From the above argument, 
+we have
+\begin{align*}
+|z_n - y_{n,m}| &= |y_{n,n} - y_{n,m}| \le
+\\
+&\le|z_n - z_m| <
+\\
+&<\tfrac{\eps}{3}.
+\end{align*}
+Therefore
+$$
+|x - x_n|\le |x - z_n| + |z_n - y_{n,m}| + |y_{n,m} - x_n|< \eps.
+$$
+It follows that $x_n \to x$ as $n\to\infty$.
+
+\parbf{Exercise \ref{pr:6-4-3-4}.}
+The existence of $f$ also follow from Exercise~\ref{ex:black-and-white}.
+
+\begin{center}
+%\begin{wrapfigure}{r}{62mm}
+\begin{lpic}[t(-0mm),b(0mm),r(0mm),l(0mm)]{pics/triangle-3434(1)}
+\lbl{35,10;$\longrightarrow$}
+\end{lpic}
+%\end{wrapfigure}
+\end{center}
+
+Note that the tessellation can be obtained by 
+recursive reflecting the triangle on the picture in its sides and the sides of obtained triangles.
+It should be easy to construct the map on one triangle.
+Note that this map sends each side of the triangle 
+to the line which forms a side of smaller equilateral triangle;
+see the bold lines on right side of the diagram.
+Visualize this map and extend it to whole plane applying reflections in the sides of these smaller triangles recursively.
+
+\begin{wrapfigure}{r}{32mm}
+\begin{lpic}[t(-4mm),b(0mm),r(0mm),l(0mm)]{pics/3-squares(1)}
+\end{lpic}
+\end{wrapfigure}
+
+Notice that it is already impossible to fold the 9-gon on the picture along all three sides of the triangle.
+Indeed, after the folding two of the squares has get on one side from the triangle.
+Then the square which lies between the triangle and the square
+has to go through the side of the triangle.
+
+

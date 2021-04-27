@@ -1,0 +1,455 @@
+\chapter{Polyhedral spaces}\label{chap:triangulation}
+
+
+
+
+\section{Simplexes}
+
+\parbf{Simplex.}
+Let $\{v_0,v_1,\dots,v_m\}$ be a set of points in $\RR^N$ for $N\ge m$
+such that the $m$ vectors 
+$$v_1-v_0, v_2-v_0,\dots,v_m-v_0$$ 
+are linearly independent.
+The convex hull $\Delta^m=\Conv(v_0,v_1,\dots,v_m)$
+is called an \emph{$m$-dimensional simplex}\index{simplex}.
+
+So,
+a 0-dimensional simplex is a one-point set; 
+a 1-dimensional simplex is a line segment;
+a 2-dimensional simplex is a triangle;
+a 3-dimensional simplex is a tetrahedron.
+
+If $\Delta^m$ as above
+then the convex hull of any $(k+1)$-point subset of $\{v_0,v_1,\dots,v_m\}$ also forms a $k$-dimensional simplex which will be called \emph{face}\index{face} of $\Delta^m$.
+
+
+\parbf{Barycentric coordinates.}
+Let $\Delta^m=\Conv(v_0,v_1,\dots,v_m)$ be an $m$-dimensional simplex.
+Note that $x\in \Delta^m$ if and only if 
+$$x=\lambda_0\cdot v_0+\lambda_1\cdot v_1+\dots+\lambda_n\cdot v_m$$
+for some nonnegative real numbers $\lambda_0,\lambda_1,\dots,\lambda_m$ such that
+$$\sum_{i=0}^m\lambda_i=1.$$
+In this case, the real array $(\lambda_0,\lambda_1,\dots,\lambda_m)$ will be called the \emph{barycentric coordinates}\index{barycentric coordinates} of the point $x$.
+
+\begin{thm}{Exercise}\label{ex:convex-hull}
+Verify the claim that $$\Conv(v_0,v_1,\dots,v_m) = \set{\sum_{i=0}^m \lambda_i \cdot v_i}{\lambda_i \ge 0 \textrm{ and } \sum_{i=0}^m \lambda_i = 1}.$$
+
+\end{thm}
+
+
+
+
+\section{Simplicial complexes}
+
+A \emph{simplicial complex}\index{simplicial complex} is defined as a finite collection $\mathcal{K}$
+of simplices in $\RR^n$ that satisfies the following conditions:
+\begin{itemize}
+\item Any face of a simplex from $\mathcal{K}$ is also in $\mathcal{K}$.
+\item The intersection of any two simplices $\Delta_1$ and $\Delta_2\in \mathcal{K}$ is either an empty set or it 
+is a face of both $\Delta_1$ and $\Delta_2$.
+\end{itemize}
+
+The dimension ($\dim \mathcal{K}$) of simplicial complex $\mathcal{K}$ is defined as the maximal dimension of all of its simplices.
+
+Note that to describe a simplicial complex $\mathcal{K}$ in $\RR^n$ 
+it is sufficient to list the vertices $v_1,\dots, v_k$ of all simplices in $\mathcal{K}$
+and the set of subsets $\mathcal{S}$ of $F=\{1,\dots,k\}$ 
+such that $X\in \mathcal{S}$ if and only if there is a simplex of $\mathcal{K}$ with vertices in $X$.
+The information encoded in $\mathcal{S}$ is called \emph{abstract simplicial complex}.
+
+More formally, an \emph{abstract simplicial complex} 
+is a finite set $F$
+with a family $\mathcal{S}$ of subsets of $F$
+such that for every set $X$ in $\mathcal{S}$, 
+and every subset $Y\subset  X$, 
+$Y$ also belongs to $\mathcal{S}$;
+in particular, $\emptyset\in  \mathcal{S}$.
+
+As it was noted above, 
+given a simplicial complex $\mathcal{K}$
+defines an abstract simplicial complex.
+On the other hand, 
+given an abstract simplicial complex $\mathcal{S}$ on finite set $F=\{1,\dots,n\}$ 
+one can construct geometric simplicial complex
+in $\RR^n$, by taking its vertices in a basis of $\RR^n$.
+
+We say that a point $x$ belongs to simplicial complex $\mathcal{K}$ if it belongs to one of its simplices.
+The set of all points of  $\mathcal{K}$ is called \emph{underlying set} of $\mathcal{K}$;
+it will be denoted as $|\mathcal{K}|$.
+
+If $\mathcal{K}$ is a simplicial complex
+and $\{v_1,v_2,\dots,v_k\}$ is the set of all its vertices
+then any point $x$ in $\mathcal{K}$ can be described 
+through barycentric coordinates $(\lambda_1,\lambda_2,\dots,\lambda_n)$, so $\lambda_1+\lambda_2+\dots+\lambda_n=1$,
+$\lambda_i\ge 0$ for any $i$ and 
+for any $x$ the set $X=\set{i}{\lambda_i>0}$
+belong to the corresponding abstract complex. 
+
+\section{Polytopes}
+
+The union of all simplices in $\mathcal{K}$ is called \emph{underlying set} of $\mathcal{K}$;
+it will be denoted as $|\mathcal{K}|$.
+
+A subset $P$ of $\RR^n$ is called \emph{polytope} if it can be presented as 
+underlying set of some geometric simplicial complex.
+Given a polytope $P$,
+any simplicial complex $\mathcal{K}$ with the underlying set $P$ is called \emph{triangulation}%
+\footnote{The term is a bit misleading; 
+the triangulation may contain simplexes of arbitrary dimension}
+of $P$.
+In general, a polytope may have many distinct triangulations.%
+\footnote{In fact if the triangulation is unique then polytope is formed by a finite set of points.} 
+
+\begin{thm}{Exercise}
+Let $P$ be a polytope.
+Show that dimension of any triangulation of $P$ has the same dimension.
+\end{thm}
+
+The exercise above makes possible to define
+the dimension of polytope is defined 
+as the dimension of its triangulation.
+
+With a slight abuse of notation we may say that a simplicial complex $\mathcal{K}$ is homeomorphic to simplicial complex $\mathcal{K}'$
+if their underlying spaces are homeomorphic.
+A metric (or topological) space $Q$ is called \emph{topological polytope} if it admits a homeomorphsm from a polytope say $P$.
+Such a homeomorphism together with triangulation of $P$
+is called \emph{topological triangulation} of $Q$.  
+
+\begin{thm}{Exercise}
+Find a topological triangulation of sphere%
+\footnote{The unit $n$-sphere is $\SS^n = \set{(x_1, x_2, \ldots, x_{n+1}) \in \mathbb{R}^{n+1}}{x_1^2 + x_2^2 + \ldots + x_{n+1}^2 = 1} $.} $\SS^2$ with minimal number of triangles.
+\end{thm}
+
+You will need at least 14 triangles 
+to do topological triangulation the torus $\TT^2=\SS^1\times\SS^1$.
+Finding such triangulation might be interesting, but proving its minimality is not fun.
+
+The dimension of topological polytope is
+ also defined as the maximal dimension of the 
+simplices in its triangulation.
+This value also the same for any triangulation,
+but the proof requires Domain Invariance Theorem (\ref{thm:domain-invariance}).
+
+\section{Polyhedral spaces}
+
+\begin{thm}{Definition}\label{def:poly}
+A complete length space $P$ is called a \emph{polyhedral space}\index{polyhedral space}
+if it admits a triangulation such that each simplex in $P$ is isometric to a simplex in Euclidean space.
+\end{thm}
+
+Further by a \emph{triangulation of a polyhedral space}\index{triangulation of a polyhedral space} we will understand the triangulation as in the definition. 
+We will also  assume that the triangulation is linear;
+i.e., the metric is induced by a linear map into Euclidean space which is linear with respect to barycentric coordinates.
+In particular, if 
+$$(\lambda_1,\lambda_2,\dots,\lambda_n)\ \ \text{and}\ \ (\mu_1,\mu_2,\dots,\mu_n)$$
+are baricentric coordinates of two points $x$ and $y$ in one simplex of the triangulation
+then the point with coordinates 
+$$(\tfrac{\lambda_1+\mu_1}2,\tfrac{\lambda_2+\mu_2}2,\dots,\tfrac{\lambda_n+\mu_n}2)$$
+is a midpoint of $x$ and $y$.
+
+The supremum of the dimensions of all simplices in such a triangulation is called \emph{dimension} of $P$
+and denoted as $\dim P$.
+
+1-dimensional simplicial complexes are also called \emph{graphs}.
+If any two vertices are connected by exactly one simple path then graph is called \emph{tree}.
+By that reason 1-dimesional polyhedral spaces are also called \emph{metric graphs}
+and if the polyhedral spaces is build on a tree, it is called \emph{metric tree}.
+
+\begin{thm}{Exercise}
+ Show that any convex nondegenerate polyhedron%
+\footnote{i.e., a convex hull of finite number of points which has nonempty interior.}
+ in $\RR^m$ is an $m$-dimensional polyhedral space.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:bry-is-poly}
+Show that boundary any convex nondegenerate polyhedron%
+\footnotemark[\value{footnote}] in $\RR^m$ equipped with its length metric is an $(m-1)$-dimensional polyhedral space.
+\end{thm}
+ 
+
+\begin{thm}{Exercise}\label{ex:dim-poly}
+The dimension of a polyhedral space does not depend on the choice of triangulation.
+\end{thm}
+
+
+\section{Euler formula}
+
+\begin{thm}{Theorem}\label{thm:euler}
+Let $\Gamma$ be a connected graph embedded in $\SS^2$.
+If $k$ is the number of vertices
+and $l$ is the number of edges of $\Gamma$
+and $m$ is the number faces; i.e., the domains%
+ which $\Gamma$ cuts from the $\SS^2$.
+Then 
+\[k-l+m=2.\]
+
+\end{thm}
+
+\parit{Proof.}
+If the connected planar graph $\Gamma$ has no edges, it is an isolated vertex and 
+\[k-l+m=1-0+1=2.\] 
+Otherwise, choose any edge $e$. 
+If $e$ connects two distinct vertices, 
+contract it, 
+reducing $k$ and $l$ by one. 
+
+Otherwise, $e$ is a loop;
+i.e., it connects a vertex to itself. 
+By ???, $e$ separates two faces.
+Remove $e$;
+it reduces $l$ and $m$ by one. 
+
+In either case the result follows by induction on $k+l+m$.
+\qeds
+
+
+\begin{thm}{Theorem}
+Let $P$ be a convex polytope in $\RR^3$ 
+and $k$, $l$ and $m$ denotes the number of its vertices edges and faces. 
+Then 
+\[k-l+m=2.\]
+
+\end{thm}
+
+
+
+\begin{thm}{Theorem}\label{thm:euler+triangulation}
+Let $\mathcal{S}$ be a simplicial complex which is  homeomorphic to $\SS^2$.
+If $k$ is the number of vertices in $\mathcal{S}$
+then $\mathcal{S}$ 
+has $l=3\cdot k-6$ edges 
+and $m=2\cdot k -4$ triangles.
+\end{thm}
+
+\parit{Proof.}
+Each edge appears as a side in exactly two triangles and each triangle has three sides;
+i.e., we have
+\[3\cdot m=2\cdot l.\]
+Applying Euler's formula, we get the result.
+\qeds
+
+\begin{thm}{Theorem}\label{thm:total-curvature}
+Let $P$ be a polyhedral surface which is homeomorphic to $\SS^2$.
+Then sum of the curvatures at all vertices of $P$ is equal to $4\cdot\pi$.
+\end{thm}
+
+\parit{Proof.}
+Choose a triangulation $\mathcal{T}$ of $P$.
+If $k$ is the number of vertices of $\mathcal{T}$,
+According to Theorem~\ref{thm:euler+triangulation},
+the number of triangles is $m=2\cdot k -4$.
+Therefore the total sum of all angles 
+of all the triangles in $\mathcal{T}$
+is 
+\[\pi\cdot(2\cdot k -4).\]
+
+Let $v_1,v_2,\dots,v_k$ be the vertices of $\mathcal{T}$,
+denote by $\alpha_i$ the total sum of angles 
+and $\omega_i$ the curvature at $v_i$;
+so $\omega_i=2\cdot\pi-\alpha_i$.
+Then 
+\begin{align*}
+\alpha_1+\dots+\alpha_k
+&=
+\pi\cdot(2\cdot k-4).
+\intertext{Therefore} 
+\omega_1+\dots+\omega_k
+&=
+2\cdot\pi\cdot k-\pi\cdot(2\cdot k-4)=
+\\
+&=4\cdot\pi.
+\end{align*}
+\qedsf
+
+
+\begin{thm}{Theorem}\label{thm:poly-disc+gauss}
+Let $P$ be a polyhedral disc.
+Denote by $\Omega$ the total curvature of all interior vertices of $P$
+and $\mathrm{T}$ be total boundary turn.
+Then 
+\[\mathrm{T}+\Omega=2\cdot\pi.\]
+
+\end{thm}
+
+\parit{Proof.}
+Consider doubling $W$ of $P$;
+i.e., two copies of $P$ glued along the corresponding points of their  boundaries.
+
+Note that $W$ is a polyhedral surface homeomorphic to $\SS^2$.
+The total curvature of $W$
+is $2\cdot\Omega+2\cdot\mathrm{T}$.
+Applying \ref{thm:total-curvature}, we get the result.
+\qeds
+
+
+\section{Polyhedral surfaces}
+
+A 2-dimensional polyhedral space $P$
+is called \emph{polyhedral surface}
+if each point in $P$ admits a neighborhood homeomorphic to an open set in a half-plane.
+
+This condition can be reformulated in a more combinatorial fashion.
+Namely, every edge in a triangulation of $P$ appears as a side of exactly one or two triangles
+and all the triangles with common vertex admit a cycle or linear order such that two triangles share a side if and only if they are neighbors in the cycle order. 
+
+\begin{thm}{Exercise}\label{ex:mnfl-combi}
+Prove the equivalence of these two conditions. 
+\end{thm}
+
+
+\begin{thm}{Definition}\label{def:curvature}
+Let $P$ be a polyhedral surface.
+Given $p\in P$, consider a triangulation of $P$ for which $p$ is a vertex.
+Denote by $\alpha_p$ the sum of the angles around $p$.
+The value
+$\alpha_p$ will be called the \emph{total angle around}\index{total angle around a point} $p$
+and the value
+$$\omega_p = 2\cdot\pi - \alpha_p$$ 
+will be  called the \emph{curvature of $P$ at $p$}\index{curvature at a point}.
+\end{thm}
+
+Note that for any $p\in P$, there is a triangulation as described in the above definition,
+and that the curvature of $P$ at $p$ does not depend on the choice of such a triangulation.
+
+\begin{thm}{Exercise}\label{ex:non0curv}
+Assume $P$ is a polyhedral surface and $\mathcal{T}$ is a triangulation of $P$.
+Show that if the curvature of $P$ at $p$ is nonzero then $p$ is a vertex of $\mathcal{T}$.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:sum=2pi}
+Assume $P$ is a polyhedral surface which is is homeomorphic to $\SS^2$ 
+and $\mathcal{T}$ is a triangulation of $P$.
+Show that the sum of the curvatures of $P$ at all vertices of $\mathcal{T}$ is equal to $4\cdot\pi$.
+\end{thm}
+
+
+
+\section{Comments}
+
+\subsection*{Nerves and partition of unity}
+
+Here we describe one source of examples of simplicial complexes which appear in 
+ many branches of mathematics.
+We will not need it further, but understanding these constructions might help you to understand idea behind the notion of simplicial complex, and for sure it will help you in the future (assuming you will do mathematics).
+
+\parbf{Nerve.}
+Let $\mathcal{V}$ be a collection of subsets of some set.
+Consider the abstract simplicial complex, where $\mathcal{V}$ is the set of vertices and 
+$\mathcal{S}$ is all collections of subsets in $\mathcal{V}$ which have non-empty intersection.
+We obtain a simplicial complex called the \emph{nerve of $\mathcal{V}$}\index{nerve}.
+
+If $\mathcal{V}$ is finite then so is its nerve.
+If any set in $\mathcal{V}$ intersects only finitely many other sets in $\mathcal{V}$, then 
+its nerve is locally finite.
+
+\begin{thm}{Definition}
+ Given $L \geq 0$,  a map $f\:X \to Y$ between metric spaces is \emph{$L$-Lipschitz}\index{Lipschitz map} if $$|f(x) - f(x')|_Y \leq L\cdot|x - x'|_X$$ for all $x, x' \in X$.  Note that this implies $f$ is continuous.
+
+A map $f\:X \to Y$ is called \emph{Lipschitz} if it is $L$-Lipschitz for some real $L$.
+
+A map $f\:X \to Y$ is called \emph{locally Lipschitz}\index{Lipschitz map!locally Lipschitz map} if for any point $x\in X$ there is $\eps>0$ such that the restriction $f|_{B_\eps(x)}$ is Lipschitz.
+\end{thm}
+
+\begin{thm}{Partition of unity}\label{thm:part-unit}
+ Let $\mathcal{V}=\{V_1,V_2,\dots,V_n\}$ is a finite open covering of a metric space $X$.
+Then there are locally Lipschitz functions $\psi_i\:X\to[0,1]$ such that
+if $\psi_i(x)>0$ then $x\in V_i$ and
+$$\sum_i\psi_i(x)=1$$
+for any $x\in X$.
+\end{thm}
+
+A collection of functions $\psi_i$ with above properies is called 
+a \emph{partition of unity subordinate to the open cover}\index{partition of unity} $\{V_1,V_2,\dots,V_n\}$.
+
+\parit{Proof.}
+Consider the functions $\phi_i\:X\to\RR$ defined as following:
+$$\phi_i(x)=\Dist_{X\backslash V_i} x.$$
+Note $\phi_i$ is $1$-Lipschitz
+for any $i$ (see the definition below)
+and $\phi_i(x)>0$ if and only if $x\in V_i$.
+In particular, 
+$$\sum_i\phi_i(x)>0\ \ \text{for any}\ \ x\in X.$$
+
+Set 
+$$\psi_k(x)=\frac{\phi_k(x)}{\sum_i\phi_i(x)}.$$
+Note that
+$\psi_k$ are locally Lipschitz;
+$\phi_i(x)\ge 0$ and
+if $\psi_i(x)>0$ then $x\in V_i$;
+further
+$$\sum_i\psi_i(x)=1\ \ \text{for any}\ \ x\in X.$$
+\qedsf
+
+
+Note that in the above proof for any point $x\in X$,
+the set
+$$\set{V_i}{\psi_i(x)>0}$$
+corresponds to one of the simplices in the nerve.
+Therefore 
+$$\bm{\psi}\:x\mapsto(\psi_1(x),\psi_2(x),\dots,\psi_n(x))$$
+can be thought of as a Lipschitz map from $X$ to the nerve of $\{V_1,V_2,\dots,V_n\}$;
+where the point $x$ is mapped to the point with barycentric coordinates $\psi_i(x)$.
+
+\section*{Exercise}
+
+\begin{pr}\label{pr:1000}
+Show that there is a triangulation of $\SS^3$
+with $1000$ vertices such that each pair of vertices is connected by an edge. 
+\end{pr}
+
+\begin{pr}\label{pr:tringulation-of-poly} Let $P$ be a (possibly nonconvex) polygon
+ equipped with the induced length metric.
+Show that $P$ admits a triangulation%
+\footnote{\label{trig+poly}Recall that triangulations of polyhedral space are always assumed to be linear;
+see Definition~\ref{def:poly} and the discussion right after that.}
+such that the set of vertices of the triangulation is the set of vertices of $P$. 
+\end{pr}
+
+\begin{pr}\footnote{Hint: look at the Figure 42.6, page 387 \href{http://www.math.ucla.edu/~pak/geompol8.pdf}{\textit{Lectures on Discrete and Polyhedral Geometry}} by
+Igor Pak}
+\label{pr:tringulation-of-poly-3D}
+Show that the analogous statement for a polyhedron 3-dimensional space does not hold.
+\end{pr}
+
+
+
+\begin{pr}\label{pr:2-triangulations}
+Let $\mathcal{A}$ and $\mathcal{B}$ be two triangulations of a polyhedral space\footref{trig+poly}.
+Show that there is a triangulation $\mathcal{C}$ such that each triangle of $\mathcal{A}$ and $\mathcal{B}$ is a union of triangles in $\mathcal{C}$.
+\end{pr}
+
+\begin{pr}
+Let $F$ be a metric space with finite number of points.
+Show that $F$ is isometric to a subset of metric tree if and only if
+for any four points $x_0,x_1,y_0,y_1$ in $F$
+we have 
+$$|x_0-x_1|_F+|y_0-y_1|_F
+\le
+|x_0-y_0|_F+|x_0-y_1|_F+|x_1-x_0|_F+|x_1-y_1|_F.$$
+
+\end{pr}
+
+\begin{pr}\label{pr:delaunay.triangulation}
+Let $P$ be a convex hull of the finite set of points $\{x_1,x_2,\dots,x_n\}$ in $\RR^2$.
+Assume that positive reals $r_1,r_2,\dots,r_n$ are chosen in such a way that the balls 
+$B_i=B_{r_i}(x_i)$ cover $P$
+and moreover each side of $P$ is covered by the balls centered on this side.
+
+Show that $P$ admits a triangulation with vertices at $x_i$ such that each triangle is covered by the three balls centered at its vertices. 
+\end{pr}
+
+
+\begin{pr}\label{pr:polytope=local.cone}
+Let $P$ be a compact subset of Euclidean space.
+Show that $P$ is a polytope for every point $x\in P$
+there is a \emph{cone%
+\footnote{A cone with tip $x$ is a set formed by union of a set of rays starting at $x$.} $K_x$ with tip at $x$} and $\eps>0$
+such that 
+$$B_\eps(x)\cap P
+=
+B_\eps(x)\cap K_x.$$
+ 
+\end{pr}
+
+
+%???+broken lines

@@ -1,0 +1,292 @@
+\chapter{Flexible polyhedra}\label{chap:flex}
+%ready
+
+
+
+In this chapter we construct few examples of flexible polyhedra (with self intersections and without).
+These examples are not used directly further in the lectures, 
+but they might help to build right intuition in forcomming two chapters.
+
+
+\section{Flexible vs. rigid}
+
+Consider a simplicial complex $\mathcal{T}$ which is homeomorphic to the sphere $\SS^2$.
+We are interested in maps $f\:\mathcal{T}\to\RR^3$ which are linear on each triangle.
+(We assume that the image of each triangle in $\mathcal{T}$ is not degenerate.
+
+Let $k$, $l$ and $m$  be the number of vertices, edges, and triangles 
+in $\mathcal{T}$.
+Label the vertices of $\mathcal{T}$ as $\{v_1,v_2,\dots,v_k\}$.
+Note that the map $f$ is completely determined by values 
+$$w_i=f(v_i)=(x_i,y_i,z_i)\in\RR^3.$$
+
+Consider the following phisical model described by the map $f$.
+If a pair $(v_i,v_j)$ is connected by an edge in $\mathcal{T}$,
+let us connect the vertices $w_i$ and $w_j$ by a rigid bar 
+and connect all the bars coming from one vertex $w_i$ with joint-hinge.
+If the obtained model admits a motion different from an isometry of Euclidean space,
+then $f$ is said to be \emph{flexible}\index{flexible};
+if not, then $f$ is \emph{rigid}\index{rigid}.
+
+One can reformulate the flexibility/rigidity the following way.
+Consider polyhedral metric on $\SS^2$ which makes the restriction of $f$
+to each triangle to be distance preserving.
+This metric will be called \textit{the metric induced by $f$}.
+Note that the induced metric is completely determined by the lengths of images of all edges of $\mathcal{T}$.
+Without loss of generality, we may assume that $v_1$, $v_2$ and $v_3$ 
+are vertexes of one triangle in $\mathcal{T}$.
+The map is called flexible if there is a nontrivial continuous one-parameter family of maps $f_t$,
+such that $f_0=f$ and $f_t(v_1)$, $f_t(v_2)$, $f_t(v_3)$ do not depend on $t$;
+if there is no such $f_t$
+then $f$ is called rigid.
+
+\parbf{Counting constrains.}
+Without loss of generality, we may assume that $w_1$ is the origin of $\RR^3$;
+$w_2$ lies on $x$-axis 
+and $w_3$ lies in the $xy$-plane.
+In other words, 
+\begin{align*}
+w_1&=(0,0,0),& 
+w_2&=(x_2,0,0),&
+w_3&=(x_3,y_3,0)
+\end{align*}
+Thus, up to isometry of $\RR^3$,
+the map $f$ is completely described by
+$3\cdot k- 6$ numbers
+$$(x_2),(x_3,y_3),(x_4,y_4,z_4),\dots,(x_k,y_k,z_k).\eqlbl{eq:xyz-flex}$$
+
+Now let us count number of constraints.
+We want to preserve the length of each bar;
+i.e., if vertices $v_i$ and $v_j$ are connected by an edge in $\mathcal{T}$ then 
+$$|w_i-w_j|_{\RR^3}=a_{ij},
+\eqlbl{eq:edge}
+$$
+where $a_{ij}$ is the length of this edge.
+(The equation \ref{eq:edge} is quadratic if written in the variables $x_i$, $y_i$, $z_i$, $x_j$, $y_j$ and $z_j$.)
+All together $f$ has to satisfy system of $l$ equations of the form \ref{eq:edge}.
+
+According to Euler's formula, we get
+$$k-l+m=\chi(\SS^2)=2.$$
+Further each edge appears as a side in exactly two triangles and each triangle has three sides;
+i.e., we have
+$3\cdot m=2\cdot l$.
+Therefore
+$$l=3\cdot k-6.$$
+Thus, the number of equations ($l$) coincides with the number of parameters ($3\cdot k-6$) 
+in \ref{eq:xyz-flex}.
+
+\begin{wrapfigure}{r}{48mm}
+\begin{lpic}[t(-30mm),b(-30mm),r(0mm),l(-3mm)]{pics/no-cauchy(0.25)}
+\end{lpic}
+\end{wrapfigure}
+
+Untill we understand our equasions better, this coincidence does not mean much.
+But assuming that the equasions are independed (in fact this is the case), it means that $f$ is rigid for ``generic'' choice of points $w_i$.  
+
+\parbf{Example.} 
+The system \ref{eq:edge} describes all the positions of $k$ points with given distances between the chousen $l$ pairs.
+For example on the picture you see two configurations of $5$ points which have the same distances between $9$ pairs marked by the edges. 
+Obvoisly these configurations could not be obtained one from the other by rigid move of $\RR^3$.
+
+On the other hand each of these two maps is rigid.
+In particular, it is impossible to get from one these polyhedra to the other one by a continuous deformation which keeps each edge rigid. 
+
+\begin{thm}{Exercise}\label{ex:rigit/flex}
+Prove the rigidity of these two configurations. 
+\end{thm}
+
+
+
+
+
+
+\section{Bricard octhedra}
+
+In this section we construct the first nontrivial example of \emph{flexible polyhedral map}\index{flexible polyhedral map}.
+These so called Bricard's octahedra are the piecewise linear maps $f\:\SS^2\z\to\RR^3$
+with triangulation as in the surface of octahedra.
+The map  have self-intersections,
+i.e., $f$ fails to be embedding.
+You may look at the animated image of \textattachfile[color=0 0 1,mimetype=picture/gif]{pics/Br1-anim.gif}{Bricard's octahedron}.
+
+\parbf{Construction.} 
+The polyhedral space $P$ is glued out of 8 triangles in the same way as the usual octahedron.
+The triangulation, say $\mathcal{T}$, is the same as in an octahedron; it has 8 triangles, 12 edges and 6 vertices.
+We contruct Bricard's octahedra such that $P$ isometric to the surface of convex centrally simmetric octahedron, 
+say $K$ which is not non-regular.
+
+The flexible map $f\:P\to\RR^3$ is isometric on each face,
+but it does not map $P$ to the surface of $K$.
+The 6 vertices of $K$ will be denoted as $x,y,z,x',y',z'$,
+any pair of these vertices is connected by an edge, with exception for the 3 pairs $(x,x')$, $(y,y')$ and $(z,z')$.
+Since $K$ is centrally simmetric,
+the midpoints of the line segments $[xx']$, $[yy']$ and $[zz']$ coincide.
+In particular, the points $x$, $x'$, $y$ and $y'$ lie on one plane, say $\Pi$.
+
+The flexible map is obtained by reflecting $z'$ along with the 4 edges coming from $z'$ through $\Pi$.
+The new map is distance preserving on each of the 8 triangles of $\mathcal{T}$.
+
+\parbf{Why it is flexible.} Note first that the part glued out of 4 triangles with vertex $z$ is flexible.
+This is true if each angle $\angle xzy$, $\angle xzy'$, $\angle x'zy$, $\angle x'zy'$ is strictly larger than the sum of the remaining three angles.
+In particular, if the spherical quadrilateral $Q$ with vertices formed by unit vectors in the directions of rays $[zx)$, $[zy)$, $[zx')$ and $[zy')$ is not degenerate.
+Note that flexibility of $Q$ in the sphere is equivalent to flexibility of our 4 triangles in $\RR^3$.
+I.e., we can fix vertices $x$, $y$ and $z$ and move $x'$ and $y'$ along nontrivial curves  $x'(t)$, $y'(t)$ 
+such that
+ $x'(0)=x'$, $y'(0)=y'$
+and all of the distances 
+\begin{align*}
+|z-x'(t)|,&&|z-y'(t)|,&&
+|y-x'(t)|, &&|x'(t)-y'(t)|,&&|y'(t)-x|
+\end{align*}
+stay constant while $t$ changes. 
+
+Set $z'(t)$ to be the rotation of $z$ by angle $\pi$ around the line passing through the midpoints of line segments $[x\,x'(t)]$ and  $[y\,y'(t)]$. 
+For $t=0$, the midpoints of $[x\,x'(0)]$ and  $[y\,y'(0)]$ coincide;
+in this case $z'$ is the rotation of $z$ by angle $\pi$ around the line passing through the midpoint of $[x\,x'(0)]$ and perpendicular to the plane containing $x, y, x'(0), y'(0)$.
+In this case we have 
+\begin{align*}
+|z'(t)-x|&=|z-x'(t)|,
+&
+|z'(t)-y|&=|z-y'(t)|, 
+\\
+|z'(t)-x'(t)|&=|z-x|,
+&
+|z'(t)-y'(t)|&=|z-y|.
+\end{align*}
+
+Therfore
+\begin{align*}
+|z'(t)-x|,&&|z'(t)-y|, &&|z'(t)-x'(t)|,&&|z'(t)-y'(t)|
+\end{align*}
+stay constant while $t$ changes.
+
+
+\section{Connelly sphere} 
+
+Here we use Bricard's octahedra to produce a flexible polyhedral embedding which we call \emph{Connelly sphere}\index{Connelly sphere}.
+It uses 3 Bricard's octahedra and gives a flexible embedding of sphere for a triangulation with 24 vertices.
+
+We suggest to do the following exexcise before going into construction.
+
+\begin{thm}{Exercise} 
+Print \pageref{bricard}, 
+cut the figure and glue the marked sides. 
+You obtain 
+ 6 out of 8 triangles in a Bricard's octahedra.
+
+Move this models, folding only along marked lines to make another flat polygon (not the square which you started with).
+Imagine the missing edge and understand that its length does not change while you move the model.
+\end{thm}
+
+Start with a Bricard's octahedron glued from two squares as in the exercise.
+The identified sides are decorated the same way.
+One the picture below, you see ``upper'' and ``lower'' sides%
+\footnote{These sides on the same level, we call one upper and one lower to distiguish them.}%
+, both are squares and the triangulation is marked by solid lines. 
+The dashed line is a line of self-intersection after a small deformation.
+
+\begin{wrapfigure}{r}{58mm}
+\begin{lpic}[t(-30mm),b(-30mm),r(0mm),l(-3mm)]{pics/connelly1(0.3)}
+\end{lpic}
+\end{wrapfigure}
+\label{connelly1}
+
+
+
+Remove 3 big triangles from the upper side and exchange each by 3 triangles with common vertex quite a bit above of the corresponding triangle.
+This way you exchange 3 triangles to 9 and add 3 extra vertices.
+Do the same for the lower side, but choose the vertex quite a bit below the corresponding triangle.
+The next picture shows how it will look from above, form below and a side view.
+The new model is still flexible 
+and for small deformations its self intersections appear only at the spots marked by red.
+
+\begin{center}
+\begin{lpic}[t(-45mm),b(-45mm),r(0mm),l(-3mm)]{pics/connelly2(0.4)}
+\end{lpic}
+\end{center}
+
+Consider one of the red spots on the upper side.
+Cover it by two small triangles say $\Delta_1$ and $\Delta_2$ joined along the edge.
+Construct a Bricard's octahedron as in the exercise with $\Delta_1$ and $\Delta_2$ as the missing faces.
+Remove $\Delta_1$ and $\Delta_2$ from the model and glue instead the $6$ faces of the Bricard's octahedron.
+This new model is still flexible.
+For the right choice of the small triangles and the Bricard's octahedron, 
+we can get rid of this self-intersection near this red spot.
+
+If the same is done to the other red spot, we get a flexible embedding. 
+
+
+\section{Comments}
+
+The Bricard's octahedra were discoverd by Raoul Bricard in 1897;
+in fact he classified all the flexible octahedra.
+This classification includes the flexible octahedra constructed in Problem~\ref{bricard-second}.
+
+The Connelly sphere was discovered by  Robert Connelly in 1977, see \cite{connelly-flex}.
+The number of vertecies in this eaxample can be easely reduced to 20.
+An other construction due to Klaus Steffen reduces the number of vertices to 9.
+It is unknown if this number can be reduced further,
+but maybe no one wants to know.  
+
+In the late 1970s Connelly and Sullivan formulated so called \emph{Bellows conjecture} stating that
+flexible polyhedron ``can not be used as bellows''.
+More precisely that the volume of a flexible polyhedron is invariant under flexing. 
+This conjecture was proved for by Sabitov in 1996 \cite{sabitov}.
+
+There is also so called \emph{Strong belloes conjecture} which states that if $K$ and $K'$ be the regions bounded by a flexible polyhedron before and after flexing then $K$ and $K'$ are scissors congruet; i.e., one can cut $K$ into polhedons and rearange them into form of $K'$.
+This conjecture is still open.
+
+The flexibility and rigidity were extensively studied in the smooth category.
+A $C^\infty$-smooth embedding $f_0\:\SS^2\to \RR^3$,
+is called \emph{flexible}\index{flexible smooth surface} if there is one parameter family of $C^\infty$-smooth embeddings $f_t$, $t\in[0,1]$,
+which is continuous in $t$ such that the which give the same induced metric on $\SS^2$,
+but such that $f_t$ can not be presented as composition of isometry $\iota_t\:\RR^3\to \RR^3$ and $f_0$;
+otherwise the embedding $f_0$ is called \emph{rigid}\index{rigid smooth surface}.
+The existence of flexible smooth embedding is unknown by now;
+the same applies for  flexible smooth immersions which could be defined the same way.
+
+
+
+
+
+\section*{Exercises}
+
+
+\begin{pr}\label{pr:trig-S2}
+How many combinatorically different%
+\footnote{Two triangulations $\mathcal{T}$ and $\mathcal{T}'$ are the same combinatorially if there is a bijection $f: V \to V'$ between their vertex sets such that \begin{enumerate}[i)] \item there is an edge from $v$ to $w$ in $\mathcal{T}$ if and only if there is an edge from $f(v)$ to $f(w)$ in $\mathcal{T}'$; \item there is a triangle connecting $u,v,w$ in $\mathcal{T}$ if and only if there is a triangle connecting $f(u), f(v), f(w)$ in $\mathcal{T}'$. \end{enumerate}}
+triangulations of $\SS^2$ with 5 vertices are there?
+Show that any map for corresponding simplicial complex(es) such that no 4 vertices lie in one plane is(are) rigid. 
+\end{pr}
+
+\begin{pr}\label{bricard-second}
+Let $A=\{x,y,x',y'\}\in\RR^3$ be a set of distinct points such that
+$|x-y|=|y-x'|=|x'-y'|=|y'-x|$.
+Show that there are $4$ distinct isometries (including identity)
+which send $A$ to it-self.
+
+Use these isometires to construct 3 distinct flexible octahedra with vertices $x,y,x',y'$
+and a given vertex $z$ in general position. 
+\end{pr}
+
+\begin{pr}\label{pr:alexander-flex}
+Let $f,g\:\SS^2\to \RR^3$ be two maps which are linear on a each triangle of a a triangulation $\mathcal T$ of $\SS^2$.
+Assume that the induced metrics on $\SS^2$ for $f$ and $g$ coincide.  
+Let us consider $\RR^3$ as a subspace in $\RR^6$.
+Show that there is a continuous one-parameter family of maps $h_t\:\SS^2\to \RR^6$, $t\in [0,1]$ such that 
+for any $t$, the map $h_t$ is linear on each triangle of $\mathcal T$, the metric induced on $\SS^2$ by $h_t$ does not depend on $t$ 
+and $f=h_0$, $g=f_1$. 
+\end{pr}
+
+
+\newpage
+
+\begin{center}
+\begin{lpic}[t(-0mm),b(-0mm),r(0mm),l(-0mm)]{pics/bricard(0.40)}
+\end{lpic}
+\end{center}
+\label{bricard}
+
+
+
+

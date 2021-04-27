@@ -1,0 +1,1397 @@
+\chapter{Zalgaller's folding theorem}
+\addtocontents{toc}{\protect\begin{quote}}
+\addtocontents{toc}{Any polyhedral space admits a piecewise distance preserving map into Euclidean space of the same dimension.}
+
+Let $P$ be a polyhedral space.
+A map $f\:P\to\RR^n$ is called 
+\emph{piecewise distance preserving}\index{piecewise distance preserving map}
+if there is a triangulation of $P$ 
+such that for any simplex $\Delta$ in the triangulation, 
+the restriction $f|_\Delta$ is distance preserving.
+
+
+
+\begin{thm}{Exercise}\label{ex:PDP=>cont}
+Show that any piecewise distance preserving map $f$ is continuous and length-preserving.  
+(It then follows from Exercise \ref{LP=>short} that $f$ is also distance non-expanding.)
+\end{thm}
+
+
+The following statement might look obvious, 
+but try to prove it rigorously. 
+
+\begin{thm}{Exercise}\label{ex:n=<m}
+Suppose that an $m$-dimensional polyhedral space admits a piecewise distance preserving map into $\RR^n$.
+Show that $n\ge m$.
+\end{thm}
+
+In fact, the converse of the statement in the exercise is true.  In other words, dimension is the only obstruction to the existence of a piecewise distance preserving map into Euclidean space.
+The following theorem asserts this for the case where $m=2$.
+
+\begin{thm}{Zalgaller's theorem}\label{thm:zalgaller}
+Any 2-dimensional polyhedral space admits a piecewise distance preserving map into the Euclidean plane.
+\end{thm}
+
+Imagine that you have a paper model of a 2-dimensional polyhedral space $P$ in your hands, and you fold this model so that it lays flat on a table.%
+\footnote{We recommend that you create such a paper model, say the surface of a cube, and then try to fold it on the table.}
+This is an intuitive way to think of a piecewise distance preserving map $f\: P \to \RR^2$.
+To make it closer to the actual definition, one has to imagine that the layers of paper can go through each other.
+Zalgaller's theorem says that such a ``folding'' is always possible;
+see also Exercise~\ref{pr:6-4-3-4}.
+  
+
+The following exercise shows that in this process, new folds may need to be introduced across the triangles of the given triangulation of $P$.
+
+\begin{thm}{Exercise}\label{pdp-for-tetrahedron}
+Let $\Delta$ be a non-degenerate 3-dimensional simplex in $\RR^3$
+and let $\partial\Delta$ be its boundary, equipped with the induced length metric. It is a polyhedral space glued from 4 triangles --- the faces of $\Delta$.
+
+Show that $\partial\Delta$ does not admit a map to $\RR^2$ which is distance preserving on each of the 4 faces of $\Delta$.
+
+Describe explicitly a piecewise distance preserving map 
+$$f\:\partial\Delta\z\to\RR^2$$
+which is distance preserving 
+on 2 out of the 4 faces of $\Delta$.  (You will have to subdivide the other 2 faces into smaller triangles.)
+\end{thm}
+
+
+
+
+Below we give two similar proofs of Zalgaller's theorem: 
+the first with cheating and the second without.
+In the first proof, we use the following claim without proof.
+
+\begin{clm}{}\label{clm:acute-triangulation}
+Any 2-dimensional polyhedral space admits an 
+\emph{acute triangulation}\index{acute triangulation},
+that is, a triangulation such that all of its triangles are acute.
+\end{clm}
+
+\begin{thm}{Exercise}\label{ex:acute-triangulation}
+Show that any triangle admits an acute triangulation.
+\end{thm}
+
+Notice that there is more to proving \ref{clm:acute-triangulation} than simply subdividing each triangle into acute triangles.  One must be careful that the subdivisions of two triangles that share an edge are compatible on that common edge.  See \cite{saraf} for a proof of \ref{clm:acute-triangulation}.
+
+\parit{Proof using \ref{clm:acute-triangulation}.}
+Fix an acute triangulation $\mathcal{T}_0$ of $P$ provided by \ref{clm:acute-triangulation}.
+Mark all its vertices in white
+and denote them by $\{w_1,\dots,w_k\}$.
+
+For each $w_i$, consider its \emph{Voronoi domain}\index{Voronoi domain} $V_i$,
+which is the subset
+$$V_i=\set{x\in P}{|x-w_i|\le|x-w_j|\ \text{for any}\ j}.$$
+Denote by $S(w_i)$ the \emph{star}\index{star} of $w_i$,
+which is the union of all simplices of the triangulation $\mathcal{T}_0$ which contain $w_i$.
+
+Since an acute triangle contains its own circumcenter, it is impossible for the Voronoi domain of a vertex of a triangle to cross the opposite edge.  From this it follows that
+$$V_i\subset S(w_i)$$ for all $i$.
+In particular, for any point $x\in V_i$, there is a unique geodesic $[w_i,x]$,
+which is a line segment in a single triangle or an edge of $\mathcal{T}_0$.
+
+%Note that since all triangles are acute, we have
+%$$V_i\subset S(w_i)$$ for all $i$.
+%In particular, for any point $x\in V_i$, there is a unique geodesic $[w_i,x]$,
+%which is a line segment in a triangle or an edge of $\mathcal{T}_0$.
+
+\begin{wrapfigure}{r}{49mm}
+\begin{lpic}[t(-0mm),b(-0mm),r(0mm),l(0mm)]{pics/zalgaller(1)}
+\end{lpic}
+\caption*{The Voronoi domains within one triangle.}
+\end{wrapfigure}
+
+Note that in each triangle of $\mathcal{T}_0$, we have one point where three Voronoi domains meet and three points on the sides of triangle where pairs of Voronoi domains meet.%
+%\footnote{Here we again use that all the triangles are acute.
+%Namely we use that circumcenter of acute triangle lies in its interior.}
+Let us bisect each edge of $\mathcal{T}_0$
+and subdivide each triangle into $6$ triangles as it is done on the picture (solid lines only).
+
+In this way we obtain a new triangulation $\mathcal{T}_1$. 
+We mark all the new vertices of $\mathcal{T}_1$ in black.
+
+Note that 
+\begin{enumerate}
+\item Each $V_i$ is a union of all triangles and edges of $\mathcal{T}_1$ which have $w_i$ as a vertex.
+\item Each triangle in $\mathcal{T}_1$ has one white and two black vertices.
+\item\label{prop:cong-pairs} The triangles in $\mathcal{T}_1$ come in pairs of congruent triangles, they share two black vertices and have different white vertices.
+\end{enumerate}
+
+Given a point $x\in P$,
+set
+$$\rho(x)=\min_i\{|w_i-x|\}.$$
+Notice that if $x \in V_i$, then $\rho(x) = |w_i - x|$.
+Given $x\in V_i$, 
+we denote by $\theta_i(x)$ the minimum angle between $[w_i,x]$ and any edge of $\mathcal{T}_1$ coming from $w_i$.
+
+By Property~\ref{prop:cong-pairs}, 
+if $x\in V_i\cap V_j$ then $\theta_i(x)=\theta_j(x)$.
+In other words, the function $\theta$ given by
+$$\theta(x) = \theta_i(x), \qquad x \in V_i$$ is well-defined on the set $P\backslash\{w_1,\dots,w_n\}$.
+Moreover, $\theta$ is a continuous function.
+
+We now describe the map $f\:P\to\RR^2$ using polar coordinates on $\RR^2$.  We define
+$f(w_i)=0$ and 
+$f(x)=(\rho(x),\theta(x))$ if $x \in P\backslash\{w_1,\dots,w_n\}$.
+
+Subdividing each triangle by the angle bisector at the white vertex (see the dashed lines on the picture)
+gives a new triangulation $\mathcal{T}_2$
+which satisfies the conditions of the theorem for the constructed map $f$.
+%The later follows since the $(\rho,\theta)$ can be thought as polar coordinates on each triangle of $\mathcal{T}_2$.
+\qeds
+
+Now we modify the above proof 
+so it does not use Claim \ref{clm:acute-triangulation}.
+The only property we really need for the triangulation is that $V_i\subset S(w_i)$.
+On one hand, this inclusion does not hold for a general triangulation.
+A simple example of this is obtained by gluing an equilateral triangle to the longer side of obtuse triangle.
+On the other hand, 
+by increasing the number of Voronoi domains, we can arrange that this inclusion holds without making the triangulation acute.
+
+\parit{Proof without using \ref{clm:acute-triangulation}.}
+Fix a triangulation $\mathcal{T}_0$ of $P$ that is not necessarily acute.
+We will construct new triangulations $\mathcal{T}_1$ and $\mathcal{T}_2$ of $P$
+by subdividing the triangles of $\mathcal{T}_0$,
+and we will define a map $f\:P\to\RR^2$ which is distance preserving on each triangle of $\mathcal{T}_2$.
+The vertices of $\mathcal{T}_1$ will be colored either white or black 
+in such a way that each triangle of $\mathcal{T}_1$ 
+will have two black vertices and one white vertex.
+%(In addition to the sides and vertices of the triangles, $\mathcal{T}_1$  might have white-black edges.) 
+
+\begin{wrapfigure}{r}{56mm}
+\begin{lpic}[t(-4mm),b(-0mm),r(0mm),l(0mm)]{pics/voronoi(1)}
+\end{lpic}
+\caption*{A triangle $\Delta$ of $\mathcal{T}_0$
+with marked white points and the intersections of their Voronoi domains with $\Delta$.}
+\end{wrapfigure}
+
+We shall first describe the set of white vertices.
+
+Fix a small number $\eps>0$.
+We mark in white all of the vertices of $\mathcal{T}_0$,
+as well as the points on the sides of triangles of $\mathcal{T}_0$ 
+with the property that the distance to the closest vertex of the edge is an integer multiple of $\eps$.
+In this way we mark a finite number of points white.
+Label the white points by $w_1,\dots,w_k$.
+
+As in the previous proof, let $V_i$ be the Voronoi domain of $w_i$, so that
+\[V_i=\set{x\in P}{|x-w_i|\le|x-w_j|\ \text{for any}\ j}.\]
+We also let $S(w_i)$ be the star of $w_i$ in $\mathcal{T}_0$, which is the union of all simplices of $\mathcal{T}_0$ which contain $w_i$.
+By the following exercise, we can assume that $V_i\subset S(w_i)$ for each $i$, by taking a suitably small $\eps$.
+
+
+\begin{thm}{Exercise}\label{ex:voronoi-in-star}
+Let $\ell$ be the minimal length of the edges in the triangulation,
+and let $\alpha$ be the minimal angle of all the triangles in $\mathcal{T}_0$.
+Show that if $\eps<\tfrac{\ell\cdot \alpha}{100}$, 
+then $V_i\subset S(w_i)$ for each $i$.
+\end{thm}
+
+
+
+Fix a triangle $\Delta$ of $\mathcal{T}_0$.
+Note that for any $w_i\in \Delta$, the intersection $V_i\cap \Delta$ is a convex polygon.
+This follows because for any two points $w_i,w_j\in\Delta$,
+the inequality 
+$$|x-w_i|\le |x-w_j|$$ 
+describes the set of all points $x \in \Delta$
+which lies on one side of the bisecting perpendicular to $w_i$ and $w_j$.
+Let us color the vertices of all of the polygons $V_i\cap \Delta$ in black, if they are not already white.
+
+If $\mathcal{T}_0$ contains an edge $\mathrm{E}$ which is not 
+a side of a triangle then color the midpoint of $\mathrm{E}$ in black.  
+
+We'll now describe the triangulation $\mathcal{T}_1$.  The vertice of $\mathcal{T}_1$ are the black and white vertices.
+A white point $w_i$ is connected by an edge to each black point in $V_i$.
+A pair of black vertices $b$ and $b'$ are connected by an edge if it forms a side of some $V_i\cap \Delta$ 
+(for some $\Delta$ and $w_i\in\Delta$).
+In this case $w_i$, $b$ and $b'$ also form a triangle of $\mathcal{T}_1$.  Notice that each black-black edge is a side of two congruent triangles of $\mathcal{T}_1$ with different white vertices.
+
+The remaining part of the proof is the same  as before.
+We define $$\rho(x)=\min_i\{|w_i-x|_P\}$$
+and $\theta(x)$ for $x\in V_i$ as the minimal angle between $[w_i,x]$ and any edges
+in $\mathcal{T}_1$ coming from $w_i$.
+Then define the map $f\:P\to \RR^2$ so that 
+$f(w_i)=0$ for each $i$ 
+and
+$f(x)=(\rho(x),\theta(x))$ in polar coordinates.
+
+Further subdividing each triangle of $\mathcal{T}_1$
+in two along the angle bisector from the white vertex produces a new triangulation $\mathcal{T}_2$.
+It is straightforward to see that the constructed map $f$ is distance preserving on each triangle of $\mathcal{T}_2$.
+\qeds
+
+Use Zalgaller's theorem to show the following.
+
+\begin{thm}{Advanced exercise}\label{ex:zalgalle+embedding}
+Any 2-dimensional polyhedral space is isometric to the underlying set of a simplicial complex in $\RR^n$, equipped with its induced length metric. 
+\end{thm}
+
+
+We end this section with an entertaining exercise.
+
+\begin{thm}{Exercise}\label{ex:black-and-white}
+Let $\mathcal{T}$ be a triangulation of a convex polygon $Q$ in $\RR^2$ such that each triangle is colored either black or white.
+Show that the following two conditions are equivalent.
+\begin{enumerate}[a)]
+\item There is a piecewise distance preserving map
+$Q\to\RR^2$ for this triangulation which preserves the orientation%
+\footnote{We say that the motion preserves/reverses the orientation 
+if it is a composition of even/odd number of reflections.} 
+of each white triangle
+and reverses the orientation of each black triangle.
+
+\item The sum of black angles around any vertex  of $\mathcal{T}$ 
+which lies in the interior of $Q$
+is either $0$, $\pi$ or $2\cdot\pi$.
+\end{enumerate}
+
+\end{thm}
+
+\addtocontents{toc}{\protect\end{quote}}
+\chapter{Brehm's extension theorem}
+\addtocontents{toc}{\protect\begin{quote}}
+\addtocontents{toc}{Any distance non-expanding map from a finite set of points in Euclidean space to the same Euclidean space can be extended to the whole space as a piecewise distance preserving map.}
+
+
+\begin{thm}{Brehm's extension theorem}\label{thm:brehm}
+Let $a_1,\dots,a_n$ and $b_1,\dots,b_n$ be two collections of points in $\RR^2$ such that 
+$$|a_i-a_j|\ge |b_i-b_j|$$
+for all $i$ and $j$,
+and let $A$ be a convex polygon which contains $a_1,\z\dots,a_n$.
+Then there is a piecewise distance preserving map $f\:A\to \RR^2$
+such that
+$f(a_i)\z=b_i$ for all $i$.
+\end{thm}
+
+In other words, if $F=\{a_1,\dots,a_n\}$ is a finite subset of a convex polygon $A$, then any distance non-expanding map $\phi\: F \to \RR^2$ extends to a piecewise distance preserving map $f\: A \to \RR^2$.
+
+\parit{Proof.}
+The proof is by induction on $n$.
+
+The base case $n=1$ is trivial:
+we can take
+$$f(x) = x + (b_1 - a_1),$$ which is distance preserving on all of $A$.
+
+Applying the induction hypothesis to the last $n-1$ pair of points, 
+we get a piecewise distance preserving map $h\:A\z\to \RR^2$ 
+such that $h(a_i)=b_i$ for all $i>1$.
+We will use $h$ to construct the desired map $f\:A\to \RR^2$.
+
+Consider the set 
+$$\Omega=\set{x\in A}{|a_1-x|<|b_1-h(x)|}.$$
+We can assume that $a_1 \in \Omega$;
+otherwise $h(a_1)= b_1$ and we can take $f = h$.  We make the following claim.
+
+%First note the following.
+
+\begin{clm}{}\label{clm:star-shaped}
+The set $\Omega$ is star-shaped with respect to $a_1$.
+That is, if $x\in \Omega$ then the line segment $[a_1,x]$ lies in $\Omega$. 
+\end{clm}
+
+Indeed, if $y\in [a_1,x]$ then 
+$$|a_1-y|+|y-x|=|a_1-x|.
+$$
+Since $x\in\Omega$, we have
+$$|a_1-x| < |b_1-h(x)|.
+$$
+Since $h$ is distance non-expanding (see Exercise~\ref{ex:PDP=>cont}),
+we have
+$$|h(x)-h(y)|\le |x-y|.
+$$
+Combining the above with the triangle inequality, we see
+\begin{align*}
+|a_1-y| &= |a_1-x| - |x-y|
+<
+\\
+&< |b_1-h(x)| - |h(x)-h(y)|
+\le
+\\
+&\le
+|b_1-h(y)|. 
+\end{align*}
+This proves $y\in\Omega$, which establishes Claim~\ref{clm:star-shaped}.
+
+\medskip
+
+\begin{center}
+\begin{lpic}[t(-0mm),b(-0mm),r(0mm),l(0mm)]{pics/brehm-new(1)}
+\lbl{55,55;\Large{$A$}}
+\lbl[lb]{45,35;$E_i$}
+\lbl[]{38,33;$T_i$}
+\lbl[tr]{29,28;$a_1$}
+\lbl[]{15,28;\Large{$\Omega$}}
+\lbl[b]{10,35,25;\Large{$\partial_A\Omega$}}
+\lbl[b]{-1,15,90;\Large{$Z$}}
+\lbl[b]{15,10;blind}
+\lbl[t]{15,9;zone}
+\end{lpic}
+\end{center}
+
+Recall that $\partial_A\Omega$ denotes the boundary of $\Omega$ considered as a subset of the space $A$.  This may be different a different set than $\partial_{\RR^2}\Omega$.
+Note that  
+$$|a_1-x|=|b_1-h(x)|
+\eqlbl{eq:|ax|=|ah(x)|}$$
+for any $x\in\partial_A\Omega$.
+To see this, consider a sequence of points in $\Omega$ that converges to $x$ and another sequence of points in $A\backslash \Omega$ that converges to $x$, and then use the fact that $h$ is continuous (Exercise~\ref{ex:PDP=>cont}).
+
+Further, note the following.
+\begin{clm}{}\label{clm:broken-line}
+The boundary $\partial_A\Omega$ is the union of a finite collection of line segments
+$E_1,\dots, E_k$ which intersect each other only at the common endpoints. Moreover, $h$ is distance preserving on each of these segments.
+\end{clm}
+
+Indeed, fix a triangulation of $A$ so that $h$ is distance preserving on each triangle.
+Note that for any point $x\in \partial_A\Omega$, this triangulation has a triangle $\Delta\ni x$ such that $\Delta\cap\Omega\ne\emptyset$.
+Fix such a triangle $\Delta$.
+Since $h$ is distance preserving on $\Delta$, 
+the restriction $h|_\Delta$ can be extended uniquely to an isometry $\iota\:\RR^2\z\to\RR^2$.
+
+Set $b_1'=\iota^{-1}(b_1)$.
+Note that 
+\[|b_1'-x|=|b_1-h(x)|\] 
+for any $x\in\Delta$, because $\iota$ is an isometry and $\iota|_\Delta = h|_\Delta$.
+
+Observe that $a_1\ne b_1'$.
+Assuming otherwise, we see $$|a_1-x|=|b_1'-x|=|b_1-h(x)|$$ for any $x\in\Delta$, which gives the contradiction $\Delta\cap\Omega=\emptyset$.
+
+Denote by $\ell_\Delta$ the perpendicular bisector to $[a_1, b_1']$, which coincides with the set of all points equidistant from $a_1$ and $b_1'$.
+By the definition of $\Omega$, for any $x\in \Delta$ we have that
+$x\in\Omega$ if and only if $x$ and $a_1$ lie on the same side from $\ell_\Delta$.
+Therefore $\partial_A\Omega$ is the union of the intersections $\Delta\cap\ell_\Delta$ for all $\Delta$ as above. 
+Hence \ref{clm:broken-line} follows, as there are only finitely many such $\Delta$.
+
+For each edge $E_i$ in  $\partial_A\Omega$, consider the triangle $T_i$ with vertex $a_1$ and base $E_i$.
+Condition \ref{eq:|ax|=|ah(x)|} implies that there is an isometry $\iota_i$ of $\RR^2$ such that $\iota_i(a_1)= b_1$
+and  $\iota_i(x)=h(x)$ for any $x\in E_i$.
+
+Let us define 
+$f(x)=h(x)$ for any $x\notin\Omega$
+and $f(x)=\iota_i(x)$ for any $x\in T_i$.
+This defines $f$ on $A\backslash \Omega$ 
+and on all line segments from $a_1$ to $\partial_A\Omega$.
+
+This completely defines $f$ on $A$ in the case where $\partial_{A}\Omega=\partial_{\RR^2}\Omega$.
+If $Z=\partial_{\RR^2}\Omega\backslash\partial_{A}\Omega$ is nonempty, then the points which lie on the lines between $a_1$ and the points in $Z$ 
+form a ``blind zone'' --- this is the subset of $A$ where $f$ yet has to be defined.
+
+Note that the closure of the blind zone is a union of a finite number 
+of convex polygons $Q_1,\dots, Q_m$ which intersect only at the common vertex $a_1$.
+Each $Q_i$ is bounded by a broken line in the closure of $Z$ 
+and two line segments from $a_1$ to the ends of this broken line. 
+
+So far the distance non-expanding map $f$ 
+is defined only on the two sides of each $Q_i$ coming from $a_1$, 
+and by construction it is distance preserving on each of these two sides.
+From the exercise below, it follows that
+one can extend $f$ to each of $Q_i$ while keeping it piecewise distance preserving.
+\qeds
+
+\begin{thm}{Exercise}\label{ex:triangle-reflect}
+Let $Q=[a_1x_1\dots x_k]$ be a convex polygon and $b_1$, $y_1$, $y_k$ be points in the plane.
+Assume that 
+\begin{align*}
+|b_1-y_1|&=|a_1-x_1|,&
+|b_1-y_k|&=|a_1-x_k|,&
+|y_1-y_k|&\le|x_1-x_k|.
+\end{align*}
+Then there is a piecewise distance preserving map 
+$f\:Q\to \RR^2$ such that $f(x_1)=y_1$, $f(x_k)= y_k$ and $f(a_1)= b_1$.
+\end{thm}
+
+Let us finish this lecture with some additional exercises.
+
+\begin{thm}{Exercise}\label{pr:perimeter}
+Let $a_1,\dots,a_n$ and $b_1,\dots,b_n$ be two collections of points in $\RR^2$ such that 
+$$|a_i-a_j|\ge |b_i-b_j|$$
+for all $i$ and $j$.
+Let $A=\Conv\{a_1,\dots,a_n\}$ 
+and $B=\Conv\{b_1,\z\dots,b_n\}$ be their convex hulls.
+Show that 
+$$\per A\ge \per B,$$
+where $\per A$ denotes the perimeter of $A$.
+
+Is it true that
+$$\area A\ge \area B?$$
+
+\end{thm}
+
+The following exercise is a 2-dimensional case of Alexander's theorem
+\cite{alexander}.
+It has quite a simple solution,
+but it plays an important role in discrete geometry,
+check for example the paper \cite{bezdek-connelly} by Bezdek and Connelly.
+
+\begin{thm}{Advanced exercise}\label{pr:alexander}
+Let $a_1,\dots,a_n$ and $b_1,\dots,b_n$ be two collections of points in $\RR^2$.
+Let us consider $\RR^2$ as a coordinate plane $\RR^2 \times \{0\}$
+in $\RR^4=\RR^2 \times \RR^2$.
+
+Construct a collection of curves $\alpha_i\:[0,1]\to \RR^4$ 
+such that
+$\alpha_i(0)=a_i\z=(a_i,0)$, $\alpha_i(1)=b_i=(b_i,0)$ and 
+the function $\ell_{i,j}(t)=|\alpha_i(t)-\alpha_j(t)|$ 
+is monotonic (i.e., increasing, decreasing or constant) for each $i$ and $j$.
+\end{thm}
+
+\begin{thm}{Exercise}\label{pr:brehm}
+Use Brehm's extension theorem 
+to prove Kirszbraun's theorem, stated below, in the special case where $Q$ is a finite set.
+\end{thm}
+
+
+
+\begin{thm}{Kirszbraun's theorem}
+Let $Q\subset \RR^2$ be arbitrary subset and $f\:Q\to\RR^2$ be a distance non-expanding map.
+Then $f$ admits 
+a distance non-expanding extension to all of $\RR^2$.
+In other words there is a distance  non-expanding map $F\:\RR^2\to\RR^2$ 
+such that the restriction $F|_{Q}$ coincides with $f$.
+\end{thm}
+
+
+
+\addtocontents{toc}{\protect\end{quote}}
+\chapter{Akopyan's approximation theorem}
+\addtocontents{toc}{\protect\begin{quote}}
+\addtocontents{toc}{Any distance non-expanding map from polyhedral space to the Euclidean space of the same dimension can be approximated by piecewise distance preserving map.}
+
+Let $P$ be a polyhedral space.
+A map $h\:P\to\RR^n$ is called 
+\emph{piecewise linear}\index{piecewise linear map}\label{page:piecewise linear map}
+if there is a triangulation of $P$ such that 
+restriction of $h$ to any simplex $\Delta$ is a linear map.
+This means that if $v_0,\dots,v_k$ are the vertices of $\Delta$,
+then for any $x\in \Delta$ we have
+\[h(x)
+=
+\lambda_0\cdot h(v_0)+\dots+\lambda_k\cdot h(v_k),\]
+where $(\lambda_0,\dots,\lambda_k)$ are the barycentric coordinates of $x$.
+
+\begin{thm}{Exercise}\label{ex:PDPisPL}
+Show that if $P$ is a $2$-dimensional polyhedral space, then any piecewise distance preserving map $f\: P \to \RR^2$ is piecewise linear.
+\end{thm}
+
+In general, piecewise linear maps may not be injective, and they may either expand or contract distances.  
+We shall be interested in approximating piecewise linear maps by piecewise distance preserving maps.  Since all piecewise distance preserving maps are distance non-expanding, it only makes sense to try this approximation for distance non-expanding maps.
+
+\begin{thm}{Akopyan's theorem}\label{thm:approx}
+Assume $P$ is a $2$-dimensional polyhedral space.
+Then any distance non-expanding piecewise linear map 
+$h\:P\z\to\RR^2$ can be approximated 
+by piecewise distance preserving maps.
+
+More precisely, for any $\eps>0$ there is a piecewise distance preserving map $f\:P\to\RR^2$
+such that 
+$$|f(x)-h(x)|<\eps$$
+for all $x\in P$.
+\end{thm}
+
+Akopyan's theorem implies the existence of many piecewise distance preserving maps from $P$ into $\RR^2$.  
+In particular, it implies Zalgaller's theorem (\ref{thm:zalgaller}).  
+To see this, consider the constant map $h\:P\z\to\RR^2$;
+i.e., the map which sends the whole space $P$ to a single point.  
+Since $h$ is piecewise linear, 
+we can apply Akopyan's theorem to produce piecewise distancing preserving map $f$ arbitrarily close to $h$.
+
+As you will see below, 
+the proof of Akopyan's theorem will not use Zalgaller's theorem. 
+We still consider the proof of Zalgaller's theorem to be important because it gives a very clear geometric description of the piecewise distance preserving map.  
+In constrast, the maps produced by Akopyan's theorem will rely on the recursive construction of Brehm's theorem, which is harder to understand.
+
+\begin{thm}{Exercise}\label{ex:akopyan-brehm}
+Show that if $P$ is a convex polygon in $\RR^2$,
+then the above theorem follows from Brehm's extension theorem (\ref{thm:brehm}).
+\end{thm}
+
+
+The main idea in the proof of Akopyan's theorem is to triangulate $P$ and use Brehm's extension theorem on each triangle, as in the previous exercise.  Unfortunately, it is not that simple.  The big technical issue that arises is that if two triangles share a common edge, we need to ensure that the maps produced using Brehm's theorem agree on that common edge.
+
+
+\begin{wrapfigure}{r}{43mm}
+\begin{lpic}[t(-3mm),b(-2mm),r(0mm),l(6mm)]{pics/zig-zag(1)}
+\lbl[r]{1,46;$h(z_0)$}
+\lbl[r]{8,35;$h(z_1)$}
+\lbl[r]{11,29;$h(x)$}
+\lbl{18,18,-57;$\dots$}
+\lbl[r]{28,1;$h(z_n)$}
+\lbl[bl]{17,37;$w_n(x)$}
+\end{lpic}
+\end{wrapfigure}
+
+To address this issue, we will use the following \emph{zigzag construction}\index{zigzag construction}.
+It produces a piecewise distance preserving map
+which is close to
+a given a distance non-expanding linear map defined on a line segment.  For the construction, we fix a unit vector $e$ in $\RR^2$.  The choice of $e$ does not matter, but the same $e$ must be used uniformly in all zigzag constructions that follow.
+
+\parit{Zigzag construction.} 
+Let $E$ be a line segment and
+$h\:E\to\RR^2$ be a distance non-expanding linear map.
+Let $\ell = \length E$ and $\ell' = \length h(E)$.  Since $h$ is distance non-expanding, we have $\ell' \le \ell$.
+
+Fix a positive integer $n$, and subdivide $E$ into $n$ equal intervals.
+Denote by $z_0,\dots,z_n$ the endpoints of these intervals.
+
+Note that the image $h(E)$ is either a line segment or a point.
+In the first case, let $u$ be a unit normal vector to $h(E)$;
+otherwise, let $u=e$.  
+
+Given $x\in E$, 
+set 
+\begin{align*}
+s_n(x)&=\min_i\{|z_i-x|\},
+\\
+w_n(x)&=k\cdot s_n(x)\cdot u+h(x),
+\end{align*}
+where
+$k=\sqrt{1-(\ell'/\ell)^2}$. 
+If we subdivide $E$ further by adding the midpoints between any two consecutive endpoints, then $w_n$ is distance preserving on each of the resulting subintervals.  This shows that $w_n$ is piecewise distance preserving.
+Moreover
+$$|w_n(x)-h(x)|\le\tfrac{\ell}{2\cdot n}$$
+for any $x\in E$, because $k \le 1$ and $s_n(x) \le \tfrac{\ell}{2\cdot n}$.
+
+The piecewise distance preserving map $w_n$ is the result of the \emph{$n$-step zigzag construction} applied to $h$.
+
+
+\medskip
+
+Given a triangulation $\mathcal{T}$ of a polyhedral space $P$, let $\mathcal{T}^1$ denote the $1$-skeleton of $\mathcal{T}$.
+This is the 1-dimensional subcomplex of $\mathcal{T}$
+formed by all the vertices and edges in $\mathcal{T}$.  Notice that $\mathcal{T}^1$ is a $1$-dimensional polyhedral space when equipped with its induced length metric, which is different from the subspace metric it inherits from $P$.
+
+The following proposition is the main technical step in the proof of Akopyan's theorem.
+
+
+\begin{thm}{Proposition}\label{clm:main-step} 
+Let $\mathcal{T}^1$ be the 1-skeleton of a triangulation of a $2$-dimensional polyhedral space $P$,
+and let $h\:\mathcal{T}^1\to \RR^2$
+be a piecewise linear map
+such that 
+$$|h(x)-h(y)|_{\RR^2}\le |x-y|_P$$
+for any $x,y\in \mathcal{T}^1$.
+Then for any $\eps > 0$, there is a piecewise distance preserving map $w\:\mathcal{T}^1\to \RR^2$ such that
+$$|w(x)-w(y)|_{\RR^2}\le |x-y|_P$$ for any $x,y \in \mathcal{T}^1$ and
+$$|w(x) - h(x)| < \eps$$ for all $x \in \mathcal{T}^1$.
+\end{thm}
+
+\parit{Proof.}
+First we prove the statement under the following additional assumption on $h$:
+
+\begin{clm}{}\label{clm:delta-condition}
+For some fixed $\delta>0$, we have
+\[|h(x)-h(y)|_{\RR^2}\le(1-\delta)\cdot|x-y|_P\]
+for any $x,y\in \mathcal{T}^1$
+and 
+$$h(v)=h(x)$$ 
+for any vertex $v$ of $\mathcal{T}^1$
+and point $x\in\mathcal{T}^1$ such that  $|v-x|_P\le\delta$.
+\end{clm}
+
+
+Let $\mathcal{S}$ 
+denote the subdivision of $\mathcal{T}^1$
+such that $h$ is linear on each edge of $\mathcal{S}$.
+Subdividing $\mathcal{S}$ further if necessary, we may assume without loss of generality that 
+each edge of $\mathcal{S}$ 
+which comes from a vertex of $\mathcal{T}^1$ 
+has length $\delta$. 
+(To perform this subdivision, 
+we have to assume that $\delta$ in \ref{clm:delta-condition} is sufficiently small.)
+
+Denote by $\ell$ the maximal length of the edges in $\mathcal{T}^1$.  
+Let us apply the $n$-step zigzag construction to each edge of $\mathcal{S}$.
+Since the maps from the zigzag construction agree at the common vertices of different edges, we obtain a piecewise distance preserving map $w_n\:\mathcal{T}^1\to\RR^2$ such that
+$$|w_n(x) - h(x)| \le \tfrac{\ell}{2 \cdot n}
+\eqlbl{eq:wn=f}$$ 
+for all $x \in \mathcal{T}^1$.
+
+We shall show that the inequality
+$$|w_n(x) - w_n(y)|_{\RR^2} \le |x - y|_P$$ holds for all $x,y \in \mathcal{T}^1$, provided $n$ is sufficiently large.
+Notice that
+\begin{clm}{}\label{eq:w-on-edge}
+$|w_n(x)-w_n(y)|\le |x-y|_P$
+if $x$ and $y$ lie on the same edge.
+\end{clm}
+\noi
+This follows since $|x-y|_P = |x-y|_{E}$ whenever $x$ and $y$ lie on the same edge $E$ of $\mathcal{T}^1$, as well as the fact that $w_n$ is distance non-expanding on $E$.
+
+From \ref{clm:delta-condition} and \ref{eq:wn=f},  we see that 
+\begin{align*}
+&|w_n(x) - w_n(y)|_{\RR^2}\le\\ 
+&\qquad \le |w_n(x) - h(x)|_{\RR^2} ~+~ |h(x) - h(y)|_{\RR^2} ~+~ |h(y) - w_n(y)|_{\RR^2}\le\\
+&\qquad  \le |x-y|_P+\left(\tfrac{\ell}{n} - \delta\cdot|x-y|_P\right)
+\end{align*}
+for any $x$ and $y$ in $\mathcal{T}^1$.
+
+Now suppose $|w_n(x)-w_n(y)|_{\RR^2}> |x-y|_P$ for some $x,y \in \mathcal{T}^1$. 
+Then from above, we have $|x - y|_P < \tfrac{\ell}{n\cdot \delta}$, which shows that
+\[|x-y|_P<\tfrac{C}{n}.\eqlbl{eq:x-near-y}\] for a constant $C$ which does not depend on $x$ or $y$.
+%From \ref{eq:w-on-edge}, $x$ and $y$ have to lie on different 
+%edges of $\mathcal{T}^1$;
+Thus, \ref{eq:w-on-edge} and \ref{eq:x-near-y} imply the following.%
+
+
+\begin{clm}{}\label{clm:near-vertex}
+For sufficiently large\footnote{The size of $n$ does not depend on $x$ or $y$.  To ensure $x$ and $y$ do not lie on disjoint edges, $n$ must be large enough so that $C/n$ is less than the minimal distance between any two disjoint edges.  To ensure that both $x$ and $y$ are within $\delta$ of $v$, we must choose $n$ large enough in a way which will depend on the minimal angle in any triangle.  For both issues, we are using the fact that $\mathcal{T}$ has a finite number of triangles.} $n$, 
+if $|w_n(x)-w_n(y)|> |x-y|_P$ then both $x$ and $y$ 
+lie on different edges which come from one vertex, say $v$ of $\mathcal{T}^1$,
+and 
+\[|x-v|_{P},\  |y-v|_{P}\le\delta.\] 
+\end{clm} 
+Let $x$, $y$ and $v$ be as in \ref{clm:near-vertex}.
+Take the point $x'$ on the same edge as $y$
+such that $|v-x'|_P=|v-x|_P$.
+It follows from the construction of $w_n$ that
+$w_n(x')=w_n(x)$.
+(Notice that by \ref{clm:delta-condition}, $w_n$ is produced by the zigzag construction in the case where the image of $h$ is a point.)  Therefore
+\begin{align*}
+|w_n(x)-w_n(y)|_{\RR^2}&=|w_n(x')-w_n(y)|_{\RR^2}\le
+\\
+&\le |x'-y|_P=
+\\
+&=\bigl||x-v|_P-|y-v|_P\bigr|\le
+\\
+&\le|x-y|_P.
+\end{align*}
+
+Thus we have shown that if $n$ is sufficiently large, then the inequality 
+$$|w_n(x)-w_n(y)|_{\RR^2}\le |x-y|_P$$
+holds for any pair $x,y\in\mathcal{T}^1$.
+Let $w = w_n$ for such an $n$ which additionally satisfies $\tfrac{\ell}{2\cdot n} < \eps$.  Then from \ref{eq:wn=f}, it follows that $$|w(x) - h(x)| < \eps$$ for all $x \in \mathcal{T}^1$.
+Thus we have proved the proposition under the assumption \ref{clm:delta-condition}.
+
+\begin{wrapfigure}[15]{r}{45mm}
+\begin{lpic}[t(-8mm),b(0mm),r(0mm),l(0mm)]{pics/q-graph(1)}
+%\lbl[t]{20,0;$x$}
+%\lbl[r]{1,18;$q_n(x)$}
+\lbl[b]{6.5,8;$\delta$}
+\lbl[b]{39,8;$\delta$}
+\end{lpic}
+\caption*{The graph of $q_\delta$ on one edge.}
+\end{wrapfigure}
+
+It remains to be shown that the general case can be reduced to the case where
+\ref{clm:delta-condition} holds.  We shall achieve this by approximating $h$ by a map that satisfies \ref{clm:delta-condition}.
+
+For small $\delta > 0$ (say less than half the smallest edge length), consider the map 
+$$q_\delta\:\mathcal{T}^1\to\mathcal{T}^1$$ 
+which smashes the $\delta$-neighborhood of each vertex of $\mathcal{T}^1$ to the vertex 
+and linearly stretches the remaining part of the edge, as in the figure.
+%Note that $q_n$ is defined for all large $n$.
+
+Let $L_\delta$ be the optimal Lipschitz constant of $q_\delta$;
+i.e., the minimal number such that 
+\[|q_\delta(x)-q_\delta(y)|_P\le L_\delta\cdot|x-y|_P\] for all $x,y \in \mathcal{T}^1$.
+Notice that $L_\delta\z\to 1$ as $\delta\to 0^+$.
+Then the map 
+\[h_\delta
+\df
+\tfrac{1-\delta}{L_\delta}\cdot (h\circ q_\delta)\]
+is piecewise linear and satisfies condition \ref{clm:delta-condition}.
+Moreover, we can choose $\delta$ small enough so that
+\[|h_\delta(x) - h(x)| < \tfrac{\eps}{2}\] for all $x \in \mathcal{T}^1$.
+
+By the previous part of the proof, there is a piecewise distance preserving map $w\: \mathcal{T}^1 \to \RR^2$ such that
+$$|w(x) - h_\delta(x)| < \tfrac{\eps}{2}, \qquad |w(x) - w(y)|_{\RR^2} \le |x - y|_P$$
+for all $x, y \in \mathcal{T}^1$.  By the triangle inequality,
+$$|w(x) - h(x)| < \eps$$ for all $x \in \mathcal{T}^1$.
+\qeds
+
+\parit{Proof of \ref{thm:approx}.}
+Fix a fine
+triangulation $\mathcal{T}$
+of $P$,
+one for which the diameter of each triangle is smaller than $\tfrac\eps{3}$.
+Let $\mathcal{T}^1$ denotes the $1$-skeleton of $\mathcal{T}$.
+By Proposition~\ref{clm:main-step}, 
+there is a piecewise distance preserving map $w\:\mathcal{T}^1\to\RR^2$ such that
+$$|w(x)-h(x)|_{\RR^2} < \tfrac\eps{3}$$
+for any $x\in \mathcal{T}^1$ and
+$$|w(x)-w(y)|_{\RR^2}\le|x-y|_P$$
+for any $x$ and $y\in \mathcal{T}^1$.
+
+We shall use Brehm's extension theorem (\ref{thm:brehm}) to extend $w$ to a piecewise distance preserving map on $P$.
+To do this, let $\mathcal{S}$ be a subdivision of $\mathcal{T}^1$
+so that $w$ is distance preserving on each  edge of $\mathcal{S}$.
+Fix a triangle $\Delta$ of $\mathcal{T}$.
+Let $a_1,\dots, a_n$ be the vertices of $\mathcal{S}$ on the boundary of $\Delta$, 
+and let $b_i=w(a_i)$ for each $i$.
+By applying Brehm's theorem, we obtain a piecewise distance preserving map $f_\Delta\: \Delta \to \RR^2$.
+
+Since $w$ is distance preserving on each edge of $\mathcal{S}$,
+the maps $f_\Delta$ and $w$ coincide on the boundary of $\Delta$.
+In particular, if $\Delta$ and $\Delta'$ share a common edge, then $f_\Delta$ and $f_{\Delta'}$ agree on that common edge.  Therefore the collection of maps $\{f_\Delta\}$ determines a single piecewise distance preserving map $f\:P\to\RR^2$.
+
+We'll show $f$ satisfies the conclusion of the theorem.  Let $x \in P$ be arbitrary and let $y$ be a point on the edge of a triangle in $\mathcal{T}$ that contains $x$.  Then $|x - y| < \tfrac{\eps}{3}$ by our choice of $\mathcal{T}$.  We see
+\begin{align*}
+|f(x) - h(x)| &\le |f(x) - w(y)| + |w(y) - h(y)| + |h(y) - h(x)|=\\
+&= |f(x) - f(y)| + |w(y) - h(y)| + |h(y) - h(x)|\le\\
+&\le 2\cdot |x - y| + |w(y) - h(y)|<\\
+& < \eps,
+\end{align*} 
+ because $w(y) = f(y)$ and the maps $f, h$ are distance non-expanding.
+\qeds
+
+We close this section with a counterexample explaining one way in which we cannot improve Akopyan's theorem.
+One might expect that a stronger statement holds, 
+namely that the map $f$ in Akopyan's theorem 
+can be constructed so that it coincides with $h$ 
+on a given finite set of points.
+The following exercise shows that this cannot be done in general.
+
+\begin{thm}{Exercise}\label{ex:tripod}
+Consider the following 5 points in $\RR^3$:
+\begin{align*}
+o=(0,0,0),
+\,
+p=(0,0,1),
+\,
+a=(2,0,0),
+\,
+b=(-1,2,0),
+\,
+c=(-1,-2,0)
+\end{align*}
+
+\begin{wrapfigure}{r}{37mm}
+\begin{lpic}[t(-0mm),b(-0mm),r(0mm),l(0mm)]{pics/3-pod(1)}
+\lbl[t]{15,10;$o$}
+\lbl[b]{15,23.5;$p$}
+\lbl[t]{35,10;$a$}
+\lbl[rb]{7,23;$b$}
+\lbl[rb]{0,2;$c$}
+\end{lpic}
+\end{wrapfigure}
+
+Let $P$ be the ``tripod'' which is the polyhedral space consisting of the three triangles $\triangle opa$, $\triangle opb$ and $\triangle opc$ in $\RR^3$,
+and equipped with the induced length metric.
+
+Note that the restriction of the coordinate projection $\pi(x,y,z) = (x,y,0)$ to $P$ is distance non-expanding and piecewise linear.
+We have that 
+\begin{align*}
+\pi(o)&=\pi(p)=o,&\pi(a)&=a,&\pi(b)&=b,&\pi(c)&=c.
+\end{align*}
+
+Show that there is no piecewise distance preserving map $f\:P\to \RR^2=\RR^2\z\times\{0\}$
+such that $f(a)=a$, $f(b)=b$ and $f(c)=c$.
+\end{thm}
+
+
+
+\addtocontents{toc}{\protect\end{quote}}
+\chapter{Gromov's rumpling theorem}\label{sec:S^2->R^2}
+\addtocontents{toc}{\protect\begin{quote}}
+\addtocontents{toc}{There is a length-preserving map from the sphere to the plane.}
+
+Recall that $\SS^2$ denotes the unit sphere in $\RR^3$, which we equip with its induced length metric.  Here is our main theorem.
+
+\begin{thm}{Theorem}\label{thm:S2->R2}
+There is a length-preserving map $f\:\SS^2\to\RR^2$.
+\end{thm}
+
+Such a map $f$ has to crease on an everywhere dense set in $\SS^2$.
+More precisely,  the restriction of $f$ to any open subset of $\SS^2$ cannot be injective.\footnote{To prove this, one can show that if $f$ is injective and length-preserving on an open set $U \subset \SS^2$, then $f$ maps (sufficiently short) geodesics to straight lines (this requires the Domain Invariance Theorem, 
+see for example Section 2.9 in \cite{alexandrov}.)  It follows that the restriction of $f$ to $U$ is locally distance preserving, which is impossible.
+}
+
+In the proof of the theorem we will use the following exercise. %(see the solution on page \pageref{sol-problem2}). %???
+
+\begin{thm}{Exercise}\label{problem2}
+Let $K$ be a convex polyhedron in $\RR^3$.
+Given a point $x$ in $\RR^3$, show that there is a unique point $\bar x\in K$ which minimizes the distance $|x-\bar x|$.
+Moreover show that the projection map $$\phi\: \RR^3 \to K, \qquad \phi(x) = \bar x$$ is distance non-expanding.
+\end{thm}
+
+\parit{Proof of Theorem~\ref{thm:S2->R2}.}
+Consider a nested
+sequence $K_0\subset K_1\subset \dots$ of convex polyhedra in $\RR^3$ whose union is the open unit ball.
+Let $P_n = \partial K_n$ denotes the surface of $K_n$, equipped with the induced length metric.
+Note that $P_n$ is a $2$-dimensional polyhedral space for each $n$.
+
+Let $\phi_n$ denote the projection onto $K_{n}$, 
+as in Exercise~\ref{problem2}, which is a distance non-expanding map.
+Since $K_{n} \subset K_{n+1}$, it follows that $\phi_n(P_{n+1}) = P_{n}$.
+Note that one can triangulate $P_n$ and $P_{n+1}$ in such a way that the restriction of $\phi_n$ to any simplex of $P_{n+1}$ is an orthogonal projection onto some simplex of $P_{n}$.
+In particular the restriction of $\phi_n$ to $P_{n+1}$ is piecewise linear%
+\footnote{See the definition of page \pageref{page:piecewise linear map}.}
+and distance non-expanding with respect to the length metrics on $P_{n+1}$ and $P_n$.
+
+
+
+We claim that for any point $x\in \SS^2$, there is unique sequence of points $x_n\in P_n$ such that $x_n\to x$ as $n\to\infty$ and $\phi_n(x_{n+1})=x_n$ for all $n$.  
+The uniqueness follows since the maps $\phi_n$ are distance non-expanding.
+To show existence, fix any sequence $z_n\in P_n$ such that $z_n\to x$.
+Consider the double sequence $y_{n,m}\in P_n$, defined for $n\le m$, such that $y_{n,n}=z_n$ and
+$y_{n,m} = \phi_{n}(y_{n+1,m})$ if $0 \le n < m$.
+Then set 
+$$x_n=\lim_{m\to\infty} y_{n,m}.$$
+
+\begin{thm}{Exercise}\label{ex:limit-above}
+Show that the limit above exists
+and $\phi_n(x_{n+1})\z=x_n$ for any $n$.  Then show that $x_n \to x$ as $n \to \infty$.
+\end{thm}
+
+Let $x_n\to x\in \SS^2$ be the sequence as above.
+Define $\psi_n\:\SS^2\to P_n$ by $\psi_n(x)=x_n$.
+We have that $\psi_n$ is distance non-expanding, 
+$\psi_n\z=\phi_n\circ\psi_{n+1}$ for all $n$,
+and for any $p, q\in\SS^2$,
+$$|p_n-q_n|_{P_n}\to |p-q|_{\SS^2}\ \text{as}\  n\to\infty,\eqlbl{eq:pq-to-pq}$$
+where $p_n=\psi_n(p)$ and $q_n=\psi_n(q)$.
+
+The desired length-preserving map $f\: \SS^2 \to \RR^2$ will be a ``limit" in some sense of a sequence of piecewise distance preserving maps $f_n\: P_n \to \RR^2$.  The maps will be constructed recursively to satisfy
+$$|f_{n+1}(x) - f_n(\phi_n(x))| < \eps_n$$ for a carefully chosen sequence $(\eps_n)$ of positive numbers that decays rapidly to $0$.
+
+\parit{Recursive construction of $f_n\:P_n\to\RR^2$ and $\eps_n$.}
+Assume we have a piecewise distance preserving map $f_n\: P_n\z\to \RR^2$ and a given $\eps_n$.
+The composition $f_n\circ\phi_n\: P_{n+1}\z\to\RR^2$ is piecewise linear and distance non-expanding. 
+So we can apply Akopyan's Theorem~\ref{thm:approx} to construct a piecewise distance preserving map $f_{n+1}\:P_{n+1}\to\RR^2$ which is $\eps_n$-close to $f_n\circ\phi_n$.
+
+Let $M(n+1)$ denote the number of triangles in a triangulation of $P_{n+1}$ such that $f_{n+1}$ is distance preserving on each triangle. 
+Set 
+$$\eps_{n+1}=\frac{\eps_n}{2\cdot M(n+1)}.\eqlbl{eq:eps-n}$$
+In this way, we recursively define the construction of $f_n$ and $\eps_n$.
+It goes as follows: 
+\begin{enumerate}
+\item Choose an arbitrary $\eps_0>0$ and take a piecewise distance preserving map $f_0\:P_0\to\RR^2$,
+say the one provided by Zalgaller's folding theorem (\ref{thm:zalgaller}).
+\item Use $\phi_0$, $f_0$ and $\eps_0$ to construct $f_1$.
+\item Use $f_1$ to construct $\eps_1$.
+\item Use $\phi_1$, $f_1$ and $\eps_1$ to construct $f_2$.
+\item Use $f_2$ to construct $\eps_2$.
+\item and so on.\footnote{The procedure is similar to walking on stairs: 
+you take a right step, 
+which makes it possible to take a left step, 
+which in turn makes it possible to take a right step, and so on.}
+\end{enumerate}
+
+\medskip
+
+It remains to prove the following claim:
+
+\begin{clm}{}\label{clm:length-preserving}
+The sequence of maps $f_n\circ\psi_n\:\SS^2\to \RR^2$ converges to a length-preserving map $f\:\SS^2\to\RR^2$. 
+\end{clm}
+
+Since $\eps_{n}$ decays faster than $\tfrac{\eps_0}{2^n}$, 
+the sequence $(f_n\circ\psi_n)(x) \in \RR^2$ is Cauchy, hence convergent,
+for any fixed $x$.
+We define $f\: \SS^2 \to \RR^2$ by $f(x) = \lim_{n \to \infty} (f_n\circ\psi_n)(x)$.
+By the recursive construction of $f_n$, we have that
+$$|(f_n\circ\psi_n)(x)-f(x)|<\eps_n$$
+for any $x\in \SS^2$ and any $n$.
+Since each $f_n\circ\psi_n$ is distance non-expanding, $f$ is distance non-expanding as well.
+
+It only remains to show that the constructed map $f\: \SS^2 \to \RR^2$ is length-preserving.
+By Exercise~\ref{LP=>short}(\ref{LP=>short:b}),
+it suffices to show that
+$$\length (f\circ\alpha) \ge |p-q|_{\SS^2}\eqlbl{length>=dist}$$
+for any curve $\alpha$ between two points $p,q \in \SS^2$.
+For the remainder of the proof, we will need the following definition;
+it should be considered as an analog of length of curve.
+
+\begin{thm}{Definition}
+Let $X$ be a metric space and $\alpha\:[a,b]\to X$
+be a curve.
+Set 
+$$\ell_k(\alpha)
+\df
+\sup\set{\sum_{i=1}^k |\alpha(t_i)-\alpha(t_{i-1})|_X}{a=t_0<t_1<\dots<t_k=b}.$$
+
+\end{thm}
+
+Note that given a curve $\alpha\:[a,b]\to X$,
+we have
+\begin{align*}
+\ell_1(\alpha)&\le\ell_2(\alpha)\le \ell_3(\alpha)\le\dots,
+\\
+\ell_k(\alpha)&\to\length\alpha\ \ \text{as}\ \ k\to\infty,
+\\
+\ell_k(\alpha)&\le\length\alpha \ \text{for any}\ \ k.
+\end{align*}
+Moreover, if 
+\[\ell_k(\alpha)=\length\alpha\] 
+then $\alpha$ 
+is a chain made from at most $k$ geodesic segments. 
+
+The following exersise states that if two curves $\alpha$ and $\beta$ are sufficiently close then $\ell_k(\alpha)\approx\ell_k(\beta)$.
+Note that according to the remark after \ref{thm:length-semicont},
+the value $|\length\alpha-\length\beta|$ might be large in this case.
+
+\begin{thm}{Exercise}\label{ex:klength-approx}
+Suppose that $\alpha, \beta: \II \to X$ are two curves which are close in the sense that 
+\[|\alpha(t) - \beta(t)|_X < \eps\] for all $t \in \II$.  
+Show that
+\[ |\ell_k(\alpha) - \ell_k(\beta)| 
+\le 2\cdot k\cdot \eps.\]
+
+\end{thm}
+
+
+Now we come back to the proof of \ref{length>=dist}.
+Set $p_n=\psi_n(p)$ and $q_n=\psi_n(q)$. 
+Let $\beta$ be an arbitrary curve from $p_n$ to $q_n$ in $P_n$.
+Note that one can find a shorter curve $\gamma$ from $p_n$ to $q_n$ whose image in any triangle of the triangulation of $P_n$ is a line segment, and moreover the endpoints of these line segments lie on $\beta$.
+It follows that $f_n\circ\gamma$ is a broken line in $\RR^2$
+with at most $M(n)$ edges, whose vertices we
+denote, in order, by $$f_n(p_n) = z_0, z_1, \dots , z_k = f_n(q_n).$$
+Note that  $k\le M(n)$
+and 
+each $z_i$ lies on the curve $f_n \circ \beta$.
+%$z_i= (f_n(\beta(t_i))$ for some $a=t_0<t_1<\dots<t_k=b$.
+Therefore
+$$
+\begin{aligned}
+|p_n-q_n|_{P_n}
+&\le \length\gamma=
+\\
+&= \ell_{M(n)}(f_n\circ\gamma)=
+\\
+&=|z_0-z_1|+\dots+|z_{k-1}-z_{k}|\le
+\\
+&\le\ell_{M(n)}(f_n\circ\beta);
+\end{aligned}
+\eqlbl{eq:pn-qn}
+$$
+
+Fix a curve $\alpha$ from $p$ to $q$ in $\SS^2$.
+By Exercise \ref{ex:klength-approx} and \ref{eq:eps-n},
+for all $n$ we have
+$$|\ell_{M(n)}(f\circ\alpha)-\ell_{M(n)}(f_n\circ\psi_n\circ\alpha)| 
+\le 2\cdot M(n)\cdot \eps_n = \eps_{n-1}.
+\eqlbl{eq:inq-ell-k}$$
+Given $\eps > 0$, 
+we can choose $n$ large enough 
+so that $\eps_{n-1} \le \tfrac{\eps}{2}$ and
+$$|p-q|_{\SS^2} - |p_n - q_n|_{P_n} \le \tfrac{\eps}{2},$$ 
+which can be arranged by \ref{eq:pq-to-pq}.
+Applying \ref{eq:pn-qn} for $\beta=\psi_n \circ \alpha$ 
+and \ref{eq:inq-ell-k}, we see
+\begin{align*}
+\length (f\circ \alpha) &\ge \ell_{M(n)}(f\circ \alpha)\ge\\
+&\ge \ell_{M(n)}(f_n \circ \psi_n \circ \alpha) - \eps_{n-1}\ge\\
+&\ge |p_n - q_n|_{P_n} - \eps_{n-1}\ge\\
+&\ge |p-q|_{\SS^2} - \tfrac{\eps}{2} - \eps_{n-1}\ge\\
+&\ge |p-q|_{\SS^2} - \eps.
+\intertext{Since $\eps > 0 $ was arbitrary, }
+\length(f\circ \alpha) &\ge |p-q|_{\SS^2}.
+\end{align*}
+Hence \ref{length>=dist} follows.
+\qeds
+
+\addtocontents{toc}{\protect\end{quote}}
+\chapter[Arnold's problem on paper folding]{Arnold's problem\\ on paper folding}\label{sec:arnold}
+\addtocontents{toc}{\protect\begin{quote}}
+\addtocontents{toc}{Is it possible to fold a square on the plane so that the obtained figure will have a longer perimeter?}
+
+This lecture is meant to be entertaining.
+Here we will discuss the following problem posted by V.~Arnold in 1956 \cite[Problem 1956-1]{arnold}.
+
+\begin{thm}{Problem}
+Is it possible to fold a square on the plane so that the obtained figure will have a longer perimeter? 
+\end{thm}
+
+\begin{wrapfigure}{r}{55mm}
+\noi\begin{lpic}[t(-0mm),b(-5mm),r(0mm),l(0mm)]{pics/skladka(0.6)}
+\lbl{25,28;$M$}
+\lbl{75,28;$M'$}
+\lbl[r]{23,55;$q$}
+\lbl[r]{87,55;$q$}
+\end{lpic}
+\end{wrapfigure}
+
+The answer to this problem depends on the meaning of word ``fold''.
+
+For example, one can consider a sequence of \emph{foldings} in which all layers are folded simultaneously along a line. 
+By the following exercise, perimeter can never increase under a folding of this type.
+
+\begin{thm}{Exercise}
+Show that each fold described above indeed decreases perimeter.
+(Note that in general, the intersection of the line $q$ with the polygon $M$ in the picture may 
+be a union of line segments.) 
+\end{thm}
+
+Using only the \emph{foldings} described above makes it impossible to unfold a layer which lies on top of another layer, as shown in the following picture.
+\begin{center}
+\begin{lpic}[t(0mm),b(0mm),r(0mm),l(0mm)]{pics/otgib(0.7)}
+\end{lpic}
+\end{center}
+Note that the \emph{unfold} increases the perimeter, although not beyond the perimeter of the original square.
+It is still unknown if it possible to increase perimeter by a sequence of such ``folds'' and ``unfolds''.
+
+\parbf{Japanese crane.}
+Now let us consider a more general definition of folding. 
+Imagine that we mark in advance the lines of folding and start to fold the paper in such a way that each domain between folds remains flat all the time.
+
+If you understand ``folding'' this way, then the answer to the problem is ``yes''.
+In some sense, this problem was solved by origami practitioners well before it was even posed.
+The possibility to increase the perimeter slightly 
+can be seen in the base for the crane.  This was known by origami masters for centuries%
+\footnote{It appears in the oldest known book on origami, ``Senbazuru Orikata,'' dated 1797; but for sure it was known much earlier.},
+but mathematicians learned this answer only in 1998%
+\footnote{Here is \textattachfile[color=0 0 1,mimetype=text/html]{pics/napkin.html}{the html-file} which tells how it happened.}.
+
+\begin{figure}[h]
+\ \ \ \ \ \ \ \ 
+\includegraphics[scale=0.34]{pics/zh-2}
+\hfill
+\includegraphics[scale=0.18]{pics/razv-zh}
+\ \ \ \ \ \ \ \ 
+\end{figure}
+
+
+
+The base for the crane has four long ends and one short end.
+Two ends are used for wings and the other two have to be thinned,
+as one is used for the head and the other for the tail.
+Thinning twice each of the long ends makes it possible to produce a base which can then be folded into the plane to obtain a figure with larger perimeter.
+\begin{center}
+\begin{lpic}[t(0mm),b(0mm),r(0mm),l(0mm)]{pics/zagotovka(0.24)}
+{\large
+\lbl{230,170,-10;$\longrightarrow$}
+\lbl{295,105,-20;$\longrightarrow$}
+}
+{\tiny
+\lbl{119,119;$1$}
+\lbl{134,110;$2$}
+\lbl{147,110;$3$}
+\lbl{160,110;$4$}
+\lbl{170,110;$5$}
+\lbl{180,110;$6$}
+\lbl{190,110;$7$}
+\lbl{200,110;$8$}
+
+\lbl{117,100;$16$}
+\lbl{134,100;$15$}
+\lbl{147,100;$14$}
+\lbl{160,100;$13$}
+\lbl{170,100;$12$}
+\lbl{180,100;$11$}
+\lbl{190,100;$10$}
+\lbl{200,100;$9$}
+
+%\lbl{80;$1$}
+\lbl{110,134;$2$}
+\lbl{110,147;$3$}
+\lbl{110,160;$4$}
+\lbl{110,171;$5$}
+\lbl{110,181;$6$}
+\lbl{110,191;$7$}
+\lbl{110,201;$8$}
+
+\lbl{98,120;$16$}
+\lbl{98,134;$15$}
+\lbl{98,147;$14$}
+\lbl{98,160;$13$}
+\lbl{98,171;$12$}
+\lbl{98,181;$11$}
+\lbl{98,191;$10$}
+\lbl{98,201;$9$}
+
+\lbl{90,110;$17$}
+\lbl{74,110;$18$}
+\lbl{60,110;$19$}
+\lbl{48,110;$20$}
+\lbl{37,110;$21$}
+\lbl{26.5,110;$22$}
+\lbl{17,110;$23$}
+\lbl{7,110;$24$}
+
+\lbl{74,100;$31$}
+\lbl{60,100;$30$}
+\lbl{48,100;$29$}
+\lbl{37,100;$28$}
+\lbl{27,100;$27$}
+\lbl{17,100;$26$}
+\lbl{7,100;$25$}
+
+\lbl{110,88;$17$}
+\lbl{110,74;$18$}
+\lbl{110,59;$19$}
+\lbl{110,48;$20$}
+\lbl{110,38;$21$}
+\lbl{110,28;$22$}
+\lbl{110,18;$23$}
+\lbl{110,8;$24$}
+
+\lbl{88,88;$32$}
+
+\lbl{98,74;$31$}
+\lbl{98,59;$30$}
+\lbl{98,48;$29$}
+\lbl{98,38;$28$}
+\lbl{98,28;$27$}
+\lbl{98,18;$26$}
+\lbl{98,8;$25$}
+}
+\end{lpic}
+\end{center}
+On the picture above, you can see the net of folds, the base, and the base with opened out ends.
+On the net of folds, you can see the number of the layer in the base.
+The dashed lines are the folds which appear at the opening out. 
+The perimeter increases by about $0.5\%$, and there are 80 layers in the end.
+We do not know of a way to increase the perimeter with a smaller number of layers.
+
+If $a$ is the side of original square then it takes a bit less than $a$ to go around each of four needles and it takes about $(\sqrt{2}-1)\cdot a$ to go around the short end, resulting in a longer perimeter.
+Thinning the ends many times makes possible to increase the perimeter by a value arbitrarily close to $(\sqrt{2}-1)\cdot a$. 
+
+\medskip
+
+The following picture describes another way to increase the perimeter, based on an idea of Yashenko \cite{yashenko}.
+It can be obtained by recursive application of one simple move.
+If one repeats this move sufficiently many times, we obtain a figure with a longer perimeter.
+Since each iteration adds two layers near the concave corner,
+the total number of layers in this model is much larger than in the crane base.
+
+\begin{center}
+\begin{lpic}[t(0mm),b(0mm),r(0mm),l(0mm)]{pics/yaschenko(0.54)}
+\end{lpic}
+\end{center}
+
+
+\parbf{The sea urchin and the comb.}
+It turns out  the perimeter can be made arbitrarily large.
+This can be seen in the origami model for a sea urchin constructed by Robert~Lang in 1987 \cite{lang}.
+In 2004, a complete solution was discovered independently by Alexei Tarasov \cite{tarasov}.
+Tarasov constructs a folding of a ``comb'', which is shown in the picture on the right.
+More importantly, he proves that the comb can be folded in a true way,
+in particular without starching and crooking the paper as is often done in origami.
+
+\begin{center}
+\ \ \ \ 
+\includegraphics[scale=0.28]{pics/urch}
+\hfill
+\includegraphics[scale=0.55]{pics/taras}
+\ \ \ \ 
+\end{center}
+
+If you read the original pdf-file on a computer, 
+you can extract the following three movies which describe Tarasov's solution, 
+\begin{itemize}
+\item \textattachfile[color=0 0 1,author=Alexey Tarasov,mimetype=video/avi]{pics/rouble.avi}{The first movie} shows the folding of whole comb.
+\item \textattachfile[color=0 0 1,author=Alexey Tarasov,mimetype=video/avi]{pics/layer-up.avi}{The second movie} shows the folding of one the needles separately.
+\item \textattachfile[color=0 0 1,author=Alexey Tarasov,mimetype=video/avi]{pics/2layers.avi}{The third movie} shows the folding of two needles simultaneously.
+\end{itemize}
+
+\parbf{Foldings in 4-dimensional space.} 
+One can define a ``folding'' as a piecewise distance preserving map from the square to the plane.
+These foldings are yet more general than those which appear above.
+The following exercise 
+%shows that it is not always possible to realize  such a map as a folding.
+shows that it is not always possible to realize  such a map by folding a paper model.
+
+
+\begin{wrapfigure}{r}{40mm}
+\begin{lpic}[t(-7mm),b(-0mm),r(0mm),l(0mm)]{pics/3464(0.4)}
+\end{lpic}
+\end{wrapfigure}
+
+\begin{thm}{Exercise}\label{pr:6-4-3-4}
+Consider the part of regular tessellation in the square $\square$ as on the picture.
+
+Show that there is a map $f\:\square\to\RR^2$ which is distance preserving on each polygon in the tessellation 
+and such that it
+only reverses the orientation gray polygons.%
+\footnote{Less formally you need to ``fold'' along each segment in this tessellation.} 
+
+Show that it is not possible to make a paper folding model for $f$.%
+\footnote{More formally, we need to think that the plane lies in the space $\RR^3$, 
+and we need to show that the map $f$ cannot be approximated by injective continuous maps $\square\to \RR^3$.}
+\end{thm}
+
+The obstructions described in the above exercise disappear in $\RR^4$;
+i.e., one can regard piecewise distance preserving maps as paper folding in 4-dimensional space. 
+Moreover, one can actually fold the square in $\RR^4$, as prescribed by a given piecewise distance preserving map.
+By this we mean one can construct a continuous one parameter family of piecewise distance preserving maps $f_t\:\square\to\RR^4$, $t\in[0,1]$ with fixed triangulation, say $\mathcal{T}$,
+such that
+\begin{itemize}
+\item $f_0$ is a distance preserving map from $\square$ to the coordinate plane $\RR^2\times \{0\}$ in $\RR^4=\RR^2\times\RR^2$,
+\item the map $f_1$ is our given piecewise distance preserving map to the same coordinate plane,
+\item the map $f_t$ is injective for any $t\ne1$.
+\end{itemize}
+
+The proof of last statement is based on Exercise~\ref{pr:alexander}.
+Let $a_1,\dots,a_k$ 
+be the vertices of $\mathcal{T}$
+and $b_1,\dots,b_k$ be the corresponding images for the piecewise distance preserving map.
+Set $f_t(a_i)\in\RR^2\times\RR^2$ to be 
+$$f_t(a_i)= \left(\frac{a_i + b_i}{2} + 
+\cos(\pi\cdot t)\cdot \frac{a_i - b_i}2,\  
+\sin(\pi\cdot t)\cdot \frac{a_i - b_i}2\right);
+$$
+so $f_0(a_i)=(a_i,0)$ and $f_1(a_i)=(b_i,0)$ for any $i$.
+We can extend $f_t$ linearly to each triangle of $\mathcal{T}$.
+Direct calculation show that $\ell_{i,j}(t)=|f_t(a_i)-f_t(a_j)|$ is  monotonic in $t$;
+in particular if $|a_i-a_j|=|b_i-b_j|$ 
+then $\ell_{ij}(t)$ is constant.
+This proves that $f_t$ is piecewise distance preserving.
+
+Further, direct calculations 
+show that for any $x,y\in\square$,
+$$|f_t(x)-f_t(y)|^2=p-q\cdot\cos(\pi\cdot t)$$
+for some constants $p$ and $q$.
+Therefore if $x\ne y$ then $|f_t(x)-f_t(y)|>0$ for any $t\ne1$.
+In other words, $f_t$ is injective for any $t\ne1$.
+
+\medskip
+ 
+It follows that for the paper folding in $\RR^4$,
+the existence of perimeter increasing folds follows from Brehm's theorem.
+It is sufficient to construct a distance non-expanding map $f$ from the square to the plane 
+so that the perimeter of its image is sufficiently long.
+Then applying Brehm's theorem for a sufficiently dense finite set of points in the square,
+we get a piecewise distance preserving map $h$ which is arbitrarily close to $f$.
+In particular we can arrange it so that the perimeter of the image $f(\square)$ 
+is still sufficiently long.
+
+The needed map can be constructed as follows:
+Fix a large $n$ and divide the square $\square$ into $n^2$ squares with side length $\tfrac{a}{n}$.
+Let $d(x)$ denotes the distance from a point $x\in\square$ to the boundary of the small square which contains $x$. 
+The function $d\:\square\to\RR$ takes values in $[0,\tfrac{a}{2{\cdot}n}]$.
+Further, let us enumerate the squares by integers from $1$ to $n^2$.  
+Given $x\in \square$
+denote by $i(x)$ the (say minimal) number in this enumeration of a small square which contains $x$.
+
+\begin{wrapfigure}{r}{40mm}
+\begin{lpic}[t(-5mm),b(-0mm),r(0mm),l(0mm)]{pics/square(1)}
+\lbl[b]{27,11.6;$\xto{\ f\ }$}
+\end{lpic}
+\end{wrapfigure}
+
+Now for each $i\in\{1,\dots,n^2\}$ choose a unit vector $u_i\in\RR^2$ so that $u_i\not=u_j$ if $i\not=j$.
+Consider the map $f\:\square\to\RR^2$ defined by 
+$$f(x)=d(x)\cdot u_{i(x)}.$$
+It is straightforward to check that the obtained map is distance non-expanding.
+The image $f(\square)$ consists of $n^2$ segments of length $\tfrac{a}{2{\cdot}n}$ which start at the origin.
+So the perimeter of $f(\square)$ is equal to 
+$2{\cdot}n^2{\cdot} \tfrac{a}{2{\cdot} n}=a{\cdot} n$.
+So by taking $n$ large enough, one can make the perimeter of the image $f(\square)$ arbitrary large.
+
+(The picture shows the case $n=4$.  In this case the perimeter of $f(\square)$ is $4\cdot a$,
+which is the same as perimeter of the original square.  However for $n>4$, it gets larger.
+When you calculate the perimeter of the degenerate figure, imagine going up and down each segment as you ``traverse the boundary'' and count the length of each segment twice.)
+
+\addtocontents{toc}{\protect\end{quote}}
+\chapter*{Final remarks}\label{sec:pdp-comments}
+\addcontentsline{toc}{chapter}{Final remarks}
+\markboth{\MakeUppercase{Final remarks}}{}
+
+
+\parbf{Zalgaller's folding theorem.}
+Zalgaller's theorem holds in all dimensions: any $m$-dimensional polyhedral space $P$ admits a piecewise distance preserving map to $\RR^m$.
+
+In \cite{zalgaller-PL}, Zalgaller proved this statement for $m\le 4$.
+The trick described in the ``proof with no cheating'' makes the proof work in all dimensions. 
+This trick first appeared in Krat's thesis \cite{krat}.
+
+\parbf{Brehm's extension theorem.}
+This was proved  by Brehm in \cite{brehm}
+and rediscovered independently many years later by Akopyan and Tarasov in \cite{akopyan-tarasov}.
+The proofs are based on the same idea. 
+
+
+Brehm's extension theorem holds in all dimensions
+and it can be proved along the same lines.
+
+\parbf{Kirszbraun theorem.}
+This remarkable theorem was proved by Kirszbraun in his thesis, defended in 1930. 
+A few years later he published the result in \cite{kirszbraun}.
+Independently the same result was reproved later by  Valentine \cite{valentine}.
+
+The paper of Danzer, Gr\"unbaum and Klee \cite{DGK}, which is delightful to read, gives a proof of this theorem  based on Helly's theorem on the intersection of convex sets.
+
+\parbf{Akopyan's approximation theorem.}
+This theorem 
+also admits direct generalizations to higher dimensions.
+Moreover the condition that $f$ is piecewise linear is redundant.
+This is because
+any distance non-expanding map from a polyhedral space to $\RR^m$ can be approximated by piecewise linear distance non-expanding maps.
+
+
+The 2-dimensional case was proved by Krat 
+in her thesis \cite{krat}.
+In~\cite{akopyan},
+Akopyan noticed that Brehm's extension theorem simplifies the proof and also makes it possible 
+to prove the higher dimensional case.
+
+Much earlier, an analogous question was considered by Burago and Zalgaller.
+They proved that any piecewise linear embedding 
+of a $2$-dimensional polyhedral surface in $\RR^3$ 
+can be approximated by a piecewise distance preserving embedding; see \cite{burago-zalgaller-0} and \cite{burago-zalgaller}. 
+
+
+\parbf{Rumpling the sphere.}
+Theorem \ref{thm:S2->R2} 
+admits the following generalization,
+which can be proved along the same lines.
+
+\begin{thm}{Gromov's rumpling theorem}
+Let $M$ be an $m$-dimensional Riemannian manifold.
+Then any distance non-expanding map $f\:M\z\to \RR^m$ 
+can be approximated by length-preserving maps.
+More precisely, given $\eps>0$ there is a length-preserving map $f_\eps\:M\to\RR^m$
+such that 
+$$|f_\eps(x)-f(x)|<\eps$$
+for any $x\in M$.
+\end{thm}
+
+This result is a partial case of Gromov's theorem in \cite[Section~2.4.11]{gromov}.
+The proof presented here is based on \cite{petrunin-inverse};
+Gromov's original proof is different.
+The proof in \cite{petrunin-inverse}
+also makes it possible to construct surprising examples of spaces which admit length-preserving maps to $\RR^m$, such as sub-Riemannian manifolds.
+
+Gromov's theorem roughly states that length-preserving maps 
+have no non-trivial global properties.
+This is a typical ``local to global'' problem.
+Here
+the length-preserving property is ``local''
+and the only ``global'' consequence is trivial:
+it is the distance non-expanding property.
+
+For such ``local to global'' problems the answer
+``no non-trivial global properties''
+ is the most common, 
+but
+it does not mean that it is easy to prove.
+%???REF???
+There is a machinery which makes it possible to prove this for many local to global problems.
+This machinery is called the ``\textit{h}-principle'' (homotopy principle).
+%???REF???
+The \textit{h}-principle is not a theorem, it is a property which often holds for different geometric structures.
+There are a few methods to prove the
+\textit{h}-principle, including the one which is described in the proof of Theorem \ref{thm:S2->R2}%
+\footnote{Usually, the \textit{h}-principle is formulated in terms of partial differential equations, 
+but one may think of ``length-preserving maps'' as weak solutions of a particular partial differential equation.}.
+Gromov's rumpling theorem is one of the simplest examples.
+Other examples include 
+\begin{itemize}
+\item The cone eversion theorem, which states that there is a continuously varying one-parameter family of smooth functions $f_t(x,y)$, $t\in[0,1]$, without critical points in
+the punctured plane $\RR^2\backslash\{0\}$, 
+such that
+$f_0(x,y)=-\sqrt{x^2+y^2}$ and $f_{1}(x,y)=\sqrt{x^2+y^2}$.
+See \cite[Lecture 27]{TF} and read the whole book; it is nice.
+\item The Nash--Kuiper theorem, which in particular implies the existence of $C^1$-smooth length-preserving maps $\SS^2\to\RR^3$ whose image has arbitrarily small diameter.
+\item Smale's sphere eversion paradox, which states that there is a continuous one partameter family of smooth immersions $f_t\:\SS^2\z\to \RR^3$, $t\in[0,1]$ such that $f_0\:\SS^2\z\to \RR^3$ is the standard inclusion and $f_1(x)=-f_0(x)$ for all $x\in \SS^2$.
+\item Combining the techniques of Smale and Nash--Kuiper, 
+one can make sphere eversions $f_t$ in the class of length-preserving $C^1$-smooth maps. 
+\end{itemize}
+ 
+For further reading we suggest the comprehensive introduction to the \textit{h}-principle 
+by Eliashberg and Mishachev \cite{eliashberg-mishachev}.
+
+\parbf{Paper folding.} The aspects of paper folding related to geometric constructions are discussed in \cite{hull};
+this paper is very entertaining.
+Interesting aspects of paper folding in the 3-dimensional space are covered in \cite[Lecture 15]{TF}.
+
+%\parbf{Acknowledgments.} 
+%We would like to thank
+%Arseniy Akopyan, 
+%Robert Lang, 
+%Alexei Tarasov
+%for their help.
+%Also we would like to thank all the students in our class
+%for their participation and true interest.
+
+
+

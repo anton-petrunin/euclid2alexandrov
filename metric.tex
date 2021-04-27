@@ -1,0 +1,530 @@
+\chapter{Metric spaces}\label{chap:metr}
+\section{Definitions}
+
+\begin{thm}{Definition}
+\label{def:metric-space}
+A metric space is a pair $(X,\Dist)$ where $X$ is a set and 
+$$\Dist \: X \times X \rightarrow [0,\infty)$$
+is a function such that 
+
+\begin{subthm}{def:metric-space:zero}
+$\Dist(x,y) = 0$ if and only if $x=y$;
+\end{subthm}
+
+\begin{subthm}{}
+$\Dist(x,y) = \Dist(y,x)$ for any $x, y \in X$;
+\end{subthm}
+
+\begin{subthm}{triangle-inq}
+$\Dist(x,z)\le \Dist(x,y)+\Dist(y,z)$ for any $x, y, z \in X$.
+\end{subthm}
+
+\end{thm}
+
+The condition (\ref{SHORT.triangle-inq}) above is called \emph{triangle inequality}.
+The set $X$ is called \emph{underlying set}\index{underlying set} of the metric space
+and its elements are called \emph{points} of the metric space.
+The function $\Dist\: X \times X \rightarrow [0,\infty)$ is called a \emph{metric}\index{metric}, 
+the value $\Dist(x,y)\ge 0$ is called the \emph{distance}\index{distance} from $x$ to $y$.
+
+
+
+\parbf{Examples:}
+\begin{itemize}
+\item Discrete metric. For any set $X$, the discrete metric on $X$ is defined by 
+$$\Dist(x,y)=\left[
+\begin{aligned}
+&1&&\text{if}&x&\not=y
+\\
+&0&&\text{if}&x&=y
+\end{aligned}
+\right.$$
+
+\item Euclidean space. 
+The set is formed by arrays of $n$ real numbers
+$$\bm{x}=(x_1,x_2,\dots,x_n)\in\RR^n$$
+and the distance function defined as 
+$$\Dist(\bm{x},\bm{y})
+\df
+\lVert\bm{x}-\bm{y}\rVert_2,$$
+where 
+$$\lVert\bm{x}\rVert_2
+\df
+\sqrt{x^2_1+x^2_2+\dots+x_n^2}.
+$$
+\end{itemize}
+
+\begin{thm}{Exercise}\label{ex:Euclidean-is-metric}
+Show that Euclidean space is a metric space.
+\end{thm}
+
+\begin{itemize}
+\item \label{manhattan-metric} Manhattan metric on the plane. The set is formed by all pairs $\bm{x}\z=(x_1,x_2)\in\RR^2$ and the metric is defined as 
+$$\Dist(\bm{x},\bm{y})
+\df
+\lVert\bm{x}-\bm{y}\rVert_1,$$
+where 
+$$\lVert\bm{x}\rVert_1
+\df
+|x_1|+|x_2|.
+$$
+\item Space of functions with sup-norm.
+Given a set $X$,
+consider the set $\mathcal{F}(X)$ of all bounded functions 
+$f\: X\to\RR$ with the metric defined as
+$$\Dist(f,g)
+\df
+\lVert f-g\rVert_\infty,$$
+where
+$$\lVert f\rVert_\infty
+\df 
+\sup_{x\in X}|f(x)|.
+$$
+\item Subspaces. Given an arbitrary subset $A\subset X$ of a metric space $(X,\Dist)$,
+one can give $A$ the metric defined as the restriction of $\Dist$ to $A\times A\z\subset X\times X$. 
+In this situation, $(A,\Dist|_{A\times A})$ is called a \emph{subspace}\index{subspace} of $(X,\Dist)$.
+\end{itemize}
+
+\subsection*{Notation for distance}
+
+The distance $\Dist(x,y)$ between $x$ and $y$ in a metric space $X$ will be further also denoted as 
+$$|x-y|=|x-y|_X=\Dist_x y=\Dist_y x=\Dist(x,y).$$
+We will write $|x-y|_X$ to emphasize that the points $x$ and $y$ belong to the metric space $X$
+and the notation $\Dist_x$ is used when we need to consider the distance to the point $x$ as a function $\Dist_x\:X\to\RR$.
+
+It should be noted that the expression $x-y$ for two points in a metric space makes no sense
+and $|x-y|$ should be read as \emph{distance from $x$ to $y$}\index{distance}.
+
+\subsection*{Isometries}
+
+\begin{thm}{Definition}
+Let $X$ and $Y$ be metric spaces.
+\begin{subthm}{}
+A map $f\:X\to Y$ is \emph{distance preserving}\index{distance preserving map} if
+$$|f(x)-f(x')|_Y=|x-x'|_X$$
+for any $x,x'\in X$.
+\end{subthm}
+
+\begin{subthm}{}
+A distance preserving bijection $f\:X\to Y$ is called an \emph{isometry}\index{isometry}.
+\end{subthm}
+
+\begin{subthm}{}
+The spaces $X$ and $Y$ are called \emph{isometric}\index{isometric spaces} (briefly $X\iso Y$)
+ if there is an isometry  $f\:X\to Y$.
+\end{subthm}
+
+\end{thm}
+
+Note that 
+\begin{itemize}
+\item ``$\iso$'' is an equivalence relation on the class of metric spaces.
+\item Distance preserving map is necessarily injective.
+\item The existence of a distance preserving map $X\to Y$ is equivalent to the existence of subset of $Y$ which is isometric to $X$.
+\end{itemize}
+
+\section{Calculus in metric spaces}
+
+\subsection*{Convergence and continuity}
+
+\begin{thm}{Definition}
+ Let $X$ be a metric space.
+A sequence of points $x_1, x_2, \ldots$ in $X$ is called \emph{convergent}\index{convergent}
+if there is 
+$x_\infty\in X$ such that $|x_\infty -x_n|\to 0$ as $n\to\infty$.  
+That is, for every $\eps > 0$, there is a natural number $N$ such that for all $n \geq N$, we have $$|x_\infty-x_n| < \eps.$$
+
+In this case we say that the sequence $(x_n)$ converges to $x_\infty$ 
+or $x_\infty$ is the limit of the sequence $(x_n)$
+and write 
+$x_\infty=\lim_{n\to\infty} x_n$
+or $x_n\to x_\infty$ as $n\to\infty$.
+\end{thm}
+
+Note that any converging sequence has unique limit.
+
+\begin{thm}{Definition}
+Let $X$ and $Y$ be metric spaces.
+A map $f\:X\to Y$ is called continuous if for any convergent sequence $x_n\to x_\infty$ in $X$,
+the sequence $y_n\z=f(x_n)$ converges to $y_\infty=f(x_\infty)$ in $Y$.
+
+Equivalently, $f\:X\to Y$ is continuous if for any $x\in X$ and any $\eps>0$
+there is $\delta>0$ such that 
+$$|x-x'|_X<\delta\ \Rightarrow\ |f(x)-f(x')|_Y<\eps.$$
+
+\end{thm}
+
+It is not hard to see that two definitions of continuity given above are equivalent;
+try to prove it.
+
+\subsection*{Open and closed sets}
+
+\begin{thm}{Definition}
+A subset $A$ of a metric space $X$ is called \emph{closed}\index{closed set} if whenever a sequence $(x_n)$ of points from $A$ converges in $X$, we have that $\lim_{n\to\infty} x_n \in A$.
+
+A set $\Omega \subset X$ is called \emph{open}\index{open set} if the complement $X \setminus \Omega$ is a closed set.
+Equivalently, $\Omega \subset X$ is open if for any $z\in \Omega$ 
+there is $\eps>0$ such that the \emph{ball}\index{ball}
+$$B_\eps(z)=\set{x\in X}{|x-z|<\eps}$$
+is contained in $\Omega$.
+\end{thm}
+
+
+The proof of equivalence of the two definitions of an open set given above is left to the reader.
+
+Note that whole space as well as the empty set are both open and closed at the same time.
+Also, the half-closed interval $[0,1)$ is neither open nor closed as a subset of the real line.
+
+
+\subsection*{Closure, interior and boundary}
+
+Note that the intersection of an arbitrary number of closed sets is closed.
+It follows that for any set $Q$ in a metric space $X$, there is a minimal closed set which contains $Q$;
+this set is called the \emph{closure of $Q$}\index{closure} and is denoted as $\Closure Q$.
+The closure of $Q$ can be obtained as the intersection of all closed sets $A\supset Q$.
+It is also equal to the set of all limit points for all sequences in $Q$.
+
+
+Similarly, the union of an arbitrary number of open sets is open.
+It follows that for any set $Q$ in a metric space, there is a maximal open set which is contained in $Q$;
+this set is called the \emph{interior of $Q$}\index{interior} and is denoted as $\Interior Q$.
+The interior of $Q$ can be obtained as the union of all open sets in $Q$.
+It is also equal to the set of all point $p\in Q$ such that $B_\eps(p)\subset Q$ for some $\eps>0$.
+
+Further the set-theoretic difference
+$$\Closure Q\backslash \Interior Q$$
+is called the \emph{boundary}\index{boundary} of $Q$ and is denoted as $\partial Q$ or $\partial_X Q$ if we want to emphasise that $Q$ is a subset of $X$.
+Clearly, $\partial Q$ is a closed set.
+A point $p$ lies in the boundary of $Q$ if and only if for any $\eps>0$, there are points $q\in Q$ and $q'\notin Q$ such that $|p-q|,|p-q'|<\eps$.
+
+\section{Completeness}
+
+\begin{thm}{Definition}
+Let $X$ be a metric space.
+A sequence of points $x_1, x_2, x_3, \ldots$ in $X$ is called \emph{Cauchy}\index{Cauchy sequence}, 
+if for every $\eps>0$, 
+there is an integer $N$ such that 
+$$|x_m - x_n| < \varepsilon,$$
+for any $m, n > N$.
+\end{thm}
+
+\begin{thm}{Definition}
+A metric space $X$ is called \emph{complete}\index{complete space} if any Cauchy sequence in $X$ is convergent.
+\end{thm}
+
+\parbf{Examples:}
+\begin{itemize}
+\item The real line as well as Euclidean space are complete.
+\item The subspace of real line formed by the rational numbers is not complete.
+\end{itemize}
+
+\begin{thm}{Exercise}\label{ex:close-complete}
+Let $X$ be a complete metric space and $A\subset X$,
+then the subspace formed by $A$ is complete if and only if $A$ is closed.
+\end{thm}
+
+
+
+\subsection*{Completion}
+
+For any metric space $X$, 
+there is a canonical construction of a complete metric space $\bar X$, 
+which contains $X$.
+The space $\bar X$ is called the \emph{completion}\index{completion} of $X$ and it is constructed as 
+a set of equivalence classes of Cauchy sequences in $X$. 
+
+For any two Cauchy sequences $\bm{x}=(x_n)$ and $\bm{y}=(y_n)$ in $X$, 
+we may define their distance as
+$$|\bm{x}-\bm{y}| = \lim_{n\to\infty} |x_n-y_n|.$$
+This limit exists because the space of real numbers is complete. 
+
+The defined function $|\bm{x}-\bm{y}|$ satisfies all axioms of metric but \ref{def:metric-space:zero};
+i.e., two different Cauchy sequences may have the distance $0$ 
+(the functions of that type are called \emph{pseudometrics}\index{pseudometric}). 
+But ``having distance 0'' is an equivalence relation on the set of all Cauchy sequences, and the set of equivalence classes, which we denote $\bar X$, is a metric space called the \emph{completion} of $X$.  
+
+The original space is embedded in this space via the identification of an element $x$ of $X$ with the equivalence class of the sequence with constant value $x$.  
+This defines a distance preserving map $X\to \bar X$, as required. 
+
+It is staightforward to verify all claims made about $\bar X$ and prove that the distance function given is well-defined and is indeed a metric on $\bar X$.
+
+
+\section{Compactness}
+
+\begin{thm}{Definition}
+A metric space $X$ is \emph{compact}\index{compact space} if any sequence of points in $X$ contains a convergent subsequence.
+
+If a subset $A$ in a metric space forms a compact subspace then we say that $A$ is a \emph{compact subset}\index{compact subset} of $X$.
+\end{thm}
+
+
+The proofs of the following properties are left to the reader;
+these proofs can be also found in many books,
+for example in \cite{rudin}
+(which is an excellent book).
+
+\parbf{Properties:} %??? remove those we do not use???
+\begin{itemize}
+\item (Heine--Borel theorem.) A subset of Euclidean space is compact if and only if it is both closed and bounded.
+\item Any closed subset of a compact space is compact.
+\item\label{compact=>closed} Any compact subset of a metric space is closed.
+\item Any compact metric space is complete.
+\item The Cartesian product of two compact spaces $X\times Y$ equipped with the metric 
+$$|(x_0,y_0)-(x_1,y_1)|\df \max\{|x_0-x_1|,|y_0-y_1|\}$$
+is compact.
+\item \label{ex:compact-image}
+If $f\: X \to Y$ is continuous map between metric spaces and $X$ is compact, then the image $f(X)$ is a compact subset of $Y$.
+\item\label{ex:compact-homeo}
+If $f\: X \to Y$ is a continuous bijection between metric spaces and $X$ is compact, then the inverse map $f^{-1}\: Y \to X$ is continuous.
+\item\label{ex:EVT}
+(Extreme Value Theorem) Prove that if $X$ is a compact metric space, then any continuous function $f\: X \to \mathbb{R}$ attains a global maximum value at some point of $X$.  That is, there exists $x \in X$ such that $f(y) \leq f(x)$ for all $y \in X$.
+(Here, it is understood that the metric we are considering on $\mathbb{R}$ is the usual Euclidean metric.)
+\end{itemize}
+
+\begin{thm}{Definition}
+A subset $A$ of a metric space $X$ is called \emph{bounded}\index{bounded set} if for one (and therefore any) point $x$ there is a constant $D<\infty$ such that 
+$$|x-a|_X\le D$$ for any $a\in A$.
+\end{thm}
+
+
+\begin{thm}{Definition}\label{def:proper}
+A metric space $X$ is called \emph{proper}\index{proper space} if any bounded, 
+closed set in $X$ is compact.
+\end{thm}
+
+
+
+\subsection*{Nets and packings}
+
+\begin{thm}{Definition}
+Let $X$ be a metric space and let $\eps>0$.
+A set $A\subset X$ is called an \emph{$\eps$-net of $X$}\index{net} if for any point $x\in X$ there is a point $a\in A$
+such that $|x-a|\le\eps$.
+\end{thm}
+
+\begin{thm}{Definition}
+Let $X$ be a metric space and let $\eps>0$.
+A set of points $x_1,x_2,\dots,x_n\in X$ such that $|x_i-x_j|>\eps$ for all $i\not=j$ is called an \emph{$\eps$-packing}\index{packing}.
+
+The supremum of all integers $n$ for which 
+there is a $\eps$-packing $x_1,x_2,\dots,x_n\z\in X$ 
+is denoted as $\pack_\eps X$.
+($\pack_\eps$ takes integer value or $\infty$.)
+
+If $n=\pack_\eps X$ is finite,
+then an $\eps$-packing $x_1,x_2,\dots,x_n\in X$ 
+is called a \emph{maximal $\eps$-packing}\index{maximal $\eps$-packing}.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:packing=net}
+Any maximal $\eps$-packing is an $\eps$-net.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:net=2packing}
+Let $\{a_1,a_2,\dots,a_n\}$ be a finite $\eps$-net in a metric space $X$.
+Show that $\pack_{2\cdot\eps}X\le n$.
+\end{thm}
+
+\begin{thm}{Theorem}\label{thm:finite_pack=compact}
+Let $X$ be a complete metric space.
+Then the following conditions are equivalent:
+
+\begin{subthm}{thm:finite_pack=compact:compact}
+$X$ is compact;
+\end{subthm}
+
+\begin{subthm}{thm:finite_pack=compact:pack}
+$\pack_\eps X$ is finite for any $\eps>0$;
+\end{subthm}
+
+\begin{subthm}{thm:finite_pack=compact:net}
+$X$ is \emph{totally bounded}\index{totally bounded space};
+i.e., for any $\eps>0$ there is a finite $\eps$-net in $X$.
+\end{subthm}
+
+\end{thm}
+
+\parit{Proof; (\ref{SHORT.thm:finite_pack=compact:compact})$\Rightarrow$(\ref{SHORT.thm:finite_pack=compact:net}).}
+Assume $X$ has no finite $\eps$-net.
+Then for any point array $z_1,z_2,\dots,z_{n-1}$ in $X$
+there is a $z_n\in X$
+such that $|z_i-z_n|>\eps$ for any $i<n$.
+
+Applying the above statement inductively, we can construct an infinite sequence $(z_n)$ in $X$
+such that $|z_i-z_j|>\eps$ for all $i\not=j$.
+Therefore $(z_n)$ has no convergent subsequence,
+a contradiction.
+
+\parit{(\ref{SHORT.thm:finite_pack=compact:net})$\Leftrightarrow$(\ref{SHORT.thm:finite_pack=compact:pack}).}
+Follows from exercises \ref{ex:net=2packing} and \ref{ex:packing=net}.
+
+\parit{(\ref{SHORT.thm:finite_pack=compact:net})$\Rightarrow$(\ref{SHORT.thm:finite_pack=compact:compact}).}
+Set $\eps_k=\frac1{2^k}$.
+For each $k$, 
+let $\{z_{1,k},z_{2,k},\dots,z_{n_k,k}\}$ be an $\eps_k$-net.
+Note that for each $k$, the collection of balls
+$$\bar B_{\eps_k}(z_{i,k})=\set{x\in X}{|x-z_i|\le \eps_k}$$
+cover all of $X$.
+
+To show $X$ is compact, given an infinite sequence $x_1,x_2,\dots$ in $X$, we must find a convergent subsequence.
+We shall apply a diagonal process to choose a subsequence
+$x_{n_1},x_{n_2},\dots$  with the following property:
+\textit{for each $k$ there is $i_k$ such that
+$x_{n_m}\z\in\bar  B_{\eps_k}(z_{i_k,k})$ for all $m\ge k$}.
+
+For the first step, note that since the finite collection of balls $\bar B_{\eps_1}(z_{i,1})$ cover $X$, there must be an index $i_1$ such that $\bar B_{\eps_1}(z_{i_1,1})$ contains infinitely many terms of our sequence $(x_n)$.  Let $F_1 = \bar B_{\eps_1}(z_{i_1,1})$. Choose an integer $n_1$ such that $x_{n_1} \in F_1$.
+
+For the second step, since the balls $\bar B_{\eps_2}(z_{i,2})$ cover $X$, in particular they cover $F_1$.  Since $F_1$ contains infinitely many points of our sequence $(x_n)$, there must be an index $i_2$ such that $F_1 \cap \bar B_{\eps_2}(z_{i_2,2})$ also contains infinitely many of the $x_n$.  Let $F_2 = F_1 \cap \bar B_{\eps_2}(z_{i_2,2})$ and choose $n_2 > n_1$ such that $x_{n_2} \in F_2$.
+
+Proceeding inductively at the $k$-th step, we know that the balls $\bar B_{\eps_k}(z_{i,k})$ cover $X$ and hence $F_{k-1}$, which contains infinitely many terms of our sequence $(x_n)$.  So there must exist $i_k$ so that $F_{k-1} \cap \bar B_{\eps_k}(z_{i_k,k})$ also contains infinitely many of the $x_n$.  Let $F_k = F_{k-1} \cap \bar B_{\eps_k}(z_{i_k,k})$ and choose $n_k > n_{k-1}$ with $x_{n_k} \in F_k$.
+
+Note that $F_{k+1} \subseteq F_k$, so that for all $m \geq k$, $x_{n_m} \in F_k \subseteq B_{\eps_k}(z_{i_k,k})$ as desired.  It follows that $(x_{n_k})$ is a Cauchy sequence.
+Since $X$ is complete, 
+$(x_{n_k})$ converges, and we have proven that $X$ is compact.
+\qeds
+
+\section{Topology}
+
+\begin{thm}{Definition}
+Let $X$ and $Y$ be metric spaces.
+A map $f\:X\to Y$ is called a \emph{homeomorphism}\index{homeomorphism}
+if it is a continuous bijection and the inverse $f^{-1}\:Y\to X$ is also continuous.
+
+Two metric spaces $X$ and $Y$ are called \emph{homeomorphic}\index{homeomorphic spaces} (briefly $X\hom Y$) if there is homeomorphism $f\:X\to Y$.
+\end{thm}
+
+It is straightforward to check that $\hom$ is an equivalence relation.
+
+Every isometry is a homeomorphism,
+but not every homeomorphism is an isometry.
+The homeomorphism class of metric space is much larger than its isometry class.
+
+\begin{thm}{Exercise}\label{ex:cont+biject}
+Give an example of a continuous bijection between metric spaces that is not a homeomorphism.
+\end{thm}
+
+Let $\rho$ and $\rho'$ be two metrics on the same set $X$.
+We say that $\rho$ is \emph{equivalent} to $\rho'$ if the identity map 
+$(X,\rho)\to (X,\rho')$ is a homeomorphism.
+In other words, $\rho$ is equivalent to $\rho'$ if and only if
+for any sequence of points $(x_n)$ and a point $x_\infty$ in $X$, we have
+$$\rho(x_n,x_\infty)\to 0\ \ \Leftrightarrow\ \ \rho'(x_n,x_\infty)\to 0.$$
+
+The class of equivalent metrics on a fixed set $X$
+is described completely by all open subsets of $X$;
+i.e., a metric $\rho$ is equivalent to a metric $\rho'$
+if and only if any set which is open with respect to the metric $\rho$ is open with respect to the
+metric $\rho'$ and visa versa.
+\begin{thm}{Exercise}
+Prove the last statement. 
+\end{thm}
+
+The set of open sets in $X$ is called the \emph{topology}\index{topology} of $X$.
+A topology has to satisfy the following axioms:
+\begin{enumerate}
+\item the union of an arbitrary number of open sets is open,
+\item the intersection of a finite number of open sets is open
+\item the empty set and $X$ are both open sets
+\end{enumerate}
+A set with chosen topology is called \emph{topological space}.
+
+Many of concepts described above can be formulated in terms of toplogy.
+For example a map $f\: X\to Y$ is continuous if and only if for any open set $U\subset Y$,
+the preimage $f^{-1}(U)$ is an open set in $X$.
+Compactness also can be described entirely in topological terms;
+see Theorem~\ref{thm:compact+covering}.
+On the other hand, completeness is not a topological property,
+for example the space $[0,1)$ is homeomorphic%
+\footnote{say $x\mapsto \tfrac x{1-x}$ is a homeomorphism}
+to $[0,\infty)$, but $[0,1)$ is not complete whereas $[0,\infty)$ is.
+
+Given a topological space $X$, 
+we may say ``consider a metric $\rho$ on $X$'' 
+meaning that $d$ is a metric which describe the topology of $X$.
+In the case that $X$ is a metric space,
+we mean that $\rho$ is equivalent to the original metric on $X$. 
+
+\begin{thm}{Definition}
+A map $f\:X\to Y$ is called an \emph{embedding}\index{embedding}
+if $f$ gives a homeomorphism of $X$ to its image $f(X)$ in $Y$.
+\end{thm}
+
+Note that any distance preserving map is an embedding,
+but the converse is not true. 
+
+\parbf{Remarks.}
+These definitions are a starting point of so called \emph{point-set topology};
+but this is as far as we need to go in this direction.
+We will only use the fact that any metric space is naturally a topological space.
+
+A topological space which can appear this way is called \emph{metrizable}%
+\index{metrizable topological space}.
+Not every topological space is metrizable;
+i.e., one can find a set $X$ with a collection of \textit{open sets}
+which satisfies above 3 axioms, but there is no metric on $X$ for which these are the open sets; 
+we will not consider such monsters in these lectures.
+
+
+
+
+\section*{Exercises}
+
+\begin{pr}\label{pr:nonisometry}
+Give an example of a metric space $X$ with a distance preserving map $f\:X\z\to X$ which is not a bijection. 
+\end{pr}
+
+\begin{pr}\label{pr:non-contracting=>isometry}
+Let $K$  be a compact metric space and
+$f\:K\to K$ be a non-contracting map;
+i.e., 
+$$|f(x)-f(y)|_K\ge |x-y|_K$$
+for any $x,y\in K$.
+Prove that $f$ is an isometry.
+\end{pr}
+
+
+
+\begin{pr}\label{ex:kuratowski}
+Let $X$ be a metric space; fix $x\in X$.
+Show that the map 
+$$K_x\: X\to\mathcal{F}(X)$$ 
+defined by 
+$$K_x(z) = \Dist_z-\Dist_x$$
+is distance preserving;
+i.e. 
+$$|K_x(y)-K_x(z)|_{\mathcal{F}(X)}=|y-z|_X$$
+for any $y,z\in X$.
+\end{pr}
+
+{\it The map $K_x\: X\to\mathcal{F}(X)$ is called the \emph{Kuratowski embedding with base $x$}\index{Kuratowski embedding}.
+
+If $X$ has bounded diameter, i.e., if there is a constant $D<\infty$,
+such that $|z-y|\le D$ for any $z,y\in X$,
+then $\Dist_x$ is bounded for any $x\in X$
+and the map 
+$$K\:X\to\mathcal{F}(X)$$ given by $$K(x) = \Dist_x $$ 
+is also distance preserving.
+The latter map is also called the \emph{Kuratowski embedding}\index{Kuratowski embedding}.}
+
+\begin{pr}\label{pr:compact->F_N}
+Show that any compact space is isometric to a subset of $\mathcal{F}(\NN)$;
+i.e., the space of bounded sequences with the metric induced by sup-norm.
+\end{pr}
+
+\begin{pr}\label{pr:complition-kuratowski}
+Show that completion of any metric space is isometric to the closure of its image under Kuratowski embedding.
+\end{pr}
+
+\begin{pr}\label{pr:almost-min}
+Let $X$ be a complete metric space and $\rho\:X\to \RR$ be a continuous positive function.
+
+Show that there is $x\in X$ such that
+$$\rho(y)>\tfrac{99}{100}\cdot\rho(x)$$ 
+for any $y\in B_{\rho(x)}(x)$.
+\end{pr}
+
+\begin{pr}\label{pr:compact-net}
+Show that a complete metric space $X$ is compact if for any $\eps>0$ there is a compact $\eps$-net in $X$.  
+\end{pr}
+
+

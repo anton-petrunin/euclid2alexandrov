@@ -1,0 +1,249 @@
+\chapter{Length-preserving maps}\label{chap:lp}
+
+\section{Length-preserving map from sphere to the plane}
+
+Let $X$ and $Y$ be metric spaces.
+Recall that a continuous map $f\:X\to Y$
+is called \emph{length-preserving}\index{length-preserving map} if for any curve $\alpha\:\II\to X$,
+we have 
+$$\length\alpha=\length(f\circ\alpha).$$
+Note that since $f$ is continuous, the composition $f\circ\alpha$ is a curve in $Y$ (see Definition~\ref{def:curve});
+therefore the above definition makes sense.
+
+\begin{thm}{Exercise}\label{LP=>short}
+Show that if $X$ is a complete length space then any length-preserving map $X\to Y$
+is also a distance nonexpanding.
+\end{thm}
+
+Here is the main theorem of this chapter.
+
+\begin{thm}{Theorem}\label{thm:S2->R2}
+There is a length-preserving map $\SS^2\to\RR^2$.
+\end{thm}
+
+
+The existence of a length-preserving map $\SS^2\to\RR^2$ might look counterintuitive.
+The following exercise shows that such a map $f$ has to crease on an everywhere dense set in $\SS^2$.
+
+\begin{thm}{Exercise}\label{ex:S->R--not-inj}
+Let $f\:\SS^2\to\RR^2$ be a length-preserving map. 
+Show that the restriction of $f$ to any open subset of $\SS^2$ cannot be injective. 
+\end{thm}
+
+\parit{The plan of the proof.}
+ We will use Problem~\ref{pr:H>GH-boundary}
+to construct a sequence of 2-dimensional polyhedral spaces $P_n$ which converge to $\SS^2$
+in the sense of Gromov--Hausdorff. 
+The sequence $P_n$ will be chosen in such a way that there are surjective distance nonexpanding maps $\phi_n\:P_n\to P_{n-1}$.
+
+The map $f_\eps$ will be constructed as the \emph{limit} of a sequence of piecewise distance preserving maps $f_n\:P_n\to\RR^2$ which are automatically length-preserving.
+(We will eventually have to make rigorous what we mean by limit here.  Note that one cannot talk about the limit of the maps $f_n$ in the usual sense because each $f_n$ has a different domain.)
+
+The maps $f_n$ will be constructed recursively;
+to construct $f_n$
+we will apply Akopyan's approximation theorem (\ref{thm:approx}) to the composition $f_{n-1}\circ\phi_n\:P_n\z\to\RR^2$.
+Some extra care will be needed to ensure that the limit of $f_n$  will be a length-preserving map that is $\eps$-close to $f$.
+
+
+
+\parbf{Remarks.}
+From Exercise~\ref{LP=>short},
+it follows that if we have a converging sequence of  length-preserving map $f_n\:X\to Y$ then their limit $f_\infty\:X\to Y$ is distance nonexpanding,
+but in general, $f_\infty$ is not  length-preserving.
+
+The existence of some piecewise distance preserving maps $P_n\to\RR^2$ is provided by Zalgaller's mapping theorem (\ref{thm:zalgaller}).
+But these maps cannot be used to prove theorem \ref{thm:S2->R2}
+since the maps constructed in the proof of Zalgaller's mapping theorem converge to the map which sends all of $\SS^2$ to one point.
+The latter follows from the observation below.
+
+
+\begin{thm}{Observation}
+Let $P$ be a $2$-dimensional polyhedral space and $f\:P\z\to\RR^2$ be the map constructed in the proof of Zalgaller's mapping theorem for the collection of vertices $\{v_1,v_2,\dots,v_n\}\in P$ then 
+$$\diam f(P)\le\max_{x\in P}\min_{v_i}\{|x-v_i|_P\}.$$
+
+\end{thm}
+
+
+\parit{Proof of Theorem~\ref{thm:S2->R2}.}
+Consider a nested
+sequence $K_0\subset K_1\subset \dots$ of convex polyhedra in $\RR^3$ whose union is a unit ball.
+Clearly $K_n$ converges to the unit ball in the Hausdorff sense (compare Lemma~\ref{lem:decreasing-converges}).
+
+Denote by $P_n$ the boundary of $K_n$ equipped with the induced length metric. %??? surface???
+According to Exercise~\ref{ex:bry-is-poly}, $P_n$ is a polyhedral space for each $n$.
+By Problem~\ref{pr:H>GH-boundary}, $P_n$ converges to $\SS^2$ in the Gromov--Hausdorff sense.
+
+The same construction as in Problem~\ref{problem2} 
+gives a distance nonexpanding map $\phi_n\:P_n\to P_{n-1}$ for each $n$.
+It is straightforward to see that $\phi_n$ are piecewise linear;
+i.e., there are triangulations of $P_n$ and $P_{n-1}$ such that for any simplex $\Delta$ in $P_n$, the image $\phi_n(\Delta)$ lies in a simplex $\Delta'$ of $P_{n-1}$ and the restriction $\phi |_\Delta$ is linear (if written with in the barycentric coordinates of $\Delta$ and $\Delta'$). 
+
+
+Note that for any point $x\in \SS^2$, there is unique sequence of points $x_n\in P_n$ such that $x_n\to x$ as $n\to\infty$ and $\phi_n(x_n)=x_{n-1}$ for all $n\ge 1$.
+To show existence of this sequence, fix any sequence $z_n\in P_n$ such that $z_n\to x$.
+Consider the double sequence $y_{n,m}\in P_n$ defined for $n\le m$ such that $y_{n,n}=z_n$ and
+$\phi_n(y_{n,m})= y_{n-1,m}$ for all $1\le n$.
+Then set 
+$$x_n=\lim_{m\to\infty} y_{n,m}.$$
+
+\begin{thm}{Exercise}\label{ex:limit-above}
+Show that the limit above is defined.
+\end{thm}
+
+If $x_n\to x\in \SS^2$ be a sequence as above,
+define $\psi_n\:\SS^2\to P_n$ as $\psi_n(x)=x_n$.
+Clearly $\psi_n\:\SS^2\to P_n$ is distance nonexpanding, 
+$\psi_{n-1}=\phi_n\circ\psi_{n}$ for each $n\ge 1$
+and for any $p$ and $q\in\SS^2$ we have
+$$|p_n-q_n|_{P_n}\to |p-q|_{\SS^2}\ \text{as}\  n\to\infty\eqlbl{eq:pq-to-pq}$$
+where $p_n=\psi_n(p)$ and $q_n=\psi_n(q)$.%
+\footnote{Such sequences of spaces and maps 
+$$\dots\xto{\phi_{2}}X_2\xto{\phi_{2}} X_1\xto{\phi_{1}}X_0$$
+appear in all branches of mathematics. 
+They are called \emph{inverse systems}\index{inverse systems}.
+A sequence $(x_0, x_1, x_2, \ldots)$ such that $x_n \in X_n$ and $\phi_n(x_n)=x_{n-1}$ could be considered as a point in a new space $X$ which is called the \emph{inverse limit}\index{inverse limit} of the system and is denoted $X=\varprojlim X_n$. 
+Given $x=(x_0,x_1,\dots )\in X$, the evaluation maps $\psi_n: X \to X_n$ given by $\psi_n(x)=x_n$ are called \emph{projections}\index{projections}.}
+In particular $\psi_n\:\SS^2\to P_n$ is $\delta_n$-isometry for some sequence $\delta_n\to0+$.
+
+\parit{Recursive construction of the maps $f_n\:P_n\to\RR^2$.}
+Assume we have a piecewise distance preserving map $f_{n-1}\: P_{n-1}\z\to \RR^2$.
+The composition $f_{n-1}\circ\phi_n\: P_n\z\to\RR^2$ is a piecewise linear and distance nonexpanding. 
+Thus given $\eps_{n-1}>0$ we can apply Theorem~\ref{thm:approx} to construct a piecewise distance preserving map $f_n\:P_n\to\RR^2$ which is $\eps_{n-1}$-close to $f_{n-1}\circ\phi_n$.
+
+Denote by $M(n)$ the number of triangles in a triangulation for $f_n$;
+i.e., a triangulation of $P_n$ such that $f_n$ is distance preserving on each of its triangles. 
+Set 
+$$\eps_{n}=\frac{\eps_{n-1}}{10\cdot M(n)}.\eqlbl{eq:eps-n}$$
+This way we recursively define the construction of $f_n$.
+It goes as follows: 
+\begin{enumerate}
+\item Choose an arbitrary $\eps_0>0$ and take a piecewise distance preserving map $f_0\:P_0\to\RR^2$ which is provided by Zalgaller's mapping theorem (\ref{thm:zalgaller}).
+\item Use $\phi_1$, $f_0$ and $\eps_0$ to construct $f_1$.
+\item Use $f_1$ to construct $\eps_1$.
+\item Use $\phi_2$, $f_1$ and $\eps_1$ to construct $f_2$.
+\item Use $f_2$ to construct $\eps_2$.
+\item $\dots$
+\end{enumerate}
+%???This procedure is similar to walking on stairs: you have to make right step, which makes possible to do left step, which makes possible to do right step and so on???
+ 
+
+\medskip
+
+
+
+It remains to prove the following claim:
+
+\begin{clm}{}
+The sequence of maps $f_n\circ\psi_n\:\SS^2\to \RR^2$ converges to a length-preserving map $f\:\SS^2\to\RR^2$. 
+\end{clm}
+
+Since $\eps_{n}$ decays faster than $\tfrac{\eps_0}{10^n}$, 
+the sequences $(f_n\circ\psi_n)(x)$ are Cauchy,
+for any fixed $x$;
+so the limit map $f(x)$ is defined.
+Since all $f_n\circ\psi_n$ are distance nonexpanding, we have that so is $f\:\SS^2\to\RR^2$.  Note that this implies $$\length (f\circ\alpha) \leq \length \alpha$$ for any curve $\alpha$ in $\SS^2$.
+
+For the remaining part of proof we will need the following definition.
+
+\begin{thm}{Definition}
+Let $X$ be a metric space and $\alpha\:[0,1]\to X$
+be a curve.
+Set 
+$$\ell_k(\alpha)
+\df
+\sup\set{\sum_{i=1}^k |\alpha(t_i)-\alpha(t_{i-1})|_X}{0=t_0<t_1<\dots<t_k=1}.$$
+
+\end{thm}
+
+Note that for any fixed $\alpha$,
+the sequence $\ell_k(\alpha)$ is non-decreasing in $k$ and
+$$
+\length\alpha=\lim_{k\to\infty}\ell_k(\alpha).$$
+
+\medskip
+
+Assume $f$ is not length preserving.
+Since $f$ is distance nonexpanding, it follows that for some curve 
+$\gamma$ in $\SS^2$ we have 
+$$\length(f\circ\gamma)<\length \gamma.$$
+Together with the definition of length (\ref{def:length}),
+the latter implies that on $\gamma$ one can choose two points, say $p$ and $q$, such that
+$$\length (f\circ\alpha)<|p-q|_{\SS^2},\eqlbl{eq:length<|p-q|}$$
+where $\alpha$ denotes the part of $\gamma$ from $p$ to $q$.
+
+Set $p_n=\psi_n(p)$ and $q_n=\psi_n(q)$ as above and let $\alpha_n$ be a curve from $p_n$ to $q_n$.
+Note that one can exchange $\alpha_n$ for a shorter curve, say $\beta_n$ which goes from $p_n$ to $q_n$ and whose image in any triangle of the triangulation of $P_n$ is a line segment.
+It follows that $f_n\circ\beta_n$ is a broken line with at most $M(n)$ edges.
+Hence
+$$\ell_{M(n)}(f_n\circ\beta_n)=\length\beta_n\le \length\alpha_n.$$ 
+Therefore
+$$|p_n-q_n|_{P_n}=\inf \{\ell_{M(n)}(f_n\circ\alpha_n)\},\eqlbl{eq:pn-qn}$$
+where the infimum is taken for all curves $\alpha_n$ from $p_n$ to $q_n$ in $P_n$.  
+
+By the recursive construction of the maps, we have that
+$$|(f_n\circ\psi_n)(x)-f(x)|<\eps_n$$
+for any $x\in \SS^2$ and each $n$.
+From \ref{eq:eps-n}, it follows that
+$$|\ell_{M(n)}(f\circ\alpha)-\ell_{M(n)}(f_n\circ\psi_n\circ\alpha)|< \eps_{n-1}.\eqlbl{eq:inq-ell-k}$$
+Note that \ref{eq:pq-to-pq} and \ref{eq:length<|p-q|} implies that
+$$\eps_{n-1}<|p_n-q_n|-\length \alpha$$ 
+for all large $n$,
+the latter contradicts \ref{eq:inq-ell-k} and \ref{eq:pn-qn}.
+\qeds
+
+
+\section{Lirical degression: \textit{h}-priciple}
+
+The Theorem \ref{thm:S2->R2} admits the following generalization.
+
+\begin{thm}{Gromov's theorem}\label{thm:gromov}
+Let $M$ be an $m$-dimaensional Riemannian manifold%
+\footnote{If you do not know what is Riemannian manifold, think that $M$ is the smooth hypersurface in $\RR^{m+1}$ equipped with induced length metric.}%
+.
+Then any distance nonexpanding map 
+$$f\:M\to\RR^m$$ 
+can be approximated by length-preserving maps $M\to\RR^m$.
+
+More precisely, given $\eps>0$ there is a length-preserving map $f_\eps\:M\to\RR^m$
+such that 
+$$|f_\eps(x)-f(x)|<\eps$$
+for any $x\in M$.
+\end{thm}
+
+The proof of this theorem can be given along the same lines as the proof of Theorem \ref{thm:S2->R2},
+but it require couple more technical steps.
+
+In modern geometry, one often face so called \textit{local to global} problem.
+That means that you know the behavior of some geometrical structure (metric or map or anything)
+locally, i.e. in a small neigborhood of each point and you want to know whether thare are nontrivial consequences of this property to on big scale.
+For example,
+let $\square$ be the unit sqare in $\RR^2$;
+the class of piecewise distance preserving (PDP) maps $\square\to\RR^2$ 
+can be described locally; 
+i.e., if the map is piecewise distance preserving in a neighborhood of any point then it is also piecewise distance preserving.
+It is obvious that any such map is a distance non-expanding
+and from Brahm's theorem it follows that any distance non-expanding map can be approxiamted by piecewise distance preserving maps.
+In other words, for  PDP the answer is ``NO'';
+i.e.,  PDP has no nontrivial consequences to the global behavior of the map.
+
+In fact the answer ``NO'' is the most common.
+There is a technology named ``\textit{h}-principle'' which makes possible to prove a ``NO''-answer for other local structures.
+\textit{h}-Principle is not a theorem, it is a property which often holds for underdetermined partial differential equations.
+There a number of methods to prove \textit{h}-principle for given equasion, including the one which is described in the proof of Theorem \ref{thm:S2->R2}%
+\footnote{One may think of ``lenght-preserving maps'' as about weak solutions of a particular partial differential equasion.}%
+.
+Once the \textit{h}-principle is proved for the equasion, 
+it becomes very easy to check existance of a solution.
+The Gromov's theorem is one of the simplest example.
+Other examples include 
+\begin{itemize}
+\item Nash--Kuiper theorem, which in particular implies existance of $C^1$-smooth lenght-preserving map $\SS^2\to\RR^3$ with arbitrary small diameter of image.
+\item Smale's sphere eversion paradox, which states that there is a continuous one partameter family of smooth immersions $f_t\:\SS^2\to \RR^3$, $t\in[0,1]$ such that $f_0\:\SS^2\to \RR^3$ is the standard inclusion and $f_1(x)=-f_0(x)$ for all $x\in \SS^2$.
+In fact combining the technique of Smale and Nash--Kuiper, one can make sphere eversion $f_t$ in the class $C^1$-smooth length-preserving maps. 
+\end{itemize}
+ 
+For further reading we sugest the comprehancive and reader-friendly introduction to \textit{h}-principle by  Eliazhberg and Mishachev \cite{eliashberg-mishachev}.
+
+
+
+

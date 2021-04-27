@@ -1,0 +1,37 @@
+\documentclass[twoside]{book}
+\usepackage[top=0.9in, bottom=0.9in,left=0.9in, right=0.9in, paperwidth=6in, paperheight=9in]{geometry}
+
+\usepackage[russian,english]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{euclid2alexandrov-pdp}
+\hypersetup{pdftitle={Piecewise distance preserving maps.
+},%
+pdfauthor={Anton Petrunin and Allan Yashinski}}
+
+%\usepackage{epstopdf}
+
+\usepackage{fancyhdr}
+%\renewcommand{\chaptername}{Lecture}
+
+% This is to resolve some issue with renaming "Chapter" related to the babel package, see: http://www.latex-community.org/forum/viewtopic.php?f=5&t=788
+\addto\captionsenglish{%
+ \renewcommand\chaptername{Lecture}}
+ 
+\usepackage[nottoc]{tocbibind}
+
+
+
+\makeindex
+\begin{document}
+\title{Lectures on piecewise distance preserving maps}
+\author{Anton Petrunin and Allan Yashinski}
+\date{}
+\maketitle
+\include{pdp-intro}
+\include{pdp}
+\include{hints-pdp}
+\newpage
+\input{pdp-minimum.ind}
+\include{bibl-pdp}
+\end{document}

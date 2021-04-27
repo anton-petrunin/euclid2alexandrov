@@ -1,0 +1,1111 @@
+\chapter{Appetizers}\label{chap:metr}
+
+\section{Metric spaces}
+
+\begin{thm}{Definitions}
+\label{def:metric-space}
+A metric space is a pair $(X,\Dist)$ where $X$ is a set and 
+$$\Dist \: X \times X \rightarrow [0,\infty)$$
+is a function such that 
+
+\begin{subthm}{def:metric-space:zero}
+$\Dist(x,y) = 0$ if and only if $x=y$;
+\end{subthm}
+
+\begin{subthm}{}
+$\Dist(x,y) = \Dist(y,x)$ for any $x, y \in X$;
+\end{subthm}
+
+\begin{subthm}{triangle-inq}
+$\Dist(x,z)\le \Dist(x,y)+\Dist(y,z)$ for any $x, y, z \in X$.
+\end{subthm}
+
+\end{thm}
+
+The condition (\ref{SHORT.triangle-inq}) above is called \emph{triangle inequality}.
+The set $X$ is called \emph{underlying set}\index{underlying set} of the metric space $(X,\Dist)$
+and its elements are called \emph{points} of the metric space.
+The function $\Dist\: X \times X \rightarrow [0,\infty)$ is called a \emph{metric}\index{metric}, 
+the value $\Dist(x,y)\ge 0$ is called the \emph{distance}\index{distance} from $x$ to $y$.
+
+%Unless it is stated otherwise, the metric will be always denoted $\Dist$.
+Often we will we will say ``consider metric space $X$'' meaning that on the set $X$ is equipped with a metric  which is denoted as $\Dist$.
+The distance $\Dist(x,y)$ between $x$ and $y$ in a metric space $X$ will be further also denoted as 
+$$|x-y|=|x-y|_X=\Dist(x,y).$$
+We will write $|x-y|_X$ to emphasize that the points $x$ and $y$ belong to the metric space $X$.
+
+It should be noted that the expression ``$x-y$'' for two points in a metric space makes no sense
+and $|x-y|$ should be read as \emph{distance from $x$ to $y$}\index{distance}.
+
+\section*{Examples}
+\begin{itemize}
+\item Discrete metric. For any set $X$, the discrete metric on $X$ is defined by 
+$$\Dist(x,y)=\left[
+\begin{aligned}
+&1&&\text{if}&x&\not=y
+\\
+&0&&\text{if}&x&=y
+\end{aligned}
+\right.$$
+
+\item Euclidean space. 
+The set is formed by arrays of $n$ real numbers
+$$\bm{x}=(x_1,x_2,\dots,x_n)\in\RR^n$$
+and the distance function defined as 
+$$\Dist(\bm{x},\bm{y})
+\df
+\lVert\bm{x}-\bm{y}\rVert_2,$$
+where 
+$$\lVert\bm{x}\rVert_2
+\df
+\sqrt{x^2_1+x^2_2+\dots+x_n^2}.
+$$
+Further, this distance will be also denoted as $|x-y|_{\RR^n}$.
+\end{itemize}
+
+\begin{thm}{Exercise}\label{ex:Euclidean-is-metric}
+Show that Euclidean space is a metric space.
+\end{thm}
+
+\begin{itemize}
+\item \label{manhattan-metric} Manhattan metric on the plane. The set is formed by all pairs $\bm{x}\z=(x_1,x_2)\in\RR^2$ and the metric is defined as 
+$$\Dist(\bm{x},\bm{y})
+\df
+\lVert\bm{x}-\bm{y}\rVert_1,$$
+where 
+$$\lVert\bm{x}\rVert_1
+\df
+|x_1|+|x_2|.
+$$
+\item %???
+Space of functions with sup-norm.
+Given a set $X$,
+consider the set $\mathcal{F}(X)$ of all bounded functions 
+$f\: X\to\RR$ with the metric defined as
+$$\Dist(f,g)
+\df
+\lVert f-g\rVert_\infty,$$
+where
+$$\lVert f\rVert_\infty
+\df 
+\sup_{x\in X}|f(x)|.
+$$
+
+\item Unit sphere.
+The set of unit vectors in $\RR^{n+1}$ can be equipped with the angle metric 
+$$\Dist(u,v)=\arccos\langle u,v\rangle,$$ 
+where $\langle {*},{*}\rangle$ denotes the scalar product.
+The obtained metric is called $n$-dimensional unit sphere and it will be denoted by $\SS^n$.
+\end{itemize}
+
+\section*{Distance preserving maps}
+
+Given an arbitrary subset $A\subset X$ of a metric space $X=(X,\Dist)$,
+one can give $A$ the metric defined as the restriction of $\Dist$ to $A\times A\z\subset X\times X$. 
+In this situation, the metric space $(A,\Dist|_{A\times A})$ is called a \emph{subspace}\index{subspace} $A$ of $X$.
+
+\begin{thm}{Definition}
+Let $X$ and $Y$ be metric spaces.
+\begin{subthm}{}
+A map $f\:X\to Y$ is \emph{distance preserving}\index{distance preserving map} if
+$$|f(x)-f(x')|_Y=|x-x'|_X$$
+for any $x,x'\in X$.
+\end{subthm}
+
+\begin{subthm}{}
+A distance preserving bijection $f\:X\to Y$ is called an \emph{isometry}\index{isometry}.
+\end{subthm}
+
+\begin{subthm}{}
+The spaces $X$ and $Y$ are called \emph{isometric}\index{isometric spaces} (briefly $X\iso Y$)
+ if there is an isometry  $f\:X\to Y$.
+\end{subthm}
+
+\end{thm}
+
+Note that 
+\begin{itemize}
+\item ``$\iso$'' is an equivalence relation on the class of metric spaces.
+\item Distance preserving map is necessarily injective.
+\item The existence of a distance preserving map $X\to Y$ is equivalent to the existence of subset of $Y$ which is isometric to $X$.
+\end{itemize}
+
+\section{Calculus}
+
+\begin{thm}{Definition}
+ Let $X$ be a metric space.
+A sequence of points $x_1, x_2, \ldots$ in $X$ is called \emph{convergent}\index{convergent}
+if there is 
+$x_\infty\in X$ such that $|x_\infty -x_n|\to 0$ as $n\to\infty$.  
+That is, for every $\eps > 0$, there is a natural number $N$ such that for all $n \geq N$, we have $$|x_\infty-x_n| < \eps.$$
+
+In this case we say that the sequence $(x_n)$ converges to $x_\infty$ 
+or $x_\infty$ is the limit of the sequence $(x_n)$
+and write 
+$x_\infty=\lim_{n\to\infty} x_n$
+or $x_n\to x_\infty$ as $n\to\infty$.
+\end{thm}
+
+Note that any converging sequence has unique limit.
+
+\begin{thm}{Definition}
+Let $X$ and $Y$ be metric spaces.
+A map $f\:X\to Y$ is called continuous if for any convergent sequence $x_n\to x_\infty$ in $X$,
+the sequence $y_n\z=f(x_n)$ converges to $y_\infty=f(x_\infty)$ in $Y$.
+
+Equivalently, $f\:X\to Y$ is continuous if for any $x\in X$ and any $\eps>0$
+there is $\delta>0$ such that 
+$$|x-x'|_X<\delta\ \Rightarrow\ |f(x)-f(x')|_Y<\eps.$$
+
+\end{thm}
+
+It is not hard to see that two definitions of continuity given above are equivalent;
+try to prove it.
+
+\section*{Open and closed sets}
+
+\begin{thm}{Definition}
+A subset $A$ of a metric space $X$ is called \emph{closed}\index{closed set} if whenever a sequence $(x_n)$ of points from $A$ converges in $X$, we have that $\lim_{n\to\infty} x_n \in A$.
+
+A set $\Omega \subset X$ is called \emph{open}\index{open set} if the complement $X \setminus \Omega$ is a closed set.
+Equivalently, $\Omega \subset X$ is open if for any $z\in \Omega$ 
+there is $\eps>0$ such that the \emph{ball}\index{ball}
+$$B_\eps(z)=\set{x\in X}{|x-z|<\eps}$$
+is contained in $\Omega$.
+\end{thm}
+
+
+The proof of equivalence of the two definitions of an open set given above is left to the reader.
+
+Note that whole space as well as the empty set are both open and closed at the same time.
+Also, the half-closed interval $[0,1)$ is neither open nor closed as a subset of the real line.
+
+
+\section*{Closure, interior and boundary}
+
+Note that the intersection of an arbitrary number of closed sets is closed.
+It follows that for any set $Q$ in a metric space $X$, there is a minimal closed set which contains $Q$;
+this set is called the \emph{closure of $Q$}\index{closure} and is denoted as $\Closure Q$.
+The closure of $Q$ can be obtained as the intersection of all closed sets $A\supset Q$.
+It is also equal to the set of all limit points for all sequences in $Q$.
+
+
+Similarly, the union of an arbitrary number of open sets is open.
+It follows that for any set $Q$ in a metric space, there is a maximal open set which is contained in $Q$;
+this set is called the \emph{interior of $Q$}\index{interior} and is denoted as $\Interior Q$.
+The interior of $Q$ can be obtained as the union of all open sets in $Q$.
+The interior of $Q$ can be also characterized as the set of all point $p\in Q$ such that $B_\eps(p)\subset Q$ for some $\eps>0$.
+
+Further the set-theoretic difference
+$$\Closure Q\backslash \Interior Q$$
+is called the \emph{boundary}\index{boundary} of $Q$ and is denoted as $\partial Q$ or $\partial_X Q$ if we want to emphasise that $Q$ is a subset of $X$.
+Clearly, $\partial Q$ is a closed set.
+A point $p$ lies in the boundary of $Q$ if and only if for any $\eps>0$, there are points $q\in Q$ and $q'\notin Q$ such that $|p-q|,|p-q'|<\eps$.
+
+\section*{Completeness}
+
+\begin{thm}{Definition}
+Let $X$ be a metric space.
+A sequence of points $x_1, x_2, x_3, \ldots$ in $X$ is called \emph{Cauchy}\index{Cauchy sequence}, 
+if for every $\eps>0$, 
+there is an integer $N$ such that 
+$$|x_m - x_n| < \varepsilon,$$
+for any $m, n > N$.
+\end{thm}
+
+\begin{thm}{Definition}
+A metric space $X$ is called \emph{complete}\index{complete space} if any Cauchy sequence in $X$ is convergent.
+\end{thm}
+
+\parbf{Examples:}
+\begin{itemize}
+\item The real line as well as Euclidean space are complete.
+\item The subspace of real line formed by the rational numbers is not complete.
+\end{itemize}
+
+\begin{thm}{Exercise}\label{ex:close-complete}
+Let $X$ be a complete metric space and $A\subset X$,
+then the subspace formed by $A$ is complete if and only if $A$ is a closed subset of $X$.
+\end{thm}
+
+
+
+\parbf{Completion.}
+For any metric space $X$, 
+there is a canonical construction of a complete metric space $\bar X$, 
+which contains $X$.
+The space $\bar X$ is called the \emph{completion}\index{completion} of $X$ and it is constructed as 
+a set of equivalence classes of Cauchy sequences in $X$. 
+
+For any two Cauchy sequences $\bm{x}=(x_n)$ and $\bm{y}=(y_n)$ in $X$.
+Note that from the triangle inequality, 
+we get that $\ell_n=|x_n-y_n|$ is a Cauchy sequence.
+Set
+$$|\bm{x}-\bm{y}| = \lim_{n\to\infty} |x_n-y_n|.$$
+This limit exists because 
+the space of real numbers is complete. 
+
+The defined function $|\bm{x}-\bm{y}|$ satisfies all axioms of metric but \ref{def:metric-space:zero};
+i.e., two different Cauchy sequences may have the distance $0$ 
+(the functions of that type are called \emph{pseudometrics}\index{pseudometric}). 
+But ``having distance 0'' is an equivalence relation on the set of all Cauchy sequences, and the set of equivalence classes, which we denote $\bar X$, is a metric space called the \emph{completion} of $X$.  
+
+The original space is embedded in this space via the identification of an element $x$ of $X$ with the equivalence class of the sequence with constant value $x$.  
+This defines a distance preserving map $X\to \bar X$, as required. 
+
+It is staightforward to verify all claims made about $\bar X$ and prove that the distance function given is well-defined and is indeed a metric on $\bar X$.
+
+
+
+
+
+
+
+\section{Topology}
+
+\begin{thm}{Definition}
+Let $X$ and $Y$ be metric spaces.
+A map $f\:X\to Y$ is called a \emph{homeomorphism}\index{homeomorphism}
+if it is a continuous bijection and the inverse $f^{-1}\:Y\to X$ is also continuous.
+
+Two metric spaces $X$ and $Y$ are called \emph{homeomorphic}\index{homeomorphic spaces} (briefly $X\hom Y$) if there is homeomorphism $f\:X\to Y$.
+\end{thm}
+
+It is straightforward to check that $\hom$ is an equivalence relation.
+
+Every isometry is a homeomorphism,
+but not every homeomorphism is an isometry.
+The homeomorphism class of metric space is much larger than its isometry class.
+
+\begin{thm}{Exercise}\label{ex:cont+biject}
+Give an example of a continuous bijection between metric spaces that is not a homeomorphism.
+\end{thm}
+
+Let $\rho$ and $\rho'$ be two metrics on the same set $X$.
+We say that $\rho$ is \emph{equivalent} to $\rho'$ if the identity map 
+$(X,\rho)\to (X,\rho')$ is a homeomorphism.
+In other words, $\rho$ is equivalent to $\rho'$ if and only if
+for any sequence of points $(x_n)$ and a point $x_\infty$ in $X$, we have
+$$\rho(x_n,x_\infty)\to 0\ \ \Leftrightarrow\ \ \rho'(x_n,x_\infty)\to 0.$$
+
+The class of equivalent metrics on a fixed set $X$
+is described completely by all open subsets of $X$;
+i.e., a metric $\rho$ is equivalent to a metric $\rho'$
+if and only if any set which is open with respect to the metric $\rho$ is open with respect to the
+metric $\rho'$ and visa versa.
+\begin{thm}{Exercise}
+Prove the last statement. 
+\end{thm}
+
+The set of open sets in $X$ is called the \emph{topology}\index{topology} of $X$.
+A topology has to satisfy the following axioms:
+\begin{enumerate}
+\item the union of an arbitrary number of open sets is open,
+\item the intersection of a finite number of open sets is open
+\item the empty set and $X$ are both open sets
+\end{enumerate}
+A set with chosen topology is called \emph{topological space}.
+
+Many of concepts described above can be formulated in terms of toplogy.
+For example a map $f\: X\to Y$ is continuous if and only if for any open set $U\subset Y$,
+the preimage $f^{-1}(U)$ is an open set in $X$.
+Compactness also can be described entirely in topological terms;
+see Theorem~\ref{thm:compact+covering}.
+On the other hand, completeness is not a topological property,
+for example the space $[0,1)$ is homeomorphic%
+\footnote{say $x\mapsto \tfrac x{1-x}$ is a homeomorphism}
+to $[0,\infty)$, but $[0,1)$ is not complete whereas $[0,\infty)$ is.
+
+Given a topological space $X$, 
+we may say ``consider a metric $\rho$ on $X$'' 
+meaning that $\rho$ is a metric which describe the topology of $X$.
+In the case that $X$ is a metric space,
+we mean that $\rho$ is equivalent to the original metric on $X$. 
+
+\begin{thm}{Definition}
+A map $f\:X\to Y$ is called an \emph{embedding}\index{embedding}
+if $f$ gives a homeomorphism of $X$ to its image $f(X)$ in $Y$.
+\end{thm}
+
+Note that any distance preserving map is an embedding,
+but the converse is not true. 
+
+\parbf{Remarks.}
+These definitions are a starting point of so called \emph{point-set topology};
+but this is as far as we need to go in this direction.
+We will only use the fact that any metric space is naturally a topological space.
+
+A topological space which can appear this way is called \emph{metrizable}%
+\index{metrizable topological space}.
+Not every topological space is metrizable;
+i.e., one can find a set $X$ with a collection of \textit{open sets}
+which satisfies above 3 axioms, but there is no metric on $X$ for which these are the open sets; 
+we will not consider such monsters in these lectures.
+
+
+
+\section{Compactness}
+
+\begin{thm}{Definition}
+A metric space $X$ is \emph{compact}\index{compact space} if any sequence of points in $X$ contains a convergent subsequence.
+
+If a subset $A$ in a metric space forms a compact subspace then we say that $A$ is a \emph{compact subset}\index{compact subset} of $X$.
+\end{thm}
+
+
+The proofs of the following properties are left to the reader;
+these proofs can be also found in many books,
+for example in \cite{rudin}
+(which is an excellent book).
+
+\parbf{Properties:} %??? remove those we do not use???
+\begin{itemize}
+\item (Heine--Borel theorem.) A subset of Euclidean space is compact if and only if it is both closed and bounded.
+\item Any closed subset of a compact space is compact.
+\item\label{compact=>closed} Any compact subset of a metric space is closed.
+\item Any compact metric space is complete.
+\item The Cartesian product of two compact spaces $X\times Y$ equipped with the metric 
+$$|(x_0,y_0)-(x_1,y_1)|\df \max\{|x_0-x_1|,|y_0-y_1|\}$$
+is compact.
+\item \label{ex:compact-image}
+If $f\: X \to Y$ is continuous map between metric spaces and $X$ is compact, then the image $f(X)$ is a compact subset of $Y$.
+\item\label{ex:compact-homeo}
+If $f\: X \to Y$ is a continuous bijection between metric spaces and $X$ is compact, then the inverse map $f^{-1}\: Y \to X$ is continuous.
+\item\label{ex:EVT}
+(Extreme Value Theorem) Prove that if $X$ is a compact metric space, then any continuous function $f\: X \to \mathbb{R}$ attains a global maximum value at some point of $X$.  That is, there exists $x \in X$ such that $f(y) \leq f(x)$ for all $y \in X$.
+(Here, it is understood that the metric we are considering on $\mathbb{R}$ is the usual Euclidean metric.)
+\end{itemize}
+
+\begin{thm}{Definition}
+A subset $A$ of a metric space $X$ is called \emph{bounded}\index{bounded set} if for one (and therefore any) point $x$ there is a constant $D<\infty$ such that 
+$$|x-a|_X\le D$$ for any $a\in A$.
+\end{thm}
+
+
+\begin{thm}{Definition}\label{def:proper}
+A metric space $X$ is called \emph{proper}\index{proper space} if any bounded, 
+closed set in $X$ is compact.
+\end{thm}
+
+
+\subsection*{Nets and packings}
+
+\begin{thm}{Definition}
+Let $X$ be a metric space and let $\eps>0$.
+A set $A\subset X$ is called an \emph{$\eps$-net of $X$}\index{net} if for any point $x\in X$ there is a point $a\in A$
+such that $|x-a|\le\eps$.
+\end{thm}
+
+\begin{thm}{Definition}
+Let $X$ be a metric space and let $\eps>0$.
+A set of points $x_1,x_2,\dots,x_n\in X$ such that $|x_i-x_j|>\eps$ for all $i\not=j$ is called an \emph{$\eps$-packing}\index{packing}.
+
+The supremum of all integers $n$ for which 
+there is a $\eps$-packing $x_1,x_2,\dots,x_n\z\in X$ 
+is denoted as $\pack_\eps X$.
+($\pack_\eps$ takes integer value or $\infty$.)
+
+If $n=\pack_\eps X$ is finite,
+then an $\eps$-packing $x_1,x_2,\dots,x_n\in X$ 
+is called a \emph{maximal $\eps$-packing}\index{maximal $\eps$-packing}.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:packing=net}
+Any maximal $\eps$-packing is an $\eps$-net.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:net=2packing}
+Let $\{a_1,a_2,\dots,a_n\}$ be a finite $\eps$-net in a metric space $X$.
+Show that $\pack_{2\cdot\eps}X\le n$.
+\end{thm}
+
+\begin{thm}{Theorem}\label{thm:finite_pack=compact}
+Let $X$ be a complete metric space.
+Then the following conditions are equivalent:
+
+\begin{subthm}{thm:finite_pack=compact:compact}
+$X$ is compact;
+\end{subthm}
+
+\begin{subthm}{thm:finite_pack=compact:pack}
+$\pack_\eps X$ is finite for any $\eps>0$;
+\end{subthm}
+
+\begin{subthm}{thm:finite_pack=compact:net}
+$X$ is \emph{totally bounded}\index{totally bounded space};
+i.e., for any $\eps>0$ there is a finite $\eps$-net in $X$.
+\end{subthm}
+
+\end{thm}
+
+\parit{Proof; (\ref{SHORT.thm:finite_pack=compact:compact})$\Rightarrow$(\ref{SHORT.thm:finite_pack=compact:net}).}
+Assume $X$ has no finite $\eps$-net.
+Then for any point array $z_1,z_2,\dots,z_{n-1}$ in $X$
+there is a $z_n\in X$
+such that $|z_i-z_n|>\eps$ for any $i<n$.
+
+Applying the above statement inductively, we can construct an infinite sequence $(z_n)$ in $X$
+such that $|z_i-z_j|>\eps$ for all $i\not=j$.
+Therefore $(z_n)$ has no convergent subsequence,
+a contradiction.
+
+\parit{(\ref{SHORT.thm:finite_pack=compact:net})$\Leftrightarrow$(\ref{SHORT.thm:finite_pack=compact:pack}).}
+Follows from exercises \ref{ex:net=2packing} and \ref{ex:packing=net}.
+
+\parit{(\ref{SHORT.thm:finite_pack=compact:net})$\Rightarrow$(\ref{SHORT.thm:finite_pack=compact:compact}).}
+Set $\eps_k=\frac1{2^k}$.
+For each $k$, 
+let $\{z_{1,k},z_{2,k},\dots,z_{n_k,k}\}$ be an $\eps_k$-net.
+Note that for each $k$, the collection of balls
+$$\bar B_{\eps_k}(z_{i,k})=\set{x\in X}{|x-z_i|\le \eps_k}$$
+cover all of $X$.
+
+To show $X$ is compact, given an infinite sequence $x_1,x_2,\dots$ in $X$, we must find a convergent subsequence.
+We shall apply a diagonal process to choose a subsequence
+$x_{n_1},x_{n_2},\dots$  with the following property:
+\textit{for each $k$ there is $i_k$ such that
+$x_{n_m}\z\in\bar  B_{\eps_k}(z_{i_k,k})$ for all $m\ge k$}.
+
+For the first step, note that since the finite collection of balls $\bar B_{\eps_1}(z_{i,1})$ cover $X$, there must be an index $i_1$ such that $\bar B_{\eps_1}(z_{i_1,1})$ contains infinitely many terms of our sequence $(x_n)$.  Let $F_1 = \bar B_{\eps_1}(z_{i_1,1})$. Choose an integer $n_1$ such that $x_{n_1} \in F_1$.
+
+For the second step, since the balls $\bar B_{\eps_2}(z_{i,2})$ cover $X$, in particular they cover $F_1$.  Since $F_1$ contains infinitely many points of our sequence $(x_n)$, there must be an index $i_2$ such that $F_1 \cap \bar B_{\eps_2}(z_{i_2,2})$ also contains infinitely many of the $x_n$.  Let $F_2 = F_1 \cap \bar B_{\eps_2}(z_{i_2,2})$ and choose $n_2 > n_1$ such that $x_{n_2} \in F_2$.
+
+Proceeding inductively at the $k$-th step, we know that the balls $\bar B_{\eps_k}(z_{i,k})$ cover $X$ and hence $F_{k-1}$, which contains infinitely many terms of our sequence $(x_n)$.  So there must exist $i_k$ so that $F_{k-1} \cap \bar B_{\eps_k}(z_{i_k,k})$ also contains infinitely many of the $x_n$.  Let $F_k = F_{k-1} \cap \bar B_{\eps_k}(z_{i_k,k})$ and choose $n_k > n_{k-1}$ with $x_{n_k} \in F_k$.
+
+Note that $F_{k+1} \subseteq F_k$, so that for all $m \geq k$, $x_{n_m} \in F_k \subseteq B_{\eps_k}(z_{i_k,k})$ as desired.  It follows that $(x_{n_k})$ is a Cauchy sequence.
+Since $X$ is complete, 
+$(x_{n_k})$ converges, and we have proven that $X$ is compact.
+\qeds
+
+\section*{Lebesgue's number}
+
+The results in this section will not be used directly further in the lectures.
+We present it only to give a connection to standard definition of comapct space.
+In addition, a similar argument will be used once in the proof of Hopf--Rinow theorem (\ref{thm:Hopf-Rinow}).
+
+\medskip
+
+Let $X$ be a metric space, a collection of open subsets $\{U_\alpha\}_{\alpha\in\mathcal A}$ is called \emph{open cover}\index{open cover} of $X$ if 
+$$X=\bigcup_{\alpha\in A}U_\alpha.$$
+
+
+\begin{thm}{Lebesgue's number lemma}\label{lem:lebesgue-number}
+Let $\{U_\alpha\}_{\alpha\in\mathcal A}$ be an open cover of a compact metric space $X$.
+Then there is an $\eps>0$ (it is called a \emph{Lebesgue number}\index{Lebesgue number} of the cover)
+such that for any $x\in X$ the ball $B_\eps(x)\subset U_\alpha$ for some $\alpha\in\mathcal{A}$.
+\end{thm}
+
+\parit{Proof.}
+Given $x\in X$, denote by $\rho(x)$ the maximal value $R>0$ such that $B_R(x)\subset U_\alpha$ for some $\alpha\in\mathcal{A}$.
+Clearly $\rho(x)>0$ for any $x\in X$.
+
+Without loss of generality, we may assume $\rho(x)<\infty$ for one (and therefore any) $x\in X$.
+Otherwise the conclusion of the lemma holds for arbitrary $\eps>0$.
+
+Note  $$|\rho(x)-\rho(y)|\le |x-y|$$ for any $x,y\in X$;
+in particular $\rho$ is continuous.
+Then the conclusion of the lemma holds for 
+$$\eps=\tfrac12\cdot\min_{x\in X}\{\rho(x)\}.$$
+\qedsf
+
+
+As a corollary of Lebesgue's number lemma, 
+we obtain an alternative definition of compact metric space using open coverings.
+This definition is the standard definition of compact spaces.
+Since it use only the notion of open sets, it can be generalized to so called topological spaces.
+
+
+\begin{thm}{Theorem}\label{thm:compact+covering}
+A metric space $X$ is compact if and only if any open cover of $X$ contains a finite subcover.
+
+I.e., for any open cover $\{U_\alpha\}_{\alpha\in\mathcal A}$ of $X$ there is a finite set 
+$\{\alpha_1,\alpha_2,\dots,\alpha_n\}\subset \mathcal A$ such that 
+$$X=\bigcup_{i=1}^nU_\alpha.$$
+ 
+\end{thm}
+
+\parit{Proof; ``if''-part.}
+First let us show that $X$ is complete.
+Assume contrary;
+i.e., there is a Cauchy sequence $(x_n)$ which is not converging.
+Set $r_n=\sup_{m\ge n}\{|x_n-x_m|_X\}$ and
+$U_n=X\backslash \bar B_{r_n}(x_n)$.
+Since $x_n$ does not converge, we have $$\bigcap_{n=1}\bar B_{r_n}(x_n)=\emptyset,$$
+or equivalently $\{U_n\}_{n=1}^\infty$ is a cover of $X$.
+On the other hand it is easy to see that any finite sub-collection of $\{U_n\}_{n=1}^\infty$ does not contain $x_n$ for all large $n$, a contradiction. 
+
+
+Fix $\eps>0$ and consider cover of $X$ by open balls $\{B_\eps(x)\}_{x\in X}$.
+Note that if $\{B_\eps(x_i)\}_{i=1}^n$ is a finite subcover then $\{x_1,x_2,\dots,x_n\}$ forms an $\eps$-net in $X$. Apply Theorem~\ref{thm:finite_pack=compact}.
+
+\parit{``only if''-part.}
+Let $\eps>0$ be a Lebesgue's number of the covering.
+Choose a finite $\tfrac\eps2$-net $\{x_1,x_2,\dots,x_n\}$ of $X$.
+Clearly 
+$$\bigcup_{i=1}^n B_\eps(x_i)=X.\eqlbl{eq:balls-cover-X}$$
+For each $x_i$ choose $U_{\alpha_i}$ such that $U_{\alpha_i}\supset B_\eps(x_n)$.
+From \ref{eq:balls-cover-X}, 
+$$\bigcup_{i=1}^n U_{\alpha_i}=X.$$
+\qedsf
+
+
+\section{Length structure}
+
+Recall that \emph{real interval} is an arbitrary convex set of real line;
+i.e. a set $\II$ such that $a,b\in \II$ and $a<x<b$ implies $x\in\II$.
+For example, given two real numbers $a<b$ we may consider the following intervals
+\begin{align*}
+[a,b]
+&\df
+\set{x\in \RR}{a\le x\le b},
+&
+[a,b)
+&\df
+\set{x\in \RR}{a\le x< b},
+\\
+(a,b]
+&\df
+\set{x\in \RR}{a< x\le b},
+&
+(a,b)
+&\df
+\set{x\in \RR}{a< x< b}.
+\end{align*}
+In addition to the bounded intervals described above, there are unbounded intervals
+\begin{align*}
+[a,\infty)
+&\df
+\set{x\in \RR}{a\le x},
+&
+(a,\infty)
+&\df
+\set{x\in \RR}{a< x},
+\\
+(-\infty,a]
+&\df
+\set{x\in \RR}{a\ge x},
+&
+(-\infty,a)
+&\df
+\set{x\in \RR}{a> x}.
+\end{align*}
+Finally the whole real line is also an interval
+$$(-\infty,\infty)=\RR.$$
+
+\begin{thm}{Definition}\label{def:curve}
+A \emph{curve}\index{curve} is a continuous mapping $\alpha\:\II\to X$,
+where $\II$ is a real interval and $X$ is a metric space. 
+
+If $\II=[a,b]$ and $$\alpha(a)=p,\ \ \alpha(b)=q,$$
+we say that $\alpha$ is a \emph{curve from $p$ to $q$}\index{curve from $p$ to $q$}.
+\end{thm}
+
+\begin{thm}{Definition}\label{def:length}
+Let $\alpha\:\II\to X$ be a curve. Define \emph{length}\index{length of curve} of $\alpha$ as
+\begin{align*}
+\length \alpha
+&= 
+\sup \{|\alpha(t_0)-\alpha(t_1)|+|\alpha(t_1)-\alpha(t_2)|+\dots
+\\
+&\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \dots+|\alpha(t_{k-1})-\alpha(t_k)|\}. 
+\end{align*}
+where the supremum is taken over all $k$ and all sequences $t_0 < t_1 < \cdots < t_k$ in $\II$.
+
+A curve is called \emph{rectifiable}\index{rectifiable curve} if its length is finite.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:nonrectifiable-curve}
+Construct a curve $\alpha\:[0,1]\to\RR^2$ which is not rectifiable.
+\end{thm}
+
+
+\begin{thm}{Semicontinuity of length}\label{thm:length-semicont}
+Length is a lower semi-continuous functional on the space of curves
+$\alpha\:\II\to X$ with respect to point-wise convergence. 
+
+In other words: assume that a sequence
+of curves $\alpha_n\:\II\to X$ converges point-wise 
+to a curve $\alpha_\infty\:\II\to X$;
+i.e., for any fixed $t\in\II$, we have $\alpha_n(t)\to\alpha_\infty(t)$ as $n\to\infty$. 
+Then 
+$$\liminf_{n\to\infty} \length\alpha_n \ge \length\alpha_\infty.\eqlbl{eq:semicont-length}$$
+
+\end{thm}
+
+
+
+\begin{wrapfigure}{r}{33mm}
+\begin{lpic}[t(-5mm),b(0mm),r(0mm),l(0mm)]{pics/stairs(0.3)}
+%\lbl[lb]{162,180;$\alpha_0$}
+%\lbl[lb]{82,150;{\small $\alpha_1$}}
+%\lbl[lb]{42,130;{\tiny $\alpha_2$}}
+\end{lpic}
+\end{wrapfigure}
+
+Note that the inequality \ref{eq:semicont-length} might be strict.
+For example the diagonal of unit square say $\alpha_\infty$ (red on the picture)
+can be  approximated by a sequence of stairs-like
+polygonal curves $\alpha_n$
+with sides parallel to the sides of the squre,
+$\alpha_6$ is black the picture.
+In this case
+$\length\alpha_\infty=\sqrt{2}$
+and $\length\alpha_n=2$ for all $n$.
+
+\parit{Proof.}
+Fix $\eps > 0$ and choose a sequence $t_0<t_1<\dots<t_k$ in $\II$
+such that 
+\begin{align*}
+\length\alpha_\infty-
+(|\alpha_\infty(t_0)-\alpha_\infty(t_1)|&+|\alpha_\infty(t_1)-\alpha_\infty(t_2)|+\dots
+\\
+&\dots+|\alpha_\infty(t_{k-1})-\alpha_\infty(t_k)|)<\eps
+\end{align*}
+
+
+Set 
+\begin{align*}\Sigma_n
+&\df
+|\alpha_n(t_0)-\alpha_n(t_1)|+|\alpha_n(t_1)-\alpha_n(t_2)|+\dots
+\\
+&\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \dots+|\alpha_n(t_{k-1})-\alpha_n(t_k)|.
+\\
+\Sigma_\infty
+&\df
+|\alpha_\infty(t_0)-\alpha_\infty(t_1)|+|\alpha_\infty(t_1)-\alpha_\infty(t_2)|+\dots
+\\
+&\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \dots+|\alpha_\infty(t_{k-1})-\alpha_\infty(t_k)|.
+\end{align*}
+Note that $\Sigma_n\to \Sigma_\infty$ as $n\to\infty$
+and $\Sigma_n\le\length\alpha_n$ for each $n$.
+Hence
+$$\liminf_{n\to\infty} \length\alpha_n \ge \length\alpha_\infty-\eps.$$
+Since $\eps>0$ is arbitrary, we get \ref{eq:semicont-length}.\qeds
+
+\section*{Length spaces}%???Change to length spaces; do we need almost-mid-point property???
+
+\begin{thm}{Definition}
+A metric space $X$ is called \emph{length space}\index{length space} if for any two points $x,y\in X$ and any $\eps>0$, there is a curve $\gamma$ from $x$ to $y$ such that
+$$\length \gamma<|x-y|_X+\eps.$$
+
+\end{thm}
+
+\parbf{Examples.} The real line as well as higher dimensional Euclidean spaces are length spaces.
+A discrete space (with at least two points) is not a length space.
+Also, a circle in the plane forms a subspace of a length space which is not a length space.
+
+
+\parbf{Induced length metric.}
+Given a complete metric space $(X,\rho)$, 
+consider the function $\hat \rho\:X\z\times X\to\RR$ defined as
+$$\hat \rho(x,y)\df\inf_\alpha\{\length\alpha\}$$
+where the infimum is taken along all the curves $\alpha$ from $x$ to $y$.
+
+It is straightforward to see that $\hat \rho\:X\times X\to\RR$ satisfies all conditions of the metric if $\hat \rho(x,y)<\infty$ for all $x,y\in X$.
+In this case, the metric $\hat \rho$ will be called the \emph{induced length metric}\index{induced length metric} of $\rho$.
+
+\begin{thm}{Exercise}\label{ex:length-is-not-homeo}
+Construct a metric space $(X,\rho)$ such that the length  metric $\hat \rho$ is finite
+but $(X,\rho)$ is not homeomorphic to $(X,\hat \rho)$.
+\end{thm}
+
+
+ 
+\section*{Geodesics}
+
+\begin{thm}{Definition}\label{def:geodesic}
+ A curve $\alpha\:\II\to X$ is called a \emph{geodesic}\index{geodesic}%
+\footnote{formally our ``geodesic'' should be called ``unit-speed minimizing geodesic'',
+and the term ``geodesic'' is reserved for curves which \emph{locally} satisfy the identity
+$$|\alpha(t_0)-\alpha(t_1)|_X=\Const\cdot|t_0-t_1|$$
+for some $\Const\ge 0$.}
+ if it is a distance preserving map;
+i.e., if 
+$$|\alpha(t_0)-\alpha(t_1)|_X=|t_0-t_1|$$
+for any $t_0,t_1\in\II$.
+
+The metric space $X$ is called \emph{geodesic}\index{geodesic space}
+if any two points in $X$ can be joined by a geodesic. 
+\end{thm}
+
+
+
+
+
+\begin{thm}{Exercise}\label{ex:proper=>geodesic}
+Show that any proper length space is geodesic.
+\end{thm}
+
+\begin{thm}{Definition}
+A metric space $X$ is called \emph{locally compact}\index{locally compact space} if for any $x\in X$ there is an $\eps>0$ such that the closed ball
+$$\bar B_\eps(x)=\set{y\in X}{|x-y|_X\le \eps}$$
+is compact.
+\end{thm}
+
+Note that any proper metric space is locally compact (see Definition~\ref{def:proper}).
+The converse does not hold in general.
+For example, any infinite set equipped with the discrete metric is locally compact, but not proper.
+
+\begin{thm}{Exercise} \label{ex:lc-not-complete}
+Give an example of metric space which is locally compact, but not complete. 
+\end{thm}
+
+
+\begin{thm}{Hopf--Rinow theorem}\label{thm:Hopf-Rinow}
+Any complete, locally compact length space is proper.
+\end{thm}
+
+\parit{Proof.}
+Let $X$ be a locally compact length space.
+Given $x\in X$, denote by $\rho(x)$ the supremum of all $R>0$ such that
+the closed ball $\bar B_R(x)$ is compact.
+Since $X$ is locally compact 
+$$\rho(x)>0\ \ \text{for any}\ \ x\in X.\eqlbl{eq:rho>0}$$
+It is sufficient to show that $\rho(x)=\infty$ for some (and therefore any) point $x\in X$.
+
+Assume contrary; i.e. $\rho(x)<\infty$.
+Let us show that the closed ball $W=\bar B_{\rho(x)}(x)$ is compact.
+To prove this claim, notice that the closed ball $\bar B_{\rho(x)}(x)$
+is a closed set,
+therefore it  forms a complete subspace of $X$ (see Exercise~\ref{ex:close-complete}).
+Further, since $X$ is a length space, for any $\eps>0$, the set $\bar B_{\rho(x)-\eps}(x)$ is a compact $\eps$-net in $\bar B_{\rho(x)}(x)$;
+it remains to apply Problem~\ref{pr:compact-net}.
+
+Next we will reapeat the argument in the Lebesgue number lemma (\ref{lem:lebesgue-number}).
+
+Note that if $\rho(x)+|x-y|<\rho(y)$, then 
+$\bar B_{\rho(x)+\eps}(x)$ is a closed subset of $\bar B_{\rho(y)}(y)$ for some $\eps>0$.
+In this case compactness of $\bar B_{\rho(y)}(y)$ implies compactness of $\bar B_{\rho(x)+\eps}(x)$, a contradiction.
+Applying the same observation again switching $x$ and $y$, we get 
+$$|\rho(x)-\rho(y)|\le |x-y|_X;$$
+in particular $\rho$ is a continuous function.
+Set $\eps=\min_{y\in W}\{\rho(y)\}$; 
+the minimum is defined since $W$ is compact.
+From \ref{eq:rho>0}, we have $\eps>0$.
+
+Choose a finite $\tfrac\eps{10}$-net $\{a_1,a_2,\dots,a_n\}$ in $W$.
+The union $U$ of the closed balls $\bar B_\eps(a_i)$ is compact.
+Clearly $\bar B_{\rho(x)+\frac\eps{10}}(x)\subset U$.
+Therefore $\bar B_{\rho(x)+\frac\eps{10}}(x)$ is compact
+or $\rho(x)>\rho(x)$, 
+a contradiction.\qeds
+
+
+
+
+
+
+
+
+\section{Polyhedral spaces}
+
+\parbf{Simplex.}
+Let $\{v_0,v_1,\dots,v_m\}$ be a set of points in $\RR^N$ 
+such that the $m$ vectors 
+$$v_1-v_0, v_2-v_0,\dots,v_m-v_0$$ 
+are linearly independent (in particular $N\ge m$).
+Then the convex hull 
+$$\Delta^m=\Conv(v_0,v_1,\dots,v_m)$$
+is called an \emph{$m$-dimensional simplex}\index{simplex}.
+
+So,
+a 0-dimensional simplex is a one-point set; 
+a 1-dimensional simplex is a line segment;
+a 2-dimensional simplex is a triangle;
+a 3-dimensional simplex is a tetrahedron.
+
+If $\Delta^m$ as above
+then the convex hull of any $(k+1)$-point subset of $\{v_0,v_1,\dots,v_m\}$ also forms a $k$-dimensional simplex which will be called \emph{face}\index{face} of $\Delta^m$.
+
+
+\parbf{Barycentric coordinates.}
+Let $\Delta^m=\Conv(v_0,v_1,\dots,v_m)$ be an $m$-dimensional simplex.
+Note that any point $x\in \Delta^m$ can be uniquely presented as
+$$x=\lambda_0\cdot v_0+\lambda_1\cdot v_1+\dots+\lambda_n\cdot v_m$$
+where $\lambda_0,\lambda_1,\dots,\lambda_m\ge 0$ and
+$\lambda_0+\lambda_1+\dots+\lambda_n=1$.
+The array $(\lambda_0,\lambda_1,\dots,\lambda_m)$ will be called the \emph{barycentric coordinates}\index{barycentric coordinates} of the point $x$.
+
+\begin{thm}{Exercise}\label{ex:convex-hull}
+Verify the claim that $$\Conv(v_0,v_1,\dots,v_m) = \set{\sum_{i=0}^m \lambda_i \cdot v_i}{\lambda_i \ge 0 \textrm{ and } \sum_{i=0}^m \lambda_i = 1}.$$
+
+\end{thm}
+
+
+
+
+\section*{Simplicial complexes}
+
+A \emph{geometric simplicial complex}\index{geometric simplicial complex} is defined as a finite collection $\mathcal{K}$
+of simplices in $\RR^n$ that satisfies the following conditions:
+\begin{itemize}
+\item Any face of a simplex from $\mathcal{K}$ is also in $\mathcal{K}$.
+\item The intersection of any two simplices $\Delta_1$ and $\Delta_2\in \mathcal{K}$ is either an empty set or it 
+is a common face in $\Delta_1$ and $\Delta_2$.
+\end{itemize}
+
+Note that to describe a geometric simplicial complex $\mathcal{K}$ in $\RR^n$ 
+it is sufficient to give a finite set of vertices $V=\{v_1,\dots, v_k\}$ of all the simplices in $\mathcal{K}$
+and the set of subsets $\mathcal{S}$ of $V$ 
+such that $X\in \mathcal{S}$ if and only if there is a simplex of $\mathcal{K}$ with vertices in $X$.
+The information encoded in $\mathcal{S}$ is called \emph{abstract simplicial complex}.
+
+More formally, an \emph{abstract simplicial complex} 
+is a family $\mathcal{S}$ of subsets in a finite set $V$
+such that for every set $X$ in $\mathcal{S}$, 
+and every subset $Y\subset  X$, 
+$Y$ also belongs to $\mathcal{S}$
+(in particular $\emptyset\in\mathcal{S}$).
+
+As it was noted above, 
+a geometric simplicial complex $\mathcal{K}$
+defines an abstract simplicial complex on the set of the vertices of $\mathcal{K}$.
+On the other hand, 
+given an abstract simplicial complex $\mathcal{S}$ on finite set $V=\{v_1,\dots, v_k\}$ 
+one can construct geometric simplicial complex
+in $\RR^k$, by taking identifying $V$ with a  basis of $\RR^k$.
+
+\parbf{Underlying set.}
+We say that a point $x$ belongs to geometric simplicial complex $\mathcal{K}$ if it belongs to one of its simplices.
+The set of all points of  $\mathcal{K}$ is called \emph{underlying set} of $\mathcal{K}$;
+it will be denoted as $|\mathcal{K}|$.
+
+If $\mathcal{K}$ is a simplicial complex
+and $\{v_1,v_2,\dots,v_k\}$ is the set of all its vertices
+then any point $x$ in $\mathcal{K}$ can be described 
+through barycentric coordinates $(\lambda_1,\lambda_2,\dots,\lambda_n)$, so $\lambda_1+\lambda_2+\dots+\lambda_n=1$,
+$\lambda_i\ge 0$ for any $i$ and 
+for any $x$ the set $X=\set{i}{\lambda_i>0}$
+belong to the corresponding abstract complex. 
+
+\parbf{Dimension.}
+The dimension  of geometric simplicial complex is defined as the maximal dimension of all of its simplices.
+
+\section*{Polytopes}
+
+A subset $P$ of $\RR^n$ is called \emph{polytope} if it can be presented as 
+underlying set of some geometric simplicial complex.
+Given a polytope $P$,
+any simplicial complex $\mathcal{K}$ with the underlying set $P$ is called \emph{triangulation}%
+\footnote{The term is a bit misleading; 
+the triangulation may contain simplexes of arbitrary dimension}
+of $P$.
+Note that if polytope $P$ contains infinite number of points then it has many distinct triangulations.
+
+\begin{thm}{Exercise}
+Let $P$ be a polytope.
+Show that dimension of any triangulation of $P$ has the same dimension.
+\end{thm}
+
+The exercise above makes possible to define
+the dimension of polytope is defined 
+as the dimension of its triangulation.
+
+With a slight abuse of notation we may say that a simplicial complex $\mathcal{K}$ is homeomorphic to simplicial complex $\mathcal{K}'$
+if their underlying spaces are homeomorphic.
+A metric (or topological) space $Q$ is called \emph{topological polytope} if it admits a homeomorphsm from a polytope say $P$.
+Such a homeomorphism together with triangulation of $P$
+is called \emph{topological triangulation} of $Q$.  
+
+\begin{thm}{Exercise}
+Find a topological triangulation of sphere%
+\footnote{The unit $n$-sphere is $\SS^n = \set{(x_1, x_2, \ldots, x_{n+1}) \in \mathbb{R}^{n+1}}{x_1^2 + x_2^2 + \ldots + x_{n+1}^2 = 1} $.} $\SS^2$ with minimal number of triangles.
+\end{thm}
+
+You will need at least 14 triangles 
+to do topological triangulation the torus $\TT^2=\SS^1\times\SS^1$.
+Finding such triangulation might be interesting, but proving its minimality is not fun.
+
+The dimension of topological polytope is
+ also defined as the maximal dimension of the 
+simplices in its triangulation.
+This value also the same for any triangulation,
+but the proof requires Domain Invariance Theorem (\ref{thm:domain-invariance}).
+
+\section*{Polyhedral spaces}
+
+Informally speaking, a \emph{polyhedral space} is a length space which admit a triangulation such that each simplex is isometric to a simplex in Euclidean space.
+
+More formally.
+Let $\Delta=\Conv(v_0,v_1,\dots,v_k)$ be a $k$-dimensional simplex. 
+A map $f\:\Delta\to\RR^m$ is called \emph{linear} if
+$$f(x)
+=
+\lambda_0\cdot f(v_0)+\lambda_1\cdot f(v_1)+\dots+\lambda_k\cdot f(v_k)$$
+for any point $x\in \Delta$ with barycentric coordinates $(\lambda_0,\lambda_1,\dots,\lambda_k)$.
+
+A metric $\rho$ on simplex $\Delta$ is called \emph{linear} 
+if there is a liner map $f\:\Delta\to\RR^m$ such that
+$$\rho(x,y)=|f(x)-f(y)|_{\RR^m}$$
+
+A metric on simplicial complex is called linear if its restriction to each simplex is linear.
+
+A length space $P$ is called \emph{polyhedral space} it is isometric to a simplicial complex $\mathcal{S}$ with linear metric $d$.
+In this case an isometry is $\iota\:(\mathcal{S},d)\to P$ is called \emph{triangulation of polyhedral sapce}.
+
+\begin{thm}{Exercise}
+ Show that any convex nondegenerate polyhedron%
+\footnote{i.e., a convex hull of finite number of points which has nonempty interior.}
+ in $\RR^m$ is an $m$-dimensional polyhedral space.
+\end{thm}
+
+\begin{thm}{Exercise}\label{ex:bry-is-poly}
+Show that boundary any convex nondegenerate polyhedron%
+\footnotemark[\value{footnote}] in $\RR^m$ equipped with its length metric is an $(m-1)$-dimensional polyhedral space.
+\end{thm}
+
+
+\begin{thm}{Exercise}\label{ex:dim-poly}
+All triangulations of a given polyhedral space
+have the same dimension.
+\end{thm}
+
+As it follows from the above exercise,
+the dimension of polyhedral space is defined as dimension of its triangulation.
+
+
+
+
+
+
+
+\section*{Exercises}
+
+\begin{pr}\label{pr:nonisometry}
+Give an example of a metric space $X$ with a distance preserving map $f\:X\z\to X$ which is not a bijection. 
+\end{pr}
+
+\begin{pr}\label{pr:non-contracting=>isometry}
+Let $K$  be a compact metric space and
+$f\:K\to K$ be a non-contracting map;
+i.e., 
+$$|f(x)-f(y)|_K\ge |x-y|_K$$
+for any $x,y\in K$.
+Prove that $f$ is an isometry.
+\end{pr}
+
+
+
+\begin{pr}\label{ex:kuratowski}
+Let $X$ be a metric space.
+Given $z\in X$, denote by $\Dist_z$ the function $X\to\RR$ defined as $\Dist_z(x)=|x-z|_X$.
+
+Fix $x\in X$.
+Show that the map 
+$$K_x\: X\to\mathcal{F}(X)$$ 
+defined by 
+$$K_x(z) = \Dist_z-\Dist_x$$
+is distance preserving;
+i.e. 
+$$|K_x(y)-K_x(z)|_{\mathcal{F}(X)}=|y-z|_X$$
+for any $y,z\in X$.
+\end{pr}
+
+{\it The map $K_x\: X\to\mathcal{F}(X)$ is called the \emph{Kuratowski embedding with base $x$}\index{Kuratowski embedding}.
+
+If $X$ has bounded diameter, i.e., if there is a constant $D<\infty$,
+such that $|z-y|\le D$ for any $z,y\in X$,
+then $\Dist_x$ is bounded for any $x\in X$
+and the map 
+$$K\:X\to\mathcal{F}(X)$$ given by 
+$$K(x) = \Dist_x $$ 
+is also distance preserving.
+The latter map is also called the \emph{Kuratowski embedding}\index{Kuratowski embedding}.}
+
+\begin{pr}\label{pr:compact->F_N}
+Show that any compact space is isometric to a subset of $\mathcal{F}(\NN)$;
+i.e., the space of bounded sequences with the metric induced by sup-norm.
+\end{pr}
+
+\begin{pr}\label{pr:complition-kuratowski}
+Show that completion of any metric space is isometric to the closure of its image under Kuratowski embedding.
+\end{pr}
+
+\begin{pr}\label{pr:almost-min}
+Let $X$ be a complete metric space and $\rho\:X\to \RR$ be a continuous positive function.
+
+Show that there is $x\in X$ such that
+$$\rho(y)>\tfrac{99}{100}\cdot\rho(x)$$ 
+for any $y\in B_{\rho(x)}(x)$.
+\end{pr}
+
+\begin{pr}\label{pr:compact-net}
+Show that a complete metric space $X$ is compact if for any $\eps>0$ there is a compact $\eps$-net in $X$.  
+\end{pr}
+
+
+
+
+
+
+\begin{pr}\label{pr:trig-inq=>interval}
+Assume that for any three points $x$, $y$ and $z$ of a compact length metric space $X$ we have 
+$$|x-z|_X\ge |x-y|_X, |y-z|_X\ \Longrightarrow\  |x-z|_X= |x-y|_X+ |y-z|_X$$
+Show that $X$ is isometric to a closed real interval.
+\end{pr}
+
+
+\begin{pr}\label{pr:1000}
+Show that there is a topological triangulation of $\SS^3$
+with $1000$ vertices such that each pair of vertices is connected by an edge. 
+\end{pr}
+
+\begin{pr}\label{pr:tringulation-of-poly} Let $P$ be a (possibly nonconvex) polygon
+ equipped with the induced length metric.
+Show that $P$ admits a triangulation
+such that the set of vertices of the triangulation is the set of vertices of $P$. 
+\end{pr}
+
+\begin{pr}
+\label{pr:tringulation-of-poly-3D}
+Show that the analogous statement for a polyhedron 3-dimensional space does not hold.
+\end{pr}
+
+
+
+\begin{pr}\label{pr:2-triangulations}
+Let $\mathcal{A}$ and $\mathcal{B}$ be two triangulations of a polyhedral space.
+Show that there is a triangulation $\mathcal{C}$ such that each triangle of $\mathcal{A}$ and $\mathcal{B}$ is a union of triangles in $\mathcal{C}$.
+\end{pr}
+
+
+\begin{pr}\label{ex:acute-triangulation}
+Show that any triangle admits a triangulation into acute triangles.
+\end{pr}
+
+\begin{pr}\label{pr:delaunay.triangulation}
+Let $P$ be a convex hull of the finite set of points $\{x_1,x_2,\dots,x_n\}$ in $\RR^2$.
+Assume that positive reals $r_1,r_2,\dots,r_n$ are chosen in such a way that the balls 
+$B_i=B_{r_i}(x_i)$ cover $P$
+and moreover each side of $P$ is covered by the balls centered on this side.
+
+Show that $P$ admits a triangulation with vertices at $x_i$ such that each triangle is covered by the three balls centered at its vertices. 
+\end{pr}
+
+
+\begin{pr}\label{pr:polytope=local.cone}
+Let $P$ be a compact subset of Euclidean space.
+Show that $P$ is a polytope for every point $x\in P$
+there is a \emph{cone%
+\footnote{A cone with tip $x$ is a set formed by union of a set of rays starting at $x$.} $K_x$ with tip at $x$} and $\eps>0$
+such that 
+$$B_\eps(x)\cap P
+=
+B_\eps(x)\cap K_x.$$
+ 
+\end{pr}
+
+\begin{pr}
+A 1-dimensional polyhedral space $T$ such that any two points in $T$ are joint by unique geodesic is called \emph{metric tree}.
+
+Let $F$ be a metric space with finite number of points.
+Show that $F$ is isometric to a subset of metric tree if and only if
+for any four points $x_0,x_1,y_0,y_1$ in $F$
+we have 
+$$|x_0-x_1|_F+|y_0-y_1|_F
+\le
+|x_0-y_0|_F+|x_0-y_1|_F+|x_1-x_0|_F+|x_1-y_1|_F.$$
+\end{pr}
+
+
+%???+broken lines

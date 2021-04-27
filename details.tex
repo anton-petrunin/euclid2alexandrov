@@ -1,0 +1,94 @@
+\chapter{Details}
+
+\section{Lebesgue's number}
+
+The results in this section will not be used directly further in the lectures.
+We present it only to give a connection to standard definition of comapct space.
+In addition, a similar argument will be used once in the proof of Hopf--Rinow theorem (\ref{thm:Hopf-Rinow}).
+
+\medskip
+
+Let $X$ be a metric space, a collection of open subsets $\{U_\alpha\}_{\alpha\in\mathcal A}$ is called \emph{open cover}\index{open cover} of $X$ if 
+$$X=\bigcup_{\alpha\in A}U_\alpha.$$
+
+
+\begin{thm}{Lebesgue's number lemma}\label{lem:lebesgue-number}
+Let $\{U_\alpha\}_{\alpha\in\mathcal A}$ be an open cover of a compact metric space $X$.
+Then there is an $\eps>0$ (it is called a \emph{Lebesgue number}\index{Lebesgue number} of the cover)
+such that for any $x\in X$ the ball $B_\eps(x)\subset U_\alpha$ for some $\alpha\in\mathcal{A}$.
+\end{thm}
+
+\parit{Proof.}
+Given $x\in X$, denote by $\rho(x)$ the maximal value $R>0$ such that $B_R(x)\subset U_\alpha$ for some $\alpha\in\mathcal{A}$.
+Clearly $\rho(x)>0$ for any $x\in X$.
+
+Without loss of generality, we may assume $\rho(x)<\infty$ for one (and therefore any) $x\in X$.
+Otherwise the conclusion of the lemma holds for arbitrary $\eps>0$.
+
+Note  $$|\rho(x)-\rho(y)|\le |x-y|$$ for any $x,y\in X$;
+in particular $\rho$ is continuous.
+Then the conclusion of the lemma holds for 
+$$\eps=\tfrac12\cdot\min_{x\in X}\{\rho(x)\}.$$
+\qedsf
+
+
+As a corollary of Lebesgue's number lemma, 
+we obtain an alternative definition of compact metric space using open coverings.
+This definition is the standard definition of compact spaces.
+Since it use only the notion of open sets, it can be generalized to so called topological spaces.
+
+
+\begin{thm}{Theorem}\label{thm:compact+covering}
+A metric space $X$ is compact if and only if any open cover of $X$ contains a finite subcover.
+
+I.e., for any open cover $\{U_\alpha\}_{\alpha\in\mathcal A}$ of $X$ there is a finite set 
+$\{\alpha_1,\alpha_2,\dots,\alpha_n\}\subset \mathcal A$ such that 
+$$X=\bigcup_{i=1}^nU_\alpha.$$
+ 
+\end{thm}
+
+\parit{Proof; ``if''-part.}
+First let us show that $X$ is complete.
+Assume contrary;
+i.e., there is a Cauchy sequence $(x_n)$ which is not converging.
+Set $r_n=\sup_{m\ge n}\{|x_n-x_m|_X\}$ and
+$U_n=X\backslash \bar B_{r_n}(x_n)$.
+Since $x_n$ does not converge, we have $$\bigcap_{n=1}\bar B_{r_n}(x_n)=\emptyset,$$
+or equivalently $\{U_n\}_{n=1}^\infty$ is a cover of $X$.
+On the other hand it is easy to see that any finite sub-collection of $\{U_n\}_{n=1}^\infty$ does not contain $x_n$ for all large $n$, a contradiction. 
+
+
+Fix $\eps>0$ and consider cover of $X$ by open balls $\{B_\eps(x)\}_{x\in X}$.
+Note that if $\{B_\eps(x_i)\}_{i=1}^n$ is a finite subcover then $\{x_1,x_2,\dots,x_n\}$ forms an $\eps$-net in $X$. Apply Theorem~\ref{thm:finite_pack=compact}.
+
+\parit{``only if''-part.}
+Let $\eps>0$ be a Lebesgue's number of the covering.
+Choose a finite $\tfrac\eps2$-net $\{x_1,x_2,\dots,x_n\}$ of $X$.
+Clearly 
+$$\bigcup_{i=1}^n B_\eps(x_i)=X.\eqlbl{eq:balls-cover-X}$$
+For each $x_i$ choose $U_{\alpha_i}$ such that $U_{\alpha_i}\supset B_\eps(x_n)$.
+From \ref{eq:balls-cover-X}, 
+$$\bigcup_{i=1}^n U_{\alpha_i}=X.$$
+\qedsf
+
+\section{Domain invariance}\label{sec:domain-invariance}
+
+In the proof of Domain invariance theorem, we will use the following lemma in combinatoric topology.
+
+\begin{wrapfigure}{r}{37mm}
+\begin{lpic}[t(-21mm),b(-16mm),r(0mm),l(-3mm)]{pics/sperner(0.2)}
+\end{lpic}
+\end{wrapfigure}
+
+
+\begin{thm}{Sperner's lemma}
+Let $\mathcal{T}$ be a triangulation of $m$-dimensional simplex $\Delta$.
+Assume that we color all the vertices of $\mathcal{T}$  in $m+1$ colors in such a way that
+each vertex of $\Delta$ colored in different colors and the vertices of $\mathcal{T}$
+which lie on a face $F$ of $\Delta$ is colored in the color of the vertices of $F$.
+
+Then among the $m$-dimensional simplexes of $\mathcal{T}$ there is at least one which vertices are colored in all the $m+1$ different colors. 
+\end{thm}
+
+If you google Sperner's lemma you will find a dousen of nice proofs, 
+and it is also fun to make one your-self.
